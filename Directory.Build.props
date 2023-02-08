@@ -1,0 +1,314 @@
+<Project>
+
+  <!-- Targets and symbols -->
+
+  <!-- Obsolete -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='sl4'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='sl5'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wp'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wp7'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wp75'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wp8'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wp81'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='wpa81'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='aspnet50'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='aspnetcore50'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dnxcore50'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dnx'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dnx45'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dnx451'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dnx452'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet50'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet51'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet52'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet53'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet54'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet55'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='dotnet56'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='winrt'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net11'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net20'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net403'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net451'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net452'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net461'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.4'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.5'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.6'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <!-- .NET Framework -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
+    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
+    <DefineConstants>$(DefineConstants);NET462_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
+    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
+    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;NET462_OR_GREATER;NET47_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
+    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
+    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
+    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;FRAMEWORK_GT_471;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NETSTANDARD20_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
+    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;FRAMEWORK_GT_471;FRAMEWORK_GT_472;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <!-- .NET Standard -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <DefineConstants>$(DefineConstants);NETSTANDARD20_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
+    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
+    <DefineConstants>$(DefineConstants);STANDARD_GT_20;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <!-- .NET -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <TargetFrameworkIs5>true</TargetFrameworkIs5>
+    <TargetFrameworkIs6>true</TargetFrameworkIs6>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
+    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
+    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0'">
+    <TargetFrameworkIs5>true</TargetFrameworkIs5>
+    <TargetFrameworkIs6>true</TargetFrameworkIs6>
+    <TargetFrameworkIs7>true</TargetFrameworkIs7>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
+    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
+    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_NET60;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER;NET70_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Extra debug symbols for target framework type -->
+  <PropertyGroup Condition="'$(TargetFrameworkIsFullyStandardized)'=='true'">
+    <DefineConstants>$(DefineConstants);FRAMEWORK_FULL_STANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(LanguageFeaturesNullableReferences)'=='true'">
+    <DefineConstants>$(DefineConstants);FRAMEWORK_CAN_DO_NULLABLE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFrameworkAdvanced)'=='true'">
+    <DefineConstants>$(DefineConstants);FRAMEWORK_ADVANCED</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Packability -->
+  <PropertyGroup Condition="'$(IsTestProject)'=='true'">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)'!='true'">
+    <SourceRoot Include="$(NuGetPackageRoot)" />
+  </ItemGroup>
+
+  <!-- Language version -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Deterministic builds -->
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- Language options -->
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- SourceLink -->
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- Icon -->
+  <PropertyGroup>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <!-- Branding -->
+  <PropertyGroup>
+    <Authors>Adrian Mos</Authors>
+    <Company />
+    <Product>IX Libraries</Product>
+    <Copyright>Adrian Mos, 2023</Copyright>
+    <PackageProjectUrl>https://github.com/adimosh/IX.Libraries/</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,75 @@
+<Project>
+
+  <!-- Packability -->
+  <PropertyGroup Condition="'$(IsTestProject)'=='true'">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)'!='true'">
+    <SourceRoot Include="$(NuGetPackageRoot)" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(IsTestProject)'!='true'">
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- SourceLink -->
+  <ItemGroup Condition="'$(Configuration)'!='Debug' And '$(IsTestProject)'!='true'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Common\Resources\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  
+  <!-- Analyzer suppressions -->
+  <ItemGroup>
+    <Compile Include="..\Common\Code\StandardSuppressions.cs" Link="Properties\StandardSuppressions.cs" />
+  </ItemGroup>
+
+  <!-- Further analyzers - only in debug, as they tend to be rather heavy -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(TargetFrameworkIs5)'!='true'">
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true'">
+    <!-- CLR Heap Allocation Analyzer -->
+    <PackageReference Include="ClrHeapAllocationAnalyzer" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+
+    <!-- IDisposable Analyzer -->
+    <PackageReference Include="IDisposableAnalyzers" Version="4.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- JetBrains annotations -->
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+    <Using Include="JetBrains.Annotations" />
+  </ItemGroup>
+
+  <!-- Most common global usings -->
+  <ItemGroup>
+    <Using Include="IX.Core.Contracts" />
+  </ItemGroup>
+
+  <!-- Do not include VS Code-specific files -->
+  <ItemGroup>
+    <Compile Remove=".vscode\**" />
+    <EmbeddedResource Remove=".vscode\**" />
+    <None Remove=".vscode\**" />
+  </ItemGroup>
+
+  <!-- Error on obsolete target frameworks, if it was requested -->
+  <Target Name="ErrorOnObsoleteFrameworks" BeforeTargets="Build;Rebuild">
+    <Error Condition="'$(TargetFrameworkIsObsolete)|$(FailObsoleteTargetFrameworks)'=='true|true'" Text="The target framework $(TargetFramework) is considered obsolete, and should be avoided." />
+  </Target>
+
+</Project>

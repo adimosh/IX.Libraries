@@ -1,0 +1,174 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+    var argumentExceptions = new[]
+    {
+        (Name: "ArgumentInvalidPath",
+         Description: "An argument exception representing a path argument that is invalid."),
+        (Name: "ArgumentDoesNotMatch",
+         Description: "An argument exception representing a string argument not matching a specific pattern or expected input."),
+        (Name: "ArgumentInvalidType",
+         Description: "An argument exception representing a boxed or polymorphic argument being passed as the wrong type."),
+        (Name: "ArgumentNotPositive",
+         Description: "An argument exception representing an argument not being positive."),
+        (Name: "ArgumentNotNegative",
+         Description: "An argument exception representing an argument not being negative."),
+        (Name: "ArgumentNotPositiveInteger",
+         Description: "An argument exception representing an argument not being a positive integer (like a capacity or a count)."),
+        (Name: "ArgumentNotNegativeInteger",
+         Description: "An argument exception representing an argument not being a negative integer."),
+        (Name: "ArgumentNotInRange",
+         Description: "An argument exception representing an argument not being within a certain range."),
+        (Name: "ArgumentInRange",
+         Description: "An argument exception representing an argument being inside a range where it shouldn't be."),
+        (Name: "ArgumentNotLessThan",
+         Description: "An argument exception representing an argument not being less than a desired value."),
+        (Name: "ArgumentNotLessThanOrEqualTo",
+         Description: "An argument exception representing an argument not being less than or equal to a desired value."),
+        (Name: "ArgumentNotGreaterThan",
+         Description: "An argument exception representing an argument not being greater than a desired value."),
+        (Name: "ArgumentNotGreaterThanOrEqualTo",
+         Description: "An argument exception representing an argument not being greater than or equal to a desired value."),
+        (Name: "ArgumentNotValidIndex",
+         Description: "An argument exception representing a value given that cannot be used as an index."),
+        (Name: "ArgumentNotValidLength",
+         Description: "n argument exception representing a value given that cannot be used as an array or collection length."),
+        (Name: "ArgumentNullOrEmptyArray",
+         Description: "An argument exception representing an array argument being <c>null</c> (<c>Nothing</c> in Visual Basic) or empty."),
+        (Name: "ArgumentNullOrEmptyBinary",
+         Description: "An argument exception representing a binary argument being <c>null</c> (<c>Nothing</c> in Visual Basic) or empty."),
+        (Name: "ArgumentNullOrEmptyCollection",
+         Description: "An argument exception representing a collection argument being <c>null</c> (<c>Nothing</c> in Visual Basic) or empty."),
+        (Name: "ArgumentNullOrEmptyString",
+         Description: "An argument exception representing a string argument being <c>null</c> (<c>Nothing</c> in Visual Basic) or empty."),
+        (Name: "ArgumentNullOrWhiteSpaceString",
+         Description: @"An argument exception representing a string argument being <c>null</c> (<c>Nothing</c> in Visual Basic), empty or
+    ///     whitespace-only."),
+        (Name: "IdCorrespondsToNoItem",
+            Description: "An argument exception representing an identifier based on which no item is found."),
+    };
+#>
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Runtime.Serialization;
+
+#pragma warning disable SA1649 // File name should match first type name
+#pragma warning disable SA1402 // File may only contain a single type
+
+namespace IX.Core.Contracts;<# foreach (var item in argumentExceptions) { #>
+
+
+/// <summary>
+///     <#= item.Description #>
+/// </summary>
+/// <seealso cref="ArgumentException" />
+[Serializable]
+[PublicAPI]
+[ExcludeFromCodeCoverage]
+public class <#= item.Name #>Exception : ArgumentException
+{
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    public <#= item.Name #>Exception()
+        : base(Resources.Error<#= item.Name #>)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="argumentName">The name of the argument.</param>
+    public <#= item.Name #>Exception(string argumentName)
+        : base(
+            Resources.Error<#= item.Name #>,
+            argumentName)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="message">A custom message for the thrown exception.</param>
+    /// <param name="argumentName">The name of the argument.</param>
+    public <#= item.Name #>Exception(
+        string message,
+        string argumentName)
+        : base(
+            message,
+            argumentName)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="internalException">The internal exception, if any.</param>
+    public <#= item.Name #>Exception(Exception internalException)
+        : base(
+            Resources.Error<#= item.Name #>,
+            internalException)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="argumentName">The name of the argument.</param>
+    /// <param name="internalException">The internal exception, if any.</param>
+    public <#= item.Name #>Exception(
+        string argumentName,
+        Exception internalException)
+        : base(
+            Resources.Error<#= item.Name #>,
+            argumentName,
+            internalException)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="message">A custom message for the thrown exception.</param>
+    /// <param name="argumentName">The name of the argument.</param>
+    /// <param name="internalException">The internal exception, if any.</param>
+    public <#= item.Name #>Exception(
+        string message,
+        string argumentName,
+        Exception internalException)
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                message,
+                argumentName),
+            internalException)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
+    /// </summary>
+    /// <param name="info">
+    ///     The <see cref="SerializationInfo" /> that holds the serialized object
+    ///     data about the exception being thrown.
+    /// </param>
+    /// <param name="context">
+    ///     The <see cref="StreamingContext" /> that contains contextual
+    ///     information about the source or destination.
+    /// </param>
+    protected <#= item.Name #>Exception(
+        SerializationInfo info,
+        StreamingContext context)
+        : base(
+            info,
+            context)
+    {
+    }
+}<# } #>
+
+#pragma warning restore SA1402 // File may only contain a single type
+#pragma warning restore SA1649 // File name should match first type name
