@@ -1,3 +1,4 @@
+using IX.Core.Collections;
 using IX.Core.Globalization;
 
 using System.Reflection;
@@ -14,7 +15,7 @@ internal static class EmailValidationHelper
         {
             using var sr = new StreamReader(
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(
-                    "IX.StandardExtensions.Contracts.ValidationResources.tlds-alpha-by-domain.txt")!, Encoding.ASCII,
+                    "IX.Core.Contracts.ValidationResources.tlds-alpha-by-domain.txt")!, Encoding.ASCII,
                 false,
                 1000,
                 true);
@@ -42,22 +43,22 @@ internal static class EmailValidationHelper
         });
 
     // First validation
-    private static readonly Lazy<Regex> emailBasicFormatRegex = new(() => new(@"^(?<address>.+)@(?<domain>.+)$"));
+    private static readonly Lazy<Regex> EmailBasicFormatRegex = new(() => new(@"^(?<address>.+)@(?<domain>.+)$"));
 
     // Domain part validation
-    private static readonly Lazy<Regex> domainRegex =
+    private static readonly Lazy<Regex> DomainRegex =
         new(() => new(@"^(?!-)(?:[\w--[_]]+\.)*(?<tld>[\w--[_]]+)(?<!-)$"));
 
-    private static readonly Lazy<Regex> ipv4Regex = new(
+    private static readonly Lazy<Regex> Ipv4Regex = new(
         () => new(@"^\[(?<part1>[\d]{1,3})\.(?<part2>[\d]{1,3})\.(?<part3>[\d]{1,3})\.(?<part4>[\d]{1,3})\]$"));
 
-    private static readonly Lazy<Regex> ipv6Regex = new(() => new(@"^\[IPv6(?::[a-fA-F0-9]{4}){8}\]$"));
+    private static readonly Lazy<Regex> Ipv6Regex = new(() => new(@"^\[IPv6(?::[a-fA-F0-9]{4}){8}\]$"));
 
     // Address part validation
-    private static readonly Lazy<Regex> standardAddressRegex =
+    private static readonly Lazy<Regex> StandardAddressRegex =
         new(() => new(@"^(?!\.)(?:[\w!#$%&'*+\-/=?^`{|}~]|(?<!\.)\.){1,64}(?<!\.)$"));
 
-    private static readonly Lazy<Regex> quotedAddressRegex = new(() => new(@"^""(?:[^""]|(?<=\\)""){1,62}""$"));
+    private static readonly Lazy<Regex> QuotedAddressRegex = new(() => new(@"^""(?:[^""]|(?<=\\)""){1,62}""$"));
 
     internal static bool IsAddressValid(
         string address,
@@ -69,7 +70,7 @@ internal static class EmailValidationHelper
             return false;
         }
 
-        Match firstMatch = emailBasicFormatRegex.Value.Match(address);
+        Match firstMatch = EmailBasicFormatRegex.Value.Match(address);
 
         if (!firstMatch.Success)
         {
@@ -81,10 +82,10 @@ internal static class EmailValidationHelper
 
         var addressPart = firstMatch.Groups["address"].Value;
 
-        if (!standardAddressRegex.Value.IsMatch(addressPart))
+        if (!StandardAddressRegex.Value.IsMatch(addressPart))
         {
             // We might have a quoted address
-            if (!quotedAddressRegex.Value.IsMatch(addressPart))
+            if (!QuotedAddressRegex.Value.IsMatch(addressPart))
             {
                 // Validation 3: Address contains only valid characters and the dot, where the dot is not at the beginning or
                 // end, and is not doubled, and the whole address is not enclosed in quotation marks
@@ -99,7 +100,7 @@ internal static class EmailValidationHelper
 
         var domainPart = firstMatch.Groups["domain"].Value;
 
-        Match domainMatch = domainRegex.Value.Match(domainPart);
+        Match domainMatch = DomainRegex.Value.Match(domainPart);
 
         if (domainMatch.Success)
         {
@@ -133,7 +134,7 @@ internal static class EmailValidationHelper
             }
 
             // Not a domain match, let's see if it is an IPv4 match
-            Match ipv4RegexMatch = ipv4Regex.Value.Match(domainPart);
+            Match ipv4RegexMatch = Ipv4Regex.Value.Match(domainPart);
 
             if (ipv4RegexMatch.Success)
             {
@@ -164,7 +165,7 @@ internal static class EmailValidationHelper
             else
             {
                 // Not an IPv4 match, let's see if it is an IPv6 match
-                if (!ipv6Regex.Value.IsMatch(domainPart))
+                if (!Ipv6Regex.Value.IsMatch(domainPart))
                 {
                     // Validation 11: Not an IPv6 address either
                     return false;

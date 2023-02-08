@@ -2,7 +2,7 @@ using System.Text;
 using UtfUnknown.Core;
 using UtfUnknown.Core.Probers;
 
-namespace IX.StandardExtensions.Globalization.CharsetDetectionContrib;
+namespace IX.Core.Globalization.CharsetDetectionContrib;
 
 internal class PureProber : CharsetProber
 {

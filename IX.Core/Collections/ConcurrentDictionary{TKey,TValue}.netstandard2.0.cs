@@ -14,12 +14,12 @@ public partial class ConcurrentDictionary<TKey, TValue>
             "ReSharper",
             "StaticMemberInGenericType",
             Justification = "This field is used exclusively under lock, so this is safe.")]
-        private static object? threadStaticAddFactory;
+        private static object? _threadStaticAddFactory;
 
         private static TValue AddInternal<TState>(TKey key)
         {
             var innerState = (TState)_threadStaticMethods!;
-            var innerAdd = (Func<TKey, TState, TValue>)threadStaticAddFactory!;
+            var innerAdd = (Func<TKey, TState, TValue>)_threadStaticAddFactory!;
 
             return innerAdd(
                 key,
@@ -50,7 +50,7 @@ public partial class ConcurrentDictionary<TKey, TValue>
             TState state)
         {
             _threadStaticMethods = state;
-            threadStaticAddFactory = addValueFactory;
+            _threadStaticAddFactory = addValueFactory;
             _threadStaticUpdateFactory = updateValueFactory;
 
             try
@@ -63,7 +63,7 @@ public partial class ConcurrentDictionary<TKey, TValue>
             finally
             {
                 _threadStaticMethods = null;
-                threadStaticAddFactory = null;
+                _threadStaticAddFactory = null;
                 _threadStaticUpdateFactory = null;
             }
         }
@@ -86,7 +86,7 @@ public partial class ConcurrentDictionary<TKey, TValue>
             TState state)
         {
             _threadStaticMethods = state;
-            threadStaticAddFactory = valueFactory;
+            _threadStaticAddFactory = valueFactory;
 
             try
             {
@@ -97,7 +97,7 @@ public partial class ConcurrentDictionary<TKey, TValue>
             finally
             {
                 _threadStaticMethods = null;
-                threadStaticAddFactory = null;
+                _threadStaticAddFactory = null;
                 _threadStaticUpdateFactory = null;
             }
         }

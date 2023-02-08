@@ -1,3 +1,5 @@
+using IX.Core.Debugging;
+
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -182,7 +184,7 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
         {
             _threadStaticMethods = null;
 #if !FRAMEWORK_ADVANCED && !FRAMEWORK_GT_471
-            threadStaticAddFactory = null;
+            _threadStaticAddFactory = null;
 #endif
             _threadStaticUpdateFactory = null;
         }

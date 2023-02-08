@@ -1,6 +1,4 @@
-using IX.Core.Contracts;
-
-namespace IX.Core.Threading;
+namespace IX.Core.IO;
 
 /// <summary>
 ///     A memory stream that saves when it disposes.
@@ -182,9 +180,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
     protected override void Dispose(bool disposing)
     {
         if (disposing)
-        {
             _saveFile(ToArray());
-        }
 
         base.Dispose(disposing);
     }

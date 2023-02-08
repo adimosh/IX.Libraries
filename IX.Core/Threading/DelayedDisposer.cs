@@ -1,3 +1,7 @@
+using IX.Core.Logging;
+
+using Microsoft.Extensions.Logging;
+
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Core.Threading;
@@ -170,7 +174,8 @@ public static class DelayedDisposer
                             }
                             catch (Exception e)
                             {
-                                (Log.Current ?? Log.Default)?.Error(
+                                Log.GetLogger(typeof(DelayedDisposer))?.Log(
+                                    LogLevel.Error,
                                     e,
                                     "Exception while disposing object.");
 

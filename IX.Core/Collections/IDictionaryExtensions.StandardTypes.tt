@@ -1,0 +1,52 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\..\Common\Templates\StandardTypes.tt" #><#@ include file="..\..\Common\Templates\TypeNamesFixture.tt" #>
+<#@ output extension=".cs" #>
+using System.Diagnostics.CodeAnalysis;
+
+namespace IX.Core.Collections;
+
+/// <summary>
+/// Extensions for IDictionary.
+/// </summary>
+[SuppressMessage(
+    "ReSharper",
+    "InconsistentNaming",
+    Justification = "We're just doing IDictionary extensions.")]
+public static partial class IDictionaryExtensions
+{<#
+List<string> code = new List<string>();
+
+foreach (var typ in types.Where(p => p != typeof(byte[])))
+{
+    string fullTypeName = GetTypeUsableName(typ);
+#>
+
+    /// <summary>
+    /// Creates a deep clone of a dictionary, with deep clones of its values.
+    /// </summary>
+    /// <typeparam name="TKey">The type of the key.</typeparam>
+    /// <param name="source">The source.</param>
+    /// <returns>A deeply-cloned dictionary.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="source"/> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static Dictionary<TKey, <#= fullTypeName #>> DeepClone<TKey>(this Dictionary<TKey, <#= fullTypeName #>> source)
+        where TKey : notnull
+    {
+        var localSource = Requires.NotNull(source);
+
+        var destination = new Dictionary<TKey, <#= fullTypeName #>>();
+
+        foreach (KeyValuePair<TKey, <#= fullTypeName #>> p in localSource)
+        {
+            destination.Add(p.Key, p.Value);
+        }
+
+        return destination;
+    }
+<#
+}
+#>
+}

@@ -5,7 +5,7 @@ namespace IX.Core.Threading;
 /// <summary>
 /// A base class for a reader/writer synchronized class.
 /// </summary>
-/// <seealso cref="IX.StandardExtensions.ComponentModel.DisposableBase" />
+/// <seealso cref="ComponentModel.DisposableBase" />
 public abstract partial class ReaderWriterSynchronizedBase
 {
     /// <summary>

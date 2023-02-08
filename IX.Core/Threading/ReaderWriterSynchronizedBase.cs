@@ -2,14 +2,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 using IX.Core.ComponentModel;
-using IX.Core.Contracts;
 
 namespace IX.Core.Threading;
 
 /// <summary>
 ///     A base class for a reader/writer synchronized class.
 /// </summary>
-/// <seealso cref="IX.StandardExtensions.ComponentModel.DisposableBase" />
+/// <seealso cref="ComponentModel.DisposableBase" />
 [DataContract(Namespace = Constants.DataContractNamespace)]
 [PublicAPI]
 public abstract partial class ReaderWriterSynchronizedBase : DisposableBase

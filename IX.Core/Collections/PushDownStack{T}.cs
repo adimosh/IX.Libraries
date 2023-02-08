@@ -7,8 +7,7 @@ namespace IX.Core.Collections;
 ///     A stack that pushes down extra items above a certain limit.
 /// </summary>
 /// <typeparam name="T">The stack item type.</typeparam>
-/// <seealso cref="IX.StandardExtensions.Threading.ReaderWriterSynchronizedBase" />
-/// <seealso cref="IX.System.Collections.Generic.IStack{T}" />
+/// <seealso cref="ReaderWriterSynchronizedBase" />
 /// <seealso cref="IDisposable" />
 /// <seealso cref="IStack{T}" />
 [DataContract(
@@ -32,7 +31,7 @@ public class PushDownStack<T> : PushingCollectionBase<T>,
     ///     Initializes a new instance of the <see cref="PushDownStack{T}" /> class.
     /// </summary>
     /// <param name="limit">The limit.</param>
-    /// <exception cref="IX.Abstractions.Collections.LimitArgumentNegativeException">
+    /// <exception cref="LimitArgumentNegativeException">
     ///     <paramref name="limit" /> is a negative
     ///     integer.
     /// </exception>

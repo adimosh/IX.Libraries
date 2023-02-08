@@ -51,13 +51,14 @@
 
   <!-- JetBrains annotations -->
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     <Using Include="JetBrains.Annotations" />
   </ItemGroup>
 
   <!-- Most common global usings -->
   <ItemGroup>
     <Using Include="IX.Core.Contracts" />
+    <Using Include="IX.Core.Threading" />
   </ItemGroup>
 
   <!-- Do not include VS Code-specific files -->

@@ -1,9 +1,8 @@
 using IX.Core.Collections;
-using IX.Core.Contracts;
+using IX.Core.Globalization.CharsetDetectionContrib;
 
 using System.Text;
 
-using IX.StandardExtensions.Globalization.CharsetDetectionContrib;
 using UtfUnknown.Core;
 using UtfUnknown.Core.Probers;
 
