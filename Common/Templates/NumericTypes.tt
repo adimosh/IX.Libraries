@@ -1,0 +1,23 @@
+﻿<#
+    Type[] types = new Type[]
+    {
+        typeof(byte),
+        typeof(sbyte),
+        typeof(short),
+        typeof(ushort),
+        typeof(char),
+        typeof(int),
+        typeof(uint),
+        typeof(long),
+        typeof(ulong),
+        typeof(float),
+        typeof(double),
+        typeof(decimal),
+    };
+#>
+<#+
+bool IsTypeUnsigned(Type type)
+{
+    return (type == typeof(byte) || type == typeof(ushort) || type == typeof(uint) || type == typeof(ulong) || type == typeof(char));
+}
+#>

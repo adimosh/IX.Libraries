@@ -1,0 +1,112 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using IX.Core.Contracts;
+
+namespace IX.Core.ComponentModel;
+
+/// <summary>
+///     An abstract base class for correctly implementing the disposable pattern.
+/// </summary>
+/// <seealso cref="IDisposable" />
+public abstract partial class DisposableBase
+{<#
+for (int i = 1; i <= 8; i++)
+{
+    string[] types = new string[i];
+    string[] names = new string[i];
+    string[] nameTypes = new string[i];
+
+    for (int j = 1; j <= i; j++)
+    {
+        int idx = j - 1;
+        types[idx] = $"TParam{j}";
+        names[idx] = $"param{j}";
+        nameTypes[idx] = $"TParam{j} param{j}";
+    }
+
+    string paramTypes = string.Join(", ", types);
+    string paramNames = string.Join($",{Environment.NewLine}            ", names);
+    string paramNameTypes = string.Join($",{Environment.NewLine}        ", nameTypes);
+#>
+
+    /// <summary>
+    ///     Invokes an action if the current instance is not disposed.
+    /// </summary>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="action">The action to invoke.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <exception cref="ArgumentNullException">
+    ///     <paramref name="action" /> is <see langword="null"/> (
+    ///     <see langword="Nothing"/> in Visual Basic).
+    /// </exception>
+    protected void InvokeIfNotDisposed<<#= paramTypes #>>(
+        Action<<#= paramTypes #>> action,
+        <#= paramNameTypes #>)
+    {
+        Requires.NotNull(action);
+
+        ThrowIfCurrentObjectDisposed();
+
+        action.Invoke(
+            <#= paramNames #>);
+    }
+
+    /// <summary>
+    ///     Invokes an action if the current instance is not disposed.
+    /// </summary>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <typeparam name="TReturn">The return type of the invoked method.</typeparam>
+    /// <param name="func">The function to invoke.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <returns>A return value, as defined by the invoked method.</returns>
+    /// <exception cref="ArgumentNullException">
+    ///     <paramref name="func" /> is <see langword="null"/> (
+    ///     <see langword="Nothing"/> in Visual Basic).
+    /// </exception>
+    protected TReturn InvokeIfNotDisposed<<#= paramTypes #>, TReturn>(
+        Func<<#= paramTypes #>, TReturn> func,
+        <#= paramNameTypes #>)
+    {
+        Requires.NotNull(func);
+
+        ThrowIfCurrentObjectDisposed();
+
+        return func.Invoke(
+            <#= paramNames #>);
+    }
+<#
+}
+#>
+}
