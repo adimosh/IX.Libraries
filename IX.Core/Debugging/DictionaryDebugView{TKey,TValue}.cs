@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using IX.Core.Contracts;
 
 namespace IX.Core.Debugging;
 

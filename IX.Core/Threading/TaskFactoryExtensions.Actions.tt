@@ -5,7 +5,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 using System.Diagnostics.CodeAnalysis;
-using IX.Core.Contracts;
 
 namespace IX.Core.Threading;
 

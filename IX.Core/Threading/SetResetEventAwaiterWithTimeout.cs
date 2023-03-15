@@ -1,10 +1,9 @@
-using IX.Core.Contracts;
-
 namespace IX.Core.Threading;
 
 /// <summary>
 ///     A class that is used to await on <see cref="ISetResetEvent" /> instances with a specified timeout.
 /// </summary>
+[PublicAPI]
 public class SetResetEventAwaiterWithTimeout : IAwaiter<bool>
 {
     private readonly ISetResetEvent mre;

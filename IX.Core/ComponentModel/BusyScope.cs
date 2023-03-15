@@ -1,5 +1,3 @@
-using IX.Core.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Core.ComponentModel;

@@ -1,5 +1,3 @@
-using IX.Core.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 

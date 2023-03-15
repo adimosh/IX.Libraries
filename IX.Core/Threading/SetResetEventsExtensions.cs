@@ -1,4 +1,3 @@
-using IX.Core.Contracts;
 using GlobalThreading = System.Threading;
 
 namespace IX.Core.Threading;

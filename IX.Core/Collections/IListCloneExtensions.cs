@@ -32,14 +32,7 @@ public static partial class IListCloneExtensions
             throw new ArgumentNullException(nameof(list));
         }
 
-        var clonedList = new List<T>();
-
-        foreach (T item in list)
-        {
-            clonedList.Add(item.ShallowClone());
-        }
-
-        return clonedList;
+        return list.Select(item => item.ShallowClone()).ToList();
     }
 
     /// <summary>
@@ -62,13 +55,6 @@ public static partial class IListCloneExtensions
             throw new ArgumentNullException(nameof(list));
         }
 
-        var clonedList = new List<T>();
-
-        foreach (T item in list)
-        {
-            clonedList.Add(item.DeepClone());
-        }
-
-        return clonedList;
+        return list.Select(item => item.DeepClone()).ToList();
     }
 }

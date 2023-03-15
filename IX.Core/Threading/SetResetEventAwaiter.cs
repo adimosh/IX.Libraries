@@ -1,19 +1,18 @@
-using IX.Core.Contracts;
-
 namespace IX.Core.Threading;
 
 /// <summary>
 ///     A class that is used to await on <see cref="ISetResetEvent" /> instances.
 /// </summary>
+[PublicAPI]
 public class SetResetEventAwaiter : IAwaiter
 {
-    private readonly ISetResetEvent mre;
+    private readonly ISetResetEvent _mre;
 
-    private int isCompleted;
+    private int _isCompleted;
 
     internal SetResetEventAwaiter(ISetResetEvent mre) =>
         Requires.NotNull(
-            out this.mre,
+            out this._mre,
             mre,
             nameof(mre));
 
@@ -24,7 +23,7 @@ public class SetResetEventAwaiter : IAwaiter
     ///     <c>true</c> if this awaiter has completed; otherwise, <c>false</c>.
     /// </value>
     [UsedImplicitly]
-    public bool IsCompleted => isCompleted != 0;
+    public bool IsCompleted => _isCompleted != 0;
 
     /// <summary>
     ///     Returns the current awaiter.
@@ -50,12 +49,12 @@ public class SetResetEventAwaiter : IAwaiter
             {
                 var (internalContinuation, internalThis) = state;
 
-                internalThis.mre.WaitOne();
+                internalThis._mre.WaitOne();
 
                 internalContinuation?.Invoke();
 
                 _ = Interlocked.Exchange(
-                    ref internalThis.isCompleted,
+                    ref internalThis._isCompleted,
                     1);
             },
             (Continuation: continuation, this));

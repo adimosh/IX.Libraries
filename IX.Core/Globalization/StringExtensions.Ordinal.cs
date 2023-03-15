@@ -1,5 +1,3 @@
-using IX.Core.Contracts;
-
 namespace IX.Core.Globalization;
 
 /// <summary>

@@ -1,7 +1,8 @@
 #if !FRAMEWORK_ADVANCED
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections
+// ReSharper disable once CheckNamespace
+namespace System.Collections.Generic
 {
     /// <summary>
     /// Extensions for deconstructing types.

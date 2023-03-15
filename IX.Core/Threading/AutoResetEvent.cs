@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using IX.Core.ComponentModel;
-using IX.Core.Contracts;
 using GlobalThreading = System.Threading;
 
 namespace IX.Core.Threading;
@@ -8,12 +7,12 @@ namespace IX.Core.Threading;
 /// <summary>
 ///     A set/reset event class that implements methods to block threads and unblock automatically.
 /// </summary>
-/// <seealso cref="IX.System.Threading.ISetResetEvent" />
+/// <seealso cref="ISetResetEvent" />
 [PublicAPI]
 public class AutoResetEvent : DisposableBase,
     ISetResetEvent
 {
-    private readonly bool eventLocal;
+    private readonly bool _eventLocal;
 
     /// <summary>
     ///     The auto-reset event.
@@ -22,7 +21,7 @@ public class AutoResetEvent : DisposableBase,
         "IDisposableAnalyzers.Correctness",
         "IDISP006:Implement IDisposable.",
         Justification = "IDisposable is correctly implemented in base class.")]
-    private readonly GlobalThreading.AutoResetEvent sre;
+    private readonly GlobalThreading.AutoResetEvent _sre;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="AutoResetEvent" /> class.
@@ -36,8 +35,8 @@ public class AutoResetEvent : DisposableBase,
     /// <param name="initialState">The initial signal state.</param>
     public AutoResetEvent(bool initialState)
     {
-        sre = new(initialState);
-        eventLocal = true;
+        _sre = new(initialState);
+        _eventLocal = true;
     }
 
     /// <summary>
@@ -54,7 +53,7 @@ public class AutoResetEvent : DisposableBase,
         Justification = "This is a constructor, the analyzer is thrown off.")]
     public AutoResetEvent(GlobalThreading.AutoResetEvent autoResetEvent) =>
         Requires.NotNull(
-            out sre,
+            out _sre,
             autoResetEvent,
             nameof(autoResetEvent));
 
@@ -77,7 +76,7 @@ public class AutoResetEvent : DisposableBase,
         Requires.NotNull(
                 autoResetEvent,
                 nameof(autoResetEvent))
-            .sre;
+            ._sre;
 
     /// <summary>
     ///     Gets the awaiter for this event, so that it can be awaited on using &quot;await mre;&quot;.
@@ -89,28 +88,18 @@ public class AutoResetEvent : DisposableBase,
     ///     Sets the state of this event instance to non-signaled. Any thread entering a wait from this point will block.
     /// </summary>
     /// <returns><see langword="true" /> if the signal has been reset, <see langword="false" /> otherwise.</returns>
-    public bool Reset() => sre.Reset();
+    public bool Reset() => _sre.Reset();
 
     /// <summary>
     ///     Sets the state of this event instance to signaled. Any waiting thread will unblock.
     /// </summary>
     /// <returns><see langword="true" /> if the signal has been set, <see langword="false" /> otherwise.</returns>
-    public bool Set() => sre.Set();
+    public bool Set() => _sre.Set();
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
     /// </summary>
-    public void WaitOne() => sre.WaitOne();
-
-    /// <summary>
-    ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
-    /// </summary>
-    /// <param name="millisecondsTimeout">The timeout period, in milliseconds.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the event is set within the timeout period, <see langword="false" /> if the timeout
-    ///     is reached.
-    /// </returns>
-    public bool WaitOne(int millisecondsTimeout) => sre.WaitOne(TimeSpan.FromMilliseconds(millisecondsTimeout));
+    public void WaitOne() => _sre.WaitOne();
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -120,7 +109,17 @@ public class AutoResetEvent : DisposableBase,
     ///     <see langword="true" /> if the event is set within the timeout period, <see langword="false" /> if the timeout
     ///     is reached.
     /// </returns>
-    public bool WaitOne(double millisecondsTimeout) => sre.WaitOne(TimeSpan.FromMilliseconds(millisecondsTimeout));
+    public bool WaitOne(int millisecondsTimeout) => _sre.WaitOne(TimeSpan.FromMilliseconds(millisecondsTimeout));
+
+    /// <summary>
+    ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
+    /// </summary>
+    /// <param name="millisecondsTimeout">The timeout period, in milliseconds.</param>
+    /// <returns>
+    ///     <see langword="true" /> if the event is set within the timeout period, <see langword="false" /> if the timeout
+    ///     is reached.
+    /// </returns>
+    public bool WaitOne(double millisecondsTimeout) => _sre.WaitOne(TimeSpan.FromMilliseconds(millisecondsTimeout));
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -130,7 +129,7 @@ public class AutoResetEvent : DisposableBase,
     ///     <see langword="true" /> if the event is set within the timeout period, <see langword="false" /> if the timeout
     ///     is reached.
     /// </returns>
-    public bool WaitOne(TimeSpan timeout) => sre.WaitOne(timeout);
+    public bool WaitOne(TimeSpan timeout) => _sre.WaitOne(timeout);
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -147,7 +146,7 @@ public class AutoResetEvent : DisposableBase,
     public bool WaitOne(
         int millisecondsTimeout,
         bool exitSynchronizationDomain) =>
-        sre.WaitOne(
+        _sre.WaitOne(
             TimeSpan.FromMilliseconds(millisecondsTimeout),
             exitSynchronizationDomain);
 
@@ -166,7 +165,7 @@ public class AutoResetEvent : DisposableBase,
     public bool WaitOne(
         double millisecondsTimeout,
         bool exitSynchronizationDomain) =>
-        sre.WaitOne(
+        _sre.WaitOne(
             TimeSpan.FromMilliseconds(millisecondsTimeout),
             exitSynchronizationDomain);
 
@@ -185,7 +184,7 @@ public class AutoResetEvent : DisposableBase,
     public bool WaitOne(
         TimeSpan timeout,
         bool exitSynchronizationDomain) =>
-        sre.WaitOne(
+        _sre.WaitOne(
             timeout,
             exitSynchronizationDomain);
 
@@ -199,7 +198,7 @@ public class AutoResetEvent : DisposableBase,
         "HAA0603:Delegate allocation from a method group",
         Justification = "Unavoidable.")]
     public async ValueTask WaitOneAsync(CancellationToken cancellationToken = default) =>
-        _ = await sre.WaitOneAsync(
+        _ = await _sre.WaitOneAsync(
             Timeout.InfiniteTimeSpan,
             cancellationToken);
 
@@ -215,7 +214,7 @@ public class AutoResetEvent : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         int millisecondsTimeout,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -231,7 +230,7 @@ public class AutoResetEvent : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         double millisecondsTimeout,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -247,7 +246,7 @@ public class AutoResetEvent : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         TimeSpan timeout,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             timeout,
             cancellationToken);
 
@@ -268,7 +267,7 @@ public class AutoResetEvent : DisposableBase,
         int millisecondsTimeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -289,7 +288,7 @@ public class AutoResetEvent : DisposableBase,
         double millisecondsTimeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -310,7 +309,7 @@ public class AutoResetEvent : DisposableBase,
         TimeSpan timeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        sre.WaitOneAsync(
+        _sre.WaitOneAsync(
             timeout,
             cancellationToken);
 
@@ -348,7 +347,7 @@ public class AutoResetEvent : DisposableBase,
     ///     Converts to a <see cref="GlobalThreading.ManualResetEvent" />.
     /// </summary>
     /// <returns>The <see cref="GlobalThreading.ManualResetEvent" /> that is encapsulated in this instance.</returns>
-    public GlobalThreading.AutoResetEvent ToAutoResetEvent() => sre;
+    public GlobalThreading.AutoResetEvent ToAutoResetEvent() => _sre;
 
     /// <summary>
     ///     Disposes in the managed context.
@@ -357,9 +356,9 @@ public class AutoResetEvent : DisposableBase,
     {
         base.DisposeManagedContext();
 
-        if (eventLocal)
+        if (_eventLocal)
         {
-            sre.Dispose();
+            _sre.Dispose();
         }
     }
 }
