@@ -385,42 +385,6 @@ namespace IX.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The operation could not be completed as the current item is trapped by an existing undo context..
-        /// </summary>
-        internal static string ItemAlreadyCapturedIntoUndoContextException {
-            get {
-                return ResourceManager.GetString("ItemAlreadyCapturedIntoUndoContextException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The operation could not be completed as the current item is in edit mode..
-        /// </summary>
-        internal static string ItemIsInEditModeExceptionDefaultMessage {
-            get {
-                return ResourceManager.GetString("ItemIsInEditModeExceptionDefaultMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The operation could not be completed as the current item is not trapped into an existing undo context..
-        /// </summary>
-        internal static string ItemNotCapturedIntoUndoContextException {
-            get {
-                return ResourceManager.GetString("ItemNotCapturedIntoUndoContextException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The operation could not be completed as the current item is not in edit mode..
-        /// </summary>
-        internal static string ItemNotInEditModeExceptionDefaultMessage {
-            get {
-                return ResourceManager.GetString("ItemNotInEditModeExceptionDefaultMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Limit argument must be a non-negative integer..
         /// </summary>
         internal static string LimitArgumentNegativeExceptionDefaultTextNoArgument {
@@ -444,15 +408,6 @@ namespace IX.Core {
         internal static string MoveNextNotInvoked {
             get {
                 return ResourceManager.GetString("MoveNextNotInvoked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No undo/redo stacks could be initialized, as there are no history levels defined..
-        /// </summary>
-        internal static string NoHistoryLevelsException {
-            get {
-                return ResourceManager.GetString("NoHistoryLevelsException", resourceCulture);
             }
         }
         

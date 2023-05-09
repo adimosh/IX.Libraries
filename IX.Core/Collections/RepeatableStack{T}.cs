@@ -12,10 +12,6 @@ namespace IX.System.Collections.Generic;
 /// <typeparam name="T">The type of items contained in this stack.</typeparam>
 /// <seealso cref="IStack{T}" />
 [PublicAPI]
-[SuppressMessage(
-    "Design",
-    "CA1010:Generic interface should also be implemented",
-    Justification = "This is not necessary.")]
 public class RepeatableStack<T> : IStack<T>
 {
     private readonly List<T> _internalRepeatingStack;
