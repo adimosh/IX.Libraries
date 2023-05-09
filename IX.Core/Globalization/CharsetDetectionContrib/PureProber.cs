@@ -6,8 +6,8 @@ namespace IX.Core.Globalization.CharsetDetectionContrib;
 
 internal class PureProber : CharsetProber
 {
-    private bool notAscii;
-    private byte lastByte;
+    private bool _notAscii;
+    private byte _lastByte;
 
     /// <summary>
     /// Feed data to the prober.
@@ -29,23 +29,23 @@ internal class PureProber : CharsetProber
             if ((buf[i] & 0x80) != 0 && buf[i] != 0xA0)
             {
                 // High-byte found, let's get out of here
-                notAscii = true;
+                _notAscii = true;
 
                 break;
             }
 
-            if (buf[i] == 0x1B || (buf[i] == 0x7B && lastByte == 0x7E))
+            if (buf[i] == 0x1B || (buf[i] == 0x7B && _lastByte == 0x7E))
             {
                 // We found escape character or HZ "~{" - this is escaped ASCII and a different prober will take care of it
-                notAscii = true;
+                _notAscii = true;
 
                 break;
             }
 
-            lastByte = buf[i];
+            _lastByte = buf[i];
         }
 
-        state = notAscii ? ProbingState.NotMe : ProbingState.Detecting;
+        state = _notAscii ? ProbingState.NotMe : ProbingState.Detecting;
 
         return state;
     }
@@ -56,11 +56,11 @@ internal class PureProber : CharsetProber
     public override void Reset()
     {
         state = ProbingState.Detecting;
-        notAscii = false;
-        lastByte = 0;
+        _notAscii = false;
+        _lastByte = 0;
     }
 
     public override string GetCharsetName() => CodepageName.ASCII;
 
-    public override float GetConfidence(StringBuilder? status = null) => notAscii ? 0f : 1f;
+    public override float GetConfidence(StringBuilder? status = null) => _notAscii ? 0f : 1f;
 }
