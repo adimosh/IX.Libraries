@@ -3,8 +3,6 @@
   <!-- Project functional metadata -->
   <PropertyGroup>
     <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net7.0</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <!-- Package metadata -->
