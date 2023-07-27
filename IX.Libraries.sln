@@ -30,7 +30,9 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Undoable", "IX.Undoable\IX.Undoable.csproj", "{D6467923-6F22-42B7-A20E-6D6E2F44787F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Math", "IX.Math\IX.Math.csproj", "{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
