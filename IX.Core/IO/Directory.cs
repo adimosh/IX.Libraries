@@ -8,7 +8,7 @@ namespace IX.Core.IO;
 ///     A class for implementing <see cref="IDirectory" /> with <see cref="System.IO.Directory" />.
 /// </summary>
 /// <seealso cref="IDirectory" />
-/// <seealso cref="System.IO.Directory" />
+/// <seealso cref="FSDir" />
 [PublicAPI]
 public class Directory : IDirectory
 {
