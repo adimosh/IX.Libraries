@@ -42,6 +42,8 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="..\IX.Core\IX.Core.csproj" />
       <DocumentationSource sourceFile="..\IX.Undoable\IX.Undoable.csproj" />
+      <DocumentationSource sourceFile="..\IX.Math\IX.Math.csproj" />
+      <DocumentationSource sourceFile="..\IX.Observable\IX.Observable.csproj" />
     </DocumentationSources>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
