@@ -10,6 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="StandardExtensions\Globalization\data.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="StandardExtensions\Globalization\data.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoFixture" Version="4.18.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.0" />
     <PackageReference Include="FluentAssertions" Version="6.10.0" />
@@ -28,6 +36,28 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IX.Core\IX.Core.csproj" />
+    <ProjectReference Include="..\IX.Math\IX.Math.csproj" />
+    <ProjectReference Include="..\IX.Observable\IX.Observable.csproj" />
+    <ProjectReference Include="..\IX.Undoable\IX.Undoable.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Math\TestData.BasicOperatorsWithRandomNumbers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestData.BasicOperatorsWithRandomNumbers.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Math\TestData.BasicOperatorsWithRandomNumbers.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestData.BasicOperatorsWithRandomNumbers.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
