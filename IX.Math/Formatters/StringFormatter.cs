@@ -29,11 +29,9 @@ public static class StringFormatter
 
         foreach (var formatter in formatters)
         {
-            var (success, result) = formatter.ParseIntoString(value);
-            if (success)
-            {
-                return result;
-            }
+            if (formatter.ParseIntoString(
+                    value,
+                    out var result)) return result;
         }
 
         return ToStringRegular(value);
@@ -86,7 +84,7 @@ public static class StringFormatter
             return expression;
         }
 
-        bool areFormatters = (stringFormatters?.Count ?? 0) > 0;
+        var areFormatters = (stringFormatters?.Count ?? 0) > 0;
 
         if (expression.Type == typeof(long))
         {
