@@ -36,15 +36,14 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System;
+using IX.Core.Globalization.CharsetDetection.Probers.MultiByte;
+using IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Chinese;
+using IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Japanese;
+using IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Korean;
+
 using System.Text;
 
-using UtfUnknown.Core.Probers.MultiByte;
-using UtfUnknown.Core.Probers.MultiByte.Chinese;
-using UtfUnknown.Core.Probers.MultiByte.Japanese;
-using UtfUnknown.Core.Probers.MultiByte.Korean;
-
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 /// <summary>
 /// Multi-byte charsets probers

@@ -41,9 +41,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Hungarian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hungarian;
 
 internal abstract class HungarianModel : SequenceModel
 {

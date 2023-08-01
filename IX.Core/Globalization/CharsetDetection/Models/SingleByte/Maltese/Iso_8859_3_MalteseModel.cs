@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Maltese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Maltese;
 
 internal class Iso_8859_3_MalteseModel : MalteseModel
 {

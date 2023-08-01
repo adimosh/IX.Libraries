@@ -36,9 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System;
-
-namespace UtfUnknown.Core.Models;
+namespace IX.Core.Globalization.CharsetDetection.Models;
 
 internal abstract class SequenceModel
 {

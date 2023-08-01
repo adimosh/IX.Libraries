@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Irish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Irish;
 
 internal abstract class IrishModel : SequenceModel
 {

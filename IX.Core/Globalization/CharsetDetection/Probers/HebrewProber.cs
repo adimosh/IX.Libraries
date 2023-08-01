@@ -36,7 +36,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System;
 using System.Text;
 
 /*
@@ -136,7 +135,7 @@ using System.Text;
  *
  */
 
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 /// <summary>
 /// This prober doesn't actually recognize a language or a charset.

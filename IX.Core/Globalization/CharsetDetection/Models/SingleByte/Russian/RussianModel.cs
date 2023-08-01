@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Russian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Russian;
 
 internal abstract class RussianModel : SequenceModel
 {

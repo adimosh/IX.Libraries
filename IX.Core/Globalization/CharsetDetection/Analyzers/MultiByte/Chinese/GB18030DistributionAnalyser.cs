@@ -1,4 +1,4 @@
-namespace UtfUnknown.Core.Analyzers.Chinese;
+namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
 
 internal class GB18030DistributionAnalyser : CharDistributionAnalyser
 {

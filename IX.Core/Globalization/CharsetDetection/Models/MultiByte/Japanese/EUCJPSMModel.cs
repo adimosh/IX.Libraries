@@ -1,6 +1,4 @@
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.MultiByte.Japanese;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
 
 internal class EUCJPSMModel : StateMachineModel
 {

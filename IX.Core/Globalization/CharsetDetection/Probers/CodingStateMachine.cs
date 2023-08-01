@@ -37,9 +37,9 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using UtfUnknown.Core.Models;
+using IX.Core.Globalization.CharsetDetection.Models;
 
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 /// <summary>
 /// Parallel state machine for the Coding Scheme Method

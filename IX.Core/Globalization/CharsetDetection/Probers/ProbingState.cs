@@ -1,4 +1,4 @@
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 internal enum ProbingState
 {

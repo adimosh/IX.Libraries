@@ -36,10 +36,9 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System.IO;
 using System.Text;
 
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 internal abstract class CharsetProber
 {

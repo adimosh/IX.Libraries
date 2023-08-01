@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Slovak;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovak;
 
 internal abstract class SlovakModel : SequenceModel
 {

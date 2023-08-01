@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Lithuanian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Lithuanian;
 
 internal abstract class LithuanianModel : SequenceModel
 {

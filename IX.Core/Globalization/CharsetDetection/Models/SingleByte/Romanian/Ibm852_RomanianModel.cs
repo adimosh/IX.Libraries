@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Romanian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Romanian;
 
 internal class Ibm852_RomanianModel : RomanianModel
 {

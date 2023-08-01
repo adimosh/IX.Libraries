@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Portuguese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Portuguese;
 
 internal class Iso_8859_15_PortugueseModel : PortugueseModel
 {

@@ -1,6 +1,4 @@
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.MultiByte;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte;
 
 internal class UCS2BE_SMModel : StateMachineModel
 {

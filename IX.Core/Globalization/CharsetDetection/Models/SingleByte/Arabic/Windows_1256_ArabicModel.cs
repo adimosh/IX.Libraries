@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Arabic;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Arabic;
 
 internal class Windows_1256_ArabicModel : ArabicModel
 {

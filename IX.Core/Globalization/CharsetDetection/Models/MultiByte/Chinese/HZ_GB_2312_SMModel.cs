@@ -37,9 +37,8 @@
  * ***** END LICENSE BLOCK ***** */
 
 //Escaped charsets state machines
-using UtfUnknown.Core.Models;
 
-namespace UtfUnknown.Core.Models.MultiByte.Chinese;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
 
 internal class HZ_GB_2312_SMModel : StateMachineModel
 {

@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Esperanto;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Esperanto;
 
 internal abstract class EsperantoModel : SequenceModel
 {

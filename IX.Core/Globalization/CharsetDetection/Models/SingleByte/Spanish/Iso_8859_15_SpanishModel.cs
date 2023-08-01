@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Spanish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Spanish;
 
 internal class Iso_8859_15_SpanishModel : SpanishModel
 {

@@ -36,7 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace UtfUnknown.Core.Analyzers.Japanese;
+namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
 
 internal abstract class JapaneseContextAnalyser
 {

@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Vietnamese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
 
 internal class Viscii_VietnameseModel : VietnameseModel
 {
