@@ -1,5 +1,4 @@
 using IX.Core.Collections;
-using IX.Core.Globalization.CharsetDetection;
 using IX.Core.Globalization.CharsetDetection.Probers;
 using IX.Core.Globalization.CharsetDetectionContrib;
 
