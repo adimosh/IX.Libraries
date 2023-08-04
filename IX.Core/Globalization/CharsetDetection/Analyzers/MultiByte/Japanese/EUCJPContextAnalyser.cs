@@ -1,4 +1,4 @@
-namespace UtfUnknown.Core.Analyzers.Japanese;
+namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
 
 internal class EUCJPContextAnalyser : JapaneseContextAnalyser
 {

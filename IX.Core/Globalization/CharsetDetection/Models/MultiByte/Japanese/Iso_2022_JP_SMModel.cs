@@ -1,6 +1,4 @@
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.MultiByte.Japanese;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
 
 internal class Iso_2022_JP_SMModel : StateMachineModel
 {

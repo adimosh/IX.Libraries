@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Bulgarian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
 
 internal class Iso_8859_5_BulgarianModel : BulgarianModel
 {

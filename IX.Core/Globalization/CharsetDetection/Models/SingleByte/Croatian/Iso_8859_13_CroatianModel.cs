@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Croatian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Croatian;
 
 internal class Iso_8859_13_CroatianModel : CroatianModel
 {

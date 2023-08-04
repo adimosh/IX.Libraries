@@ -42,9 +42,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Hebrew;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hebrew;
 
 internal abstract class HebrewModel : SequenceModel
 {

@@ -28,7 +28,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace UtfUnknown.Core;
+namespace IX.Core.Globalization;
 
 /// <summary>
 /// This class defines the available codepage .NET Name.

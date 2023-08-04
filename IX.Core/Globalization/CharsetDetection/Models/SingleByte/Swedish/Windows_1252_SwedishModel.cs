@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Swedish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Swedish;
 
 internal class Windows_1252_SwedishModel : SwedishModel
 {

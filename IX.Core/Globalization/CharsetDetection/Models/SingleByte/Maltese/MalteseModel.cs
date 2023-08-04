@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Maltese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Maltese;
 
 internal abstract class MalteseModel : SequenceModel
 {

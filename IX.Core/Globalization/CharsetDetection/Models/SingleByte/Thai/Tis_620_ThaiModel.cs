@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Thai;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Thai;
 
 internal class Tis_620_ThaiModel: ThaiModel
 {

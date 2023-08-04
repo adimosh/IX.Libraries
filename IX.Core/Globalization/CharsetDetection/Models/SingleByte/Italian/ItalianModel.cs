@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Italian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Italian;
 
 internal abstract class ItalianModel : SequenceModel
 {

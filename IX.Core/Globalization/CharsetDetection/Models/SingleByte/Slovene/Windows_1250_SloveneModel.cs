@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Slovene;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovene;
 
 internal class Windows_1250_SloveneModel : SloveneModel
 {

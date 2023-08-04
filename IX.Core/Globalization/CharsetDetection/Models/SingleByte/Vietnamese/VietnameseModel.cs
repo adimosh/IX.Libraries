@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Vietnamese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
 
 internal abstract class VietnameseModel : SequenceModel
 {

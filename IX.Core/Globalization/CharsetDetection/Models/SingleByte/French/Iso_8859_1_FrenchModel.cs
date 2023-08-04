@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.French;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.French;
 
 internal class Iso_8859_1_FrenchModel : FrenchModel
 {

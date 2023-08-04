@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Romanian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Romanian;
 
 internal abstract class RomanianModel : SequenceModel
 {

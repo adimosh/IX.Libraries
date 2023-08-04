@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Estonian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Estonian;
 
 internal class Windows_1257_EstonianModel : EstonianModel
 {

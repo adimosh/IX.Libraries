@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Lithuanian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Lithuanian;
 
 internal class Iso_8859_13_LithuanianModel : LithuanianModel
 {

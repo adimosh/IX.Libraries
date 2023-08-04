@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Finnish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Finnish;
 
 internal abstract class FinnishModel : SequenceModel
 {

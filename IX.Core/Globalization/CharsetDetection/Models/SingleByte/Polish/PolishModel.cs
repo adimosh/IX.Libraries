@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Polish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Polish;
 
 internal abstract class PolishModel : SequenceModel
 {

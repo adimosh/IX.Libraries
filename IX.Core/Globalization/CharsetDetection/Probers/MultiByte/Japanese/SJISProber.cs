@@ -36,13 +36,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+using IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
+using IX.Core.Globalization.CharsetDetection.Models;
+using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
+
 using System.Text;
 
-using UtfUnknown.Core.Analyzers.Japanese;
-using UtfUnknown.Core.Models;
-using UtfUnknown.Core.Models.MultiByte.Japanese;
-
-namespace UtfUnknown.Core.Probers.MultiByte.Japanese;
+namespace IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Japanese;
 
 /// <summary>
 /// for S-JIS encoding, observe characteristic:

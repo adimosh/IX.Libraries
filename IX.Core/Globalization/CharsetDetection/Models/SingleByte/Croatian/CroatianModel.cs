@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Croatian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Croatian;
 
 internal abstract class CroatianModel : SequenceModel
 {
