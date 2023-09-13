@@ -1,4 +1,4 @@
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 internal static class Constants
 {

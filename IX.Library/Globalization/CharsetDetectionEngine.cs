@@ -1,12 +1,12 @@
-using IX.Core.Collections;
-using IX.Core.Globalization.CharsetDetectionContrib;
+using IX.Library.Collections;
+using IX.Library.Globalization.CharsetDetectionContrib;
 
 using System.Text;
 
 using UtfUnknown.Core;
 using UtfUnknown.Core.Probers;
 
-namespace IX.Core.Globalization;
+namespace IX.Library.Globalization;
 
 /// <summary>
 /// A character set detection engine.

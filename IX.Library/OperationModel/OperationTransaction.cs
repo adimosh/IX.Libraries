@@ -1,6 +1,4 @@
-using IX.Core.ComponentModel;
-
-namespace IX.Core.OperationModel;
+namespace IX.Library.OperationModel;
 
 /// <summary>
 /// A base class for a local, in-process, in-memory transaction.

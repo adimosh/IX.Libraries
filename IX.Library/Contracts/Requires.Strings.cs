@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.

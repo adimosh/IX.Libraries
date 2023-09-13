@@ -1,8 +1,10 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace IX.Core.Debugging;
+namespace IX.Library.Debugging;
 
 /// <summary>
 ///     A debugging view for collections. This class cannot be inherited.

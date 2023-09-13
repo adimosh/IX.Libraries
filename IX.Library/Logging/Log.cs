@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using Microsoft.Extensions.Logging;
 
-namespace IX.Core.Logging;
+namespace IX.Library.Logging;
 
 public static class Log
 {

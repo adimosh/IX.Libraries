@@ -1,7 +1,9 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     Methods and extension methods that aim to simplify working with different threads and thread pools.

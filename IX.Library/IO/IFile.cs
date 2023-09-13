@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace IX.Core.IO;
+namespace IX.Library.IO;
 
 /// <summary>
 ///     Abstracts the <see cref="File" /> class' static methods into a mock-able interface.

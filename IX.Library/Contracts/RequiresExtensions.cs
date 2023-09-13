@@ -1,4 +1,4 @@
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 /// Extensions for various objects that might aid with contract-based validation.

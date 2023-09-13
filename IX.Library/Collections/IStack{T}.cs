@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A contract for a stack.

@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     An exception representing that a certain set of arguments do not form a valid range of values.

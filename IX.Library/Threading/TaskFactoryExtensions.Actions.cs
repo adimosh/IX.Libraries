@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 #pragma warning disable CS8714 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'notnull' constraint.
 

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace IX.Core.Debugging;
+namespace IX.Library.Debugging;
 
 /// <summary>
 ///     A debug view for a key/value pair. This class cannot be inherited.

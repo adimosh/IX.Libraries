@@ -1,5 +1,5 @@
-using IX.Core.Collections;
-using IX.Core.Globalization;
+using IX.Library.Contracts;
+using IX.Library.Globalization;
 
 using System.Globalization;
 using IX.Math.Extensibility;

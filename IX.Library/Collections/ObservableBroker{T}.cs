@@ -1,8 +1,6 @@
-using IX.Core.ComponentModel;
-
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 /// A broker for the Observable pattern.
@@ -21,14 +19,14 @@ public abstract class ObservableBroker<T> : DisposableBase,
     private readonly Settings _settings;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ObservableBroker{T}"/> class.
+    /// Initializes a new instance of the <see cref="IX.Library.Collections.ObservableBroker{T}"/> class.
     /// </summary>
     protected ObservableBroker()
     : this(default)
     { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ObservableBroker{T}"/> class.
+    /// Initializes a new instance of the <see cref="IX.Library.Collections.ObservableBroker{T}"/> class.
     /// </summary>
     /// <param name="settings">The settings to use for this broker.</param>
     protected ObservableBroker(Settings settings)
@@ -122,16 +120,16 @@ public abstract class ObservableBroker<T> : DisposableBase,
     public readonly struct Settings
     {
         /// <summary>
-        /// Don't purge observers when the <see cref="ObservableBroker{T}.SendCompleted"/> method is called.
+        /// Don't purge observers when the <see cref="IX.Library.Collections.ObservableBroker{T}.SendCompleted()"/> method is called.
         /// </summary>
         /// <remarks>
-        /// <param>The default behavior is to purge the list of all observers when the <see cref="ObservableBroker{T}.SendCompleted"/> method is called, so that a new list of observers can take its place.</param>
+        /// <param>The default behavior is to purge the list of all observers when the <see cref="IX.Library.Collections.ObservableBroker{T}.SendCompleted()"/> method is called, so that a new list of observers can take its place.</param>
         /// <param>By setting this to <c>true</c>, the list is kept as-is.</param>
         /// </remarks>
         public bool KeepObserverReferencesAfterSendingFinished { get; init; }
 
         /// <summary>
-        /// Don't call <see cref="ObservableBroker{T}.SendCompleted"/> when disposing the broker instance.
+        /// Don't call <see cref="IX.Library.Collections.ObservableBroker{T}.SendCompleted()"/> when disposing the broker instance.
         /// </summary>
         public bool DontSendCompletedWhenDisposing { get; init; }
     }

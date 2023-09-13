@@ -1,4 +1,4 @@
-using IX.Core.ComponentModel;
+using IX.Library.Contracts;
 using IX.Undoable.StateChanges;
 
 namespace IX.Undoable;

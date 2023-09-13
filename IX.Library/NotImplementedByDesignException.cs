@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     The exception that is thrown when a requested method or operation is not implemented.

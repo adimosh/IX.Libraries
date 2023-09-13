@@ -1,4 +1,4 @@
-using IX.Core.Globalization;
+using IX.Library.Globalization;
 
 using System.Text.RegularExpressions;
 using IX.Math.Computation;

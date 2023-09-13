@@ -1,4 +1,4 @@
-using IX.Core.DataGeneration;
+using IX.Library.DataGeneration;
 using IX.Math;
 
 namespace UnitTests.Math;

@@ -6,7 +6,7 @@
 <#@ output extension=".cs" #>
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for array types.
@@ -31,54 +31,6 @@ for (int i = 1; i <= 8; i++)
     string paramNames = string.Join(", ", names);
     string paramNameTypes = string.Join($",{Environment.NewLine}        ", nameTypes);
 #>
-
-    /// <summary>
-    ///     Executes an action for each one of the elements of an array.
-    /// </summary>
-    /// <typeparam name="TItem">The array type.</typeparam>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
-<#
-    }
-#>
-    /// <param name="source">The enumerable source.</param>
-    /// <param name="action">The action to execute.</param>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
-<#
-    }
-#>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
-    ///     <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).
-    /// </exception>
-    [SuppressMessage(
-        "ReSharper",
-        "ForCanBeConvertedToForeach",
-        Justification = "A for loop on an array is going to be faster.")]
-    [SuppressMessage(
-        "CodeQuality",
-        "IDE0079:Remove unnecessary suppression",
-        Justification = "ReSharper is used for this project.")]
-    public static void ForEach<TItem, <#= paramTypes #>>(
-        this TItem[] source,
-        Action<TItem, <#= paramTypes #>> action,
-        <#= paramNameTypes #>)
-    {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
-
-        for (var i = 0; i < source.Length; i++)
-        {
-            action(source[i], <#= paramNames #>);
-        }
-    }
 
     /// <summary>
     ///     Asynchronously executes an action for each one of the elements of an array.

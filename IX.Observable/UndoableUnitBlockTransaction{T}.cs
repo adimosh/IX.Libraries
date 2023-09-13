@@ -1,4 +1,4 @@
-using IX.Core.OperationModel;
+using IX.Library.OperationModel;
 using IX.Undoable.StateChanges;
 
 namespace IX.Observable;

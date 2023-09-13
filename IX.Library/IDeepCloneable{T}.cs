@@ -1,4 +1,4 @@
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     Interface for implementing deep cloning for an object.

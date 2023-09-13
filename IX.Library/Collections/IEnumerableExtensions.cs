@@ -1,7 +1,9 @@
+using IX.Library.Contracts;
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for IEnumerable.

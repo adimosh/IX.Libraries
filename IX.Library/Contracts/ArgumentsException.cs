@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     An exception representing something wrong with a set of arguments as a whole, rather than just one.

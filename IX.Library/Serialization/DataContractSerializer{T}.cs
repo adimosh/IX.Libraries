@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Xml;
 
-namespace IX.Core.Serialization;
+namespace IX.Library.Serialization;
 
 /// <summary>
 /// A strongly-typed implementation of <see cref="T:System.Runtime.Serialization.DataContractSerializer"/>, acting as a wrapper over it.

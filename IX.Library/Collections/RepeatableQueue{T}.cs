@@ -1,13 +1,15 @@
+using IX.Library.Contracts;
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A queue that is able to accurately repeat the sequence of items that has been dequeued from it.
 /// </summary>
 /// <typeparam name="T">The type of items contained in this queue.</typeparam>
-/// <seealso cref="IQueue{T}" />
+/// <seealso cref="IX.Library.Collections.IQueue{T}" />
 [PublicAPI]
 [SuppressMessage(
     "Design",
@@ -19,7 +21,7 @@ public class RepeatableQueue<T> : IQueue<T>
     private readonly IQueue<T> _internalRepeatingQueue;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="RepeatableQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.RepeatableQueue{T}" /> class.
     /// </summary>
     public RepeatableQueue()
     {
@@ -28,7 +30,7 @@ public class RepeatableQueue<T> : IQueue<T>
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="RepeatableQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.RepeatableQueue{T}" /> class.
     /// </summary>
     /// <param name="originalQueue">The original queue.</param>
     public RepeatableQueue(IQueue<T> originalQueue)
@@ -41,7 +43,7 @@ public class RepeatableQueue<T> : IQueue<T>
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="RepeatableQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.RepeatableQueue{T}" /> class.
     /// </summary>
     /// <param name="originalData">The original data.</param>
     public RepeatableQueue(IEnumerable<T> originalData)
@@ -85,12 +87,12 @@ public class RepeatableQueue<T> : IQueue<T>
     object ICollection.SyncRoot => _internalQueue.SyncRoot;
 
     /// <summary>
-    ///     Copies the elements of the <see cref="RepeatableQueue{T}" /> to an <see cref="Array" />, starting at
+    ///     Copies the elements of the <see cref="IX.Library.Collections.RepeatableQueue{T}" /> to an <see cref="Array" />, starting at
     ///     a particular <see cref="Array" /> index.
     /// </summary>
     /// <param name="array">
     ///     The one-dimensional <see cref="Array" /> that is the destination of the elements copied
-    ///     from <see cref="RepeatableQueue{T}" />. The <see cref="Array" /> must have zero-based indexing.
+    ///     from <see cref="IX.Library.Collections.RepeatableQueue{T}" />. The <see cref="Array" /> must have zero-based indexing.
     /// </param>
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins. </param>
     /// <exception cref="ArgumentNullException">
@@ -101,8 +103,8 @@ public class RepeatableQueue<T> : IQueue<T>
     /// </exception>
     /// <exception cref="ArgumentException">
     ///     <paramref name="array" /> is multidimensional.-or- The number of elements in the source
-    ///     <see cref="RepeatableQueue{T}" /> is greater than the available space from <paramref name="index" /> to the end of
-    ///     the destination <paramref name="array" />.-or-The type of the source <see cref="RepeatableQueue{T}" /> cannot be
+    ///     <see cref="IX.Library.Collections.RepeatableQueue{T}" /> is greater than the available space from <paramref name="index" /> to the end of
+    ///     the destination <paramref name="array" />.-or-The type of the source <see cref="IX.Library.Collections.RepeatableQueue{T}" /> cannot be
     ///     cast automatically to the type of the destination <paramref name="array" />.
     /// </exception>
     public void CopyTo(

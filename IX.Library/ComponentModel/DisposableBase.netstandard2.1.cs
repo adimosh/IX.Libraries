@@ -1,9 +1,7 @@
 #if FRAMEWORK_ADVANCED
 using System.Diagnostics.CodeAnalysis;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     An abstract base class for correctly implementing the disposable pattern.

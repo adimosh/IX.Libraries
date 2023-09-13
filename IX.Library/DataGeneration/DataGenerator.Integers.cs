@@ -1,4 +1,4 @@
-namespace IX.Core.DataGeneration;
+namespace IX.Library.DataGeneration;
 
 /// <summary>
 ///     A static class that is used for generating random data for testing.

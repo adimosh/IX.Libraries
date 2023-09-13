@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 /// An interface that can be used to create custom awaiters.

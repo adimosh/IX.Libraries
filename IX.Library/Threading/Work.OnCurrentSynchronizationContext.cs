@@ -1,4 +1,4 @@
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 public static partial class Work
 {

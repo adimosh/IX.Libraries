@@ -1,4 +1,4 @@
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A class that provides methods and extensions to fire events.

@@ -1,8 +1,10 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
-using IX.Core.ComponentModel;
+
 using GlobalThreading = System.Threading;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A set/reset event class that implements methods to block and unblock threads based on manual signal interaction.

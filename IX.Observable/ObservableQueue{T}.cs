@@ -1,10 +1,12 @@
-using IX.Core.Collections;
-
 using System.Diagnostics;
 using System.Runtime.Serialization;
+
+using IX.Library.Collections;
+
 using IX.Observable.Adapters;
 using IX.Observable.DebugAide;
 using IX.Observable.StateChanges;
+
 using IX.Undoable.StateChanges;
 
 namespace IX.Observable;
@@ -29,21 +31,21 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
     ///     Initializes a new instance of the <see cref="ObservableQueue{T}" /> class.
     /// </summary>
     public ObservableQueue()
-        : base(new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>())) { }
+        : base(new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>())) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableQueue{T}" /> class.
     /// </summary>
     /// <param name="collection">A collection of items to copy from.</param>
     public ObservableQueue(IEnumerable<T> collection)
-        : base(new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(collection))) { }
+        : base(new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(collection))) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableQueue{T}" /> class.
     /// </summary>
     /// <param name="capacity">The initial capacity of the queue.</param>
     public ObservableQueue(int capacity)
-        : base(new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(capacity))) { }
+        : base(new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(capacity))) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableQueue{T}" /> class.
@@ -51,7 +53,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
     /// <param name="context">The synchronization context top use when posting observable messages.</param>
     public ObservableQueue(SynchronizationContext context)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>()),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>()),
             context) { }
 
     /// <summary>
@@ -63,7 +65,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         IEnumerable<T> collection)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(collection)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(collection)),
             context) { }
 
     /// <summary>
@@ -75,7 +77,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         int capacity)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(capacity)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(capacity)),
             context) { }
 
     /// <summary>
@@ -84,7 +86,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
     /// <param name="suppressUndoable">If set to <see langword="true" />, suppresses undoable capabilities of this collection.</param>
     public ObservableQueue(bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>()),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>()),
             suppressUndoable) { }
 
     /// <summary>
@@ -96,7 +98,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         IEnumerable<T> collection,
         bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(collection)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(collection)),
             suppressUndoable) { }
 
     /// <summary>
@@ -108,7 +110,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         int capacity,
         bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(capacity)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(capacity)),
             suppressUndoable) { }
 
     /// <summary>
@@ -120,7 +122,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>()),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>()),
             context,
             suppressUndoable) { }
 
@@ -135,7 +137,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         IEnumerable<T> collection,
         bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(collection)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(collection)),
             context,
             suppressUndoable) { }
 
@@ -150,7 +152,7 @@ public class ObservableQueue<T> : ObservableCollectionBase<T>,
         int capacity,
         bool suppressUndoable)
         : base(
-            new QueueCollectionAdapter<T>(new Core.Collections.Queue<T>(capacity)),
+            new QueueCollectionAdapter<T>(new Library.Collections.Queue<T>(capacity)),
             context,
             suppressUndoable) { }
 

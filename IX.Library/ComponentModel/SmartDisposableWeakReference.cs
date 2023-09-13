@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     A smart weak reference for a <see cref="DisposableBase" />-derived object.

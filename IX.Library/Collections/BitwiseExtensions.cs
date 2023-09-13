@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Collections;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extension methods for bitwise operations regarding bitwise operations.

@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     An exception thrown when a limit argument is a negative number.
@@ -14,13 +14,13 @@ namespace IX.Core.Collections;
 public class LimitArgumentNegativeException : ArgumentException
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     public LimitArgumentNegativeException()
         : base(Resources.LimitArgumentNegativeExceptionDefaultTextNoArgument) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="argumentName">Name of the argument.</param>
     public LimitArgumentNegativeException(string argumentName)
@@ -31,7 +31,7 @@ public class LimitArgumentNegativeException : ArgumentException
                 argumentName)) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="innerException">
     ///     The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter
@@ -44,7 +44,7 @@ public class LimitArgumentNegativeException : ArgumentException
             innerException) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="innerException">
     ///     The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter
@@ -64,7 +64,7 @@ public class LimitArgumentNegativeException : ArgumentException
             innerException) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="innerException">
@@ -80,7 +80,7 @@ public class LimitArgumentNegativeException : ArgumentException
             innerException) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LimitArgumentNegativeException" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="serializationInfo">The serialization information.</param>
     /// <param name="streamingContext">The streaming context.</param>

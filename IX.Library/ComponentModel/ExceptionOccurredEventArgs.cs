@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     Event arguments for an event handler detailing exceptions occurring in different threads.

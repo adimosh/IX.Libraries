@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.

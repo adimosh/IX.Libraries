@@ -1,7 +1,4 @@
-using IX.Core;
-using IX.Core.Collections;
-using IX.Core.ComponentModel;
-using IX.Core.System;
+using IX.Library.System;
 
 using System.Reflection;
 using IX.Math.Extensibility;

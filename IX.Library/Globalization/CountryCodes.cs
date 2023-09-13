@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization;
+namespace IX.Library.Globalization;
 
 /// <summary>
 /// Country codes.

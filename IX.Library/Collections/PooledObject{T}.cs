@@ -1,4 +1,6 @@
-namespace IX.Core.Collections;
+using IX.Library.Contracts;
+
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A pooled object. This class cannot be inherited.
@@ -31,7 +33,7 @@ public sealed class PooledObject<T> : IDisposable
     }
 
     /// <summary>
-    ///     Performs an implicit conversion from <see cref="PooledObject{T}" /> to <typeparamref name="T" />.
+    ///     Performs an implicit conversion from <see cref="IX.Library.Collections.PooledObject{T}" /> to <typeparamref name="T" />.
     /// </summary>
     /// <param name="source">The source pooled object.</param>
     /// <returns>The result of the conversion.</returns>

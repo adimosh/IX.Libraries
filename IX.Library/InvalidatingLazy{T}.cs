@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     A lazy initializing class that also offers he possibility to invalidate the value stored in it.

@@ -1,4 +1,4 @@
-using IX.Core.Globalization;
+using IX.Library.Globalization;
 using IX.Math.Extensibility;
 
 namespace UnitTests.Math.ExternalAssemblyCapabilities;

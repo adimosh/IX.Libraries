@@ -1,7 +1,9 @@
+using IX.Library.Threading;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A stack that pushes down extra items above a certain limit.
@@ -9,7 +11,7 @@ namespace IX.Core.Collections;
 /// <typeparam name="T">The stack item type.</typeparam>
 /// <seealso cref="ReaderWriterSynchronizedBase" />
 /// <seealso cref="IDisposable" />
-/// <seealso cref="IStack{T}" />
+/// <seealso cref="IX.Library.Collections.IStack{T}" />
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushDownStackOf{0}")]
@@ -22,16 +24,16 @@ public class PushDownStack<T> : PushingCollectionBase<T>,
     IStack<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PushDownStack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushDownStack{T}" /> class.
     /// </summary>
     public PushDownStack()
         : this(Constants.DefaultPushDownLimit) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PushDownStack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushDownStack{T}" /> class.
     /// </summary>
     /// <param name="limit">The limit.</param>
-    /// <exception cref="LimitArgumentNegativeException">
+    /// <exception cref="IX.Library.Collections.LimitArgumentNegativeException">
     ///     <paramref name="limit" /> is a negative
     ///     integer.
     /// </exception>

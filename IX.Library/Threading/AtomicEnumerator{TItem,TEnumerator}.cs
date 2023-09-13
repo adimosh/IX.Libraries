@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     An atomic enumerator that can enumerate items one at a time, atomically.

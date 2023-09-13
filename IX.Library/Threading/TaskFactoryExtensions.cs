@@ -1,7 +1,9 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A class containing extension methods for <see cref="TaskFactory" />, mostly intended for use with

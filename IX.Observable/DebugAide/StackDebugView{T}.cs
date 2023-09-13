@@ -1,3 +1,5 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 

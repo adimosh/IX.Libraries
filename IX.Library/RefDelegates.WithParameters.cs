@@ -1,4 +1,4 @@
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     A generic delegate for a method whose parameters are all marked as &quot;ref&quot;, with a return type.

@@ -1,8 +1,9 @@
-using IX.Core.Threading;
+using IX.Library.Contracts;
+using IX.Library.Threading;
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     An abstract base class for a synchronization context invoker.

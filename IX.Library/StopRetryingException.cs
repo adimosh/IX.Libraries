@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     An exception that, when thrown, signals the thread it's on to stop retrying an operation.

@@ -1,9 +1,11 @@
+using IX.Library.Contracts;
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     An atomic enumerator that can enumerate items one at a time, atomically.

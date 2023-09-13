@@ -1,15 +1,17 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalCollectionsGeneric = System.Collections.Generic;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Represents a variable-size last-in first-out (LIFO) collection of instances of the same specified type.
 /// </summary>
 /// <typeparam name="T">The type of elements in the stack.</typeparam>
 /// <seealso cref="GlobalCollectionsGeneric.Stack{T}" />
-/// <seealso cref="IStack{T}" />
+/// <seealso cref="IX.Library.Collections.IStack{T}" />
 [PublicAPI]
 [SuppressMessage(
     "Design",
@@ -19,19 +21,19 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
     IStack<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Stack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Stack{T}" /> class.
     /// </summary>
     public Stack() { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Stack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Stack{T}" /> class.
     /// </summary>
-    /// <param name="capacity">The initial number of elements that the <see cref="Stack{T}" /> can contain.</param>
+    /// <param name="capacity">The initial number of elements that the <see cref="IX.Library.Collections.Stack{T}" /> can contain.</param>
     public Stack(int capacity)
         : base(capacity) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Stack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Stack{T}" /> class.
     /// </summary>
     /// <param name="collection">The collection to copy elements from.</param>
     public Stack(IEnumerable<T> collection)

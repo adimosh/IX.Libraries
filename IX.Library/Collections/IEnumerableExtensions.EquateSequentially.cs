@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for IEnumerable.

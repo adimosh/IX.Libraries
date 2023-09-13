@@ -1,5 +1,3 @@
-using IX.Core;
-
 using System.Runtime.Serialization;
 
 namespace IX.Math;

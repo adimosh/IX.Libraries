@@ -1,4 +1,4 @@
-using IX.Core.DataGeneration;
+using IX.Library.DataGeneration;
 
 using System.Globalization;
 using IX.Math;

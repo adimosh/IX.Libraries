@@ -1,4 +1,6 @@
-namespace IX.Core.Globalization;
+using IX.Library.Contracts;
+
+namespace IX.Library.Globalization;
 
 /// <summary>
 ///     Extensions to strings to help with globalization.

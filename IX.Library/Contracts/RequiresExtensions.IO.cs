@@ -1,8 +1,8 @@
-using IX.Core.IO;
+using IX.Library.IO;
 
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 /// Extensions for various objects that might aid with contract-based validation.

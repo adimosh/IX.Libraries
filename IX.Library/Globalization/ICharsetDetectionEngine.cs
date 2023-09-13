@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace IX.Core.Globalization;
+namespace IX.Library.Globalization;
 
 /// <summary>
 /// A service contract for a character set detection engine.

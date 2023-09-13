@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     An abstraction contract for set/reset events.

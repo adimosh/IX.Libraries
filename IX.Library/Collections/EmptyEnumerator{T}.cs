@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 #if NETSTANDARD2_1
 /// <summary>
@@ -29,7 +29,7 @@ public sealed partial class EmptyEnumerator<T> : IEnumerator<T>
     private static readonly EmptyEnumerator<T> EmptyInstance = new();
 
     /// <summary>
-    ///     Prevents a default instance of the <see cref="EmptyEnumerator{T}" /> class from being created.
+    ///     Prevents a default instance of the <see cref="IX.Library.Collections.EmptyEnumerator{T}" /> class from being created.
     /// </summary>
     private EmptyEnumerator()
     {

@@ -1,5 +1,5 @@
-using IX.Core.Collections;
-using IX.Core.DataGeneration;
+using IX.Library.Collections;
+using IX.Library.DataGeneration;
 
 namespace UnitTests.StandardExtensions.Efficiency;
 

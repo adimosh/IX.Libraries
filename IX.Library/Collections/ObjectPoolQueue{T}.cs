@@ -1,8 +1,8 @@
-using IX.Core.ComponentModel;
+using IX.Library.Threading;
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A pool queue of objects that are waiting for an action to invoke for each, on a separate thread.
@@ -16,7 +16,7 @@ public class ObjectPoolQueue<T> : INotifyThreadException
     private readonly Func<IEnumerable<T>, int, Task<bool>> _queueAction;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="ObjectPoolQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ObjectPoolQueue{T}" /> class.
     /// </summary>
     /// <param name="queueAction">The queue action.</param>
     /// <param name="objectLimit">The object limit.</param>

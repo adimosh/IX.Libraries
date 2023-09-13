@@ -10,9 +10,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using IX.Core.Entities;
+using IX.Library.Entities;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.

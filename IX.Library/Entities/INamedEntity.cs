@@ -1,4 +1,4 @@
-namespace IX.Core.Entities;
+namespace IX.Library.Entities;
 
 /// <summary>
 ///     A data contract for a named entity.

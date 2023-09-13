@@ -1,4 +1,4 @@
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 /// A value-type synchronization locker for reading operations.

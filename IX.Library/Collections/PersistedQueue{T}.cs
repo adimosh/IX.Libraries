@@ -1,9 +1,8 @@
-using IX.Core.ComponentModel;
-using IX.Core.IO;
+using IX.Library.IO;
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A queue that guarantees delivery within disaster recovery scenarios.
@@ -14,13 +13,13 @@ namespace IX.Core.Collections;
 ///     therefore, do not negatively impact RAM memory.
 /// </remarks>
 /// <seealso cref="DisposableBase" />
-/// <seealso cref="IQueue{T}" />
+/// <seealso cref="IX.Library.Collections.IQueue{T}" />
 [PublicAPI]
 public class PersistedQueue<T> : PersistedQueueBase<T>,
     IPersistedQueue<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PersistedQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PersistedQueue{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">The persistence folder path.</param>
     /// <param name="fileShim">The file shim.</param>
@@ -55,7 +54,7 @@ public class PersistedQueue<T> : PersistedQueueBase<T>,
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PersistedQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PersistedQueue{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">The persistence folder path.</param>
     /// <param name="timeout">The timeout.</param>
@@ -119,7 +118,7 @@ public class PersistedQueue<T> : PersistedQueueBase<T>,
     /// </summary>
     /// <param name="array">
     ///     The one-dimensional <see cref="Array" /> that is the destination of the elements copied
-    ///     from <see cref="PersistedQueue{T}" />. The <see cref="Array" /> must have zero-based indexing.
+    ///     from <see cref="IX.Library.Collections.PersistedQueue{T}" />. The <see cref="Array" /> must have zero-based indexing.
     /// </param>
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
     /// <exception cref="InvalidOperationException">Operation not supported on a persisted queue.</exception>

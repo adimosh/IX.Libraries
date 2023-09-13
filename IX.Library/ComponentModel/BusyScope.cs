@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     A scope of operations that can be marked as busy or idle.

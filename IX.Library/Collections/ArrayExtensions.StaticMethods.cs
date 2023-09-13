@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for array types.

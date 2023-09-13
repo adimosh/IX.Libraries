@@ -1,5 +1,4 @@
-using IX.Core.Collections;
-using IX.Core.ComponentModel;
+using IX.Library.Collections;
 using IX.Undoable.StateChanges;
 
 namespace IX.Undoable;

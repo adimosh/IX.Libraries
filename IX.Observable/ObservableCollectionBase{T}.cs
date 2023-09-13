@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-using IX.Core.OperationModel;
+using IX.Library.OperationModel;
 using IX.Observable.Adapters;
 using IX.Observable.StateChanges;
 using IX.Undoable;

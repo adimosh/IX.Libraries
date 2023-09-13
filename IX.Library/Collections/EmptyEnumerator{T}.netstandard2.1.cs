@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 [SuppressMessage(
     "StyleCop.CSharp.DocumentationRules",

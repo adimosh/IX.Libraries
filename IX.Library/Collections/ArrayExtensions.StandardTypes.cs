@@ -1,4 +1,6 @@
-namespace IX.Core.Collections;
+using IX.Library.Contracts;
+
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for array types.

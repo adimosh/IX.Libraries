@@ -1,5 +1,3 @@
-using IX.Core;
-using IX.Core.ComponentModel;
 using IX.Math.Extensibility;
 using IX.Math.Formatters;
 using IX.Math.Nodes;

@@ -1,4 +1,4 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
 
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;

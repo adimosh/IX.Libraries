@@ -1,4 +1,6 @@
-namespace IX.Core.Collections;
+using IX.Library.Contracts;
+
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A pool of on-demand objects that keeps growing based on demand.
@@ -18,7 +20,7 @@ public class ObjectPool<T>
     private readonly Func<T> _objectFactory;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="ObjectPool{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ObjectPool{T}" /> class.
     /// </summary>
     /// <param name="objectFactory">An object factory for when objects need to be created.</param>
     /// <exception cref="ArgumentNullException">
@@ -36,7 +38,7 @@ public class ObjectPool<T>
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="ObjectPool{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ObjectPool{T}" /> class.
     /// </summary>
     /// <param name="objectFactory">An object factory for when objects need to be created.</param>
     /// <param name="initialNumberOfObjects">The number of objects to populate the pool with upon creation.</param>

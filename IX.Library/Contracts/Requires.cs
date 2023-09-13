@@ -1,10 +1,10 @@
-using IX.Core.ComponentModel;
+using IX.Library.Entities;
 
 using System.Runtime.CompilerServices;
-using IX.Core.Entities;
+
 using DiagCA = System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.

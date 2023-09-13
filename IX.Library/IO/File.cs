@@ -1,10 +1,12 @@
-using IX.Core.Threading;
+using IX.Library.Contracts;
+using IX.Library.Threading;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+
 using FSFile = System.IO.File;
 
-namespace IX.Core.IO;
+namespace IX.Library.IO;
 
 /// <summary>
 ///     A class for implementing <see cref="IFile" /> with <see cref="T:System.IO.File" />.

@@ -1,4 +1,4 @@
-namespace IX.Core.System;
+namespace IX.Library.System;
 
 /// <summary>
 /// Extensions for the <see cref="Stream"/> class.

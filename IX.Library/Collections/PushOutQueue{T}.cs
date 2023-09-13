@@ -1,14 +1,16 @@
+using IX.Library.Threading;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A queue that pushes out extra items above a certain limit.
 /// </summary>
 /// <typeparam name="T">The type of items in the queue.</typeparam>
-/// <seealso cref="PushingCollectionBase{T}" />
-/// <seealso cref="IQueue{T}" />
+/// <seealso cref="IX.Library.Collections.PushingCollectionBase{T}" />
+/// <seealso cref="IX.Library.Collections.IQueue{T}" />
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushOutQueueOf{0}")]
@@ -21,7 +23,7 @@ public class PushOutQueue<T> : PushingCollectionBase<T>,
     IQueue<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PushOutQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushOutQueue{T}" /> class.
     /// </summary>
     public PushOutQueue()
         : this(Constants.DefaultPushDownLimit) { }

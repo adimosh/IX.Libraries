@@ -1,4 +1,4 @@
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Environment settings for guaranteed collections.

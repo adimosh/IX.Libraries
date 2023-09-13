@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 [SuppressMessage(
     "StyleCop.CSharp.DocumentationRules",
@@ -27,8 +27,8 @@ public partial class ConcurrentDictionary<TKey, TValue>
         }
 
         /// <summary>
-        ///     Uses the specified functions to add a key/value pair to the <see cref="Core.Collections.ConcurrentDictionary{TKey,TValue}" /> if the
-        ///     key does not already exist, or to update a key/value pair in the <see cref="Core.Collections.ConcurrentDictionary{TKey,TValue}" />
+        ///     Uses the specified functions to add a key/value pair to the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> if the
+        ///     key does not already exist, or to update a key/value pair in the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" />
         ///     if the key already exists.
         /// </summary>
         /// <typeparam name="TState">The type of the state.</typeparam>
@@ -69,7 +69,7 @@ public partial class ConcurrentDictionary<TKey, TValue>
         }
 
         /// <summary>
-        ///     Adds a key/value pair to the <see cref="Core.Collections.ConcurrentDictionary{TKey,TValue}" /> by using the specified function, if
+        ///     Adds a key/value pair to the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> by using the specified function, if
         ///     the key does not already exist.
         /// </summary>
         /// <typeparam name="TState">The type of the state.</typeparam>

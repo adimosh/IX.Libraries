@@ -1,7 +1,7 @@
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     A base class for collections that notify of changes.

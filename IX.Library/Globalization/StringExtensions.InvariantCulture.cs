@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace IX.Core.Globalization;
+namespace IX.Library.Globalization;
 
 /// <summary>
 ///     Extensions to strings to help with globalization.

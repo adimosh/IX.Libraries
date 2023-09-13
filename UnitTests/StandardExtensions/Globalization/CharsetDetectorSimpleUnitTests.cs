@@ -1,4 +1,4 @@
-using IX.Core.Globalization;
+using IX.Library.Globalization;
 
 using System.Text;
 using UtfUnknown.Core;

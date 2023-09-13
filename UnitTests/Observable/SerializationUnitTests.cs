@@ -1,4 +1,4 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
 
 using System.Diagnostics;
 using System.Runtime.Serialization;

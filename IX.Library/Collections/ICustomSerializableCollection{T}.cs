@@ -1,4 +1,4 @@
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     An interface that is used for hiding the public list of custom serializable collections.

@@ -1,3 +1,4 @@
+using IX.Library.Contracts;
 using IX.Math.Extensibility;
 
 namespace IX.Math.Nodes.Operations.Unary;

@@ -1,9 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-using IX.Core.ComponentModel;
-
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A base class for a reader/writer synchronized class.

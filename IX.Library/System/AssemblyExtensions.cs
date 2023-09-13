@@ -1,7 +1,9 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace IX.Core.System;
+namespace IX.Library.System;
 
 /// <summary>
 ///     Extensions for <see cref="Assembly" />.

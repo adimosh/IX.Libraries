@@ -1,18 +1,17 @@
-using IX.Core.ComponentModel;
-using IX.Core.IO;
+using IX.Library.IO;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A base class for persisted queues.
 /// </summary>
 /// <typeparam name="T">The type of object in the queue.</typeparam>
 /// <seealso cref="DisposableBase" />
-/// <seealso cref="IQueue{T}" />
+/// <seealso cref="IX.Library.Collections.IQueue{T}" />
 [PublicAPI]
 public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     IQueue<T>
@@ -29,7 +28,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     private readonly DataContractSerializer _serializer;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PersistedQueueBase{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PersistedQueueBase{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">
     ///     The persistence folder path.
@@ -116,7 +115,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     }
 
     /// <summary>
-    ///     Gets the number of elements contained in the <see cref="PersistedQueueBase{T}" />.
+    ///     Gets the number of elements contained in the <see cref="IX.Library.Collections.PersistedQueueBase{T}" />.
     /// </summary>
     /// <value>The count.</value>
     public abstract int Count { get; }
@@ -130,13 +129,13 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     public bool IsEmpty => Count == 0;
 
     /// <summary>
-    ///     Gets a value indicating whether access to the <see cref="PersistedQueueBase{T}" /> is synchronized (thread safe).
+    ///     Gets a value indicating whether access to the <see cref="IX.Library.Collections.PersistedQueueBase{T}" /> is synchronized (thread safe).
     /// </summary>
     /// <value>The is synchronized.</value>
     bool ICollection.IsSynchronized => true;
 
     /// <summary>
-    ///     Gets an object that can be used to synchronize access to the <see cref="PersistedQueueBase{T}" />.
+    ///     Gets an object that can be used to synchronize access to the <see cref="IX.Library.Collections.PersistedQueueBase{T}" />.
     /// </summary>
     /// <value>The synchronize root.</value>
     object ICollection.SyncRoot { get; } = new();
@@ -178,12 +177,12 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     protected DataContractSerializer Serializer => _serializer;
 
     /// <summary>
-    ///     Copies the elements of the <see cref="PersistedQueueBase{T}" /> to an <see cref="Array" />, starting at a
+    ///     Copies the elements of the <see cref="IX.Library.Collections.PersistedQueueBase{T}" /> to an <see cref="Array" />, starting at a
     ///     particular <see cref="Array" /> index.
     /// </summary>
     /// <param name="array">
     ///     The one-dimensional <see cref="Array" /> that is the destination of the elements copied
-    ///     from <see cref="PersistedQueueBase{T}" />. The <see cref="Array" /> must have zero-based indexing.
+    ///     from <see cref="IX.Library.Collections.PersistedQueueBase{T}" />. The <see cref="Array" /> must have zero-based indexing.
     /// </param>
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
     public abstract void CopyTo(

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+
 using GlobalSystem = System;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     Concrete implementation of the abstraction over the <see cref="GlobalSystem.Environment" /> class. This class

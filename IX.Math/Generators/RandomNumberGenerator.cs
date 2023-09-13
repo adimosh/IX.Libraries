@@ -1,3 +1,5 @@
+using IX.Library.Contracts;
+
 namespace IX.Math.Generators;
 
 /// <summary>

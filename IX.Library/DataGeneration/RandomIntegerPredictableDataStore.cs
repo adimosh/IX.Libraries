@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.DataGeneration;
+namespace IX.Library.DataGeneration;
 
 /// <summary>
 ///     A data store for storing random integers in a predictable way, such as any iteration through the store will produce

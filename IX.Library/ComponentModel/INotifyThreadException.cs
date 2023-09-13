@@ -1,4 +1,4 @@
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     A service contract for an entity that notifies of safely-ignorable exceptions.

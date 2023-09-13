@@ -1,8 +1,12 @@
+using IX.Library.Contracts;
+using IX.Library.Threading;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+
 using FSDir = System.IO.Directory;
 
-namespace IX.Core.IO;
+namespace IX.Library.IO;
 
 /// <summary>
 ///     A class for implementing <see cref="IDirectory" /> with <see cref="System.IO.Directory" />.

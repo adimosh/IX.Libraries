@@ -1,4 +1,6 @@
-namespace IX.Core.Threading;
+using IX.Library.Contracts;
+
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A class that is used to await on <see cref="ISetResetEvent" /> instances.

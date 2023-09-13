@@ -47,6 +47,10 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="IX.Library.Collections" />
+  </ItemGroup>
+  
   <!-- Resources -->
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">

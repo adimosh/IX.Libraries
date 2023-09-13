@@ -1,15 +1,17 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalCollectionsGeneric = System.Collections.Generic;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Represents a variable-size first-in first-out (FIFO) collection of instances of the same specified type.
 /// </summary>
 /// <typeparam name="T">The type of elements in the queue.</typeparam>
 /// <seealso cref="GlobalCollectionsGeneric.Queue{T}" />
-/// <seealso cref="IQueue{T}" />
+/// <seealso cref="IX.Library.Collections.IQueue{T}" />
 [PublicAPI]
 [SuppressMessage(
     "Design",
@@ -19,20 +21,20 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
     IQueue<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Queue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Queue{T}" /> class.
     /// </summary>
     public Queue() { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Queue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Queue{T}" /> class.
     /// </summary>
-    /// <param name="capacity">The initial number of elements that the <see cref="Queue{T}" /> can contain.</param>
+    /// <param name="capacity">The initial number of elements that the <see cref="IX.Library.Collections.Queue{T}" /> can contain.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="capacity" /> is less than zero.</exception>
     public Queue(int capacity)
         : base(capacity) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Queue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.Queue{T}" /> class.
     /// </summary>
     /// <param name="collection">The collection to copy elements from.</param>
     /// <exception cref="ArgumentNullException"><paramref name="collection" /> is <see langword="null" />.</exception>

@@ -57,8 +57,10 @@
 
   <!-- Most common global usings -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
-    <Using Include="IX.Core.Contracts" />
-    <Using Include="IX.Core.Threading" />
+    <Using Include="IX.Library" />
+    <Using Include="IX.Library.Contracts" />
+    <Using Include="IX.Library.ComponentModel" />
+    <Using Include="IX.Library.Threading" />
   </ItemGroup>
 
   <!-- Do not include VS Code-specific files -->

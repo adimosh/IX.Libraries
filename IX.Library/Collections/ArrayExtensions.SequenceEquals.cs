@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for array types.

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>A class that represents a notification suppression context for property and collection changed notifications.</summary>
 /// <remarks>

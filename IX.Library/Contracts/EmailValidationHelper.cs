@@ -1,11 +1,11 @@
-using IX.Core.Collections;
-using IX.Core.Globalization;
+using IX.Library.Collections;
+using IX.Library.Globalization;
 
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace IX.Core.Contracts;
+namespace IX.Library.Contracts;
 
 internal static class EmailValidationHelper
 {

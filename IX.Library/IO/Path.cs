@@ -1,7 +1,10 @@
+using IX.Library.Contracts;
+
 using System.Security;
+
 using FS = System.IO;
 
-namespace IX.Core.IO;
+namespace IX.Library.IO;
 
 /// <summary>
 ///     A class for implementing <see cref="IPath" /> with <see cref="FS.Path" />.

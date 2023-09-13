@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using System.Collections;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for the <see cref="BitArray" /> class.

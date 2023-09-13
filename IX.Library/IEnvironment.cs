@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 ///     Represents an abstraction over the <see cref="T:System.Environment" /> class.

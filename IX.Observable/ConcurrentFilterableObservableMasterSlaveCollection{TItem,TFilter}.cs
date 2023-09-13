@@ -1,7 +1,10 @@
+using IX.Library.Contracts;
+using IX.Library.Threading;
+
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using IX.Observable.DebugAide;
-using ReaderWriterLockSlim = IX.Core.Threading.ReaderWriterLockSlim;
+using ReaderWriterLockSlim = IX.Library.Threading.ReaderWriterLockSlim;
 
 namespace IX.Observable;
 

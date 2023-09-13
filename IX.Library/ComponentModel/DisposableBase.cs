@@ -1,7 +1,9 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 /// <summary>
 ///     An abstract base class for correctly implementing the disposable pattern.

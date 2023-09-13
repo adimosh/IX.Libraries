@@ -1,6 +1,8 @@
+using IX.Library.Contracts;
+
 using GlobalThreading = System.Threading;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     Extension methods for reader/writer lock classes.

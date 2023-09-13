@@ -1,7 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
-using IX.Core.ComponentModel;
+using IX.Library.Contracts;
 
-namespace IX.Core.Threading;
+using System.Diagnostics.CodeAnalysis;
+
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A ticker delegate.

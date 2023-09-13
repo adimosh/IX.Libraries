@@ -1,10 +1,10 @@
-using IX.Core.Logging;
+using IX.Library.Logging;
 
 using Microsoft.Extensions.Logging;
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A class that allows delayed safe disposal of <see cref="IDisposable" /> objects.

@@ -1,7 +1,10 @@
+using IX.Library.Contracts;
+using IX.Library.Threading;
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.DataGeneration;
+namespace IX.Library.DataGeneration;
 
 /// <summary>
 ///     A data store for storing items in a predictable way, such as any iteration through the store will produce the same

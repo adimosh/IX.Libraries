@@ -1,4 +1,4 @@
-namespace IX.Core.ComponentModel;
+namespace IX.Library.ComponentModel;
 
 internal static class Constants
 {

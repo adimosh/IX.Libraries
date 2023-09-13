@@ -1,5 +1,5 @@
-using IX.Core.Collections;
-using IX.Core.DataGeneration;
+using IX.Library.Collections;
+using IX.Library.DataGeneration;
 using IX.System.Collections.Generic;
 
 namespace UnitTests.Core.Collections;
@@ -113,7 +113,7 @@ public class RepeatableCollectionsUnitTests
     public void Test3()
     {
         // ARRANGE
-        var seq = new IX.Core.Collections.Queue<int>();
+        var seq = new IX.Library.Collections.Queue<int>();
         var int1 = DataGenerator.RandomInteger();
         var int2 = DataGenerator.RandomInteger();
         var int3 = DataGenerator.RandomInteger();
@@ -264,7 +264,7 @@ public class RepeatableCollectionsUnitTests
     public void Test6()
     {
         // ARRANGE
-        var seq = new IX.Core.Collections.Stack<int>();
+        var seq = new IX.Library.Collections.Stack<int>();
         var int1 = DataGenerator.RandomInteger();
         var int2 = DataGenerator.RandomInteger();
         var int3 = DataGenerator.RandomInteger();

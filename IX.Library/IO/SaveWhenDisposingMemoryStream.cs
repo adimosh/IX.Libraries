@@ -1,4 +1,6 @@
-namespace IX.Core.IO;
+using IX.Library.Contracts;
+
+namespace IX.Library.IO;
 
 /// <summary>
 ///     A memory stream that saves when it disposes.

@@ -5,7 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ include file="..\..\Common\Templates\StandardTypes.tt" #><#@ include file="..\..\Common\Templates\TypeNamesFixture.tt" #>
 <#@ output extension=".cs" #>
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     Extensions for array types.

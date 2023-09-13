@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 /// Extensions for IEnumerable.

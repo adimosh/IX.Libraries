@@ -1,8 +1,11 @@
+using IX.Library.Contracts;
+using IX.Library.Threading;
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A base class for pushing collections.
@@ -42,10 +45,10 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     private int _limit;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="PushingCollectionBase{T}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushingCollectionBase{T}" /> class.
     /// </summary>
     /// <param name="limit">The limit.</param>
-    /// <exception cref="LimitArgumentNegativeException">
+    /// <exception cref="IX.Library.Collections.LimitArgumentNegativeException">
     ///     <paramref name="limit" /> is a negative
     ///     integer.
     /// </exception>
@@ -170,12 +173,12 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     protected List<T> InternalContainer => _internalContainer;
 
     /// <summary>
-    ///     Copies the elements of the <see cref="PushingCollectionBase{T}" /> to an <see cref="Array" />,
+    ///     Copies the elements of the <see cref="IX.Library.Collections.PushingCollectionBase{T}" /> to an <see cref="Array" />,
     ///     starting at a particular <see cref="Array" /> index.
     /// </summary>
     /// <param name="array">
     ///     The one-dimensional <see cref="Array" /> that is the destination of the elements copied
-    ///     from <see cref="PushingCollectionBase{T}" />. The <see cref="Array" /> must have zero-based
+    ///     from <see cref="IX.Library.Collections.PushingCollectionBase{T}" />. The <see cref="Array" /> must have zero-based
     ///     indexing.
     /// </param>
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>

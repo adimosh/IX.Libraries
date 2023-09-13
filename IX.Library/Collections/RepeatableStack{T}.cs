@@ -1,4 +1,5 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
+using IX.Library.Contracts;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -10,7 +11,7 @@ namespace IX.System.Collections.Generic;
 ///     A stack that is able to accurately repeat the sequence of items that has been popped from it.
 /// </summary>
 /// <typeparam name="T">The type of items contained in this stack.</typeparam>
-/// <seealso cref="IStack{T}" />
+/// <seealso cref="IX.Library.Collections.IStack{T}" />
 [PublicAPI]
 public class RepeatableStack<T> : IStack<T>
 {
@@ -22,7 +23,7 @@ public class RepeatableStack<T> : IStack<T>
     /// </summary>
     public RepeatableStack()
     {
-        _internalStack = new Core.Collections.Stack<T>();
+        _internalStack = new Library.Collections.Stack<T>();
         _internalRepeatingStack = new();
     }
 
@@ -55,7 +56,7 @@ public class RepeatableStack<T> : IStack<T>
         _ = Requires.NotNull(
             originalData,
             nameof(originalData));
-        _internalStack = new Core.Collections.Stack<T>(originalData);
+        _internalStack = new Library.Collections.Stack<T>(originalData);
         _internalRepeatingStack = new();
     }
 
@@ -225,7 +226,7 @@ public class RepeatableStack<T> : IStack<T>
         "AssignNullToNotNullAttribute",
         Justification = "We want this exception if it occurs.")]
     public IStack<T> Repeat() =>
-        new Core.Collections.Stack<T>(
+        new Library.Collections.Stack<T>(
             _internalRepeatingStack.AsEnumerable()
                 .Reverse()
                 .ToArray());

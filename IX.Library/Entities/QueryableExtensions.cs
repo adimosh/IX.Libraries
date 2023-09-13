@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Entities;
+namespace IX.Library.Entities;
 
 /// <summary>
 /// Extensions for <see cref="IEnumerable{T}"/>, <see cref="IQueryable{T}"/> and derived interfaces.

@@ -1,6 +1,6 @@
 using GlobalIO = System.IO;
 
-namespace IX.Core.IO;
+namespace IX.Library.IO;
 
 /// <summary>
 ///     Abstracts the <see cref="GlobalIO.Directory" /> class' static methods into a mock-able interface.

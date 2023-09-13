@@ -1,8 +1,10 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
-using IX.Core.ComponentModel;
+
 using GlobalThreading = System.Threading;
 
-namespace IX.Core.Threading;
+namespace IX.Library.Threading;
 
 /// <summary>
 ///     A wrapper over <see cref="GlobalThreading.ReaderWriterLockSlim" />, compatible with

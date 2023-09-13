@@ -1,9 +1,7 @@
-using IX.Core.ComponentModel;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IX.Core.Collections;
+namespace IX.Library.Collections;
 
 /// <summary>
 ///     A dictionary that saves its objects in multiple levels.
@@ -15,18 +13,18 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     IDictionary<TKey, TValue>
     where TKey : notnull
 {
-    private readonly Dictionary<TKey, TValue> internalDictionary;
-    private readonly Dictionary<int, List<TKey>> keyLevels;
-    private readonly Dictionary<TKey, int> levelKeys;
+    private readonly Dictionary<TKey, TValue> _internalDictionary;
+    private readonly Dictionary<int, List<TKey>> _keyLevels;
+    private readonly Dictionary<TKey, int> _levelKeys;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LevelDictionary{TKey, TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="IX.Library.Collections.LevelDictionary{TKey,TValue}" /> class.
     /// </summary>
     public LevelDictionary()
     {
-        internalDictionary = new();
-        keyLevels = new();
-        levelKeys = new();
+        _internalDictionary = new();
+        _keyLevels = new();
+        _levelKeys = new();
     }
 
     /// <summary>
@@ -39,7 +37,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         {
             ThrowIfCurrentObjectDisposed();
 
-            return internalDictionary.Count;
+            return _internalDictionary.Count;
         }
     }
 
@@ -59,7 +57,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         {
             ThrowIfCurrentObjectDisposed();
 
-            return internalDictionary.Keys;
+            return _internalDictionary.Keys;
         }
     }
 
@@ -73,7 +71,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         {
             ThrowIfCurrentObjectDisposed();
 
-            return keyLevels.OrderBy(p => p.Key)
+            return _keyLevels.OrderBy(p => p.Key)
                 .Select(
                     p => new KeyValuePair<int, TKey[]>(
                         p.Key,
@@ -91,7 +89,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         {
             ThrowIfCurrentObjectDisposed();
 
-            return internalDictionary.Values;
+            return _internalDictionary.Values;
         }
     }
 
@@ -106,14 +104,14 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         {
             ThrowIfCurrentObjectDisposed();
 
-            return internalDictionary[key];
+            return _internalDictionary[key];
         }
 
         set
         {
             ThrowIfCurrentObjectDisposed();
 
-            internalDictionary[key] = value;
+            _internalDictionary[key] = value;
         }
     }
 
@@ -124,9 +122,9 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        internalDictionary.Clear();
-        keyLevels.Clear();
-        levelKeys.Clear();
+        _internalDictionary.Clear();
+        _keyLevels.Clear();
+        _levelKeys.Clear();
     }
 
     /// <summary>
@@ -138,7 +136,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        return internalDictionary.ContainsKey(key);
+        return _internalDictionary.ContainsKey(key);
     }
 
     /// <summary>
@@ -153,7 +151,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        return internalDictionary.TryGetValue(
+        return _internalDictionary.TryGetValue(
             key,
             out value!);
     }
@@ -180,7 +178,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        return (internalDictionary as ICollection<KeyValuePair<TKey, TValue>>).Contains(item);
+        return (_internalDictionary as ICollection<KeyValuePair<TKey, TValue>>).Contains(item);
     }
 
     /// <summary>
@@ -195,7 +193,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        (internalDictionary as ICollection<KeyValuePair<TKey, TValue>>).CopyTo(
+        (_internalDictionary as ICollection<KeyValuePair<TKey, TValue>>).CopyTo(
             array,
             arrayIndex);
     }
@@ -263,21 +261,21 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        if (!levelKeys.TryGetValue(
+        if (!_levelKeys.TryGetValue(
                 key,
                 out var level))
         {
             return false;
         }
 
-        if (!internalDictionary.Remove(key))
+        if (!_internalDictionary.Remove(key))
         {
             return false;
         }
 
-        _ = keyLevels[level]
+        _ = _keyLevels[level]
             .Remove(key);
-        _ = levelKeys.Remove(key);
+        _ = _levelKeys.Remove(key);
 
         return true;
     }
@@ -299,16 +297,16 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
             throw new ArgumentOutOfRangeException(nameof(level));
         }
 
-        if (internalDictionary.ContainsKey(key))
+        if (_internalDictionary.ContainsKey(key))
         {
             throw new InvalidOperationException(Resources.ErrorKeyFoundInDictionary);
         }
 
-        internalDictionary.Add(
+        _internalDictionary.Add(
             key,
             value);
 
-        if (keyLevels.TryGetValue(
+        if (_keyLevels.TryGetValue(
                 level,
                 out List<TKey>? list))
         {
@@ -316,7 +314,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         }
         else
         {
-            keyLevels.Add(
+            _keyLevels.Add(
                 level,
                 new()
                 {
@@ -324,7 +322,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
                 });
         }
 
-        levelKeys.Add(
+        _levelKeys.Add(
             key,
             level);
     }
@@ -337,7 +335,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     {
         ThrowIfCurrentObjectDisposed();
 
-        return internalDictionary.GetEnumerator();
+        return _internalDictionary.GetEnumerator();
     }
 
     /// <summary>
@@ -358,12 +356,12 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         Justification = "We use ReSharper.")]
     public IEnumerable<TValue> EnumerateValuesOnLevelKeys()
     {
-        foreach (List<TKey> keyList in keyLevels.OrderBy(p => p.Key)
+        foreach (List<TKey> keyList in _keyLevels.OrderBy(p => p.Key)
                      .Select(p => p.Value))
         {
             foreach (TKey key in keyList)
             {
-                yield return internalDictionary[key];
+                yield return _internalDictionary[key];
             }
         }
     }
@@ -373,9 +371,9 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     /// </summary>
     protected override void DisposeManagedContext()
     {
-        internalDictionary.Clear();
-        keyLevels.Clear();
-        levelKeys.Clear();
+        _internalDictionary.Clear();
+        _keyLevels.Clear();
+        _levelKeys.Clear();
 
         base.DisposeManagedContext();
     }
@@ -386,24 +384,24 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     [PublicAPI]
     public readonly struct KeyLevelEnumerable : IEnumerable<TValue>
     {
-        private readonly TValue[] values;
+        private readonly TValue[] _values;
 
         [SuppressMessage(
             "Performance",
             "HAA0602:Delegate on struct instance caused a boxing allocation",
             Justification = "Not a problem.")]
         internal KeyLevelEnumerable(LevelDictionary<TKey, TValue> instance) =>
-            values = (
-                from p in instance.keyLevels.OrderBy(p => p.Key)
+            _values = (
+                from p in instance._keyLevels.OrderBy(p => p.Key)
                                   .SelectMany(p => p.Value)
-                join q in instance.internalDictionary.AsEnumerable() on p equals q.Key
+                join q in instance._internalDictionary.AsEnumerable() on p equals q.Key
                 select q.Value).ToArray();
 
         /// <summary>
         ///     Gets an enumerator for this level dictionary.
         /// </summary>
         /// <returns>An enumerator that enumerates by key levels.</returns>
-        public KeyLevelEnumerator GetEnumerator() => new(values);
+        public KeyLevelEnumerator GetEnumerator() => new(_values);
 
         /// <summary>
         ///     Gets an enumerator for this level dictionary.
@@ -428,19 +426,19 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
-        ///     An enumerator for the <see cref="LevelDictionary{TKey,TValue}" />, so that it can enumerate on level keys.
+        ///     An enumerator for the <see cref="IX.Library.Collections.LevelDictionary{TKey,TValue}" />, so that it can enumerate on level keys.
         /// </summary>
         public struct KeyLevelEnumerator : IEnumerator<TValue>
         {
-            private readonly TValue[] values;
+            private readonly TValue[] _values;
 
-            private int index;
+            private int _index;
 
             internal KeyLevelEnumerator(TValue[] values)
             {
-                this.values = values;
+                _values = values;
 
-                index = 0;
+                _index = 0;
             }
 
             /// <summary>Gets the element in the collection at the current position of the enumerator.</summary>
@@ -449,17 +447,17 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
             {
                 get
                 {
-                    if (index == -1)
+                    if (_index == -1)
                     {
                         throw new ObjectDisposedException(nameof(KeyLevelEnumerator));
                     }
 
-                    if (index >= values.Length)
+                    if (_index >= _values.Length)
                     {
                         throw new IndexOutOfRangeException(Resources.TheLevelDictionaryHasNoMoreItems);
                     }
 
-                    return values[index];
+                    return _values[_index];
                 }
             }
 
@@ -474,7 +472,7 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
             /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
             public void Dispose() =>
                 Interlocked.Exchange(
-                    ref index,
+                    ref _index,
                     -1);
 
             /// <summary>Advances the enumerator to the next element of the collection.</summary>
@@ -485,17 +483,17 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
             /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created.</exception>
             public bool MoveNext()
             {
-                if (index == -1)
+                if (_index == -1)
                 {
                     throw new ObjectDisposedException(nameof(KeyLevelEnumerator));
                 }
 
-                if (index == values.Length)
+                if (_index == _values.Length)
                 {
                     return false;
                 }
 
-                _ = Interlocked.Increment(ref index);
+                _ = Interlocked.Increment(ref _index);
 
                 return true;
             }
@@ -504,12 +502,12 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
             /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created.</exception>
             public void Reset()
             {
-                if (index == -1)
+                if (_index == -1)
                 {
                     throw new ObjectDisposedException(nameof(KeyLevelEnumerator));
                 }
 
-                index = 0;
+                _index = 0;
             }
         }
     }
