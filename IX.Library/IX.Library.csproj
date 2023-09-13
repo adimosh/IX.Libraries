@@ -160,6 +160,13 @@
     <None Remove="Contracts\ValidationResources\tlds-alpha-by-domain.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InternalSourceGenerator\InternalSourceGenerator.csproj">
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <OutputItemType>Analyzer</OutputItemType>
+    </ProjectReference>
+  </ItemGroup>
+
   <!-- Text templates -->
   <ItemGroup>
     <Compile Update="ComponentModel\DisposableBase.InvokeIfNotDisposed.cs">
