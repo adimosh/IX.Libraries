@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IX.Core\IX.Core.csproj">
+    <ProjectReference Include="..\IX.Library\IX.Library.csproj">
       <CopyLocal>False</CopyLocal>
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
