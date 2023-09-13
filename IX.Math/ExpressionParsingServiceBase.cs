@@ -332,6 +332,10 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
         "IDisposableAnalyzers.Correctness",
         "IDISP017:Prefer using.",
         Justification = "This is required.")]
+    [SuppressMessage(
+        "Performance",
+        "HAA0601:Value type to reference type conversion causing boxing allocation",
+        Justification = "Unavoidable in this case.")]
     private IDisposable EnsureInitialization()
     {
         var innerLock = AcquireReadLock();

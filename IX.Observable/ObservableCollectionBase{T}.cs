@@ -55,6 +55,10 @@ public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollection
     /// </summary>
     /// <param name="internalContainer">The internal container of items.</param>
     /// <param name="suppressUndoable">If set to <see langword="true" />, suppresses undoable capabilities of this collection.</param>
+    [SuppressMessage(
+        "Performance",
+        "HAA0603:Delegate allocation from a method group",
+        Justification = "Unavoidable.")]
     protected ObservableCollectionBase(
         ICollectionAdapter<T> internalContainer,
         bool suppressUndoable)

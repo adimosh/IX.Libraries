@@ -1,4 +1,6 @@
+#if NET462
 using IX.Library;
+#endif
 
 using System.Globalization;
 using System.Linq.Expressions;
@@ -15,9 +17,9 @@ public class ParameterContext : IDeepCloneable<ParameterContext>, IEquatable<Par
     private readonly List<IStringFormatter> _stringFormatters;
 
     private bool _alreadyCompiled;
-    private ParameterExpression _parameterDefinitionExpression;
-    private Expression _expression;
-    private Expression _stringExpression;
+    private ParameterExpression? _parameterDefinitionExpression;
+    private Expression? _expression;
+    private Expression? _stringExpression;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ParameterContext" /> class.
@@ -30,7 +32,7 @@ public class ParameterContext : IDeepCloneable<ParameterContext>, IEquatable<Par
         _ = Requires.NotNullOrWhiteSpace(name);
 
         Name = name;
-        this._stringFormatters = stringFormatters;
+        _stringFormatters = stringFormatters;
         SupportedReturnType = SupportableValueType.All;
     }
 
@@ -90,7 +92,8 @@ public class ParameterContext : IDeepCloneable<ParameterContext>, IEquatable<Par
                 _ = Compile();
             }
 
-            return _parameterDefinitionExpression;
+            // Null-forgiving: Compile is called before and sets the expression
+            return _parameterDefinitionExpression!;
         }
     }
 
