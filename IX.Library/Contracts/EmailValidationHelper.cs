@@ -15,7 +15,7 @@ internal static class EmailValidationHelper
         {
             using var sr = new StreamReader(
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(
-                    "IX.Core.Contracts.ValidationResources.tlds-alpha-by-domain.txt")!, Encoding.ASCII,
+                    "IX.Library.Contracts.ValidationResources.tlds-alpha-by-domain.txt")!, Encoding.ASCII,
                 false,
                 1000,
                 true);

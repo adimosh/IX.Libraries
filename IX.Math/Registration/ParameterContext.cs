@@ -1,4 +1,4 @@
-using IX.Library.Contracts;
+using IX.Library;
 
 using System.Globalization;
 using System.Linq.Expressions;

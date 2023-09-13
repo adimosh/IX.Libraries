@@ -1,3 +1,5 @@
+using IX.Library;
+
 using System.Runtime.Serialization;
 
 namespace IX.Math;
