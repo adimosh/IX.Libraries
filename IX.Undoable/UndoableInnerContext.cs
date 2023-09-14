@@ -1,6 +1,8 @@
 using IX.Library.Collections;
 using IX.Undoable.StateChanges;
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace IX.Undoable;
 
 /// <summary>
@@ -129,6 +131,10 @@ public class UndoableInnerContext : NotifyPropertyChangedBase
         HistoryLevels = 0;
     }
 
+    [SuppressMessage(
+        "Performance",
+        "HAA0603:Delegate allocation from a method group",
+        Justification = "Unavoidable.")]
     private void ProcessHistoryLevelsChange()
     {
         // WARNING !!! Always execute this method within a lock
