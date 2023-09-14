@@ -79,7 +79,10 @@ internal class DictionaryCollectionAdapter<TKey, TValue> : ModernCollectionAdapt
 
     public bool TryGetValue(
         TKey key,
-        [MaybeNullWhen(false)] out TValue value) =>
+#if !NET462 && !NET47 && !NETSTANDARD2_0
+        [MaybeNullWhen(false)]
+#endif
+        out TValue value) =>
         _dictionary.TryGetValue(
             key,
             out value);

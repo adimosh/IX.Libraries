@@ -1,6 +1,6 @@
-using IX.Core.DataGeneration;
+using IX.Library.DataGeneration;
 using IX.Observable;
-using EnvironmentSettings = IX.Core.ComponentModel.EnvironmentSettings;
+using EnvironmentSettings = IX.Library.ComponentModel.EnvironmentSettings;
 
 namespace UnitTests.Observable;
 

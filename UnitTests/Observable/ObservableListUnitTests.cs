@@ -1,5 +1,5 @@
 using IX.Observable;
-using EnvironmentSettings = IX.Core.ComponentModel.EnvironmentSettings;
+using EnvironmentSettings = IX.Library.ComponentModel.EnvironmentSettings;
 
 namespace UnitTests.Observable;
 

@@ -1,4 +1,4 @@
-using IX.Core.DataGeneration;
+using IX.Library.DataGeneration;
 
 using System.Runtime.Serialization;
 using System.Text;

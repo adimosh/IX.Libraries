@@ -20,7 +20,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IX.Core\IX.Core.csproj" />
+    <ProjectReference Include="..\IX.Library\IX.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>

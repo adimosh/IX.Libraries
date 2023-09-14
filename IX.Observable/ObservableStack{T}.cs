@@ -1,4 +1,4 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
 
 using System.Diagnostics;
 using IX.Observable.Adapters;
@@ -28,21 +28,21 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     ///     Initializes a new instance of the <see cref="ObservableStack{T}" /> class.
     /// </summary>
     public ObservableStack()
-        : base(new StackCollectionAdapter<T>(new Core.Collections.Stack<T>())) { }
+        : base(new StackCollectionAdapter<T>(new Library.Collections.Stack<T>())) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableStack{T}" /> class.
     /// </summary>
     /// <param name="capacity">The initial capacity of the stack.</param>
     public ObservableStack(int capacity)
-        : base(new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(capacity))) { }
+        : base(new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(capacity))) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableStack{T}" /> class.
     /// </summary>
     /// <param name="collection">A collection of items to copy into the stack.</param>
     public ObservableStack(IEnumerable<T> collection)
-        : base(new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(collection))) { }
+        : base(new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(collection))) { }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ObservableStack{T}" /> class.
@@ -50,7 +50,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     /// <param name="context">The synchronization context top use when posting observable messages.</param>
     public ObservableStack(SynchronizationContext context)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>()),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>()),
             context) { }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         int capacity)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(capacity)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(capacity)),
             context) { }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         IEnumerable<T> collection)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(collection)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(collection)),
             context) { }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     /// <param name="suppressUndoable">If set to <see langword="true" />, suppresses undoable capabilities of this collection.</param>
     public ObservableStack(bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>()),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>()),
             suppressUndoable) { }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         int capacity,
         bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(capacity)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(capacity)),
             suppressUndoable) { }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         IEnumerable<T> collection,
         bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(collection)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(collection)),
             suppressUndoable) { }
 
     /// <summary>
@@ -119,7 +119,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         SynchronizationContext context,
         bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>()),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>()),
             context,
             suppressUndoable) { }
 
@@ -134,7 +134,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         int capacity,
         bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(capacity)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(capacity)),
             context,
             suppressUndoable) { }
 
@@ -149,7 +149,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         IEnumerable<T> collection,
         bool suppressUndoable)
         : base(
-            new StackCollectionAdapter<T>(new Core.Collections.Stack<T>(collection)),
+            new StackCollectionAdapter<T>(new Library.Collections.Stack<T>(collection)),
             context,
             suppressUndoable) { }
 

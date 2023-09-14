@@ -1,4 +1,4 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
 
 namespace UnitTests.StandardExtensions.Threading;
 
@@ -8,7 +8,7 @@ namespace UnitTests.StandardExtensions.Threading;
 public class AtomicEnumeratorUnitTests
 {
     /// <summary>
-    /// Unit test for the <see cref="AtomicEnumerator{TItem, TEnumerator}"/> correctness of enumeration.
+    /// Unit test for the <see cref="AtomicEnumerator{TItem,TEnumerator}"/> correctness of enumeration.
     /// </summary>
     [Fact(DisplayName = "AtomicEnumerator direct instantiation test")]
     public void Test1()

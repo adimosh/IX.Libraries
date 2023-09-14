@@ -1,3 +1,5 @@
+using IX.Library.Contracts;
+
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 

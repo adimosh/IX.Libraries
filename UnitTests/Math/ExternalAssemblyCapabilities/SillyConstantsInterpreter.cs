@@ -1,4 +1,4 @@
-using IX.Core.Globalization;
+using IX.Library.Globalization;
 using IX.Math.Extensibility;
 using IX.Math.Nodes;
 using IX.Math.Nodes.Constants;

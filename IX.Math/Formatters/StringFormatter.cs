@@ -102,7 +102,7 @@ public static class StringFormatter
                 expression,
                 typeof(long).GetMethod(
                     nameof(long.ToString),
-                    new[] { typeof(IFormatProvider) }),
+                    new[] { typeof(IFormatProvider) })!,
                 Expression.Property(
                     null,
                     typeof(CultureInfo),
@@ -125,7 +125,7 @@ public static class StringFormatter
                 expression,
                 typeof(int).GetMethod(
                     nameof(int.ToString),
-                    new[] { typeof(IFormatProvider) }),
+                    new[] { typeof(IFormatProvider) })!,
                 Expression.Property(
                     null,
                     typeof(CultureInfo),
@@ -148,7 +148,7 @@ public static class StringFormatter
                 expression,
                 typeof(bool).GetMethod(
                     nameof(bool.ToString),
-                    new[] { typeof(IFormatProvider) }),
+                    new[] { typeof(IFormatProvider) })!,
                 Expression.Property(
                     null,
                     typeof(CultureInfo),
@@ -171,7 +171,7 @@ public static class StringFormatter
                 expression,
                 typeof(double).GetMethod(
                     nameof(double.ToString),
-                    new[] { typeof(IFormatProvider) }),
+                    new[] { typeof(IFormatProvider) })!,
                 Expression.Property(
                     null,
                     typeof(CultureInfo),
@@ -194,7 +194,7 @@ public static class StringFormatter
                 null,
                 typeof(BitConverter).GetMethod(
                     nameof(BitConverter.ToString),
-                    new[] { typeof(byte[]) }),
+                    new[] { typeof(byte[]) })!,
                 expression);
         }
 

@@ -1,7 +1,4 @@
-using IX.Core;
-using IX.Core.Collections;
-using IX.Core.ComponentModel;
-using IX.Core.System;
+using IX.Library.System;
 
 using System.Reflection;
 using IX.Math.Extensibility;
@@ -335,6 +332,10 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
         "IDisposableAnalyzers.Correctness",
         "IDISP017:Prefer using.",
         Justification = "This is required.")]
+    [SuppressMessage(
+        "Performance",
+        "HAA0601:Value type to reference type conversion causing boxing allocation",
+        Justification = "Unavoidable in this case.")]
     private IDisposable EnsureInitialization()
     {
         var innerLock = AcquireReadLock();

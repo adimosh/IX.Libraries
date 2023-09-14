@@ -1,4 +1,4 @@
-using IX.Core;
+using IX.Library;
 
 using System.Runtime.Serialization;
 

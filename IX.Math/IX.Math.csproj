@@ -41,12 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IX.Core\IX.Core.csproj">
+    <ProjectReference Include="..\IX.Library\IX.Library.csproj">
       <CopyLocal>False</CopyLocal>
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="IX.Library.Collections" />
+  </ItemGroup>
+  
   <!-- Resources -->
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">

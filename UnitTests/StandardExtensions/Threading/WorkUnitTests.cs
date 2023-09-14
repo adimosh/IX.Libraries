@@ -1,7 +1,10 @@
-using IX.Core.DataGeneration;
+using IX.Library.Contracts;
+using IX.Library.DataGeneration;
+using IX.Library.Threading;
+
 using Xunit.Abstractions;
 
-using ManualResetEventSlim = IX.Core.Threading.ManualResetEventSlim;
+using ManualResetEventSlim = IX.Library.Threading.ManualResetEventSlim;
 
 namespace UnitTests.StandardExtensions.Threading;
 

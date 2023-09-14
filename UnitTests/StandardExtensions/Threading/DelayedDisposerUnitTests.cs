@@ -1,5 +1,8 @@
+using IX.Library.Contracts;
+using IX.Library.Threading;
+
 using Xunit.Abstractions;
-using EnvironmentSettings = IX.Core.Threading.EnvironmentSettings;
+using EnvironmentSettings = IX.Library.Threading.EnvironmentSettings;
 
 namespace UnitTests.StandardExtensions.Threading;
 

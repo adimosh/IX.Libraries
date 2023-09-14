@@ -1,4 +1,3 @@
-using IX.Core.Collections;
 using IX.Math.ExpressionState;
 using IX.Math.Extensibility;
 using IX.Math.Nodes;

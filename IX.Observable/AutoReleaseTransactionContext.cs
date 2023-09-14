@@ -1,5 +1,5 @@
-using IX.Core.Collections;
-using IX.Core.OperationModel;
+using IX.Library.Collections;
+using IX.Library.OperationModel;
 using IX.Undoable;
 
 namespace IX.Observable;

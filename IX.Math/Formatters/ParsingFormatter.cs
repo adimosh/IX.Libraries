@@ -1,4 +1,4 @@
-using IX.Core.Globalization;
+using IX.Library.Globalization;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;

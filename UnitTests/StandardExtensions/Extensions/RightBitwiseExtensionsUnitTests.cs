@@ -1,4 +1,4 @@
-using IX.Core.Collections;
+using IX.Library.Collections;
 
 namespace UnitTests.StandardExtensions.Extensions;
 

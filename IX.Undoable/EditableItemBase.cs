@@ -1,5 +1,6 @@
-using IX.Core.ComponentModel;
 using IX.Undoable.StateChanges;
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Undoable;
 
@@ -29,6 +30,10 @@ public abstract class EditableItemBase : ViewModelBase,
     /// </summary>
     /// <param name="limit">The limit.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="limit" /> is a negative number.</exception>
+    [SuppressMessage(
+        "Performance",
+        "HAA0603:Delegate allocation from a method group",
+        Justification = "Unavoidable.")]
     protected EditableItemBase(int limit)
     {
         Requires.NonNegative(

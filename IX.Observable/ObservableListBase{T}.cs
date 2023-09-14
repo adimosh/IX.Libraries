@@ -1,5 +1,5 @@
-using IX.Core.Collections;
-using IX.Core.OperationModel;
+using IX.Library.Collections;
+using IX.Library.OperationModel;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -14,7 +14,7 @@ namespace IX.Observable;
 ///     A base class for lists that are observable.
 /// </summary>
 /// <typeparam name="T">The item type.</typeparam>
-/// <seealso cref="IX.Observable.ObservableCollectionBase{T}" />
+/// <seealso cref="ObservableCollectionBase{T}" />
 /// <seealso cref="IList" />
 /// <seealso cref="IList{T}" />
 /// <seealso cref="IReadOnlyList{T}" />

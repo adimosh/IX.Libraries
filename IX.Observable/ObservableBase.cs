@@ -1,4 +1,4 @@
-using IX.Core.ComponentModel;
+using IX.Library.Threading;
 
 namespace IX.Observable;
 

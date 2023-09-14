@@ -1,5 +1,4 @@
-using IX.Core.Collections;
-using IX.Core.ComponentModel;
+using IX.Library.Collections;
 
 using System.Text.RegularExpressions;
 using IX.Math.ExpressionState;
