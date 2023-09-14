@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics;
 using IX.Observable.DebugAide;
 
@@ -18,12 +16,12 @@ namespace IX.Observable;
 [PublicAPI]
 public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlaveCollection<T>
 {
-    private Lazy<ReaderWriterLockSlim> locker;
+    private Lazy<ReaderWriterLockSlim> _locker;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ConcurrentObservableMasterSlaveCollection{T}" /> class.
     /// </summary>
-    public ConcurrentObservableMasterSlaveCollection() => locker = EnvironmentSettings.GenerateDefaultLocker();
+    public ConcurrentObservableMasterSlaveCollection() => _locker = EnvironmentSettings.GenerateDefaultLocker();
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ConcurrentObservableMasterSlaveCollection{T}" /> class.
@@ -31,7 +29,7 @@ public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlav
     /// <param name="context">The synchronization context to use, if any.</param>
     public ConcurrentObservableMasterSlaveCollection(SynchronizationContext context)
         : base(context) =>
-        locker = EnvironmentSettings.GenerateDefaultLocker();
+        _locker = EnvironmentSettings.GenerateDefaultLocker();
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ConcurrentObservableMasterSlaveCollection{T}" /> class.
@@ -39,7 +37,7 @@ public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlav
     /// <param name="suppressUndoable">If set to <see langword="true" />, suppresses undoable capabilities of this collection.</param>
     public ConcurrentObservableMasterSlaveCollection(bool suppressUndoable)
         : base(suppressUndoable) =>
-        locker = EnvironmentSettings.GenerateDefaultLocker();
+        _locker = EnvironmentSettings.GenerateDefaultLocker();
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ConcurrentObservableMasterSlaveCollection{T}" /> class.
@@ -52,12 +50,12 @@ public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlav
         : base(
             context,
             suppressUndoable) =>
-        locker = EnvironmentSettings.GenerateDefaultLocker();
+        _locker = EnvironmentSettings.GenerateDefaultLocker();
 
     /// <summary>
     ///     Gets a synchronization lock item to be used when trying to synchronize read/write operations between threads.
     /// </summary>
-    protected override IReaderWriterLock SynchronizationLock => locker.Value;
+    protected override IReaderWriterLock SynchronizationLock => _locker.Value;
 
     /// <summary>
     ///     Disposes the managed context.
@@ -65,7 +63,7 @@ public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlav
     protected override void DisposeManagedContext()
     {
         var l = Interlocked.Exchange(
-            ref locker!,
+            ref _locker!,
             null!);
         if (l?.IsValueCreated ?? false)
         {
@@ -81,7 +79,7 @@ public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlav
     protected override void DisposeGeneralContext()
     {
         _ = Interlocked.Exchange(
-            ref locker!,
+            ref _locker!,
             null!);
 
         base.DisposeGeneralContext();
