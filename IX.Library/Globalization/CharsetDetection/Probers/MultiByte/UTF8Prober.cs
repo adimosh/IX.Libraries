@@ -36,12 +36,12 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using IX.Core.Globalization.CharsetDetection.Models;
-using IX.Core.Globalization.CharsetDetection.Models.MultiByte;
+using IX.Library.Globalization.CharsetDetection.Models;
+using IX.Library.Globalization.CharsetDetection.Models.MultiByte;
 
 using System.Text;
 
-namespace IX.Core.Globalization.CharsetDetection.Probers.MultiByte;
+namespace IX.Library.Globalization.CharsetDetection.Probers.MultiByte;
 
 internal class UTF8Prober : CharsetProber
 {

@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
 
 internal class Windows_1251_BulgarianModel : BulgarianModel
 {

@@ -38,41 +38,41 @@
 
 #region using languages
 
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Arabic;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Croatian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Danish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Esperanto;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Estonian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Finnish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.French;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.German;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Greek;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hebrew;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hungarian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Irish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Italian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Latvian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Lithuanian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Maltese;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Polish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Portuguese;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Romanian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Russian;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovak;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovene;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Spanish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Swedish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Thai;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Turkish;
-using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Arabic;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Croatian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Czech;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Danish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Esperanto;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Estonian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Finnish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.French;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.German;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Greek;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Hebrew;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Hungarian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Irish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Italian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Latvian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Lithuanian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Maltese;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Polish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Portuguese;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Romanian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Russian;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Slovak;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Slovene;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Spanish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Swedish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Thai;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Turkish;
+using IX.Library.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
 
 using System.Text;
 
 #endregion using languages
 
-namespace IX.Core.Globalization.CharsetDetection.Probers;
+namespace IX.Library.Globalization.CharsetDetection.Probers;
 
 internal class SBCSGroupProber : CharsetProber
 {

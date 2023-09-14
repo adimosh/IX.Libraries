@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovak;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Slovak;
 
 internal class Mac_Centraleurope_SlovakModel : SlovakModel
 {

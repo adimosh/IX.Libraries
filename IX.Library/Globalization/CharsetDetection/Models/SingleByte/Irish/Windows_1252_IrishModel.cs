@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Irish;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Irish;
 
 internal class Windows_1252_IrishModel : IrishModel
 {

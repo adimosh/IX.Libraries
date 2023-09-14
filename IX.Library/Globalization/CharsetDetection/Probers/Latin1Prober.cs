@@ -38,7 +38,7 @@
 
 using System.Text;
 
-namespace IX.Core.Globalization.CharsetDetection.Probers;
+namespace IX.Library.Globalization.CharsetDetection.Probers;
 
 // TODO: Using trigrams the detector should be able to discriminate between
 // latin-1 and iso8859-2

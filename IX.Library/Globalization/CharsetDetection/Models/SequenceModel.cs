@@ -36,7 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace IX.Core.Globalization.CharsetDetection.Models;
+namespace IX.Library.Globalization.CharsetDetection.Models;
 
 internal abstract class SequenceModel
 {

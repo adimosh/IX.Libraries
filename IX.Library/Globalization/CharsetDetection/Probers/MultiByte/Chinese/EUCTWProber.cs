@@ -36,13 +36,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
-using IX.Core.Globalization.CharsetDetection.Models;
-using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
+using IX.Library.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
+using IX.Library.Globalization.CharsetDetection.Models;
+using IX.Library.Globalization.CharsetDetection.Models.MultiByte.Chinese;
 
 using System.Text;
 
-namespace IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Chinese;
+namespace IX.Library.Globalization.CharsetDetection.Probers.MultiByte.Chinese;
 
 internal class EUCTWProber : CharsetProber
 {

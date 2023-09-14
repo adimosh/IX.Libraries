@@ -135,7 +135,7 @@ using System.Text;
  *
  */
 
-namespace IX.Core.Globalization.CharsetDetection.Probers;
+namespace IX.Library.Globalization.CharsetDetection.Probers;
 
 /// <summary>
 /// This prober doesn't actually recognize a language or a charset.

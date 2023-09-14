@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Korean;
+namespace IX.Library.Globalization.CharsetDetection.Analyzers.MultiByte.Korean;
 
 internal class EUCKRDistributionAnalyser : CharDistributionAnalyser
 {

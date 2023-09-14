@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
+namespace IX.Library.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
 
 internal class SJISDistributionAnalyser : CharDistributionAnalyser
 {

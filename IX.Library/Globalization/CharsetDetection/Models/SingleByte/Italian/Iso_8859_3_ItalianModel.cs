@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Italian;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Italian;
 
 internal class Iso_8859_3_ItalianModel : ItalianModel
 {

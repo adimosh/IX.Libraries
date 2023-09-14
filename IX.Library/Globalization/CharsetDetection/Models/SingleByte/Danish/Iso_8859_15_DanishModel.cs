@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Danish;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Danish;
 
 internal class Iso_8859_15_DanishModel : DanishModel
 {

@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte;
+namespace IX.Library.Globalization.CharsetDetection.Models.MultiByte;
 
 internal class UCS2LE_SMModel : StateMachineModel
 {

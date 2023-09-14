@@ -36,7 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace IX.Core.Globalization.CharsetDetection;
+namespace IX.Library.Globalization.CharsetDetection;
 
 internal class BitPackage
 {

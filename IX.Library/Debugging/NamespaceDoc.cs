@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Debugging;
+namespace IX.Library.Debugging;
 
 /// <summary>
 /// This namespace contains classes used in debugging.

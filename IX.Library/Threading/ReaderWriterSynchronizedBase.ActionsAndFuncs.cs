@@ -1,12 +1,9 @@
-using IX.Library.ComponentModel;
-using IX.Library.Contracts;
-
 namespace IX.Library.Threading;
 
 /// <summary>
 /// A base class for a reader/writer synchronized class.
 /// </summary>
-/// <seealso cref="DisposableBase" />
+/// <seealso cref="ComponentModel.DisposableBase" />
 public abstract partial class ReaderWriterSynchronizedBase
 {
     /// <summary>

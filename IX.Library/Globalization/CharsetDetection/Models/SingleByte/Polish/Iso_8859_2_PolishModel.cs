@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Polish;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Polish;
 
 internal class Iso_8859_2_PolishModel : PolishModel
 {

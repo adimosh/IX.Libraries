@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.DataGeneration;
+namespace IX.Library.DataGeneration;
 
 /// <summary>
 /// This namespace contains classes used in data generation.

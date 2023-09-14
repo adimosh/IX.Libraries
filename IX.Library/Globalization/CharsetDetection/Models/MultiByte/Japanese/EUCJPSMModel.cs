@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
+namespace IX.Library.Globalization.CharsetDetection.Models.MultiByte.Japanese;
 
 internal class EUCJPSMModel : StateMachineModel
 {

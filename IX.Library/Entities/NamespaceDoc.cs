@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Entities;
+namespace IX.Library.Entities;
 
 /// <summary>
 /// This namespace contains utility interfaces that make interaction with Entity Framework entities easier.

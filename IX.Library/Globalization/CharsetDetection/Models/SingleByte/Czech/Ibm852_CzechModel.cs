@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Czech;
 
 internal class Ibm852_CzechModel : CzechModel
 {

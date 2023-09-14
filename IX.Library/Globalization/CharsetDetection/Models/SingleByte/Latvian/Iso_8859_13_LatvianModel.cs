@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Latvian;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Latvian;
 
 internal class Iso_8859_13_LatvianModel : LatvianModel
 {

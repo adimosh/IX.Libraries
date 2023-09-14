@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace UnitTests.StandardExtensions.Contracts;
@@ -29,7 +27,7 @@ public class RequiresUnitTests
             return;
         }
 
-        Assert.True(false, "The expected exception was not thrown.");
+        Assert.Fail("The expected exception was not thrown.");
     }
 
     /// <summary>
@@ -49,7 +47,7 @@ public class RequiresUnitTests
         }
         catch
         {
-            Assert.True(false, "An exception was thrown even if one was not expected.");
+            Assert.Fail("An exception was thrown even if one was not expected.");
         }
     }
 
@@ -73,7 +71,7 @@ public class RequiresUnitTests
             return;
         }
 
-        Assert.True(false, "The expected exception was not thrown.");
+        Assert.Fail("The expected exception was not thrown.");
     }
 
     /// <summary>
@@ -93,7 +91,7 @@ public class RequiresUnitTests
         }
         catch
         {
-            Assert.True(false, "An exception was thrown even if one was not expected.");
+            Assert.Fail("An exception was thrown even if one was not expected.");
         }
     }
 
@@ -117,7 +115,7 @@ public class RequiresUnitTests
             return;
         }
 
-        Assert.True(false, "The expected exception was not thrown.");
+        Assert.Fail("The expected exception was not thrown.");
     }
 
     /// <summary>
@@ -137,7 +135,7 @@ public class RequiresUnitTests
         }
         catch
         {
-            Assert.True(false, "An exception was thrown even if one was not expected.");
+            Assert.Fail("An exception was thrown even if one was not expected.");
         }
     }
 
@@ -161,7 +159,7 @@ public class RequiresUnitTests
             return;
         }
 
-        Assert.True(false, "The expected exception was not thrown.");
+        Assert.Fail("The expected exception was not thrown.");
     }
 
     /// <summary>
@@ -181,7 +179,7 @@ public class RequiresUnitTests
         }
         catch
         {
-            Assert.True(false, "An exception was thrown even if one was not expected.");
+            Assert.Fail("An exception was thrown even if one was not expected.");
         }
     }
 
@@ -202,7 +200,7 @@ public class RequiresUnitTests
         }
         catch (ArgumentNullException)
         {
-            Assert.True(false, "An exception was thrown even if one was not expected.");
+            Assert.Fail("An exception was thrown even if one was not expected.");
         }
     }
 

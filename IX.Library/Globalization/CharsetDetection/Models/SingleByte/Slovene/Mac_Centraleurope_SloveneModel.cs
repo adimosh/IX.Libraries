@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovene;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Slovene;
 
 internal class Mac_Centraleurope_SloveneModel : SloveneModel
 {

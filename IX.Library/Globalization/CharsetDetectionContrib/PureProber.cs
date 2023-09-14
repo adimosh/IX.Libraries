@@ -1,7 +1,7 @@
-using System.Text;
+using IX.Library.Globalization;
+using IX.Library.Globalization.CharsetDetection.Probers;
 
-using UtfUnknown.Core;
-using UtfUnknown.Core.Probers;
+using System.Text;
 
 namespace IX.Library.Globalization.CharsetDetectionContrib;
 

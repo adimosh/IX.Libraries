@@ -37,9 +37,9 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using IX.Core.Globalization.CharsetDetection.Models;
+using IX.Library.Globalization.CharsetDetection.Models;
 
-namespace IX.Core.Globalization.CharsetDetection.Probers;
+namespace IX.Library.Globalization.CharsetDetection.Probers;
 
 /// <summary>
 /// Parallel state machine for the Coding Scheme Method

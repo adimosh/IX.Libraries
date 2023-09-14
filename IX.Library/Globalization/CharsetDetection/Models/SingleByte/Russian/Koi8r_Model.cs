@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Russian;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Russian;
 
 internal class Koi8r_Model : RussianModel
 {

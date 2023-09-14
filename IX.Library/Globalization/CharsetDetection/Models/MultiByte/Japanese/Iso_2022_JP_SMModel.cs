@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
+namespace IX.Library.Globalization.CharsetDetection.Models.MultiByte.Japanese;
 
 internal class Iso_2022_JP_SMModel : StateMachineModel
 {

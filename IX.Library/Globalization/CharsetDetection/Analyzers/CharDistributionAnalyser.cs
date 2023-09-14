@@ -35,7 +35,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace IX.Core.Globalization.CharsetDetection.Analyzers;
+namespace IX.Library.Globalization.CharsetDetection.Analyzers;
 
 /// <summary>
 /// Base class for the Character Distribution Method, used for

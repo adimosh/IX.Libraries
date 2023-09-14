@@ -42,7 +42,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Greek;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Greek;
 
 internal class Windows_1253_GreekModel : GreekModel
 {

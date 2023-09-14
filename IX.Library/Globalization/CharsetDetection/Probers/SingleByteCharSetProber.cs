@@ -36,11 +36,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using IX.Core.Globalization.CharsetDetection.Models;
+using IX.Library.Globalization.CharsetDetection.Models;
 
 using System.Text;
 
-namespace IX.Core.Globalization.CharsetDetection.Probers;
+namespace IX.Library.Globalization.CharsetDetection.Probers;
 
 internal class SingleByteCharSetProber : CharsetProber
 {

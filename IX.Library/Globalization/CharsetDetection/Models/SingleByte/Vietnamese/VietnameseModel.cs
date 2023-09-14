@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
 
 internal abstract class VietnameseModel : SequenceModel
 {

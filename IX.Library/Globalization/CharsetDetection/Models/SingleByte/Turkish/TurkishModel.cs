@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Turkish;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Turkish;
 
 internal abstract class TurkishModel : SequenceModel
 {

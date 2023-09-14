@@ -38,7 +38,7 @@
 
 //Escaped charsets state machines
 
-namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
+namespace IX.Library.Globalization.CharsetDetection.Models.MultiByte.Chinese;
 
 internal class HZ_GB_2312_SMModel : StateMachineModel
 {

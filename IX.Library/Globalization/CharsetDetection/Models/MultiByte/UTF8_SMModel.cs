@@ -36,7 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte;
+namespace IX.Library.Globalization.CharsetDetection.Models.MultiByte;
 
 internal class UTF8_SMModel : StateMachineModel
 {

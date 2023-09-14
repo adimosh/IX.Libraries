@@ -1,10 +1,9 @@
+using IX.Library.Globalization;
+using IX.Library.Globalization.CharsetDetection.Probers;
 using IX.Library.Collections;
 using IX.Library.Globalization.CharsetDetectionContrib;
 
 using System.Text;
-
-using UtfUnknown.Core;
-using UtfUnknown.Core.Probers;
 
 namespace IX.Library.Globalization;
 

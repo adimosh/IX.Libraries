@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace IX.Core;
+namespace IX.Library;
 
 /// <summary>
 /// This namespace contains general purpose classes, mostly the ground work for IX classes.

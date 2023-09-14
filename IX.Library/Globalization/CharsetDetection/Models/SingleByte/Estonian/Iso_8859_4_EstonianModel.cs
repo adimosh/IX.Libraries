@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Estonian;
+namespace IX.Library.Globalization.CharsetDetection.Models.SingleByte.Estonian;
 
 internal class Iso_8859_4_EstonianModel : EstonianModel
 {

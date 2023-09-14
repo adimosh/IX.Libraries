@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace IX.Core.Logging;
+namespace IX.Library.Logging;
 
 /// <summary>
 /// This namespace contains one class that configures a logging mechanism for IX Libraries.

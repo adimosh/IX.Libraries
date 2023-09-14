@@ -36,7 +36,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
+namespace IX.Library.Globalization.CharsetDetection.Analyzers.MultiByte.Japanese;
 
 internal abstract class JapaneseContextAnalyser
 {

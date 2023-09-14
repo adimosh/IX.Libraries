@@ -1,4 +1,4 @@
-namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
+namespace IX.Library.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
 
 internal class BIG5DistributionAnalyser : CharDistributionAnalyser
 {
