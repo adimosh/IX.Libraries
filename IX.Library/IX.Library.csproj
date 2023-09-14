@@ -64,11 +64,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Update="Collections\ArrayExtensions.ForEachActions.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ArrayExtensions.ForEachActions.tt</DependentUpon>
-    </Compile>
     <Compile Update="Collections\ArrayExtensions.ForEachRefActions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -227,10 +222,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Collections\ArrayExtensions.ForEachActions.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArrayExtensions.ForEachActions.cs</LastGenOutput>
-    </None>
     <None Update="Collections\ArrayExtensions.ForEachRefActions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArrayExtensions.ForEachRefActions.cs</LastGenOutput>

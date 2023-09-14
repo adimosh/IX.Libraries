@@ -424,137 +424,182 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
             arrayExtensionsStringBuilder.AppendLine();
 
+            // Method 4: ForEachAsync with CancellationToken
+            // =============================================
+
+            // XML documentation
+            WriteXmlDocSummary("Asynchronously executes an action for each one of the elements of an array.");
+            WriteXmlDocTypeParam(
+                "TItem",
+                "The array type.");
+            WriteXmlDocTypeParamTags("to be passed to the invoked method");
+            WriteXmlDocParam(
+                "source",
+                "The enumerable source.");
+            WriteXmlDocParam(
+                "action",
+                "The action to execute.");
+            WriteXmlDocParamTags("to pass to the invoked method");
+            WriteXmlDocParam(
+                "cancellationToken",
+                "The cancellation token for this operation.");
+            WriteXmlDocArgumentNullException(
+                "source",
+                "action");
+            WriteXmlDocReturn("A <see cref=\"ValueTask\" /> representing the current operation.");
+            WriteXmlDocRemarks(
+                "This method, due to multiple awaits, is considered to be very slow compared to its synchronous version.",
+                "Please make sure to only use this where asynchronicity is required.",
+                "In CPU-intensive operations, only its synchronous counterpart should be used.");
+
+            // Header
+            WriteForLoopWarningSuppression();
+            WriteFunctionHeader(
+                "ForEachAsync",
+                returnType: "ValueTask",
+                typeParametersBefore: "TItem",
+                isAsync: true);
+            IncreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}this TItem[] source,");
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}Func<TItem, ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"TParam{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(", CancellationToken, Task> action,");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.AppendLine(",");
+                arrayExtensionsStringBuilder.Append($"{currentIndentation}TParam{j} param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(",");
+            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            // Body
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}await action(source[i], ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(", cancellationToken);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}cancellationToken.ThrowIfCancellationRequested();");
+
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+
+            // End
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+            arrayExtensionsStringBuilder.AppendLine();
+
+            // Method 5: ForEachAsync with ValueTask and CancellationToken
+            // ===========================================================
+
+            // XML documentation
+            WriteXmlDocSummary("Asynchronously executes an action for each one of the elements of an array.");
+            WriteXmlDocTypeParam(
+                "TItem",
+                "The array type.");
+            WriteXmlDocTypeParamTags("to be passed to the invoked method");
+            WriteXmlDocParam(
+                "source",
+                "The enumerable source.");
+            WriteXmlDocParam(
+                "action",
+                "The action to execute.");
+            WriteXmlDocParamTags("to pass to the invoked method");
+            WriteXmlDocParam(
+                "cancellationToken",
+                "The cancellation token for this operation.");
+            WriteXmlDocArgumentNullException(
+                "source",
+                "action");
+            WriteXmlDocReturn("A <see cref=\"ValueTask\" /> representing the current operation.");
+            WriteXmlDocRemarks(
+                "This method, due to multiple awaits, is considered to be very slow compared to its synchronous version.",
+                "Please make sure to only use this where asynchronicity is required.",
+                "In CPU-intensive operations, only its synchronous counterpart should be used.");
+
+            // Header
+            WriteForLoopWarningSuppression();
+            WriteFunctionHeader(
+                "ForEachAsync",
+                returnType: "ValueTask",
+                typeParametersBefore: "TItem",
+                isAsync: true);
+            IncreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}this TItem[] source,");
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}Func<TItem, ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"TParam{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(", CancellationToken, ValueTask> action,");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.AppendLine(",");
+                arrayExtensionsStringBuilder.Append($"{currentIndentation}TParam{j} param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(",");
+            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            // Body
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}await action(source[i], ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(", cancellationToken);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}cancellationToken.ThrowIfCancellationRequested();");
+
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+
+            // End
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+            arrayExtensionsStringBuilder.AppendLine();
+
         }
 
-/*
-
-    /// <summary>
-    ///     Asynchronously executes an action for each one of the elements of an array.
-    /// </summary>
-    /// <typeparam name="TItem">The array type.</typeparam>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
-<#
-    }
-#>
-    /// <param name="source">The enumerable source.</param>
-    /// <param name="action">The action to execute.</param>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
-<#
-    }
-#>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="ValueTask" /> representing the current operation.</returns>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
-    ///     <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).
-    /// </exception>
-    /// <remarks>
-    ///     <para>This method, due to multiple awaits, is considered to be very slow compared to its synchronous version.</para>
-    ///     <para>Please make sure to only use this where asynchronicity is required.</para>
-    ///     <para>In CPU-intensive operations, only its synchronous counterpart should be used.</para>
-    /// </remarks>
-    [SuppressMessage(
-        "ReSharper",
-        "ForCanBeConvertedToForeach",
-        Justification = "A for loop on an array is going to be faster.")]
-    [SuppressMessage(
-        "CodeQuality",
-        "IDE0079:Remove unnecessary suppression",
-        Justification = "ReSharper is used for this project.")]
-    public static async ValueTask ForEachAsync<TItem, <#= paramTypes #>>(
-        this TItem[] source,
-        Func<TItem, <#= paramTypes #>, CancellationToken, Task> action,
-        <#= paramNameTypes #>,
-        CancellationToken cancellationToken = default)
-    {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
-
-        if (cancellationToken.IsCancellationRequested)
-        {
-            return;
-        }
-
-        for (var i = 0; i < source.Length; i++)
-        {
-            await action(source[i], <#= paramNames #>, cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-        }
-    }
-
-    /// <summary>
-    ///     Asynchronously executes an action for each one of the elements of an array.
-    /// </summary>
-    /// <typeparam name="TItem">The array type.</typeparam>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
-<#
-    }
-#>
-    /// <param name="source">The enumerable source.</param>
-    /// <param name="action">The action to execute.</param>
-<#
-    for (int j = 1; j <= i; j++)
-    {
-#>
-    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
-<#
-    }
-#>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="ValueTask" /> representing the current operation.</returns>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
-    ///     <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).
-    /// </exception>
-    /// <remarks>
-    ///     <para>This method, due to multiple awaits, is considered to be very slow compared to its synchronous version.</para>
-    ///     <para>Please make sure to only use this where asynchronicity is required.</para>
-    ///     <para>In CPU-intensive operations, only its synchronous counterpart should be used.</para>
-    /// </remarks>
-    [SuppressMessage(
-        "ReSharper",
-        "ForCanBeConvertedToForeach",
-        Justification = "A for loop on an array is going to be faster.")]
-    [SuppressMessage(
-        "CodeQuality",
-        "IDE0079:Remove unnecessary suppression",
-        Justification = "ReSharper is used for this project.")]
-    public static async ValueTask ForEachAsync<TItem, <#= paramTypes #>>(
-        this TItem[] source,
-        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask> action,
-        <#= paramNameTypes #>,
-        CancellationToken cancellationToken = default)
-    {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
-
-        if (cancellationToken.IsCancellationRequested)
-        {
-            return;
-        }
-
-        for (var i = 0; i < source.Length; i++)
-        {
-            await action(source[i], <#= paramNames #>, cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-        }
-    }
-<#
-}
-#>
-*/
         // Build up source for ArrayExtensions.ForEachRefActions
 
         // Build up source for ArrayExtensions.SequenceCompare.StandardTypes
