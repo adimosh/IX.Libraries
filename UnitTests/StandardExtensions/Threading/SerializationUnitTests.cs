@@ -68,7 +68,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
-            const string threadingNs = "http://ns.ixiancorp.com/IX/IX.Core.Threading";
+            const string threadingNs = "http://adrianmos.eu/ns/IX/IX.Core.Threading";
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));

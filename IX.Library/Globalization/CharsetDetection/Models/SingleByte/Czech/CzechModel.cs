@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Czech;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
 
 internal abstract class CzechModel : SequenceModel
 {

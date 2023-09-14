@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Polish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Polish;
 
 internal class Windows_1250_PolishModel : PolishModel
 {

@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Danish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Danish;
 
 internal abstract class DanishModel : SequenceModel
 {

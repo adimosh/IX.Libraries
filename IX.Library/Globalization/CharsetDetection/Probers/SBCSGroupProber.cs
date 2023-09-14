@@ -36,44 +36,43 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System;
-using System.Text;
-
 #region using languages
 
-using UtfUnknown.Core.Models.SingleByte.Arabic;
-using UtfUnknown.Core.Models.SingleByte.Bulgarian;
-using UtfUnknown.Core.Models.SingleByte.Croatian;
-using UtfUnknown.Core.Models.SingleByte.Czech;
-using UtfUnknown.Core.Models.SingleByte.Danish;
-using UtfUnknown.Core.Models.SingleByte.Esperanto;
-using UtfUnknown.Core.Models.SingleByte.Estonian;
-using UtfUnknown.Core.Models.SingleByte.Finnish;
-using UtfUnknown.Core.Models.SingleByte.French;
-using UtfUnknown.Core.Models.SingleByte.German;
-using UtfUnknown.Core.Models.SingleByte.Greek;
-using UtfUnknown.Core.Models.SingleByte.Hebrew;
-using UtfUnknown.Core.Models.SingleByte.Hungarian;
-using UtfUnknown.Core.Models.SingleByte.Irish;
-using UtfUnknown.Core.Models.SingleByte.Italian;
-using UtfUnknown.Core.Models.SingleByte.Latvian;
-using UtfUnknown.Core.Models.SingleByte.Lithuanian;
-using UtfUnknown.Core.Models.SingleByte.Maltese;
-using UtfUnknown.Core.Models.SingleByte.Polish;
-using UtfUnknown.Core.Models.SingleByte.Portuguese;
-using UtfUnknown.Core.Models.SingleByte.Romanian;
-using UtfUnknown.Core.Models.SingleByte.Russian;
-using UtfUnknown.Core.Models.SingleByte.Slovak;
-using UtfUnknown.Core.Models.SingleByte.Slovene;
-using UtfUnknown.Core.Models.SingleByte.Spanish;
-using UtfUnknown.Core.Models.SingleByte.Swedish;
-using UtfUnknown.Core.Models.SingleByte.Thai;
-using UtfUnknown.Core.Models.SingleByte.Turkish;
-using UtfUnknown.Core.Models.SingleByte.Vietnamese;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Arabic;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Bulgarian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Croatian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Danish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Esperanto;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Estonian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Finnish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.French;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.German;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Greek;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hebrew;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hungarian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Irish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Italian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Latvian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Lithuanian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Maltese;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Polish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Portuguese;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Romanian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Russian;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovak;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovene;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Spanish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Swedish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Thai;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Turkish;
+using IX.Core.Globalization.CharsetDetection.Models.SingleByte.Vietnamese;
+
+using System.Text;
 
 #endregion using languages
 
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 internal class SBCSGroupProber : CharsetProber
 {

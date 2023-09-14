@@ -1,6 +1,4 @@
-using UtfUnknown.Core.Analyzers;
-
-namespace UtfUnknown.Core.Analyzers.Korean;
+namespace IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Korean;
 
 internal class EUCKRDistributionAnalyser : CharDistributionAnalyser
 {

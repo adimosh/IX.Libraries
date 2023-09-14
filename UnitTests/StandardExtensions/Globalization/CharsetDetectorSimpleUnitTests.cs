@@ -1,7 +1,6 @@
 using IX.Library.Globalization;
 
 using System.Text;
-using UtfUnknown.Core;
 
 namespace UnitTests.StandardExtensions.Globalization;
 

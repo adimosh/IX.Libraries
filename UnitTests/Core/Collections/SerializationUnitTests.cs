@@ -63,8 +63,8 @@ public class SerializationUnitTests
 
             // ASSERT
             // ======
-            const string abstractionsNs = "http://ns.ixiancorp.com/IX/IX.Abstractions.Collections";
-            const string threadingNs = "http://ns.ixiancorp.com/IX/IX.Core.Threading";
+            const string abstractionsNs = "http://adrianmos.eu/ns/IX/IX.Abstractions.Collections";
+            const string threadingNs = "http://adrianmos.eu/ns/IX/IX.Core.Threading";
             var expectedSerializedString = @"<PushDownStackOfint xmlns=""" +
                                               abstractionsNs +
                                               @""" xmlns:i=""http://www.w3.org/2001/XMLSchema-instance""><lockerTimeout xmlns=""" +

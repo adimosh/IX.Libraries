@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Slovak;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Slovak;
 
 internal class Windows_1250_SlovakModel : SlovakModel
 {

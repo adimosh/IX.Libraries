@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Russian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Russian;
 
 internal class Ibm855_RussianModel : RussianModel
 {

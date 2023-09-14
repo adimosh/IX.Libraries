@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Czech;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
 
 internal class Mac_Centraleurope_CzechModel : CzechModel
 {

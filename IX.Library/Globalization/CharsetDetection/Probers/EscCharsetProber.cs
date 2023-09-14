@@ -35,14 +35,14 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+using IX.Core.Globalization.CharsetDetection.Models;
+using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
+using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Japanese;
+using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Korean;
+
 using System.Text;
 
-using UtfUnknown.Core.Models;
-using UtfUnknown.Core.Models.MultiByte.Chinese;
-using UtfUnknown.Core.Models.MultiByte.Japanese;
-using UtfUnknown.Core.Models.MultiByte.Korean;
-
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 internal class EscCharsetProber : CharsetProber
 {

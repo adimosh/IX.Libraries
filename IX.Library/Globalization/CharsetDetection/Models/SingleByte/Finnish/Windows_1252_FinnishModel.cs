@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Finnish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Finnish;
 
 internal class Windows_1252_FinnishModel : FinnishModel
 {

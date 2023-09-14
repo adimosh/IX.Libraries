@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Swedish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Swedish;
 
 internal abstract class SwedishModel : SequenceModel
 {

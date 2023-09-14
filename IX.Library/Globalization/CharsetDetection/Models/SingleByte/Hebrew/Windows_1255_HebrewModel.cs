@@ -42,7 +42,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Hebrew;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hebrew;
 
 internal class Windows_1255_HebrewModel : HebrewModel
 {

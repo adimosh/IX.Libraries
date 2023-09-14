@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Greek;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Greek;
 
 internal abstract class GreekModel : SequenceModel
 {

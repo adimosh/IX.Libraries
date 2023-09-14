@@ -2,5 +2,5 @@ namespace IX.Library.ComponentModel;
 
 internal static class Constants
 {
-    internal const string DataContractNamespace = "http://ns.ixiancorp.com/IX/IX.Core.ComponentModel";
+    internal const string DataContractNamespace = "http://adrianmos.eu/ns/IX/IX.Core.ComponentModel";
 }

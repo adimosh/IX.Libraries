@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Arabic;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Arabic;
 
 internal abstract class ArabicModel : SequenceModel
 {

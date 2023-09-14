@@ -8,7 +8,7 @@ internal static class Constants
     /// <summary>
     ///     The data contract namespace for this entire assembly.
     /// </summary>
-    internal const string DataContractNamespace = "http://ns.ixiancorp.com/IX/IX.Observable";
+    internal const string DataContractNamespace = "http://adrianmos.eu/ns/IX/IX.Observable";
 
     /// <summary>
     ///     The name &quot;Items[]&quot;.

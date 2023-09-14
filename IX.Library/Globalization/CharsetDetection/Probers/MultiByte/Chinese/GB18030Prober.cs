@@ -36,13 +36,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+using IX.Core.Globalization.CharsetDetection.Analyzers.MultiByte.Chinese;
+using IX.Core.Globalization.CharsetDetection.Models;
+using IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
+
 using System.Text;
 
-using UtfUnknown.Core.Analyzers.Chinese;
-using UtfUnknown.Core.Models;
-using UtfUnknown.Core.Models.MultiByte.Chinese;
-
-namespace UtfUnknown.Core.Probers.MultiByte.Chinese;
+namespace IX.Core.Globalization.CharsetDetection.Probers.MultiByte.Chinese;
 
 // We use gb18030 to replace gb2312, because 18030 is a superset.
 internal class GB18030Prober : CharsetProber

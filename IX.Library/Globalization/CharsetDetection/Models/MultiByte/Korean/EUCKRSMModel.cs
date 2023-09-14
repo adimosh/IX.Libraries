@@ -1,4 +1,4 @@
-namespace UtfUnknown.Core.Models.MultiByte.Korean;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Korean;
 
 internal class EUCKRSMModel : StateMachineModel
 {

@@ -36,10 +36,9 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-using System;
 using System.Text;
 
-namespace UtfUnknown.Core.Probers;
+namespace IX.Core.Globalization.CharsetDetection.Probers;
 
 // TODO: Using trigrams the detector should be able to discriminate between
 // latin-1 and iso8859-2

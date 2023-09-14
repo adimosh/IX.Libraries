@@ -41,7 +41,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Hungarian;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Hungarian;
 
 internal class Iso_8859_2_HungarianModel : HungarianModel
 {

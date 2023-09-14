@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.German;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.German;
 
 internal class Windows_1252_GermanModel : GermanModel
 {

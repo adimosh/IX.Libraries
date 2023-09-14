@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Portuguese;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Portuguese;
 
 internal abstract class PortugueseModel : SequenceModel
 {

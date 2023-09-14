@@ -1,6 +1,4 @@
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.MultiByte.Chinese;
+namespace IX.Core.Globalization.CharsetDetection.Models.MultiByte.Chinese;
 
 internal class Iso_2022_CN_SMModel : StateMachineModel
 {

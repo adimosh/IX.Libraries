@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Czech;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Czech;
 
 internal class Windows_1250_CzechModel : CzechModel
 {

@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.German;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.German;
 
 internal abstract class GermanModel : SequenceModel
 {

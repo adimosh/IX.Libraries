@@ -40,9 +40,7 @@
 * and adjusted to language specific support.
 */
 
-using UtfUnknown.Core.Models;
-
-namespace UtfUnknown.Core.Models.SingleByte.Spanish;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Spanish;
 
 internal abstract class SpanishModel : SequenceModel
 {

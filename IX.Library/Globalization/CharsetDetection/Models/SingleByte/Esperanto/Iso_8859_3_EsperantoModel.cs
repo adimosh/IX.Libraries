@@ -40,7 +40,7 @@
 * and adjusted to language specific support.
 */
 
-namespace UtfUnknown.Core.Models.SingleByte.Esperanto;
+namespace IX.Core.Globalization.CharsetDetection.Models.SingleByte.Esperanto;
 
 internal class Iso_8859_3_EsperantoModel : EsperantoModel
 {
