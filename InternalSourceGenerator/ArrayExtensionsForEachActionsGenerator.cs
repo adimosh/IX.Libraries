@@ -1,6 +1,5 @@
 using Microsoft.CodeAnalysis;
 
-using System;
 using System.Text;
 
 namespace InternalSourceGenerator;
@@ -149,12 +148,12 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
                 }
             }
 
-            void WriteXmlDocParamTags(string descriptionFragment)
+            void WriteXmlDocParamTags(string descriptionFragment, bool isPassedByRef = false)
             {
                 for (var j = 1; j <= i; j++)
                 {
                     arrayExtensionsStringBuilder.AppendLine(
-                        $"{currentIndentation}/// <param name=\"param{j}\">A parameter of type <typeparamref name=\"TParam{j}\" /> {descriptionFragment} at index {j - 1}.</param>");
+                        $"{currentIndentation}/// <param name=\"param{j}\">A parameter of type <typeparamref name=\"TParam{j}\" /> {descriptionFragment} at index {j - 1}.{(isPassedByRef ? " This parameter is passed by reference." : string.Empty)}</param>");
                 }
             }
 
@@ -305,7 +304,7 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             }
 
             arrayExtensionsStringBuilder.AppendLine(",");
-            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}CancellationToken cancellationToken = default)");
             DecreaseIndentation();
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();
@@ -392,7 +391,7 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             }
 
             arrayExtensionsStringBuilder.AppendLine(",");
-            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}CancellationToken cancellationToken = default)");
             DecreaseIndentation();
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();
@@ -479,7 +478,7 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             }
 
             arrayExtensionsStringBuilder.AppendLine(",");
-            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}CancellationToken cancellationToken = default)");
             DecreaseIndentation();
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();
@@ -566,7 +565,7 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             }
 
             arrayExtensionsStringBuilder.AppendLine(",");
-            arrayExtensionsStringBuilder.AppendLine("CancellationToken cancellationToken = default)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}CancellationToken cancellationToken = default)");
             DecreaseIndentation();
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();
@@ -591,6 +590,80 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}cancellationToken.ThrowIfCancellationRequested();");
 
             DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+
+            // End
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
+            arrayExtensionsStringBuilder.AppendLine();
+
+            // Method 6: ForEach with ref
+            // ==========================
+
+            // XML documentation
+            WriteXmlDocSummary("Executes an action for each one of the elements of an array.");
+            WriteXmlDocTypeParam(
+                "TItem",
+                "The array type.");
+            WriteXmlDocTypeParamTags("to be passed to the invoked method");
+            WriteXmlDocParam(
+                "source",
+                "The enumerable source.");
+            WriteXmlDocParam(
+                "action",
+                "The action to execute.");
+            WriteXmlDocParamTags("to pass to the invoked method", isPassedByRef: true);
+            WriteXmlDocArgumentNullException(
+                "source",
+                "action");
+
+            // Header
+            WriteForLoopWarningSuppression();
+            WriteFunctionHeader(
+                "ForEach",
+                typeParametersBefore: "TItem");
+            IncreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}this TItem[] source,");
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}RefIteratorAction<TItem, ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"TParam{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine("> action,");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.AppendLine(",");
+                arrayExtensionsStringBuilder.Append($"{currentIndentation}ref TParam{j} param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(")");
+            DecreaseIndentation();
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            // Body
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
+            IncreaseIndentation();
+
+            arrayExtensionsStringBuilder.Append($"{currentIndentation}action(source[i], ");
+
+            for (var j = 1; j <= i; j++)
+            {
+                if (j > 1) arrayExtensionsStringBuilder.Append(", ");
+                arrayExtensionsStringBuilder.Append($"ref param{j}");
+            }
+
+            arrayExtensionsStringBuilder.AppendLine(");");
+            DecreaseIndentation();
+
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}}}");
 
             // End

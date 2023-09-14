@@ -64,11 +64,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Update="Collections\ArrayExtensions.ForEachRefActions.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ArrayExtensions.ForEachRefActions.tt</DependentUpon>
-    </Compile>
     <Compile Update="Collections\ArrayExtensions.SequenceCompare.StandardTypes.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -222,10 +217,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Collections\ArrayExtensions.ForEachRefActions.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArrayExtensions.ForEachRefActions.cs</LastGenOutput>
-    </None>
     <None Update="Collections\ArrayExtensions.SequenceCompare.StandardTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArrayExtensions.SequenceCompare.StandardTypes.cs</LastGenOutput>
