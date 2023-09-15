@@ -1,0 +1,326 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Project functional metadata -->
+  <PropertyGroup>
+    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net7.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- Package metadata -->
+  <PropertyGroup>
+    <Title>IX Libraries - Core</Title>
+    <Description>A library containing several extensions that aim to standardize and extend the .NET Framework functionality.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <!-- References -->
+  <ItemGroup Condition="'$(TargetFrameworkIsFramework)'=='true'">
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net462'">
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIsFramework)'=='true'">
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkAdvanced)'!='true'">
+    <PackageReference Include="System.Memory" Version="4.5.5" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'!='net7.0'">
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+
+  <!-- Signing -->
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>../Common/ix.framework.strongname.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <!-- Resources -->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Collections\ArrayExtensions.SequenceCompare.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArrayExtensions.SequenceCompare.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\ArrayExtensions.SequenceEquals.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArrayExtensions.SequenceEquals.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\ArrayExtensions.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArrayExtensions.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IDictionaryExtensions.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IDictionaryExtensions.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IEnumerableExtensions.EquateSequentially.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IEnumerableExtensions.EquateSequentially.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IEnumerableExtensions.ForEachActions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IEnumerableExtensions.ForEachActions.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IEnumerableExtensions.ForEachRefActions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IEnumerableExtensions.ForEachRefActions.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IEnumerableExtensions.SequenceCompare.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IEnumerableExtensions.SequenceCompare.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IEnumerableExtensions.SequenceEquals.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IEnumerableExtensions.SequenceEquals.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\IListCloneExtensions.StandardTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IListCloneExtensions.StandardTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Collections\LinqExtensions.ActionsAndFuncs.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LinqExtensions.ActionsAndFuncs.tt</DependentUpon>
+    </Compile>
+    <Compile Update="ComponentModel\SynchronizationContextInvokerBase.InvokeActionsAndFuncs.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SynchronizationContextInvokerBase.InvokeActionsAndFuncs.tt</DependentUpon>
+    </Compile>
+    <Compile Update="ImmutableValueTuple.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ImmutableValueTuple.tt</DependentUpon>
+    </Compile>
+    <Compile Update="InDelegates.WithParameters.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InDelegates.WithParameters.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Contracts\ValidationResources\tlds-alpha-by-domain.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Remove="Contracts\ValidationResources\tlds-alpha-by-domain.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InternalSourceGenerator\InternalSourceGenerator.csproj">
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <OutputItemType>Analyzer</OutputItemType>
+    </ProjectReference>
+  </ItemGroup>
+
+  <!-- Text templates -->
+  <ItemGroup>
+    <Compile Update="ComponentModel\DisposableBase.InvokeIfNotDisposed.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisposableBase.InvokeIfNotDisposed.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\Requires.NumericTypesItemFoundById.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Requires.NumericTypesItemFoundById.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\Requires.NumericTypesLtGt.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Requires.NumericTypesLtGt.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\Requires.NumericTypesNegativeValidation.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Requires.NumericTypesNegativeValidation.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\Requires.NumericTypesPositiveValidation.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Requires.NumericTypesPositiveValidation.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\Requires.NumericTypesRangeValidation.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Requires.NumericTypesRangeValidation.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Contracts\StandardExceptions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StandardExceptions.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Threading\ReaderWriterSynchronizedBase.ActionsAndFuncs.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReaderWriterSynchronizedBase.ActionsAndFuncs.tt</DependentUpon>
+    </Compile>
+    <Compile Update="RefDelegates.WithParameters.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RefDelegates.WithParameters.tt</DependentUpon>
+    </Compile>
+    <Compile Update="RefIteratorDelegates.WithParameters.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RefIteratorDelegates.WithParameters.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Threading\TaskFactoryExtensions.Actions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TaskFactoryExtensions.Actions.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Collections\ArrayExtensions.SequenceCompare.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArrayExtensions.SequenceCompare.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\ArrayExtensions.SequenceEquals.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArrayExtensions.SequenceEquals.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\ArrayExtensions.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArrayExtensions.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IDictionaryExtensions.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IDictionaryExtensions.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IEnumerableExtensions.EquateSequentially.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions.EquateSequentially.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IEnumerableExtensions.ForEachActions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions.ForEachActions.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IEnumerableExtensions.ForEachRefActions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions.ForEachRefActions.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IEnumerableExtensions.SequenceCompare.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions.SequenceCompare.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IEnumerableExtensions.SequenceEquals.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions.SequenceEquals.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\IListCloneExtensions.StandardTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IListCloneExtensions.StandardTypes.cs</LastGenOutput>
+    </None>
+    <None Update="Collections\LinqExtensions.ActionsAndFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LinqExtensions.ActionsAndFuncs.cs</LastGenOutput>
+    </None>
+    <None Update="ComponentModel\DisposableBase.InvokeIfNotDisposed.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DisposableBase.InvokeIfNotDisposed.cs</LastGenOutput>
+    </None>
+    <None Update="ComponentModel\SynchronizationContextInvokerBase.InvokeActionsAndFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SynchronizationContextInvokerBase.InvokeActionsAndFuncs.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\Requires.NumericTypesItemFoundById.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requires.NumericTypesItemFoundById.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\Requires.NumericTypesLtGt.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requires.NumericTypesLtGt.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\Requires.NumericTypesNegativeValidation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requires.NumericTypesNegativeValidation.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\Requires.NumericTypesPositiveValidation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requires.NumericTypesPositiveValidation.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\Requires.NumericTypesRangeValidation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requires.NumericTypesRangeValidation.cs</LastGenOutput>
+    </None>
+    <None Update="Contracts\StandardExceptions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StandardExceptions.cs</LastGenOutput>
+    </None>
+    <None Update="ImmutableValueTuple.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ImmutableValueTuple.cs</LastGenOutput>
+    </None>
+    <None Update="InDelegates.WithParameters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InDelegates.WithParameters.cs</LastGenOutput>
+    </None>
+    <None Update="Threading\ReaderWriterSynchronizedBase.ActionsAndFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ReaderWriterSynchronizedBase.ActionsAndFuncs.cs</LastGenOutput>
+    </None>
+    <None Update="RefDelegates.WithParameters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RefDelegates.WithParameters.cs</LastGenOutput>
+    </None>
+    <None Update="RefIteratorDelegates.WithParameters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RefIteratorDelegates.WithParameters.cs</LastGenOutput>
+    </None>
+    <None Update="Threading\TaskFactoryExtensions.Actions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TaskFactoryExtensions.Actions.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

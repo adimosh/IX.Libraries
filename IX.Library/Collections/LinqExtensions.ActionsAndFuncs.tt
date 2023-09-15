@@ -1,0 +1,1225 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
+namespace IX.Library.Collections;
+
+/// <summary>
+///     Extension methods for LINQ.
+/// </summary>
+[SuppressMessage(
+    "Performance",
+    "HAA0401:Possible allocation of reference type enumerator",
+    Justification = "These are enumerator extensions, so this is unavoidable.")]
+public static partial class LinqExtensions
+{<#
+for (int i = 1; i <= 8; i++)
+{
+    string[] types = new string[i];
+    string[] names = new string[i];
+    string[] nameTypes = new string[i];
+
+    for (int j = 1; j <= i; j++)
+    {
+        int idx = j - 1;
+        types[idx] = $"TParam{j}";
+        names[idx] = $"param{j}";
+        nameTypes[idx] = $"TParam{j} param{j}";
+    }
+
+    string paramTypes = string.Join(", ", types);
+    string paramNames = string.Join(", ", names);
+    string paramNameTypes = string.Join($",{Environment.NewLine}        ", nameTypes);
+#>
+
+    #region <#= i #> parameters
+
+    #region Any
+
+    /// <summary>
+    ///     Executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a positive result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    /// <returns><c>false</c> if all the predicates have returned a negative result, <c>true</c> otherwise.</returns>
+    public static bool Any<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem,
+        <#= paramTypes #>, bool> predicate,
+        <#= paramNameTypes #>)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        foreach (TItem item in source)
+        {
+            if (predicate(item, <#= paramNames #>))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a positive result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>false</c> if all the predicates have returned a negative result, <c>true</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AnyAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, Task<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (await predicate(item, <#= paramNames #>))
+            {
+                return true;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a positive result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>false</c> if all the predicates have returned a negative result, <c>true</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AnyAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, ValueTask<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (await predicate(item, <#= paramNames #>))
+            {
+                return true;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a positive result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>false</c> if all the predicates have returned a negative result, <c>true</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AnyAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, Task<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (await predicate(item, <#= paramNames #>, cancellationToken))
+            {
+                return true;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a positive result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>false</c> if all the predicates have returned a negative result, <c>true</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AnyAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (await predicate(item, <#= paramNames #>, cancellationToken))
+            {
+                return true;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return false;
+    }
+
+    #endregion
+
+    #region All
+
+    /// <summary>
+    ///     Executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a negative result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    /// <returns><c>true</c> if all the predicates have returned a positive result, <c>false</c> otherwise.</returns>
+    public static bool All<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem,
+        <#= paramTypes #>, bool> predicate,
+        <#= paramNameTypes #>)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        foreach (TItem item in source)
+        {
+            if (!predicate(item, <#= paramNames #>))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a negative result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>true</c> if all the predicates have returned a positive result, <c>false</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AllAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, Task<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (!await predicate(item, <#= paramNames #>))
+            {
+                return false;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a negative result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>true</c> if all the predicates have returned a positive result, <c>false</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AllAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, ValueTask<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (!await predicate(item, <#= paramNames #>))
+            {
+                return false;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a negative result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>true</c> if all the predicates have returned a positive result, <c>false</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AllAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, Task<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (!await predicate(item, <#= paramNames #>, cancellationToken))
+            {
+                return false;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Asynchronously executes a predicate for each one of the elements of an enumerable, returning when the first predicate executing results in a negative result.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked method at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The enumerable source.</param>
+    /// <param name="predicate">The predicate to execute.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked method at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>A <see cref="ValueTask" /> representing the current operation, containing <c>true</c> if all the predicates have returned a positive result, <c>false</c> otherwise.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<bool> AllAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask<bool>> predicate,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        Requires.NotNull(source);
+        Requires.NotNull(predicate);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in source)
+        {
+            if (!await predicate(item, <#= paramNames #>, cancellationToken))
+            {
+                return false;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        return true;
+    }
+
+    #endregion
+
+    #region Where
+
+    /// <summary>
+    ///     Filters a sequence of values based on a predicate.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to filter.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <returns>The filtered enumerable.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static IEnumerable<TItem> Where<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, bool> action,
+        <#= paramNameTypes #>)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (localAction(item, <#= paramNames #>))
+            {
+                yield return item;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Asynchronously filters a sequence of values based on a predicate.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to filter.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The filtered enumerable.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async IAsyncEnumerable<TItem> WhereAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, Task<bool>> action,
+        <#= paramNameTypes #>,
+        [EnumeratorCancellation]
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                yield return item;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    /// <summary>
+    ///     Asynchronously filters a sequence of values based on a predicate.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to filter.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The filtered enumerable.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async IAsyncEnumerable<TItem> WhereAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        [EnumeratorCancellation]
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                yield return item;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    /// <summary>
+    ///     Asynchronously filters a sequence of values based on a predicate.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to filter.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The filtered enumerable.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async IAsyncEnumerable<TItem> WhereAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, Task<bool>> action,
+        <#= paramNameTypes #>,
+        [EnumeratorCancellation]
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                yield return item;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    /// <summary>
+    ///     Asynchronously filters a sequence of values based on a predicate.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to filter.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The filtered enumerable.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async IAsyncEnumerable<TItem> WhereAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        [EnumeratorCancellation]
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                yield return item;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    #endregion
+
+    #region FirstOrDefault
+
+    /// <summary>
+    ///     Returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <returns>The first filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static TItem FirstOrDefault<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, bool> action,
+        <#= paramNameTypes #>)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The first filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> FirstOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, Task<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The first filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> FirstOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The first filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> FirstOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, Task<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The first filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> FirstOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource)
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    #endregion
+
+    #region LastOrDefault
+
+    /// <summary>
+    ///     Returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <returns>The last filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static TItem LastOrDefault<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, bool> action,
+        <#= paramNameTypes #>)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource.Reverse())
+        {
+            if (localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The last filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> LastOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, Task<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource.Reverse())
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The last filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> LastOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource.Reverse())
+        {
+            if (await localAction(item, <#= paramNames #>))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The last filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> LastOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, Task<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource.Reverse())
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    /// <summary>
+    ///     Asynchronously returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+    /// </summary>
+    /// <typeparam name="TItem">The enumerable item type.</typeparam>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <typeparam name="TParam<#= j #>">The type of parameter to be passed to the invoked predicate at index <#= j - 1 #>.</typeparam>
+<#
+    }
+#>
+    /// <param name="source">The <see cref="IEnumerable{T}" /> to check.</param>
+    /// <param name="action">The predicate to check items with.</param>
+<#
+    for (int j = 1; j <= i; j++)
+    {
+#>
+    /// <param name="param<#= j #>">A parameter of type <typeparamref name="TParam<#= j #>" /> to pass to the invoked predicate at index <#= j - 1 #>.</param>
+<#
+    }
+#>
+    /// <param name="cancellationToken">The cancellation token for this operation.</param>
+    /// <returns>The last filtered item, or a default value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> are <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
+    public static async ValueTask<TItem> LastOrDefaultAsync<TItem, <#= paramTypes #>>(
+        this IEnumerable<TItem> source,
+        Func<TItem, <#= paramTypes #>, CancellationToken, ValueTask<bool>> action,
+        <#= paramNameTypes #>,
+        CancellationToken cancellationToken = default)
+    {
+        var localSource = Requires.NotNull(source);
+        var localAction = Requires.NotNull(action);
+
+        foreach (TItem item in localSource.Reverse())
+        {
+            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            {
+                return item;
+            }
+        }
+
+        return default!;
+    }
+
+    #endregion
+
+    #endregion
+<#
+}
+#>
+}

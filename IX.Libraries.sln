@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Core", "IX.Core\IX.Core.csproj", "{677259FA-8C4F-48C8-BFE1-73FB9D085DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Library", "IX.Library\IX.Library.csproj", "{677259FA-8C4F-48C8-BFE1-73FB9D085DCB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A4F1BADC-7194-4220-89BD-C774643CB379}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,12 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E382BBC2-B
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
+		Usage.md = Usage.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{AB04C86F-C7BB-48FC-8E87-5C779B3009EE}"
 	ProjectSection(SolutionItems) = preProject
 		Common\Resources\icon.png = Common\Resources\icon.png
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Observable", "IX.Observable\IX.Observable.csproj", "{85C4DE04-36EE-4D09-9B9C-971B39C5DCA2}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{3A21CEEC-78A5-4791-8830-FEBF91A86D27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Undoable", "IX.Undoable\IX.Undoable.csproj", "{D6467923-6F22-42B7-A20E-6D6E2F44787F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IX.Math", "IX.Math\IX.Math.csproj", "{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalSourceGenerator", "InternalSourceGenerator\InternalSourceGenerator.csproj", "{DE778F8B-9529-4641-808F-DAB5386E9EC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +47,29 @@ Global
 		{677259FA-8C4F-48C8-BFE1-73FB9D085DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677259FA-8C4F-48C8-BFE1-73FB9D085DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677259FA-8C4F-48C8-BFE1-73FB9D085DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85C4DE04-36EE-4D09-9B9C-971B39C5DCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C4DE04-36EE-4D09-9B9C-971B39C5DCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C4DE04-36EE-4D09-9B9C-971B39C5DCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C4DE04-36EE-4D09-9B9C-971B39C5DCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A21CEEC-78A5-4791-8830-FEBF91A86D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A21CEEC-78A5-4791-8830-FEBF91A86D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A21CEEC-78A5-4791-8830-FEBF91A86D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6467923-6F22-42B7-A20E-6D6E2F44787F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6467923-6F22-42B7-A20E-6D6E2F44787F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6467923-6F22-42B7-A20E-6D6E2F44787F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6467923-6F22-42B7-A20E-6D6E2F44787F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{906D17D2-8029-48FB-ACFA-E2B0DC12DF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC71E8-B8A0-4B97-BA27-F73C4DAE723D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE778F8B-9529-4641-808F-DAB5386E9EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE778F8B-9529-4641-808F-DAB5386E9EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE778F8B-9529-4641-808F-DAB5386E9EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE778F8B-9529-4641-808F-DAB5386E9EC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
