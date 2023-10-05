@@ -21,7 +21,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
+  <ItemGroup>
     <None Include="..\Common\Resources\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
