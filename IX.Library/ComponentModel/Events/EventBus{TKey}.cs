@@ -8,8 +8,8 @@ namespace IX.Library.ComponentModel.Events;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <seealso cref="DisposableBase" />
 [PublicAPI]
-public sealed class EventBus<TKey> : DisposableBase
-where TKey : notnull
+public sealed class EventBus<TKey> : DisposableBase, IEventBus<TKey>
+    where TKey : notnull
 {
     private readonly ConcurrentDictionary<EventKey<TKey>, object> _events;
 
