@@ -1,0 +1,5 @@
+﻿[GenerationOptions]
+EmitXmlDocumentation=True
+
+[Mappings]
+IX.Library=UnitTests
