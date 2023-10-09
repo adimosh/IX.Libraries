@@ -60,4 +60,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\ComponentModel\" />
+  </ItemGroup>
+
 </Project>
