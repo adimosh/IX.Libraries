@@ -1,5 +1,20 @@
 <Project>
 
+  <!-- SourceLink -->
+  <PropertyGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- Icon -->
+  <PropertyGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
   <!-- Packability -->
   <PropertyGroup Condition="'$(IsTestProject)'=='true'">
     <IsPackable>false</IsPackable>
@@ -51,7 +66,7 @@
 
   <!-- JetBrains annotations -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
-    <PackageReference Include="JetBrains.Annotations" Version="2023.2.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
     <Using Include="JetBrains.Annotations" />
   </ItemGroup>
 

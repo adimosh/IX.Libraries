@@ -2,7 +2,7 @@
 
   <!-- Project functional metadata -->
   <PropertyGroup>
-    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <!-- Package metadata -->
@@ -43,13 +43,18 @@
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'!='net7.0'">
+  <ItemGroup Condition="'$(TargetFrameworkAdvanced)'!='true'">
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
-
+  <ItemGroup Condition="'$(TargetFramework)'=='net8.0'">
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
 
   <!-- Signing -->
   <PropertyGroup>
