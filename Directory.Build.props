@@ -243,6 +243,17 @@
     <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_NET60;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER;NET70_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
+    <TargetFrameworkIs5>true</TargetFrameworkIs5>
+    <TargetFrameworkIs6>true</TargetFrameworkIs6>
+    <TargetFrameworkIs7>true</TargetFrameworkIs7>
+    <TargetFrameworkIs8>true</TargetFrameworkIs8>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
+    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
+    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_NET60;STANDARD_GT_NET70;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER;NET70_OR_GREATER;NET80_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
   <!-- Extra debug symbols for target framework type -->
   <PropertyGroup Condition="'$(TargetFrameworkIsFullyStandardized)'=='true'">
     <DefineConstants>$(DefineConstants);FRAMEWORK_FULL_STANDARD</DefineConstants>
