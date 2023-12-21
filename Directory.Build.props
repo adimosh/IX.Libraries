@@ -296,21 +296,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <!-- SourceLink -->
-  <PropertyGroup>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <!-- Icon -->
-  <PropertyGroup>
-    <PackageIcon>icon.png</PackageIcon>
-  </PropertyGroup>
-
   <!-- Branding -->
   <PropertyGroup>
     <Authors>Adrian Mos</Authors>
