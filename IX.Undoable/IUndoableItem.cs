@@ -5,11 +5,10 @@ namespace IX.Undoable;
 /// <summary>
 ///     A service contract for an item that supports undo and redo operations.
 /// </summary>
-[PublicAPI]
 public interface IUndoableItem
 {
     /// <summary>
-    ///     Gets a value indicating whether or not the implementer can perform a redo.
+    ///     Gets a value indicating whether the implementer can perform a redo.
     /// </summary>
     /// <value>
     ///     <see langword="true" /> if the call to the <see cref="Redo" /> method would result in a state change,
@@ -18,7 +17,7 @@ public interface IUndoableItem
     bool CanRedo { get; }
 
     /// <summary>
-    ///     Gets a value indicating whether or not the implementer can perform an undo.
+    ///     Gets a value indicating whether the implementer can perform an undo.
     /// </summary>
     /// <value>
     ///     <see langword="true" /> if the call to the <see cref="Undo" /> method would result in a state change,

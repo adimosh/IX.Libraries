@@ -3,7 +3,6 @@ namespace IX.Math;
 /// <summary>
 ///     A contract for an external service that fetches data based on data keys.
 /// </summary>
-[PublicAPI]
 public interface IDataFinder
 {
     /// <summary>

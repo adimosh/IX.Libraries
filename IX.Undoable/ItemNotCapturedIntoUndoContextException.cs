@@ -9,7 +9,6 @@ namespace IX.Undoable;
 /// <seealso cref="InvalidOperationException" />
 /// <seealso cref="IUndoableItem" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ItemNotCapturedIntoUndoContextException : InvalidOperationException
 {

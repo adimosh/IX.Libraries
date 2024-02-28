@@ -9,7 +9,6 @@ namespace IX.Undoable;
 /// <seealso cref="InvalidOperationException" />
 /// <seealso cref="ITransactionEditableItem" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ItemIsInEditModeException : InvalidOperationException
 {

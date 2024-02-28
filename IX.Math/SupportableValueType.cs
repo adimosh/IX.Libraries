@@ -5,7 +5,6 @@ namespace IX.Math;
 /// <summary>
 ///     An enumeration of supported value types.
 /// </summary>
-[PublicAPI]
 [Flags]
 [SuppressMessage(
     "Naming",

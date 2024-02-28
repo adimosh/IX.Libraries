@@ -4,7 +4,6 @@ namespace IX.Library.Collections;
 ///     A pool of on-demand objects that keeps growing based on demand.
 /// </summary>
 /// <typeparam name="T">The class type to hold in the pool.</typeparam>
-[PublicAPI]
 public class ObjectPool<T>
     where T : class
 {

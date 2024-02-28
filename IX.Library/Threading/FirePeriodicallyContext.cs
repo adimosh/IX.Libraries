@@ -11,7 +11,6 @@ namespace IX.Library.Threading;
 ///     interrupted.
 /// </param>
 /// <param name="state">The state.</param>
-[PublicAPI]
 public delegate void FirePeriodicallyTicker(
     int tick,
     IInterruptible interrupter,

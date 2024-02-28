@@ -7,7 +7,6 @@ namespace IX.Math;
 ///     A contract for a service that is able to parse strings containing mathematical expressions and solve them.
 /// </summary>
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public interface IExpressionParsingService : IDisposable
 {
     /// <summary>

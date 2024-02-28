@@ -17,7 +17,6 @@ namespace IX.Math;
 /// </summary>
 /// <seealso cref="DisposableBase" />
 /// <seealso cref="IExpressionParsingService" />
-[PublicAPI]
 public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBase,
     IExpressionParsingService
 {

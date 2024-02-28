@@ -22,8 +22,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -78,8 +76,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -134,8 +130,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -190,8 +184,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -246,8 +238,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -302,8 +292,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -358,8 +346,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -414,8 +400,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -470,8 +454,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -526,8 +508,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -582,8 +562,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -638,8 +616,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNotPositiveException">The supplied identifier is not, as convention dictates, a positive number.</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",

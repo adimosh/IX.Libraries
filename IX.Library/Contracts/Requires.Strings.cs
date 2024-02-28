@@ -28,10 +28,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" />.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static T NotNull<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -61,12 +58,8 @@ public static partial class Requires
     ///     The argument is <see langword="null" />.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotNull<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         out T field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -99,10 +92,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static string NotNullOrEmpty(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -131,12 +121,8 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotNullOrEmpty(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         out string field,
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -165,10 +151,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static string NotNullOrWhiteSpace(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -197,12 +180,8 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotNullOrWhiteSpace(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         out string field,
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -230,9 +209,7 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static string FixedLength(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -271,10 +248,8 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static void FixedLength(
         out string field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -311,9 +286,7 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static string LengthAtLeast(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -352,10 +325,8 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static void LengthAtLeast(
         out string field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -392,9 +363,7 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static string LengthAtMost(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -433,10 +402,8 @@ public static partial class Requires
     ///     string.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("stringToTest:null => halt")]
     public static void LengthAtMost(
         out string field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         string? stringToTest,
         in int length,
         [CallerArgumentExpression("stringToTest")]
@@ -484,8 +451,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNullException">The argument is <c>null</c> (<c>Nothing in Visual Basic</c>).</exception>
     /// <exception cref="ArgumentDoesNotMatchException">The argument does not match the pattern.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt; pattern:null => halt")]
-    [AssertionMethod]
     public static string Matches(
         string? argument,
         string pattern,
@@ -530,8 +495,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNullException">The argument is <c>null</c> (<c>Nothing in Visual Basic</c>).</exception>
     /// <exception cref="ArgumentDoesNotMatchException">The argument does not match the pattern.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt; pattern:null => halt")]
-    [AssertionMethod]
     public static void Matches(
         out string field,
         string? argument,
@@ -574,8 +537,6 @@ public static partial class Requires
     /// <param name="argumentName">The name of the argument.</param>
     /// <returns>The validated argument.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static string ValidEmailAddress(
         string argument,
         [CallerArgumentExpression("argument")] string argumentName = "argument")
@@ -602,8 +563,6 @@ public static partial class Requires
     /// <param name="argument">The argument to validate.</param>
     /// <param name="argumentName">The name of the argument.</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void ValidEmailAddress(
         out string field,
         string argument,
@@ -629,8 +588,6 @@ public static partial class Requires
     /// <param name="argumentName">The name of the argument.</param>
     /// <returns>The validated argument.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static string ValidEmailAddressStrict(
         string argument,
         [CallerArgumentExpression("argument")] string argumentName = "argument")
@@ -657,8 +614,6 @@ public static partial class Requires
     /// <param name="argument">The argument to validate.</param>
     /// <param name="argumentName">The name of the argument.</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void ValidEmailAddressStrict(
         out string field,
         string argument,

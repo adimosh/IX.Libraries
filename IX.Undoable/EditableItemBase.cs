@@ -9,7 +9,6 @@ namespace IX.Undoable;
 /// </summary>
 /// <seealso cref="ITransactionEditableItem" />
 /// <seealso cref="IUndoableItem" />
-[PublicAPI]
 public abstract class EditableItemBase : ViewModelBase,
     ITransactionEditableItem,
     IUndoableItem

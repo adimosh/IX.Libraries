@@ -6,7 +6,6 @@ namespace IX.Math.ExpressionState;
 ///     An expression symbol.
 /// </summary>
 [DebuggerDisplay("Expression: {Name} -> {Expression}")]
-[PublicAPI]
 public class ExpressionSymbol
 {
     private string? _expression;

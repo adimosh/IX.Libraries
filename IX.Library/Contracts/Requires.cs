@@ -33,10 +33,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static TCollection NotEmpty<TCollection, T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         TCollection? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -60,11 +57,8 @@ public static partial class Requires
     /// <param name="argumentName">The argument name.</param>
     /// <exception cref="ArgumentNullOrEmptyCollectionException">The argument is <see langword="null" /> or empty.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotEmpty<TCollection, T>(
         out TCollection field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         TCollection? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -97,10 +91,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static T[] NotEmpty<T>(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -130,11 +121,8 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotEmpty<T>(
         out T[] field,
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -163,9 +151,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] FixedLength<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -205,10 +191,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void FixedLength<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -246,9 +230,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] FixedLength<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -288,10 +270,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void FixedLength<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -333,9 +313,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtLeast<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -375,10 +353,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtLeast<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -416,9 +392,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtLeast<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -458,10 +432,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtLeast<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -503,9 +475,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtMost<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -545,10 +515,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtMost<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -586,9 +554,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtMost<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -628,10 +594,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtMost<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -2119,9 +2083,7 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static bool True(
-        [AssertionCondition(AssertionConditionType.IS_TRUE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2150,10 +2112,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static void True(
         out bool field,
-        [AssertionCondition(AssertionConditionType.IS_TRUE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2184,9 +2144,7 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static bool False(
-        [AssertionCondition(AssertionConditionType.IS_FALSE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2215,10 +2173,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static void False(
         out bool field,
-        [AssertionCondition(AssertionConditionType.IS_FALSE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2255,10 +2211,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static T ArgumentOfType<T>(
-        [NoEnumeration][AssertionCondition(AssertionConditionType.IS_NOT_NULL)] object? argument,
+        object? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
     {
@@ -2287,11 +2241,9 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void ArgumentOfType<T>(
         out T field,
-        [NoEnumeration, AssertionCondition(AssertionConditionType.IS_NOT_NULL)] object? argument,
+        object? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
     {
@@ -2350,8 +2302,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNullException">Either the source collection or the identifier are <c>null</c> (<c>Nothing</c> in Visual Basic).</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [DiagCA.SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",

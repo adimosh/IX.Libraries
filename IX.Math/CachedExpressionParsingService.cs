@@ -11,7 +11,6 @@ namespace IX.Math;
 ///     </para>
 /// </remarks>
 /// <seealso cref="ExpressionParsingServiceBase" />
-[PublicAPI]
 public sealed class CachedExpressionParsingService : ExpressionParsingServiceBase
 {
     private ConcurrentDictionary<string, ComputedExpression> _cachedComputedExpressions;
