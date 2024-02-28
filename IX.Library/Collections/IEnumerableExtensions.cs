@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,7 +6,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for IEnumerable.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "Performance",
     "HAA0401:Possible allocation of reference type enumerator",

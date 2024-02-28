@@ -1,4 +1,3 @@
-using IX.Library.Contracts;
 using IX.Math;
 
 namespace UnitTests.Math.Helpers;

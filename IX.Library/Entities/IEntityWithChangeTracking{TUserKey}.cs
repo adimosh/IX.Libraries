@@ -4,7 +4,6 @@ namespace IX.Library.Entities;
 ///     A data contract for an entity that tracks when and by whom it is updated.
 /// </summary>
 /// <typeparam name="TUserKey">The type of the user key.</typeparam>
-[PublicAPI]
 public interface IEntityWithChangeTracking<TUserKey>
 {
     /// <summary>

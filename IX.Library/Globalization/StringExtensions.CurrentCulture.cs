@@ -5,7 +5,6 @@ namespace IX.Library.Globalization;
 /// <summary>
 ///     Extensions to strings to help with globalization.
 /// </summary>
-[PublicAPI]
 public static partial class StringExtensions
 {
     /// <summary>

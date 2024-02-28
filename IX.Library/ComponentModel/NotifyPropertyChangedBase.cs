@@ -7,7 +7,6 @@ namespace IX.Library.ComponentModel;
 ///     A base class for advertising and notifying on changes of properties.
 /// </summary>
 /// <seealso cref="INotifyPropertyChanged" />
-[PublicAPI]
 public abstract class NotifyPropertyChangedBase : SynchronizationContextInvokerBase,
     INotifyPropertyChanged
 {

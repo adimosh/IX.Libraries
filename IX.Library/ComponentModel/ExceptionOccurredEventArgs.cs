@@ -5,7 +5,6 @@ namespace IX.Library.ComponentModel;
 /// <summary>
 ///     Event arguments for an event handler detailing exceptions occurring in different threads.
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ExceptionOccurredEventArgs : EventArgs
 {

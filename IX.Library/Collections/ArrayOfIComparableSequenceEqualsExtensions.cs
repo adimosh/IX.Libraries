@@ -5,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for array types of <see cref="IComparable" />.
 /// </summary>
-[PublicAPI]
 public static class ArrayOfIComparableSequenceEqualsExtensions
 {
     /// <summary>
@@ -28,7 +27,7 @@ public static class ArrayOfIComparableSequenceEqualsExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null;
         }
 

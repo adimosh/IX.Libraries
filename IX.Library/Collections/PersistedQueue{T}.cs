@@ -14,7 +14,6 @@ namespace IX.Library.Collections;
 /// </remarks>
 /// <seealso cref="DisposableBase" />
 /// <seealso cref="IX.Library.Collections.IQueue{T}" />
-[PublicAPI]
 public class PersistedQueue<T> : PersistedQueueBase<T>,
     IPersistedQueue<T>
 {

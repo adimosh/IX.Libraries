@@ -3,7 +3,6 @@ namespace IX.Library.System;
 /// <summary>
 /// Extensions for the <see cref="Stream"/> class.
 /// </summary>
-[PublicAPI]
 public static class StreamExtensions
 {
     /// <summary>

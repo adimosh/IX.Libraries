@@ -70,14 +70,12 @@ for (int i = 1; i <= 8; i++)
         if (z != i)
         {
 #>
-[PublicAPI]
 public delegate TResult RefFunc<#= i - z #><<#= paramTypes #>, out TResult>(<#= paramNameTypes #>);
 <#
         }
         else
         {
 #>
-[PublicAPI]
 public delegate TResult RefFunc<<#= paramTypes #>, out TResult>(<#= paramNameTypes #>);
 <#
         }
@@ -114,13 +112,11 @@ public delegate TResult RefFunc<<#= paramTypes #>, out TResult>(<#= paramNameTyp
         if (z != i)
         {
 #>
-[PublicAPI]
 public delegate void RefAction<#= i - z #><<#= paramTypes #>>(<#= paramNameTypes #>);<#
         }
         else
         {
 #>
-[PublicAPI]
 public delegate void RefAction<<#= paramTypes #>>(<#= paramNameTypes #>);<#
         }
     }

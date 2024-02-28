@@ -1,11 +1,8 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.IO;
 
 /// <summary>
 ///     A memory stream that saves when it disposes.
 /// </summary>
-[PublicAPI]
 public class SaveWhenDisposingMemoryStream : MemoryStream
 {
     private readonly Action<byte[]> _saveFile;

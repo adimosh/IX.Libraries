@@ -5,7 +5,6 @@ namespace IX.Library;
 /// <summary>
 ///     Represents an abstraction over the <see cref="T:System.Environment" /> class.
 /// </summary>
-[PublicAPI]
 public interface IEnvironment
 {
     /// <summary>
@@ -32,7 +31,7 @@ public interface IEnvironment
     #endif
 
     /// <summary>
-    ///     Gets a value indicating whether or not the current process is a 64-bit process.
+    ///     Gets a value indicating whether the current process is a 64-bit process.
     /// </summary>
     /// <value>
     ///     <c>true</c> if the current process is 64-bit; otherwise, <c>false</c>.

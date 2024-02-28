@@ -4,7 +4,6 @@ namespace IX.Library.Collections;
 ///     An interface that is used for hiding the public list of custom serializable collections.
 /// </summary>
 /// <typeparam name="T">The type of items in the list.</typeparam>
-[PublicAPI]
 public interface ICustomSerializableCollection<T>
 {
     /// <summary>

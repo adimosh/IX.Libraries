@@ -10,7 +10,6 @@ namespace IX.Library.Debugging;
 /// <typeparam name="TValue">The type of the value.</typeparam>
 [ComVisible(false)]
 [DebuggerDisplay($"[{{{nameof(Key)}}}] = \"{{{nameof(Value)}}}\"")]
-[PublicAPI]
 public sealed class KyeValuePairDebugView<TKey, TValue>
 {
     /// <summary>

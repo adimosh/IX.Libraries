@@ -1,5 +1,3 @@
-using IX.Library.Collections;
-
 namespace IX.Math;
 
 /// <summary>

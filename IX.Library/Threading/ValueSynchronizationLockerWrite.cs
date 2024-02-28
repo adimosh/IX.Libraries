@@ -3,7 +3,6 @@ namespace IX.Library.Threading;
 /// <summary>
 /// A value-type synchronization locker for reading operations.
 /// </summary>
-[PublicAPI]
 public readonly struct ValueSynchronizationLockerWrite : IDisposable
 {
     private readonly IReaderWriterLock? _locker;

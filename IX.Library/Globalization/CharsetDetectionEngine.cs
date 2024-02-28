@@ -1,4 +1,3 @@
-using IX.Library.Globalization;
 using IX.Library.Globalization.CharsetDetection.Probers;
 using IX.Library.Collections;
 using IX.Library.Globalization.CharsetDetectionContrib;
@@ -11,7 +10,6 @@ namespace IX.Library.Globalization;
 /// A character set detection engine.
 /// </summary>
 /// <seealso cref="ICharsetDetectionEngine"/>
-[PublicAPI]
 public class CharsetDetectionEngine : ICharsetDetectionEngine
 {
     private static readonly Dictionary<string, string> FixedToSupportCodepageName =

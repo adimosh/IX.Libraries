@@ -8,7 +8,6 @@ namespace IX.Library.Threading;
 /// </summary>
 /// <seealso cref="ComponentModel.DisposableBase" />
 [DataContract(Namespace = Constants.DataContractNamespace)]
-[PublicAPI]
 public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
 {
     private readonly bool _lockInherited;

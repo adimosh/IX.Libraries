@@ -13,7 +13,6 @@ namespace IX.Library.ComponentModel;
 /// </summary>
 /// <seealso cref="NotifyPropertyChangedBase" />
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public abstract class ViewModelBase : NotifyPropertyChangedBase, INotifyDataErrorInfo
 {
     private readonly BusyScope? _busyScope;

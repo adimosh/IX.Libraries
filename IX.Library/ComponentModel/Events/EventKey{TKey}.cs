@@ -5,7 +5,6 @@ namespace IX.Library.ComponentModel.Events;
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <seealso cref="IEquatable{T}" />
-[PublicAPI]
 public readonly struct EventKey<TKey> : IEquatable<EventKey<TKey>>
     where TKey : notnull
 {

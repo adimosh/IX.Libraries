@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using Microsoft.Extensions.Logging;
 
 namespace IX.Library.Logging;
@@ -7,7 +5,6 @@ namespace IX.Library.Logging;
 /// <summary>
 /// Provides a basic logger and logging mechanism for the IX libraries.
 /// </summary>
-[PublicAPI]
 public static class Log
 {
     private static ILoggerFactory? _loggerFactory;
@@ -32,18 +29,6 @@ public static class Log
 
     internal static ILogger? GetLogger<T>() => GetLogger(typeof(T));
 
-    internal static ILogger? GetLogger(Type type)
-    {
-        if (_loggerFactory != null)
-        {
-            return _loggerFactory.CreateLogger(type);
-        }
-
-        if (_loggerProvider != null)
-        {
-            return _loggerProvider.CreateLogger(type.Name);
-        }
-
-        return null;
-    }
+    internal static ILogger? GetLogger(Type type) =>
+        _loggerFactory != null ? _loggerFactory.CreateLogger(type) : _loggerProvider?.CreateLogger(type.Name);
 }

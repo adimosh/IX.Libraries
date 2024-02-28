@@ -9,7 +9,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     A class that allows delayed safe disposal of <see cref="IDisposable" /> objects.
 /// </summary>
-[PublicAPI]
 public static class DelayedDisposer
 {
     private static readonly List<IDisposable> DisposablesGeneration1 = new();

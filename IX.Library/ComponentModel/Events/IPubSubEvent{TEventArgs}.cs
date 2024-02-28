@@ -4,7 +4,6 @@ namespace IX.Library.ComponentModel.Events;
 /// A service contract for a publisher-subscriber event definition.
 /// </summary>
 /// <typeparam name="TEventArgs">The type of the event arguments.</typeparam>
-[PublicAPI]
 public interface IPubSubEvent<TEventArgs>
     where TEventArgs : EventArgs
 {

@@ -9,7 +9,6 @@ namespace IX.Library.Contracts;
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.
 /// </summary>
-[PublicAPI]
 public static partial class Requires
 {
 #region Not null

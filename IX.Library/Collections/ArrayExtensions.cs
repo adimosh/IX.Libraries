@@ -5,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for array types.
 /// </summary>
-[PublicAPI]
 public static partial class ArrayExtensions
 {
     /// <summary>

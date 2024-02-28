@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using GlobalThreading = System.Threading;
 
 namespace IX.Library.Threading;
@@ -7,7 +5,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Extension methods for set/reset event classes.
 /// </summary>
-[PublicAPI]
 public static class SetResetEventsExtensions
 {
     /// <summary>

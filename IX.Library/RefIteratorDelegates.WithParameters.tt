@@ -72,14 +72,12 @@ for (int i = 1; i <= 8; i++)
         if (z != i)
         {
 #>
-[PublicAPI]
 public delegate TResult RefIteratorFunc<#= i - z #><in TIteratorItem, <#= paramTypes #>, out TResult>(TIteratorItem iteratorItem, <#= paramNameTypes #>);
 <#
         }
         else
         {
 #>
-[PublicAPI]
 public delegate TResult RefIteratorFunc<in TIteratorItem, <#= paramTypes #>, out TResult>(TIteratorItem iteratorItem, <#= paramNameTypes #>);
 <#
         }
@@ -118,13 +116,11 @@ public delegate TResult RefIteratorFunc<in TIteratorItem, <#= paramTypes #>, out
         if (z != i)
         {
 #>
-[PublicAPI]
 public delegate void RefIteratorAction<#= i - z #><TIteratorItem, <#= paramTypes #>>(in TIteratorItem iteratorItem, <#= paramNameTypes #>);<#
         }
         else
         {
 #>
-[PublicAPI]
 public delegate void RefIteratorAction<TIteratorItem, <#= paramTypes #>>(in TIteratorItem iteratorItem, <#= paramNameTypes #>);<#
         }
     }

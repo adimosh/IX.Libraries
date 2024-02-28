@@ -11,7 +11,7 @@ internal class UndoableUnitBlockTransaction<T> : OperationTransaction
     {
         _ = Requires.NotNull(collectionBase);
 
-        this._collectionBase = collectionBase;
+        _collectionBase = collectionBase;
 
         AddRevertStep(
             state => { ((ObservableCollectionBase<T>)state).FailExplicitUndoBlockTransaction(); },

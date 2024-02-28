@@ -8,7 +8,6 @@ namespace IX.Library;
 /// </summary>
 /// <seealso cref="NotImplementedException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class NotImplementedByDesignException : NotImplementedException
 {

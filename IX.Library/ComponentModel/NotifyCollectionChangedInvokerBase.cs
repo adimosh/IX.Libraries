@@ -8,7 +8,6 @@ namespace IX.Library.ComponentModel;
 /// </summary>
 /// <seealso cref="NotifyPropertyChangedBase" />
 /// <seealso cref="INotifyCollectionChanged" />
-[PublicAPI]
 public class NotifyCollectionChangedInvokerBase : NotifyPropertyChangedBase,
     INotifyCollectionChanged
 {

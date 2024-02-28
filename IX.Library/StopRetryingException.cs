@@ -8,7 +8,6 @@ namespace IX.Library;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class StopRetryingException : Exception
 {

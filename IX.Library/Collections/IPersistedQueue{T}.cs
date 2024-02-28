@@ -4,7 +4,6 @@ namespace IX.Library.Collections;
 ///     A contract for a persisted queue.
 /// </summary>
 /// <typeparam name="T">The type of items in the queue.</typeparam>
-[PublicAPI]
 public interface IPersistedQueue<T> : IQueue<T>
 {
     /// <summary>

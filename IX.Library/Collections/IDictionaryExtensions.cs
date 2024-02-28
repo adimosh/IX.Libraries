@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
@@ -7,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for IDictionary.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "InconsistentNaming",

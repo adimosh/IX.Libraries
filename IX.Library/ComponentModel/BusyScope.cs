@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.ComponentModel;
@@ -7,7 +5,6 @@ namespace IX.Library.ComponentModel;
 /// <summary>
 ///     A scope of operations that can be marked as busy or idle.
 /// </summary>
-[PublicAPI]
 public class BusyScope : SynchronizationContextInvokerBase
 {
     private readonly string? _initialDescription;

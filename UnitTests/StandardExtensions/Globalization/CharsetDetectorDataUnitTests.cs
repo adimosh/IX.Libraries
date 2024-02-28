@@ -1,4 +1,3 @@
-using IX.Library.Contracts;
 using IX.Library.Globalization;
 using IX.Library.System;
 
@@ -14,7 +13,7 @@ public class CharsetDetectorDataUnitTests
 {
     private readonly ITestOutputHelper _outputHelper;
 
-    public CharsetDetectorDataUnitTests(ITestOutputHelper outputHelper) => Requires.NotNull(out this._outputHelper, outputHelper);
+    public CharsetDetectorDataUnitTests(ITestOutputHelper outputHelper) => Requires.NotNull(out _outputHelper, outputHelper);
 
     public static IEnumerable<object[]> AllTestFiles()
     {

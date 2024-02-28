@@ -10,7 +10,6 @@ namespace IX.Library.IO;
 /// </summary>
 /// <seealso cref="IFile" />
 /// <seealso cref="T:System.IO.File" />
-[PublicAPI]
 [SuppressMessage(
     "Performance",
     "HAA0603:Delegate allocation from a method group",

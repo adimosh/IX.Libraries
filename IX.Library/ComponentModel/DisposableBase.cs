@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
@@ -10,7 +8,6 @@ namespace IX.Library.ComponentModel;
 /// </summary>
 /// <seealso cref="IDisposable" />
 [DataContract(Namespace = Constants.DataContractNamespace)]
-[PublicAPI]
 [SuppressMessage(
     "IDisposableAnalyzers.Correctness",
     "IDISP025:Class with no virtual dispose method should be sealed.",

@@ -5,10 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ include file="..\..\Common\Templates\NumericTypes.tt" #><#@ include file="..\..\Common\Templates\TypeNamesFixture.tt" #>
 <#@ output extension=".cs" #>
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using IX.Library.Entities;
 

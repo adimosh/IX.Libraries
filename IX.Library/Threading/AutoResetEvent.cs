@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalThreading = System.Threading;
@@ -10,7 +8,6 @@ namespace IX.Library.Threading;
 ///     A set/reset event class that implements methods to block threads and unblock automatically.
 /// </summary>
 /// <seealso cref="ISetResetEvent" />
-[PublicAPI]
 public class AutoResetEvent : DisposableBase,
     ISetResetEvent
 {

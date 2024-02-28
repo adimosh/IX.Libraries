@@ -3,11 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 namespace IX.Library;
 
 /// <summary>
-///     A lazy initializing class that also offers he possibility to invalidate the value stored in it.
+///     A lazy initializing class that also offers the possibility to invalidate the value stored in it.
 /// </summary>
 /// <typeparam name="T">The type of item instance initialized by the invalidating lazy.</typeparam>
 /// <seealso cref="Lazy{T}" />
-[PublicAPI]
 public class InvalidatingLazy<T>
 {
 

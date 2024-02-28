@@ -7,7 +7,6 @@ namespace IX.Library.Collections;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public class MulticastDictionary<TKey, TValue> : DisposableBase
     where TKey : notnull
 {

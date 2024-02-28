@@ -7,7 +7,6 @@ namespace System.Collections.Generic
     /// <summary>
     /// Extensions for deconstructing types.
     /// </summary>
-    [PublicAPI]
     public static class DeconstructExtensions
     {
         /// <summary>

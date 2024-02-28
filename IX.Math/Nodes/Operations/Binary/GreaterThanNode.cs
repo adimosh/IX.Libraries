@@ -1,4 +1,3 @@
-using IX.Library.Contracts;
 using IX.Library.Globalization;
 
 using System.Diagnostics;

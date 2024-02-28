@@ -8,7 +8,6 @@ namespace IX.Library.Contracts;
 ///     An exception representing something wrong with a set of arguments as a whole, rather than just one.
 /// </summary>
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentsException : Exception
 {

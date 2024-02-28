@@ -5,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for IList.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "InconsistentNaming",

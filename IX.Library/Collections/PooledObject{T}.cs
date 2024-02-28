@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.Collections;
 
 /// <summary>
@@ -7,7 +5,6 @@ namespace IX.Library.Collections;
 /// </summary>
 /// <typeparam name="T">The type of class instance in the _pool.</typeparam>
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public sealed class PooledObject<T> : IDisposable
     where T : class
 {

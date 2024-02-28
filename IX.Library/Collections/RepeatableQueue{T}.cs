@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,7 +8,6 @@ namespace IX.Library.Collections;
 /// </summary>
 /// <typeparam name="T">The type of items contained in this queue.</typeparam>
 /// <seealso cref="IX.Library.Collections.IQueue{T}" />
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",

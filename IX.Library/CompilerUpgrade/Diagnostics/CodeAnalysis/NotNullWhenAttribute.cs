@@ -8,7 +8,6 @@ namespace System.Diagnostics.CodeAnalysis;
 ///     corresponding type allows it. This type is only provided to stop warnings from unsupported frameworks.
 /// </summary>
 [AttributeUsage(AttributeTargets.Parameter)]
-[PublicAPI]
 public sealed class NotNullWhenAttribute : Attribute
 {
     /// <summary>

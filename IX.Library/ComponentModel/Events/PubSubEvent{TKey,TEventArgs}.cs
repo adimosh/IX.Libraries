@@ -7,7 +7,6 @@ namespace IX.Library.ComponentModel.Events;
 /// <typeparam name="TEventArgs">The type of the event arguments.</typeparam>
 /// <seealso cref="IPubSubEvent{TEventArgs}" />
 /// <seealso cref="ReaderWriterSynchronizedBase" />
-[PublicAPI]
 public sealed class PubSubEvent<TKey, TEventArgs> : ReaderWriterSynchronizedBase, IPubSubEvent<TEventArgs>
     where TKey : notnull
     where TEventArgs : EventArgs

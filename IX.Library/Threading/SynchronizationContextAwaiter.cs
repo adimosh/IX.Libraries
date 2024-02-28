@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -9,7 +7,6 @@ namespace IX.Library.Threading;
 /// An awaiter for a synchronization context, which posts the continuation on the context.
 /// </summary>
 /// <seealso cref="INotifyCompletion" />
-[PublicAPI]
 public readonly struct SynchronizationContextAwaiter : INotifyCompletion
 {
     private readonly SynchronizationContext _context;

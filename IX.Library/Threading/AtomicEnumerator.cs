@@ -10,7 +10,6 @@ namespace IX.Library.Threading;
 ///     An atomic enumerator that can enumerate items one at a time, atomically.
 /// </summary>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public abstract class AtomicEnumerator : DisposableBase
 {
     protected private static readonly ConcurrentDictionary<Type, Delegate> ConstructionDelegates = new();

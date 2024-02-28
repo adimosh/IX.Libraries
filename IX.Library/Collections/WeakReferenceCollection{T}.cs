@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,7 +7,6 @@ namespace IX.Library.Collections;
 /// An automatically-updated collection of weak references that can be enumerated over.
 /// </summary>
 /// <typeparam name="T">The type of item to hold weak references to.</typeparam>
-[PublicAPI]
 public class WeakReferenceCollection<T> : ReaderWriterSynchronizedBase, ICollection<T>
 where T : class
 {

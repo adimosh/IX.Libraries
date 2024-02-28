@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -9,7 +7,6 @@ namespace IX.Library.Threading;
 ///     A class containing extension methods for <see cref="TaskFactory" />, mostly intended for use with
 ///     <see cref="Task.Factory" />.
 /// </summary>
-[PublicAPI]
 public static partial class TaskFactoryExtensions
 {
     /// <summary>

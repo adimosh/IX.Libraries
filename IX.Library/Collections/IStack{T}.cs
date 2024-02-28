@@ -10,7 +10,6 @@ namespace IX.Library.Collections;
 /// <seealso cref="IEnumerable{T}" />
 /// <seealso cref="ICollection" />
 /// <seealso cref="IReadOnlyCollection{T}" />
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "PossibleInterfaceMemberAmbiguity",
@@ -40,7 +39,7 @@ public interface IStack<T> : ICollection,
     void Clear();
 
     /// <summary>
-    ///     Checks whether or not a certain item is in the stack.
+    ///     Checks whether a certain item is in the stack.
     /// </summary>
     /// <param name="item">The item to check for.</param>
     /// <returns><see langword="true" /> if the item was found, <see langword="false" /> otherwise.</returns>

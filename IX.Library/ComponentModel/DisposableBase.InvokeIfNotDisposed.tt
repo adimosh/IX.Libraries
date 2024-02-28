@@ -4,8 +4,6 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-using IX.Library.Contracts;
-
 namespace IX.Library.ComponentModel;
 
 /// <summary>

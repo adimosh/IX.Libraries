@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalThreading = System.Threading;
@@ -11,7 +9,6 @@ namespace IX.Library.Threading;
 ///     <see cref="IReaderWriterLock" />.
 /// </summary>
 /// <seealso cref="IReaderWriterLock" />
-[PublicAPI]
 public class ReaderWriterLockSlim : DisposableBase,
     IReaderWriterLock
 {

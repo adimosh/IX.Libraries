@@ -4,7 +4,6 @@ namespace IX.Library.ComponentModel.Events;
 /// A service contract for an event bus for publisher-subscriber events.
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
-[PublicAPI]
 public interface IEventBus<in TKey>
     where TKey : notnull
 {

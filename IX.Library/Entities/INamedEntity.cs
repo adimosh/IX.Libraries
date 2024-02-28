@@ -3,7 +3,6 @@ namespace IX.Library.Entities;
 /// <summary>
 ///     A data contract for a named entity.
 /// </summary>
-[PublicAPI]
 public interface INamedEntity
 {
     /// <summary>

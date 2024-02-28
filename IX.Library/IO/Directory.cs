@@ -10,7 +10,6 @@ namespace IX.Library.IO;
 /// </summary>
 /// <seealso cref="IDirectory" />
 /// <seealso cref="FSDir" />
-[PublicAPI]
 public class Directory : IDirectory
 {
     /// <summary>

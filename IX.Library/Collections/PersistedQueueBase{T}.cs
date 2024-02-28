@@ -12,7 +12,6 @@ namespace IX.Library.Collections;
 /// <typeparam name="T">The type of object in the queue.</typeparam>
 /// <seealso cref="DisposableBase" />
 /// <seealso cref="IX.Library.Collections.IQueue{T}" />
-[PublicAPI]
 public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     IQueue<T>
 {
@@ -201,7 +200,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     public abstract void Clear();
 
     /// <summary>
-    ///     Verifies whether or not an item is contained in the queue.
+    ///     Verifies whether an item is contained in the queue.
     /// </summary>
     /// <param name="item">The item to verify.</param>
     /// <returns><see langword="true" /> if the item is queued, <see langword="false" /> otherwise.</returns>
@@ -310,7 +309,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <summary>
-    ///     Loads the topmost item from the folder, ensuring its deletion afterwards.
+    ///     Loads the topmost item from the folder, ensuring its deletion afterward.
     /// </summary>
     /// <returns>An item, if one exists and can be loaded, a default value otherwise.</returns>
     /// <exception cref="InvalidOperationException">There are no more valid items in the folder.</exception>

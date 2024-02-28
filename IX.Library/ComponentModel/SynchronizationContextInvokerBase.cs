@@ -6,7 +6,6 @@ namespace IX.Library.ComponentModel;
 ///     An abstract base class for a synchronization context invoker.
 /// </summary>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public abstract partial class SynchronizationContextInvokerBase : DisposableBase,
     INotifyThreadException
 {

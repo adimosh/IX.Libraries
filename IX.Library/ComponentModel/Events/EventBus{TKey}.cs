@@ -7,7 +7,6 @@ namespace IX.Library.ComponentModel.Events;
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public sealed class EventBus<TKey> : DisposableBase, IEventBus<TKey>
     where TKey : notnull
 {

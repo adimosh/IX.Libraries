@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -13,7 +11,6 @@ namespace IX.Library.Threading;
 /// <typeparam name="TItem">The type of the items to enumerate.</typeparam>
 /// <seealso cref="IEnumerator{T}" />
 /// <seealso cref="AtomicEnumerator" />
-[PublicAPI]
 public abstract class AtomicEnumerator<TItem> : AtomicEnumerator, IEnumerator<TItem>
 {
     /// <summary>

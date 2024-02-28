@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
@@ -8,7 +6,6 @@ namespace IX.Library.Collections;
 ///     A pool queue of objects that are waiting for an action to invoke for each, on a separate thread.
 /// </summary>
 /// <typeparam name="T">The type of object in the pool queue.</typeparam>
-[PublicAPI]
 public class ObjectPoolQueue<T> : INotifyThreadException
 {
     private readonly CancellationToken _cancellationToken;

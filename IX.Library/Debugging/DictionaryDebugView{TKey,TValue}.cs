@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
@@ -12,7 +10,6 @@ namespace IX.Library.Debugging;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
 [ComVisible(false)]
-[PublicAPI]
 public sealed class DictionaryDebugView<TKey, TValue>
 {
     private readonly IDictionary<TKey, TValue> _dict;

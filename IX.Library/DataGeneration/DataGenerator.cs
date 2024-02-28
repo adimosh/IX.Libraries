@@ -1,11 +1,8 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.DataGeneration;
 
 /// <summary>
 ///     A static class that is used for generating random data for testing.
 /// </summary>
-[PublicAPI]
 public static partial class DataGenerator
 {
     // Random generator

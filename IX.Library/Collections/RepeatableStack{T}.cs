@@ -1,5 +1,4 @@
 using IX.Library.Collections;
-using IX.Library.Contracts;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -12,7 +11,6 @@ namespace IX.System.Collections.Generic;
 /// </summary>
 /// <typeparam name="T">The type of items contained in this stack.</typeparam>
 /// <seealso cref="IX.Library.Collections.IStack{T}" />
-[PublicAPI]
 public class RepeatableStack<T> : IStack<T>
 {
     private readonly List<T> _internalRepeatingStack;

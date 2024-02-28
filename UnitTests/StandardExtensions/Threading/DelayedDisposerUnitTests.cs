@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using Xunit.Abstractions;
 using EnvironmentSettings = IX.Library.Threading.EnvironmentSettings;
 
@@ -16,7 +13,7 @@ public class DelayedDisposerUnitTests
     public DelayedDisposerUnitTests(ITestOutputHelper output)
     {
         Requires.NotNull(
-            out this._output,
+            out _output,
             output);
 
         EnvironmentSettings.DelayedDisposal.DefaultDisposalDelayInMilliseconds = 300;

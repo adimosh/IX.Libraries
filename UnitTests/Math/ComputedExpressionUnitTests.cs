@@ -17,7 +17,7 @@ public class ComputedExpressionUnitTests : IClassFixture<CachedExpressionProvide
     ///     Initializes a new instance of the <see cref="ComputedExpressionUnitTests" /> class.
     /// </summary>
     /// <param name="fixture">The fixture.</param>
-    public ComputedExpressionUnitTests(CachedExpressionProviderFixture fixture) => this._fixture = fixture;
+    public ComputedExpressionUnitTests(CachedExpressionProviderFixture fixture) => _fixture = fixture;
 
     /// <summary>
     ///     Provides the data for theory.

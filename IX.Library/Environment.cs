@@ -10,7 +10,6 @@ namespace IX.Library;
 ///     cannot be inherited.
 /// </summary>
 /// <seealso cref="IEnvironment" />
-[PublicAPI]
 public sealed class Environment : IEnvironment
 {
     /// <summary>

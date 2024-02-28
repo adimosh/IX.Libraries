@@ -19,7 +19,6 @@ namespace IX.Library.Collections;
 [DebuggerDisplay($"Count = {nameof(Count)}")]
 [DebuggerTypeProxy(typeof(DictionaryDebugView<,>))]
 [DefaultMember("Item")]
-[PublicAPI]
 public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.ConcurrentDictionary<TKey, TValue>
     where TKey : notnull
 {
@@ -38,26 +37,26 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
     private static object? _threadStaticUpdateFactory;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     public ConcurrentDictionary() { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="collection">
     ///     The <see cref="IEnumerable{T}" /> whose elements are copied to the new
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" />.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" />.
     /// </param>
     public ConcurrentDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection)
         : base(collection) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="collection">
     ///     The <see cref="IEnumerable{T}" /> whose elements are copied to the new
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" />.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" />.
     /// </param>
     /// <param name="comparer">The <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys.</param>
     public ConcurrentDictionary(
@@ -68,22 +67,22 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
             comparer) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="comparer">The equality comparison implementation to use when comparing keys.</param>
     public ConcurrentDictionary(IEqualityComparer<TKey> comparer)
         : base(comparer) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="concurrencyLevel">
     ///     The estimated number of threads that will update the
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> concurrently.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" /> concurrently.
     /// </param>
     /// <param name="collection">
     ///     The <see cref="IEnumerable{T}" /> whose elements are copied to the new
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" />.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" />.
     /// </param>
     /// <param name="comparer">The <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys.</param>
     public ConcurrentDictionary(
@@ -96,14 +95,14 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
             comparer) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="concurrencyLevel">
     ///     The estimated number of threads that will update the
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> concurrently.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" /> concurrently.
     /// </param>
     /// <param name="capacity">
-    ///     The initial number of elements that the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> can
+    ///     The initial number of elements that the <see cref="ConcurrentDictionary{TKey,TValue}" /> can
     ///     contain.
     /// </param>
     public ConcurrentDictionary(
@@ -114,14 +113,14 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
             capacity) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> class.
+    ///     Initializes a new instance of the <see cref="ConcurrentDictionary{TKey,TValue}" /> class.
     /// </summary>
     /// <param name="concurrencyLevel">
     ///     The estimated number of threads that will update the
-    ///     <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> concurrently.
+    ///     <see cref="ConcurrentDictionary{TKey,TValue}" /> concurrently.
     /// </param>
     /// <param name="capacity">
-    ///     The initial number of elements that the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> can
+    ///     The initial number of elements that the <see cref="ConcurrentDictionary{TKey,TValue}" /> can
     ///     contain.
     /// </param>
     /// <param name="comparer">The <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys.</param>
@@ -148,8 +147,8 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
     }
 
     /// <summary>
-    ///     Adds a key/value pair to the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> if the key does not already exist, or
-    ///     updates a key/value pair in the <see cref="IX.Library.Collections.ConcurrentDictionary{TKey,TValue}" /> by using the specified function if
+    ///     Adds a key/value pair to the <see cref="ConcurrentDictionary{TKey,TValue}" /> if the key does not already exist, or
+    ///     updates a key/value pair in the <see cref="ConcurrentDictionary{TKey,TValue}" /> by using the specified function if
     ///     the key already exists.
     /// </summary>
     /// <typeparam name="TState">The type of the state.</typeparam>

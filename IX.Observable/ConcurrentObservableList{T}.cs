@@ -2,8 +2,6 @@
 // Copyright (c) Adrian Mos with all rights reserved. Part of the IX Framework.
 // </copyright>
 
-using IX.Library.Threading;
-
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using IX.Observable.DebugAide;

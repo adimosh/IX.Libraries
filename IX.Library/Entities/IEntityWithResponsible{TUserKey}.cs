@@ -4,7 +4,6 @@ namespace IX.Library.Entities;
 ///     A data contract for an entity with an attached responsible person.
 /// </summary>
 /// <typeparam name="TUserKey">The type of the user key.</typeparam>
-[PublicAPI]
 public interface IEntityWithResponsible<TUserKey>
 {
     /// <summary>

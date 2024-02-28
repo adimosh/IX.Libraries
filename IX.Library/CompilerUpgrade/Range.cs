@@ -17,7 +17,6 @@ namespace System;
 /// int[] subArray2 = someArray[1..^0]; // { 2, 3, 4, 5 }
 /// </code>
 /// </remarks>
-[PublicAPI]
 public readonly struct Range : IEquatable<Range>
 {
     /// <summary>Represent the inclusive start index of the Range.</summary>

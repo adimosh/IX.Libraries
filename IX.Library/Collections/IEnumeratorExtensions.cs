@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,7 +6,6 @@ namespace IX.Library.Collections;
 /// <summary>
 /// Extension methods for IEnumerator.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "InconsistentNaming",

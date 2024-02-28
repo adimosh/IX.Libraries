@@ -67,7 +67,6 @@ namespace IX.Library.Contracts;<# foreach (var item in argumentExceptions) { #>
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class <#= item.Name #>Exception : ArgumentException
 {

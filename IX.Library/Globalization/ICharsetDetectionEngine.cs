@@ -5,7 +5,6 @@ namespace IX.Library.Globalization;
 /// <summary>
 /// A service contract for a character set detection engine.
 /// </summary>
-[PublicAPI]
 public interface ICharsetDetectionEngine
 {
     /// <summary>

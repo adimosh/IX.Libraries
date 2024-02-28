@@ -3,7 +3,6 @@ namespace IX.Library.Entities;
 /// <summary>
 ///     A data contract for an entity that starts ar a certain point in time and, optionally, ends at another one.
 /// </summary>
-[PublicAPI]
 public interface IEntityWithStartEnd
 {
     /// <summary>

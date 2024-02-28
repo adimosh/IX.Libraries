@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -16,7 +13,6 @@ namespace IX.Library.Collections;
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushOutQueueOf{0}")]
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",

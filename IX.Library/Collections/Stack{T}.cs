@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalCollectionsGeneric = System.Collections.Generic;
@@ -12,7 +10,6 @@ namespace IX.Library.Collections;
 /// <typeparam name="T">The type of elements in the stack.</typeparam>
 /// <seealso cref="GlobalCollectionsGeneric.Stack{T}" />
 /// <seealso cref="IX.Library.Collections.IStack{T}" />
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 
 namespace IX.Library.Collections;
@@ -7,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extension methods for bitwise operations regarding bitwise operations.
 /// </summary>
-[PublicAPI]
 public static class BitwiseExtensions
 {
     /// <summary>

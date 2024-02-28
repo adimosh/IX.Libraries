@@ -10,7 +10,6 @@ namespace IX.Library.Collections;
 /// <seealso cref="IEnumerable{T}" />
 /// <seealso cref="ICollection" />
 /// <seealso cref="IReadOnlyCollection{T}" />
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "PossibleInterfaceMemberAmbiguity",
@@ -40,7 +39,7 @@ public interface IQueue<T> : ICollection,
     void Clear();
 
     /// <summary>
-    ///     Verifies whether or not an item is contained in the queue.
+    ///     Verifies whether an item is contained in the queue.
     /// </summary>
     /// <param name="item">The item to verify.</param>
     /// <returns><see langword="true" /> if the item is queued, <see langword="false" /> otherwise.</returns>

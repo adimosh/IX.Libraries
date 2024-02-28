@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 namespace IX.Observable;
 
 public abstract partial class ObservableBase

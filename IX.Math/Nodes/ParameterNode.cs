@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Linq.Expressions;
 
 using IX.Math.Registration;
@@ -10,7 +8,6 @@ namespace IX.Math.Nodes;
 ///     A node representing a parameter.
 /// </summary>
 /// <seealso cref="NodeBase" />
-[PublicAPI]
 public class ParameterNode : NodeBase
 {
     private readonly IParameterRegistry _parametersRegistry;
@@ -27,9 +24,9 @@ public class ParameterNode : NodeBase
     {
         Name = Requires.NotNullOrWhiteSpace(parameterName);
 
-        this._parametersRegistry = Requires.NotNull(parametersRegistry);
+        _parametersRegistry = Requires.NotNull(parametersRegistry);
 
-        _ = this._parametersRegistry.AdvertiseParameter(parameterName);
+        _ = _parametersRegistry.AdvertiseParameter(parameterName);
     }
 
     /// <summary>

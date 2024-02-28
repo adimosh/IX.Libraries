@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
-    <SourceRoot Include="$(NuGetPackageRoot)" />
+    <SourceRoot Include="$(NuGetPackageRoot)\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
@@ -66,7 +66,10 @@
 
   <!-- JetBrains annotations -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
     <Using Include="JetBrains.Annotations" />
   </ItemGroup>
 

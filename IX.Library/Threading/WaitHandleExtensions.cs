@@ -3,7 +3,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Extensions for <see cref="WaitHandle" />.
 /// </summary>
-[PublicAPI]
 public static class WaitHandleExtensions
 {
     /// <summary>

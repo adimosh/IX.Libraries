@@ -8,7 +8,6 @@ namespace IX.Library.Collections;
 ///     An exception thrown when a limit argument is a negative number.
 /// </summary>
 /// <seealso cref="ArgumentException" />
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 public class LimitArgumentNegativeException : ArgumentException

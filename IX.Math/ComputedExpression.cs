@@ -1,4 +1,3 @@
-using IX.Library;
 using IX.Math.Extensibility;
 using IX.Math.Formatters;
 using IX.Math.Nodes;

@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,7 +8,6 @@ namespace IX.Library.DataGeneration;
 ///     output. This class is thread-safe, and its internal items container is immutable.
 /// </summary>
 /// <typeparam name="T">The type of items in the store.</typeparam>
-[PublicAPI]
 public class PredictableDataStore<T> : ReaderWriterSynchronizedBase,
     IReadOnlyList<T>
 {

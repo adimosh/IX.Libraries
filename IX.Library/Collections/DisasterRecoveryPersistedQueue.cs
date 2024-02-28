@@ -18,12 +18,11 @@ namespace IX.Library.Collections;
 ///     <para>This queue cannot handle system faults, such as a power outage or a general operating system failure.</para>
 ///     <para>
 ///         If you need those types of errors also handled, and you need data persistence across those as well, please
-///         use <see cref="IX.Library.Collections.PersistedQueue{T}" /> instead.
+///         use <see cref="PersistedQueue{T}" /> instead.
 ///     </para>
 /// </remarks>
 /// <seealso cref="ReaderWriterSynchronizedBase" />
-/// <seealso cref="IX.Library.Collections.IPersistedQueue{T}" />
-[PublicAPI]
+/// <seealso cref="IPersistedQueue{T}" />
 public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
     IPersistedQueue<T>
 {
@@ -39,7 +38,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
     private Queue<T>? _queue;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.DisasterRecoveryPersistedQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="DisasterRecoveryPersistedQueue{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">
     ///     The persistence folder path. The path must evaluate to an existing and accessible path.
