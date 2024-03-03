@@ -10,7 +10,7 @@ internal class MultiListListAdapter<T> : ModernListAdapter<T, IEnumerator<T>>
 {
     private readonly List<IEnumerable<T>> _lists;
 
-    internal MultiListListAdapter() => _lists = new();
+    internal MultiListListAdapter() => _lists = [];
 
     public override int Count => _lists.Sum(p => p.Count());
 

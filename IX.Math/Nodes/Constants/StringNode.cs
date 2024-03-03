@@ -8,21 +8,19 @@ namespace IX.Math.Nodes.Constants;
 ///     A string node. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="ConstantNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="StringNode" /> class.
+/// </remarks>
+/// <param name="value">The value.</param>
 [DebuggerDisplay($"{{{nameof(Value)}}}")]
-[PublicAPI]
-public sealed class StringNode : ConstantNodeBase
+public sealed class StringNode(string value) : ConstantNodeBase
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="StringNode" /> class.
-    /// </summary>
-    /// <param name="value">The value.</param>
-    public StringNode(string value) => Value = value;
 
     /// <summary>
     ///     Gets the value.
     /// </summary>
     /// <value>The value.</value>
-    public string Value { get; }
+    public string Value { get; } = value;
 
     /// <summary>
     ///     Gets the return type of this node.

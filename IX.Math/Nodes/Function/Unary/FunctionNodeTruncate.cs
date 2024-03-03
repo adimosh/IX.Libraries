@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Truncate(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeTruncate" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"trun({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "trun",
     "truncate")]
-[UsedImplicitly]
-internal sealed class FunctionNodeTruncate : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeTruncate(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeTruncate" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeTruncate(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,15 +27,9 @@ internal sealed class FunctionNodeTruncate : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Truncate(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is NumericNode numericParam
+        ? new NumericNode(GlobalSystem.Math.Truncate(numericParam.ExtractFloat()))
+        : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

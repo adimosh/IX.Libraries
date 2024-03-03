@@ -21,7 +21,6 @@ namespace IX.Observable;
     ItemName = "Entry",
     KeyName = "Key",
     ValueName = "Value")]
-[PublicAPI]
 public class ObservableDictionary<TKey, TValue> : ObservableCollectionBase<KeyValuePair<TKey, TValue>>,
     IDictionary<TKey, TValue>,
     IReadOnlyDictionary<TKey, TValue>

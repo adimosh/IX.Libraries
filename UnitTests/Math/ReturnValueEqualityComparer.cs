@@ -10,8 +10,8 @@ internal class ReturnValueEqualityComparer : IEqualityComparer<object>
     /// <returns>true if the specified objects are equal; otherwise, false.</returns>
     /// <exception cref="T:System.ArgumentException"><paramref name="x">x</paramref> and <paramref name="y">y</paramref> are of different types and neither one can handle comparisons with the other.</exception>
     public new bool Equals(
-        object x,
-        object y)
+        object? x,
+        object? y)
     {
         switch (x)
         {
@@ -29,17 +29,17 @@ internal class ReturnValueEqualityComparer : IEqualityComparer<object>
                     y);
             case byte[] bx:
             {
-                if (!(y is byte[] by))
+                if (y is not byte[] by)
                 {
                     return false;
                 }
 
-                return ArrayExtensions.SequenceEquals(bx, by);
+                return bx.SequenceEquals(by);
             }
 
             case string sx:
             {
-                if (!(y is string sy))
+                if (y is not string sy)
                 {
                     return false;
                 }

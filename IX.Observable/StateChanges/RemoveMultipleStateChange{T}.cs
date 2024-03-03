@@ -7,7 +7,6 @@ namespace IX.Observable.StateChanges;
 /// </summary>
 /// <typeparam name="T">The type of items.</typeparam>
 /// <seealso cref="StateChangeBase" />
-[PublicAPI]
 public record RemoveMultipleStateChange<T>(
     int[] Indexes,
     T[] RemovedItems) : StateChangeBase;

@@ -7,7 +7,6 @@ namespace IX.Math.Nodes;
 ///     A node base that caches its generated expression.
 /// </summary>
 /// <seealso cref="NodeBase" />
-[PublicAPI]
 public abstract class CachedExpressionNodeBase : NodeBase
 {
     private Expression? _generatedExpression;

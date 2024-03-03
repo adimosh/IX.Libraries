@@ -21,7 +21,6 @@ namespace IX.Observable;
     Namespace = Constants.DataContractNamespace,
     Name = "ConcurrentObservable{0}List",
     ItemName = "Item")]
-[PublicAPI]
 public class ConcurrentObservableList<T> : ObservableList<T>
 {
     private Lazy<ReaderWriterLockSlim> _locker;

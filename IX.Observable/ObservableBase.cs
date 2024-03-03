@@ -4,7 +4,6 @@ namespace IX.Observable;
 ///     A base class for collections that are observable.
 /// </summary>
 /// <seealso cref="NotifyCollectionChangedInvokerBase" />
-[PublicAPI]
 public abstract partial class ObservableBase : NotifyCollectionChangedInvokerBase
 {
     /// <summary>

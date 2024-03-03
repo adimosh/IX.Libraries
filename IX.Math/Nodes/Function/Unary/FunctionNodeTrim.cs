@@ -9,19 +9,14 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="string.Trim()" /> function.
 /// </summary>
 /// <seealso cref="UnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeTrim" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"trim({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("trim")]
-[UsedImplicitly]
-internal sealed class FunctionNodeTrim : UnaryFunctionNodeBase
+internal sealed class FunctionNodeTrim(NodeBase parameter) : UnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeTrim" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeTrim(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Gets the return type of this node.
@@ -37,15 +32,7 @@ internal sealed class FunctionNodeTrim : UnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is StringNode stringParam)
-        {
-            return new StringNode(stringParam.Value.Trim());
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is StringNode stringParam ? new StringNode(stringParam.Value.Trim()) : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

@@ -18,7 +18,6 @@ namespace IX.Observable;
 /// <seealso cref="INotifyPropertyChanged" />
 /// <seealso cref="INotifyCollectionChanged" />
 /// <seealso cref="IEnumerable{T}" />
-[PublicAPI]
 public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollectionBase<T>, ICollection<T>, IUndoableItem,
                                                     IEditCommittableItem
 {
@@ -108,7 +107,7 @@ public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollection
     /// <remarks>
     ///     <para>This property does nothing if the items of the observable collection are not undoable themselves.</para>
     ///     <para>
-    ///         To check whether or not the items are undoable at runtime, please use the <see cref="ItemsAreUndoable" />
+    ///         To check whether the items are undoable at runtime, please use the <see cref="ItemsAreUndoable" />
     ///         property.
     ///     </para>
     /// </remarks>

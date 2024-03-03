@@ -11,23 +11,20 @@ namespace IX.Math.Nodes.Constants;
 ///     A boolean node. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="ConstantNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="BoolNode" /> class.
+/// </remarks>
+/// <param name="value">The node's boolean value.</param>
 [DebuggerDisplay($"{{{nameof(Value)}}}")]
-[PublicAPI]
-public sealed class BoolNode : ConstantNodeBase, ISpecialRequestNode
+public sealed class BoolNode(bool value) : ConstantNodeBase, ISpecialRequestNode
 {
     private Func<Type, object>? _specialObjectRequestFunction;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="BoolNode" /> class.
-    /// </summary>
-    /// <param name="value">The node's boolean value.</param>
-    public BoolNode(bool value) => Value = value;
 
     /// <summary>
     ///     Gets a value indicating this <see cref="BoolNode" />'s value.
     /// </summary>
     /// <value>The node's value.</value>
-    public bool Value { get; private set; }
+    public bool Value { get; private init; } = value;
 
     /// <summary>
     ///     Gets the return type of this node.

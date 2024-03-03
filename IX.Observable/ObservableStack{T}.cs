@@ -20,7 +20,6 @@ namespace IX.Observable;
 /// </remarks>
 [DebuggerDisplay("ObservableStack, Count = {" + nameof(Count) + "}")]
 [DebuggerTypeProxy(typeof(StackDebugView<>))]
-[PublicAPI]
 public class ObservableStack<T> : ObservableCollectionBase<T>,
     IStack<T>
 {
@@ -232,10 +231,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     /// <param name="items">The item range to push.</param>
     public void PushRange(T[] items)
     {
-        _ = Requires.NotNull(
-            items);
-
-        foreach (T item in items)
+        foreach (T item in items ?? throw new ArgumentNullException(nameof(items)))
         {
             Push(item);
         }
@@ -252,8 +248,6 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
         int startIndex,
         int count)
     {
-        _ = Requires.NotNull(
-            items);
         Requires.ValidArrayRange(
             in startIndex,
             in count,
@@ -391,7 +385,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     ///     Has the last undone operation redone.
     /// </summary>
     /// <param name="undoRedoLevel">A level of undo, with contents.</param>
-    /// <param name="toInvokeOutsideLock">An action to invoke outside of the lock.</param>
+    /// <param name="toInvokeOutsideLock">An action to invoke outside the lock.</param>
     /// <param name="state">The state object to pass to the invocation.</param>
     /// <returns><see langword="true" /> if the redo was successful, <see langword="false" /> otherwise.</returns>
     protected override bool RedoInternally(
@@ -550,7 +544,7 @@ public class ObservableStack<T> : ObservableCollectionBase<T>,
     ///     Has the last operation undone.
     /// </summary>
     /// <param name="undoRedoLevel">A level of undo, with contents.</param>
-    /// <param name="toInvokeOutsideLock">An action to invoke outside of the lock.</param>
+    /// <param name="toInvokeOutsideLock">An action to invoke outside the lock.</param>
     /// <param name="state">The state object to pass to the invocation.</param>
     /// <returns><see langword="true" /> if the undo was successful, <see langword="false" /> otherwise.</returns>
     protected override bool UndoInternally(

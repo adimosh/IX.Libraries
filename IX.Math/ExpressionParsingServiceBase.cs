@@ -53,21 +53,20 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
             nameof(definition));
 
         // Initialized internal state
-        _constantExtractors = new();
-        _constantInterpreters = new();
-        _constantPassThroughExtractors = new();
-        _stringFormatters = new();
+        _constantExtractors = [];
+        _constantInterpreters = [];
+        _constantPassThroughExtractors = [];
+        _stringFormatters = [];
 
-        _nonaryFunctions = new();
-        _unaryFunctions = new();
-        _binaryFunctions = new();
-        _ternaryFunctions = new();
+        _nonaryFunctions = [];
+        _unaryFunctions = [];
+        _binaryFunctions = [];
+        _ternaryFunctions = [];
 
-        _assembliesToRegister = new()
-        {
-            typeof(ExpressionParsingService).GetTypeInfo()
-                .Assembly
-        };
+        _assembliesToRegister =
+        [
+            typeof(ExpressionParsingService).GetTypeInfo().Assembly
+        ];
     }
 
     /// <summary>

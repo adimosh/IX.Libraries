@@ -10,19 +10,14 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Log10(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeDecimalLogarithm" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"lg({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("lg")]
-[UsedImplicitly]
-internal sealed class FunctionNodeDecimalLogarithm : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeDecimalLogarithm(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeDecimalLogarithm" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeDecimalLogarithm(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -30,15 +25,9 @@ internal sealed class FunctionNodeDecimalLogarithm : NumericUnaryFunctionNodeBas
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Log10(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is NumericNode numericParam
+        ? new NumericNode(GlobalSystem.Math.Log10(numericParam.ExtractFloat()))
+        : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

@@ -64,15 +64,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <!-- JetBrains annotations -->
-  <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-
-    <Using Include="JetBrains.Annotations" />
-  </ItemGroup>
-
   <!-- Most common global usings -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
     <Using Include="IX.Library" />

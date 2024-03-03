@@ -10,19 +10,14 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Tanh(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicTangent" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"tanh({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("tanh")]
-[UsedImplicitly]
-internal sealed class FunctionNodeHyperbolicTangent : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeHyperbolicTangent(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicTangent" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeHyperbolicTangent(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -30,15 +25,8 @@ internal sealed class FunctionNodeHyperbolicTangent : NumericUnaryFunctionNodeBa
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode nodeParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Tanh(nodeParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() =>
+        Parameter is NumericNode nodeParam ? new NumericNode(GlobalSystem.Math.Tanh(nodeParam.ExtractFloat())) : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

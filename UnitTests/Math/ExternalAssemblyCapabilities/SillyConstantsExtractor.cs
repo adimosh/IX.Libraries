@@ -9,10 +9,9 @@ namespace UnitTests.Math.ExternalAssemblyCapabilities;
 /// A constants extractor used for testing purposes.
 /// </summary>
 /// <seealso cref="IConstantsExtractor" />
-[UsedImplicitly]
-public class SillyConstantsExtractor : IConstantsExtractor
+public partial class SillyConstantsExtractor : IConstantsExtractor
 {
-    private readonly Regex _exponentialNotationRegex = new(@"silly");
+    private readonly Regex _exponentialNotationRegex = SillyPatternRegex();
 
     /// <summary>
     /// Extracts all constants, replacing them from the original expression.
@@ -23,4 +22,6 @@ public class SillyConstantsExtractor : IConstantsExtractor
     /// <param name="mathDefinition">The math definition.</param>
     /// <returns>The expression, after replacement.</returns>
     public string ExtractAllConstants(string originalExpression, IDictionary<string, ConstantNodeBase> constantsTable, IDictionary<string, string> reverseConstantsTable, MathDefinition mathDefinition) => _exponentialNotationRegex.Replace(originalExpression, "stupid", 1);
+    [GeneratedRegex(@"silly")]
+    private static partial Regex SillyPatternRegex();
 }

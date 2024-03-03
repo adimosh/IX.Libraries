@@ -10,10 +10,9 @@ namespace UnitTests.Math.ExternalAssemblyCapabilities;
 /// </summary>
 /// <seealso cref="IConstantsExtractor" />
 [ConstantsExtractor(Level = 1)]
-[UsedImplicitly]
-public class SillyStringConstantsExtractorWithSpecificOrder : IConstantsExtractor
+public partial class SillyStringConstantsExtractorWithSpecificOrder : IConstantsExtractor
 {
-    private readonly Regex _exponentialNotationRegex = new(@"silly");
+    private readonly Regex _exponentialNotationRegex = SillyPatternRegex();
 
     /// <summary>
     /// Extracts all constants, replacing them from the original expression.
@@ -24,4 +23,6 @@ public class SillyStringConstantsExtractorWithSpecificOrder : IConstantsExtracto
     /// <param name="mathDefinition">The math definition.</param>
     /// <returns>The expression, after replacement.</returns>
     public string ExtractAllConstants(string originalExpression, IDictionary<string, ConstantNodeBase> constantsTable, IDictionary<string, string> reverseConstantsTable, MathDefinition mathDefinition) => _exponentialNotationRegex.Replace(originalExpression, "stupid", 1);
+    [GeneratedRegex(@"silly")]
+    private static partial Regex SillyPatternRegex();
 }

@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Abs(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeAbsolute" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"abs({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "abs",
     "absolute")]
-[UsedImplicitly]
-internal sealed class FunctionNodeAbsolute : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeAbsolute(NodeBase parameter) : NumericUnaryFunctionNodeBase((parameter ?? throw new ArgumentNullException(nameof(parameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeAbsolute" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeAbsolute(NodeBase parameter)
-        : base(Requires.NotNull(parameter).Simplify())
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,21 +27,15 @@ internal sealed class FunctionNodeAbsolute : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            switch (numericParam.Value)
+    public override NodeBase Simplify() =>
+        Parameter is not NumericNode numericParam
+            ? this
+            : numericParam.Value switch
             {
-                case long lv:
-                    return new NumericNode(GlobalSystem.Math.Abs(lv));
-                case double dv:
-                    return new NumericNode(GlobalSystem.Math.Abs(dv));
-            }
-        }
-
-        return this;
-    }
+                long lv => new NumericNode(GlobalSystem.Math.Abs(lv)),
+                double dv => new NumericNode(GlobalSystem.Math.Abs(dv)),
+                _ => this
+            };
 
     /// <summary>
     ///     Creates a deep clone of the source object.

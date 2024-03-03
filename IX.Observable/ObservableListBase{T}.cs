@@ -18,7 +18,6 @@ namespace IX.Observable;
 /// <seealso cref="IList" />
 /// <seealso cref="IList{T}" />
 /// <seealso cref="IReadOnlyList{T}" />
-[PublicAPI]
 public abstract class ObservableListBase<T> : ObservableCollectionBase<T>,
     IList<T>,
     IReadOnlyList<T>,
@@ -638,8 +637,7 @@ public abstract class ObservableListBase<T> : ObservableCollectionBase<T>,
     public virtual void RemoveRange(IEnumerable<T> items)
     {
         // PRECONDITIONS
-        _ = Requires.NotNull(
-            items);
+        _ = items ?? throw new ArgumentNullException(nameof(items));
 
         // Current object not disposed
         ThrowIfCurrentObjectDisposed();
@@ -736,7 +734,7 @@ public abstract class ObservableListBase<T> : ObservableCollectionBase<T>,
     {
         // PRECONDITIONS
         Requires.NonNegative(index);
-        _ = Requires.NotNull(items);
+        _ = items ?? throw new ArgumentNullException(nameof(items));
 
         // Current object not disposed
         ThrowIfCurrentObjectDisposed();

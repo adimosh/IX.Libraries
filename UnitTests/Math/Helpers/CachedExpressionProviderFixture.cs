@@ -13,7 +13,6 @@ public sealed class CachedExpressionProviderFixture : IDisposable
     /// <summary>
     ///     Initializes a new instance of the <see cref="CachedExpressionProviderFixture" /> class.
     /// </summary>
-    [UsedImplicitly]
     public CachedExpressionProviderFixture()
     {
         CachedService = new();

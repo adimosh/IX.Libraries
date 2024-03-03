@@ -13,7 +13,6 @@ namespace IX.Observable;
 /// <seealso cref="IX.Observable.ObservableMasterSlaveCollection{T}" />
 [DebuggerDisplay("Count = {" + nameof(Count) + "}")]
 [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
-[PublicAPI]
 public class FilterableObservableMasterSlaveCollection<TItem, TFilter> : ObservableMasterSlaveCollection<TItem>
 {
     private TFilter? _filter;
@@ -27,7 +26,7 @@ public class FilterableObservableMasterSlaveCollection<TItem, TFilter> : Observa
     ///     <paramref name="filteringPredicate" /> is <see langword="null" /> (
     ///     <see langword="Nothing" />) in Visual Basic.
     /// </exception>
-    public FilterableObservableMasterSlaveCollection(Func<TItem, TFilter, bool> filteringPredicate) => FilteringPredicate = Requires.NotNull(filteringPredicate);
+    public FilterableObservableMasterSlaveCollection(Func<TItem, TFilter, bool> filteringPredicate) => FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="FilterableObservableMasterSlaveCollection{TItem, TFilter}" /> class.
@@ -42,7 +41,7 @@ public class FilterableObservableMasterSlaveCollection<TItem, TFilter> : Observa
         Func<TItem, TFilter, bool> filteringPredicate,
         SynchronizationContext context)
         : base(context) =>
-        FilteringPredicate = Requires.NotNull(filteringPredicate);
+        FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
 
     /// <summary>
     ///     Gets the number of items in the collection.

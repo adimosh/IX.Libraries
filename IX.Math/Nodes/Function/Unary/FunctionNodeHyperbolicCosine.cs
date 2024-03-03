@@ -10,19 +10,14 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Cosh(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicCosine" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"cosh({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("cosh")]
-[UsedImplicitly]
-internal sealed class FunctionNodeHyperbolicCosine : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeHyperbolicCosine(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicCosine" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeHyperbolicCosine(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -30,15 +25,9 @@ internal sealed class FunctionNodeHyperbolicCosine : NumericUnaryFunctionNodeBas
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Cosh(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is NumericNode numericParam
+        ? new NumericNode(GlobalSystem.Math.Cosh(numericParam.ExtractFloat()))
+        : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

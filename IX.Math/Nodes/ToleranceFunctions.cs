@@ -5,7 +5,6 @@ namespace IX.Math.Nodes;
 /// <summary>
 ///     Contains functions related to tolerance.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "RedundantCast",

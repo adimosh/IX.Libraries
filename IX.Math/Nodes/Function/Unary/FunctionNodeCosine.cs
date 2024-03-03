@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Cos(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeCosine" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"cos({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "cos",
     "cosine")]
-[UsedImplicitly]
-internal sealed class FunctionNodeCosine : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeCosine(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeCosine" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeCosine(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,15 +27,9 @@ internal sealed class FunctionNodeCosine : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Cos(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is NumericNode numericParam
+        ? new NumericNode(GlobalSystem.Math.Cos(numericParam.ExtractFloat()))
+        : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

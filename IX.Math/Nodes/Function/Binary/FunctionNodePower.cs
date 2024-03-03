@@ -13,24 +13,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the <see cref="GlobalSystem.Math.Pow(double, double)" /> function.
 /// </summary>
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodePower" /> class.
+/// </remarks>
+/// <param name="firstParameter">The first parameter.</param>
+/// <param name="secondParameter">The second parameter.</param>
 [DebuggerDisplay($"pow({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "pow",
     "power")]
-[UsedImplicitly]
-internal sealed class FunctionNodePower : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodePower(
+    NodeBase firstParameter,
+    NodeBase secondParameter) : NumericBinaryFunctionNodeBase(
+        (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+        (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodePower" /> class.
-    /// </summary>
-    /// <param name="firstParameter">The first parameter.</param>
-    /// <param name="secondParameter">The second parameter.</param>
-    public FunctionNodePower(
-        NodeBase firstParameter,
-        NodeBase secondParameter)
-        : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify()) { }
 
     /// <summary>
     ///     Creates a deep clone of the source object.

@@ -14,24 +14,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the <see cref="GlobalSystem.Math.Max(double, double)" /> function.
 /// </summary>
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeMaximum" /> class.
+/// </remarks>
+/// <param name="firstParameter">The first parameter.</param>
+/// <param name="secondParameter">The second parameter.</param>
 [DebuggerDisplay($"max({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "max",
     "maximum")]
-[UsedImplicitly]
-internal sealed class FunctionNodeMaximum : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodeMaximum(
+    NodeBase firstParameter,
+    NodeBase secondParameter) : NumericBinaryFunctionNodeBase(
+        (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+        (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeMaximum" /> class.
-    /// </summary>
-    /// <param name="firstParameter">The first parameter.</param>
-    /// <param name="secondParameter">The second parameter.</param>
-    public FunctionNodeMaximum(
-        NodeBase firstParameter,
-        NodeBase secondParameter)
-        : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify()) { }
 
     /// <summary>
     ///     Creates a deep clone of the source object.

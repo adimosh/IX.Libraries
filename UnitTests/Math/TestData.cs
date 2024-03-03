@@ -3,7 +3,6 @@ namespace UnitTests.Math;
 /// <summary>
 ///     Test data for IX.Math tests.
 /// </summary>
-[UsedImplicitly]
 public static partial class TestData
 {
     /// <summary>

@@ -10,7 +10,7 @@ internal class MultiListPrimarySecondaryListAdapter<T> : ModernListAdapter<T, IE
     private readonly List<IEnumerable<T>> _secondaryLists;
     private IList<T>? _primaryList;
 
-    internal MultiListPrimarySecondaryListAdapter() => _secondaryLists = new();
+    internal MultiListPrimarySecondaryListAdapter() => _secondaryLists = [];
 
     public override int Count
     {

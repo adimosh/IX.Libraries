@@ -7,7 +7,6 @@ namespace IX.Observable.DebugAide;
 ///     A debug view for an observable queue.
 /// </summary>
 /// <typeparam name="T">The type of object in the queue.</typeparam>
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class QueueDebugView<T>
 {
@@ -18,7 +17,6 @@ public sealed class QueueDebugView<T>
     /// </summary>
     /// <param name="queue">The queue.</param>
     /// <exception cref="ArgumentNullException">queue is null.</exception>
-    [UsedImplicitly]
     public QueueDebugView(ObservableQueue<T> queue) => Requires.NotNull(out _queue, queue);
 
     /// <summary>
@@ -28,7 +26,6 @@ public sealed class QueueDebugView<T>
     ///     The items.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    [UsedImplicitly]
     public T[] Items
     {
         get

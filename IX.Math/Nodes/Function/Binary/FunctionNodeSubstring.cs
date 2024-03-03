@@ -13,24 +13,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the substring function.
 /// </summary>
 /// <seealso cref="BinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeSubstring" /> class.
+/// </remarks>
+/// <param name="stringParameter">The string parameter.</param>
+/// <param name="numericParameter">The numeric parameter.</param>
 [DebuggerDisplay($"substring({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "substr",
     "substring")]
-[UsedImplicitly]
-internal sealed class FunctionNodeSubstring : BinaryFunctionNodeBase
+internal sealed class FunctionNodeSubstring(
+    NodeBase stringParameter,
+    NodeBase numericParameter) : BinaryFunctionNodeBase(
+        (stringParameter ?? throw new ArgumentNullException(nameof(stringParameter))).Simplify(),
+        (numericParameter ?? throw new ArgumentNullException(nameof(numericParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeSubstring" /> class.
-    /// </summary>
-    /// <param name="stringParameter">The string parameter.</param>
-    /// <param name="numericParameter">The numeric parameter.</param>
-    public FunctionNodeSubstring(
-        NodeBase stringParameter,
-        NodeBase numericParameter)
-        : base(
-            Requires.NotNull(stringParameter).Simplify(),
-            Requires.NotNull(numericParameter).Simplify()) { }
 
     /// <summary>
     ///     Gets the return type of this node.

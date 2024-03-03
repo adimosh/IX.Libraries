@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Ceiling(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeSquareRoot" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"sqrt({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "sqrt",
     "squareroot")]
-[UsedImplicitly]
-internal sealed class FunctionNodeSquareRoot : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeSquareRoot(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeSquareRoot" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeSquareRoot(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,15 +27,8 @@ internal sealed class FunctionNodeSquareRoot : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Sqrt(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() =>
+        Parameter is NumericNode numericParam ? new NumericNode(GlobalSystem.Math.Sqrt(numericParam.ExtractFloat())) : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

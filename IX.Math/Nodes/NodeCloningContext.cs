@@ -5,7 +5,6 @@ namespace IX.Math.Nodes;
 /// <summary>
 ///     A context for cloning nodes.
 /// </summary>
-[PublicAPI]
 public class NodeCloningContext
 {
     /// <summary>

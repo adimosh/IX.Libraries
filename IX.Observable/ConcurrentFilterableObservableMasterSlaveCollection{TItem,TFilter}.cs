@@ -14,7 +14,6 @@ namespace IX.Observable;
 /// <seealso cref="IX.Observable.ObservableMasterSlaveCollection{T}" />
 [DebuggerDisplay("Count = {" + nameof(Count) + "}")]
 [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
-[PublicAPI]
 public class ConcurrentFilterableObservableMasterSlaveCollection<TItem, TFilter> :
     ConcurrentObservableMasterSlaveCollection<TItem>
 {
@@ -35,7 +34,7 @@ public class ConcurrentFilterableObservableMasterSlaveCollection<TItem, TFilter>
     /// </exception>
     public ConcurrentFilterableObservableMasterSlaveCollection(Func<TItem, TFilter, bool> filteringPredicate)
     {
-        FilteringPredicate = Requires.NotNull(filteringPredicate);
+        FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
         _cacheLocker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
     }
 
@@ -54,7 +53,7 @@ public class ConcurrentFilterableObservableMasterSlaveCollection<TItem, TFilter>
         SynchronizationContext context)
         : base(context)
     {
-        FilteringPredicate = Requires.NotNull(filteringPredicate);
+        FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
         _cacheLocker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
     }
 
@@ -73,7 +72,7 @@ public class ConcurrentFilterableObservableMasterSlaveCollection<TItem, TFilter>
         bool suppressUndoable)
         : base(suppressUndoable)
     {
-        FilteringPredicate = Requires.NotNull(filteringPredicate);
+        FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
         _cacheLocker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
     }
 
@@ -96,7 +95,7 @@ public class ConcurrentFilterableObservableMasterSlaveCollection<TItem, TFilter>
             context,
             suppressUndoable)
     {
-        FilteringPredicate = Requires.NotNull(filteringPredicate);
+        FilteringPredicate = filteringPredicate ?? throw new ArgumentNullException(nameof(filteringPredicate));
         _cacheLocker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
     }
 

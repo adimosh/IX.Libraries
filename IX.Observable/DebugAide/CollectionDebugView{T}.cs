@@ -7,7 +7,6 @@ namespace IX.Observable.DebugAide;
 ///     A debug view class for an observable collection.
 /// </summary>
 /// <typeparam name="T">The type of the collection.</typeparam>
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class CollectionDebugView<T>
 {
@@ -18,7 +17,6 @@ public sealed class CollectionDebugView<T>
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <exception cref="ArgumentNullException">collection is null.</exception>
-    [UsedImplicitly]
     public CollectionDebugView(ObservableCollectionBase<T> collection) => Requires.NotNull(out _collection, collection);
 
     /// <summary>
@@ -28,7 +26,6 @@ public sealed class CollectionDebugView<T>
     ///     The items.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    [UsedImplicitly]
     public T[] Items
     {
         get

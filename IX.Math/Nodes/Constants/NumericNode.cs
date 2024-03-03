@@ -13,7 +13,6 @@ namespace IX.Math.Nodes.Constants;
 /// </summary>
 /// <seealso cref="ConstantNodeBase" />
 [DebuggerDisplay($"{{{nameof(Value)}}}")]
-[PublicAPI]
 public sealed class NumericNode : ConstantNodeBase, ISpecialRequestNode
 {
     /// <summary>

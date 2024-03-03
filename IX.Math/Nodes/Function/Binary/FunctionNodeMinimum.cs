@@ -14,24 +14,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the <see cref="GlobalSystem.Math.Min(double, double)" /> function.
 /// </summary>
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeMinimum" /> class.
+/// </remarks>
+/// <param name="firstParameter">The first parameter.</param>
+/// <param name="secondParameter">The second parameter.</param>
 [DebuggerDisplay($"min({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "min",
     "minimum")]
-[UsedImplicitly]
-internal sealed class FunctionNodeMinimum : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodeMinimum(
+    NodeBase firstParameter,
+    NodeBase secondParameter) : NumericBinaryFunctionNodeBase(
+        (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+        (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeMinimum" /> class.
-    /// </summary>
-    /// <param name="firstParameter">The first parameter.</param>
-    /// <param name="secondParameter">The second parameter.</param>
-    public FunctionNodeMinimum(
-        NodeBase firstParameter,
-        NodeBase secondParameter)
-        : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify()) { }
 
     /// <summary>
     ///     Creates a deep clone of the source object.

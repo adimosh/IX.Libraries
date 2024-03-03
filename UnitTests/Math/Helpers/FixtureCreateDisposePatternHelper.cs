@@ -14,17 +14,15 @@ internal class FixtureCreateDisposePatternHelper : IDisposable
     /// Initializes a new instance of the <see cref="FixtureCreateDisposePatternHelper"/> class.
     /// </summary>
     /// <param name="fixture">The fixture.</param>
-    /// <param name="create">The create.</param>
+    /// <param name="create">The create method.</param>
     /// <param name="dispose">The dispose.</param>
     public FixtureCreateDisposePatternHelper(
         CachedExpressionProviderFixture fixture,
         Func<CachedExpressionProviderFixture, IExpressionParsingService> create,
         Action<IExpressionParsingService>? dispose)
     {
-        _ = Requires.NotNull(fixture, nameof(fixture));
-        _ = Requires.NotNull(create, nameof(create));
-
-        Service = create.Invoke(fixture);
+        Service = (create ?? throw new ArgumentNullException(nameof(create)))
+            .Invoke(fixture ?? throw new ArgumentNullException(nameof(fixture)));
 
         _dispose = dispose;
     }

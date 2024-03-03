@@ -12,7 +12,6 @@ namespace IX.Observable;
 /// <typeparam name="T">The type of the list item.</typeparam>
 /// <seealso cref="IDisposable" />
 /// <seealso cref="Observable.ObservableReadOnlyCollectionBase{T}" />
-[PublicAPI]
 public class ObservableReadOnlyCompositeList<T> : ObservableReadOnlyCollectionBase<T>
 {
     private readonly Lazy<ReaderWriterLockSlim> _locker;

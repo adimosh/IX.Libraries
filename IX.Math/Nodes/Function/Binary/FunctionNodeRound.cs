@@ -15,16 +15,12 @@ namespace IX.Math.Nodes.Function.Binary;
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
 [DebuggerDisplay($"round({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction("round")]
-[UsedImplicitly]
-internal sealed class FunctionNodeRound : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodeRound(
+    NodeBase floatNode,
+    NodeBase intNode) : NumericBinaryFunctionNodeBase(
+    (floatNode ?? throw new ArgumentNullException(nameof(floatNode))).Simplify(),
+    (intNode ?? throw new ArgumentNullException(nameof(intNode))).Simplify())
 {
-    public FunctionNodeRound(
-        NodeBase floatNode,
-        NodeBase intNode)
-        : base(
-            Requires.NotNull(floatNode).Simplify(),
-            Requires.NotNull(intNode).Simplify()) { }
-
     /// <summary>
     ///     Creates a deep clone of the source object.
     /// </summary>

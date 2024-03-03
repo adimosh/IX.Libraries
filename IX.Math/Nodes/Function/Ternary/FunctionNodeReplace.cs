@@ -13,27 +13,24 @@ namespace IX.Math.Nodes.Function.Ternary;
 ///     A node representing the string replace function.
 /// </summary>
 /// <seealso cref="TernaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeReplace" /> class.
+/// </remarks>
+/// <param name="stringParameter">The string parameter.</param>
+/// <param name="numericParameter">The numeric parameter.</param>
+/// <param name="secondNumericParameter">The second numeric parameter.</param>
 [DebuggerDisplay($"replace({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}}, {{{nameof(ThirdParameter)}}})")]
 [CallableMathematicsFunction(
     "repl",
     "replace")]
-[UsedImplicitly]
-internal sealed class FunctionNodeReplace : TernaryFunctionNodeBase
+internal sealed class FunctionNodeReplace(
+    NodeBase stringParameter,
+    NodeBase numericParameter,
+    NodeBase secondNumericParameter) : TernaryFunctionNodeBase(
+        (stringParameter ?? throw new ArgumentNullException(nameof(stringParameter))).Simplify(),
+        (numericParameter ?? throw new ArgumentNullException(nameof(numericParameter))).Simplify(),
+        (secondNumericParameter ?? throw new ArgumentNullException(nameof(secondNumericParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeReplace" /> class.
-    /// </summary>
-    /// <param name="stringParameter">The string parameter.</param>
-    /// <param name="numericParameter">The numeric parameter.</param>
-    /// <param name="secondNumericParameter">The second numeric parameter.</param>
-    public FunctionNodeReplace(
-        NodeBase stringParameter,
-        NodeBase numericParameter,
-        NodeBase secondNumericParameter)
-        : base(
-            Requires.NotNull(stringParameter).Simplify(),
-            Requires.NotNull(numericParameter).Simplify(),
-            Requires.NotNull(secondNumericParameter).Simplify()) { }
 
     /// <summary>
     ///     Gets the return type of this node.

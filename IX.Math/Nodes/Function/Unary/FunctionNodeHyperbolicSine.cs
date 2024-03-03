@@ -10,19 +10,14 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Sinh(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicSine" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"sinh({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("sinh")]
-[UsedImplicitly]
-internal sealed class FunctionNodeHyperbolicSine : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeHyperbolicSine(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeHyperbolicSine" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeHyperbolicSine(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -30,15 +25,8 @@ internal sealed class FunctionNodeHyperbolicSine : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Sinh(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() =>
+        Parameter is NumericNode numericParam ? new NumericNode(GlobalSystem.Math.Sinh(numericParam.ExtractFloat())) : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

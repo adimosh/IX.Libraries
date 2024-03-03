@@ -4,16 +4,12 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A base class for numeric unary functions.
 /// </summary>
 /// <seealso cref="UnaryFunctionNodeBase" />
-internal abstract class NumericUnaryFunctionNodeBase : UnaryFunctionNodeBase
+/// <remarks>
+///     Initializes a new instance of the <see cref="NumericUnaryFunctionNodeBase" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
+internal abstract class NumericUnaryFunctionNodeBase(NodeBase parameter) : UnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="NumericUnaryFunctionNodeBase" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    protected NumericUnaryFunctionNodeBase(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Gets the return type of this node.

@@ -7,7 +7,6 @@ namespace IX.Math.Nodes;
 ///     A base class for mathematics nodes.
 /// </summary>
 /// <seealso cref="IDeepCloneable{T}" />
-[PublicAPI]
 public abstract class NodeBase : IContextAwareDeepCloneable<NodeCloningContext, NodeBase>
 {
     /// <summary>
@@ -16,7 +15,7 @@ public abstract class NodeBase : IContextAwareDeepCloneable<NodeCloningContext, 
     protected private NodeBase() { }
 
     /// <summary>
-    ///     Gets a value indicating whether or not this node is actually a constant.
+    ///     Gets a value indicating whether this node is actually a constant.
     /// </summary>
     /// <value><see langword="true" /> if the node is a constant, <see langword="false" /> otherwise.</value>
     public abstract bool IsConstant { get; }

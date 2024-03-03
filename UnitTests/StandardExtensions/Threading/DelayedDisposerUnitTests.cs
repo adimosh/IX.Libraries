@@ -12,9 +12,7 @@ public class DelayedDisposerUnitTests
 
     public DelayedDisposerUnitTests(ITestOutputHelper output)
     {
-        Requires.NotNull(
-            out _output,
-            output);
+        _output = output ?? throw new ArgumentNullException(nameof(output));
 
         EnvironmentSettings.DelayedDisposal.DefaultDisposalDelayInMilliseconds = 300;
         DelayedDisposer.EnsureInitialized();
@@ -161,31 +159,23 @@ public class DelayedDisposerUnitTests
     [Fact(DisplayName = "DelayedDisposer null enumerable")]
     public void Test8() =>
         DelayedDisposer.SafelyDispose(
-            new IDisposable?[]
-            {
+            [
                 null,
                 null,
                 null
-            });
+            ]);
 
-    private sealed class DisposeTester : IDisposable
+    private sealed class DisposeTester(ITestOutputHelper output) : IDisposable
     {
-        private readonly TaskCompletionSource<bool> tcs;
-        private readonly ITestOutputHelper output;
-        private bool disposed;
-
-        public DisposeTester(ITestOutputHelper output)
-        {
-            tcs = new();
-            this.output = output;
-        }
+        private readonly TaskCompletionSource<bool> _tcs = new();
+        private bool _disposed;
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         {
             output.WriteLine("Dispose was called.");
-            disposed = true;
-            tcs.SetResult(true);
+            _disposed = true;
+            _tcs.SetResult(true);
         }
 
         /// <summary>
@@ -195,7 +185,7 @@ public class DelayedDisposerUnitTests
         {
             output.WriteLine("Check was called.");
             Assert.True(
-                disposed,
+                _disposed,
                 "The instance has not been disposed.");
         }
 
@@ -206,10 +196,10 @@ public class DelayedDisposerUnitTests
         {
             output.WriteLine("CheckNegative was called.");
             Assert.False(
-                disposed,
+                _disposed,
                 "The instance has been disposed.");
         }
 
-        public Task WaitForDisposal() => tcs.Task;
+        public Task WaitForDisposal() => _tcs.Task;
     }
 }
