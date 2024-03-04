@@ -21,7 +21,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, byte> DeepClone<TKey>(this Dictionary<TKey, byte> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, byte>();
 
@@ -43,7 +43,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, sbyte> DeepClone<TKey>(this Dictionary<TKey, sbyte> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, sbyte>();
 
@@ -65,7 +65,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, short> DeepClone<TKey>(this Dictionary<TKey, short> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, short>();
 
@@ -87,7 +87,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, ushort> DeepClone<TKey>(this Dictionary<TKey, ushort> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, ushort>();
 
@@ -109,7 +109,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, char> DeepClone<TKey>(this Dictionary<TKey, char> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, char>();
 
@@ -131,7 +131,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, int> DeepClone<TKey>(this Dictionary<TKey, int> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, int>();
 
@@ -153,7 +153,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, uint> DeepClone<TKey>(this Dictionary<TKey, uint> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, uint>();
 
@@ -175,7 +175,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, long> DeepClone<TKey>(this Dictionary<TKey, long> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, long>();
 
@@ -197,7 +197,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, ulong> DeepClone<TKey>(this Dictionary<TKey, ulong> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, ulong>();
 
@@ -219,7 +219,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, float> DeepClone<TKey>(this Dictionary<TKey, float> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, float>();
 
@@ -241,7 +241,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, double> DeepClone<TKey>(this Dictionary<TKey, double> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, double>();
 
@@ -263,7 +263,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, decimal> DeepClone<TKey>(this Dictionary<TKey, decimal> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, decimal>();
 
@@ -285,7 +285,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, DateTime> DeepClone<TKey>(this Dictionary<TKey, DateTime> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, DateTime>();
 
@@ -307,7 +307,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, bool> DeepClone<TKey>(this Dictionary<TKey, bool> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, bool>();
 
@@ -329,7 +329,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, TimeSpan> DeepClone<TKey>(this Dictionary<TKey, TimeSpan> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, TimeSpan>();
 
@@ -351,7 +351,7 @@ public static partial class IDictionaryExtensions
     public static Dictionary<TKey, string> DeepClone<TKey>(this Dictionary<TKey, string> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, string>();
 

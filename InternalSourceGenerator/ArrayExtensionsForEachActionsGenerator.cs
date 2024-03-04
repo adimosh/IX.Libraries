@@ -225,8 +225,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();
@@ -310,8 +310,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
@@ -397,8 +397,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
@@ -484,8 +484,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
@@ -571,8 +571,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (cancellationToken.IsCancellationRequested) return;");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
@@ -647,8 +647,8 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
             IncreaseIndentation();
 
             // Body
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(source);");
-            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}Requires.NotNull(action);");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (source is null) throw new ArgumentNullException(nameof(source));");
+            arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}if (action is null) throw new ArgumentNullException(nameof(action));");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}for (var i = 0; i < source.Length; i++)");
             arrayExtensionsStringBuilder.AppendLine($"{currentIndentation}{{");
             IncreaseIndentation();

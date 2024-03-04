@@ -15,9 +15,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static byte[] DeepClone(this byte[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new byte[length];
 
@@ -39,9 +37,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static sbyte[] DeepClone(this sbyte[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new sbyte[length];
 
@@ -63,9 +59,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static short[] DeepClone(this short[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new short[length];
 
@@ -87,9 +81,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static ushort[] DeepClone(this ushort[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new ushort[length];
 
@@ -111,9 +103,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static char[] DeepClone(this char[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new char[length];
 
@@ -135,9 +125,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static int[] DeepClone(this int[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new int[length];
 
@@ -159,9 +147,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static uint[] DeepClone(this uint[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new uint[length];
 
@@ -183,9 +169,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static long[] DeepClone(this long[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new long[length];
 
@@ -207,9 +191,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static ulong[] DeepClone(this ulong[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new ulong[length];
 
@@ -231,9 +213,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static float[] DeepClone(this float[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new float[length];
 
@@ -255,9 +235,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static double[] DeepClone(this double[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new double[length];
 
@@ -279,9 +257,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static decimal[] DeepClone(this decimal[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new decimal[length];
 
@@ -303,9 +279,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static DateTime[] DeepClone(this DateTime[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new DateTime[length];
 
@@ -327,9 +301,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static bool[] DeepClone(this bool[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new bool[length];
 
@@ -351,9 +323,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static TimeSpan[] DeepClone(this TimeSpan[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new TimeSpan[length];
 
@@ -375,9 +345,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static string[] DeepClone(this string[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new string[length];
 

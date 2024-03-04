@@ -26,8 +26,8 @@ public static partial class IEnumerableExtensions
         TParam1> action,
         TParam1 param1)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -52,8 +52,8 @@ public static partial class IEnumerableExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -84,8 +84,8 @@ public static partial class IEnumerableExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -116,8 +116,8 @@ public static partial class IEnumerableExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -148,8 +148,8 @@ public static partial class IEnumerableExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -181,8 +181,8 @@ public static partial class IEnumerableExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -210,8 +210,8 @@ public static partial class IEnumerableExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -245,8 +245,8 @@ public static partial class IEnumerableExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -280,8 +280,8 @@ public static partial class IEnumerableExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -315,8 +315,8 @@ public static partial class IEnumerableExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -351,8 +351,8 @@ public static partial class IEnumerableExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -383,8 +383,8 @@ public static partial class IEnumerableExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -421,8 +421,8 @@ public static partial class IEnumerableExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -459,8 +459,8 @@ public static partial class IEnumerableExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -497,8 +497,8 @@ public static partial class IEnumerableExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -536,8 +536,8 @@ public static partial class IEnumerableExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -571,8 +571,8 @@ public static partial class IEnumerableExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -612,8 +612,8 @@ public static partial class IEnumerableExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -653,8 +653,8 @@ public static partial class IEnumerableExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -694,8 +694,8 @@ public static partial class IEnumerableExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -736,8 +736,8 @@ public static partial class IEnumerableExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -774,8 +774,8 @@ public static partial class IEnumerableExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -818,8 +818,8 @@ public static partial class IEnumerableExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -862,8 +862,8 @@ public static partial class IEnumerableExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -906,8 +906,8 @@ public static partial class IEnumerableExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -951,8 +951,8 @@ public static partial class IEnumerableExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -992,8 +992,8 @@ public static partial class IEnumerableExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1039,8 +1039,8 @@ public static partial class IEnumerableExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1086,8 +1086,8 @@ public static partial class IEnumerableExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1133,8 +1133,8 @@ public static partial class IEnumerableExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1181,8 +1181,8 @@ public static partial class IEnumerableExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -1225,8 +1225,8 @@ public static partial class IEnumerableExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1275,8 +1275,8 @@ public static partial class IEnumerableExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1325,8 +1325,8 @@ public static partial class IEnumerableExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1375,8 +1375,8 @@ public static partial class IEnumerableExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1426,8 +1426,8 @@ public static partial class IEnumerableExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -1473,8 +1473,8 @@ public static partial class IEnumerableExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1526,8 +1526,8 @@ public static partial class IEnumerableExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1579,8 +1579,8 @@ public static partial class IEnumerableExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -1632,8 +1632,8 @@ public static partial class IEnumerableExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {

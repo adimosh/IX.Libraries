@@ -32,10 +32,9 @@ public static partial class LinqExtensions
         TParam1, bool> predicate,
         TParam1 param1)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1))
             {
@@ -63,12 +62,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1))
             {
@@ -98,12 +96,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1))
             {
@@ -133,12 +130,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, cancellationToken))
             {
@@ -168,12 +164,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, cancellationToken))
             {
@@ -206,10 +201,9 @@ public static partial class LinqExtensions
         TParam1, bool> predicate,
         TParam1 param1)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1))
             {
@@ -237,12 +231,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1))
             {
@@ -272,12 +265,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1))
             {
@@ -307,12 +299,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, cancellationToken))
             {
@@ -342,12 +333,11 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, cancellationToken))
             {
@@ -379,10 +369,9 @@ public static partial class LinqExtensions
         Func<TItem, TParam1, bool> action,
         TParam1 param1)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1))
             {
@@ -409,12 +398,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1))
             {
@@ -443,12 +431,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1))
             {
@@ -477,12 +464,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -511,12 +497,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -546,10 +531,9 @@ public static partial class LinqExtensions
         Func<TItem, TParam1, bool> action,
         TParam1 param1)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1))
             {
@@ -577,10 +561,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1))
             {
@@ -608,10 +591,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1))
             {
@@ -639,10 +621,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -670,10 +651,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -703,10 +683,9 @@ public static partial class LinqExtensions
         Func<TItem, TParam1, bool> action,
         TParam1 param1)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1))
             {
@@ -734,10 +713,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1))
             {
@@ -765,10 +743,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1))
             {
@@ -796,10 +773,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -827,10 +803,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, cancellationToken))
             {
@@ -868,10 +843,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2))
             {
@@ -902,12 +876,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2))
             {
@@ -940,12 +913,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2))
             {
@@ -978,12 +950,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, cancellationToken))
             {
@@ -1016,12 +987,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, cancellationToken))
             {
@@ -1057,10 +1027,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2))
             {
@@ -1091,12 +1060,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2))
             {
@@ -1129,12 +1097,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2))
             {
@@ -1167,12 +1134,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, cancellationToken))
             {
@@ -1205,12 +1171,11 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, cancellationToken))
             {
@@ -1245,10 +1210,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2))
             {
@@ -1278,12 +1242,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2))
             {
@@ -1315,12 +1278,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2))
             {
@@ -1352,12 +1314,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1389,12 +1350,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1427,10 +1387,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2))
             {
@@ -1461,10 +1420,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2))
             {
@@ -1495,10 +1453,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2))
             {
@@ -1529,10 +1486,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1563,10 +1519,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1599,10 +1554,9 @@ public static partial class LinqExtensions
         TParam1 param1,
         TParam2 param2)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2))
             {
@@ -1633,10 +1587,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2))
             {
@@ -1667,10 +1620,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2))
             {
@@ -1701,10 +1653,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1735,10 +1686,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, cancellationToken))
             {
@@ -1779,10 +1729,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3))
             {
@@ -1816,12 +1765,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3))
             {
@@ -1857,12 +1805,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3))
             {
@@ -1898,12 +1845,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, cancellationToken))
             {
@@ -1939,12 +1885,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, cancellationToken))
             {
@@ -1983,10 +1928,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3))
             {
@@ -2020,12 +1964,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3))
             {
@@ -2061,12 +2004,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3))
             {
@@ -2102,12 +2044,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, cancellationToken))
             {
@@ -2143,12 +2084,11 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, cancellationToken))
             {
@@ -2186,10 +2126,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3))
             {
@@ -2222,12 +2161,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2262,12 +2200,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2302,12 +2239,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2342,12 +2278,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2383,10 +2318,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3))
             {
@@ -2420,10 +2354,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2457,10 +2390,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2494,10 +2426,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2531,10 +2462,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2570,10 +2500,9 @@ public static partial class LinqExtensions
         TParam2 param2,
         TParam3 param3)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3))
             {
@@ -2607,10 +2536,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2644,10 +2572,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3))
             {
@@ -2681,10 +2608,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2718,10 +2644,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, cancellationToken))
             {
@@ -2765,10 +2690,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3, param4))
             {
@@ -2805,12 +2729,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4))
             {
@@ -2849,12 +2772,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4))
             {
@@ -2893,12 +2815,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -2937,12 +2858,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -2984,10 +2904,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3, param4))
             {
@@ -3024,12 +2943,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4))
             {
@@ -3068,12 +2986,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4))
             {
@@ -3112,12 +3029,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3156,12 +3072,11 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3202,10 +3117,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4))
             {
@@ -3241,12 +3155,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3284,12 +3197,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3327,12 +3239,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3370,12 +3281,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3414,10 +3324,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4))
             {
@@ -3454,10 +3363,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3494,10 +3402,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3534,10 +3441,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3574,10 +3480,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3616,10 +3521,9 @@ public static partial class LinqExtensions
         TParam3 param3,
         TParam4 param4)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3, param4))
             {
@@ -3656,10 +3560,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3696,10 +3599,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4))
             {
@@ -3736,10 +3638,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3776,10 +3677,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, cancellationToken))
             {
@@ -3826,10 +3726,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3, param4, param5))
             {
@@ -3869,12 +3768,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5))
             {
@@ -3916,12 +3814,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5))
             {
@@ -3963,12 +3860,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4010,12 +3906,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4060,10 +3955,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3, param4, param5))
             {
@@ -4103,12 +3997,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5))
             {
@@ -4150,12 +4043,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5))
             {
@@ -4197,12 +4089,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4244,12 +4135,11 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4293,10 +4183,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4335,12 +4224,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4381,12 +4269,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4427,12 +4314,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4473,12 +4359,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4520,10 +4405,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4563,10 +4447,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4606,10 +4489,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4649,10 +4531,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4692,10 +4573,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4737,10 +4617,9 @@ public static partial class LinqExtensions
         TParam4 param4,
         TParam5 param5)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4780,10 +4659,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4823,10 +4701,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5))
             {
@@ -4866,10 +4743,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4909,10 +4785,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, cancellationToken))
             {
@@ -4962,10 +4837,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5008,12 +4882,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5058,12 +4931,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5108,12 +4980,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5158,12 +5029,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5211,10 +5081,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5257,12 +5126,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5307,12 +5175,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5357,12 +5224,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5407,12 +5273,11 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5459,10 +5324,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5504,12 +5368,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5553,12 +5416,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5602,12 +5464,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5651,12 +5512,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5701,10 +5561,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5747,10 +5606,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5793,10 +5651,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5839,10 +5696,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5885,10 +5741,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -5933,10 +5788,9 @@ public static partial class LinqExtensions
         TParam5 param5,
         TParam6 param6)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -5979,10 +5833,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -6025,10 +5878,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6))
             {
@@ -6071,10 +5923,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -6117,10 +5968,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, cancellationToken))
             {
@@ -6173,10 +6023,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6222,12 +6071,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6275,12 +6123,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6328,12 +6175,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6381,12 +6227,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6437,10 +6282,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6486,12 +6330,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6539,12 +6382,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6592,12 +6434,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6645,12 +6486,11 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6700,10 +6540,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6748,12 +6587,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6800,12 +6638,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -6852,12 +6689,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6904,12 +6740,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -6957,10 +6792,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7006,10 +6840,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7055,10 +6888,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7104,10 +6936,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -7153,10 +6984,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -7204,10 +7034,9 @@ public static partial class LinqExtensions
         TParam6 param6,
         TParam7 param7)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7253,10 +7082,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7302,10 +7130,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7))
             {
@@ -7351,10 +7178,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -7400,10 +7226,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, cancellationToken))
             {
@@ -7459,10 +7284,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7511,12 +7335,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7567,12 +7390,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7623,12 +7445,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -7679,12 +7500,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -7738,10 +7558,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7790,12 +7609,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7846,12 +7664,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -7902,12 +7719,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -7958,12 +7774,11 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
         Requires.NotNull(predicate);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8016,10 +7831,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8067,12 +7881,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8122,12 +7935,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8177,12 +7989,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8232,12 +8043,11 @@ public static partial class LinqExtensions
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8288,10 +8098,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8340,10 +8149,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8392,10 +8200,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8444,10 +8251,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8496,10 +8302,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8550,10 +8355,9 @@ public static partial class LinqExtensions
         TParam7 param7,
         TParam8 param8)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8602,10 +8406,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8654,10 +8457,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8))
             {
@@ -8706,10 +8508,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {
@@ -8758,10 +8559,9 @@ public static partial class LinqExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
         var localAction = Requires.NotNull(action);
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
             if (await localAction(item, param1, param2, param3, param4, param5, param6, param7, param8, cancellationToken))
             {

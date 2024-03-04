@@ -26,9 +26,7 @@ public class ObjectPool<T>
     /// </exception>
     public ObjectPool(Func<T> objectFactory)
     {
-        Requires.NotNull(
-            out _objectFactory,
-            objectFactory);
+        _objectFactory = objectFactory ?? throw new ArgumentNullException(nameof(objectFactory));
 
         _locker = new();
         _availableObjects = new();
@@ -49,11 +47,9 @@ public class ObjectPool<T>
     /// </exception>
     public ObjectPool(Func<T> objectFactory, int initialNumberOfObjects)
     {
+        _objectFactory = objectFactory ?? throw new ArgumentNullException(nameof(objectFactory));
         Requires.Positive(
             in initialNumberOfObjects);
-        Requires.NotNull(
-            out _objectFactory,
-            objectFactory);
 
         _locker = new();
         _availableObjects = new();

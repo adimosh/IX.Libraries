@@ -106,17 +106,17 @@ public static partial class IEnumerableExtensions
     ///         specified.
     ///     </para>
     ///     <para>
-    ///         It will first check whether or not the type is <see cref="IEquatable{T}" />. If it is, it will use its
+    ///         It will first check whether the type is <see cref="IEquatable{T}" />. If it is, it will use its
     ///         <see cref="IEquatable{T}.Equals(T)" /> method
     ///         to determine equality.
     ///     </para>
     ///     <para>
-    ///         It will then check whether or not the type is <see cref="IComparable{T}" />. If it is, it will use its
+    ///         It will then check whether the type is <see cref="IComparable{T}" />. If it is, it will use its
     ///         <see cref="IComparable{T}.CompareTo(T)" /> method
     ///         to determine equality.
     ///     </para>
     ///     <para>
-    ///         It will then check whether or not the type is <see cref="IComparable" />. If it is, it will use its
+    ///         It will then check whether the type is <see cref="IComparable" />. If it is, it will use its
     ///         <see cref="IComparable.CompareTo(object)" /> method
     ///         to determine equality.
     ///     </para>
@@ -139,8 +139,8 @@ public static partial class IEnumerableExtensions
         Func<T, T, bool>? comparer,
         Func<T, bool>? determineEmpty)
     {
-        left ??= Array.Empty<T>();
-        right ??= Array.Empty<T>();
+        left ??= [];
+        right ??= [];
 
         // TODO: #68 - Eliminate boxing from IEnumerable implementations
         using IEnumerator<T> leftEnumerator = left.GetEnumerator();

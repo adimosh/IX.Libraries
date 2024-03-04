@@ -87,9 +87,7 @@ public class ReaderWriterLockSlim : DisposableBase,
     /// <param name="lock">The locker.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator GlobalThreading.ReaderWriterLockSlim(ReaderWriterLockSlim @lock) =>
-        Requires.NotNull(
-                @lock,
-                nameof(@lock))
+        (@lock ?? throw new ArgumentNullException(nameof(@lock)))
             ._locker;
 
     /// <summary>
@@ -251,7 +249,9 @@ public class ReaderWriterLockSlim : DisposableBase,
 
         if (_lockerLocal)
         {
+            #pragma warning disable IDISP007 // _lockerLocal ensures that this is the local and not the injected one
             _locker.Dispose();
+            #pragma warning restore IDISP007
         }
     }
 }

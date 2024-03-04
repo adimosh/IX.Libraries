@@ -26,10 +26,7 @@ public static partial class IListCloneExtensions
     public static List<T> CopyWithShallowClones<T>(this List<T> list)
         where T : IShallowCloneable<T>
     {
-        if (list == null)
-        {
-            throw new ArgumentNullException(nameof(list));
-        }
+        if (list is null) throw new ArgumentNullException(nameof(list));
 
         return list.Select(item => item.ShallowClone()).ToList();
     }

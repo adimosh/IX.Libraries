@@ -30,8 +30,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<int, T> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         var i = 0;
         foreach (T item in source)
@@ -56,8 +56,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable source,
         Action<int, object> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         var i = 0;
         foreach (var item in source)
@@ -83,8 +83,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<T> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (T item in source)
         {
@@ -105,8 +105,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable source,
         Action<object> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (var item in source)
         {
@@ -132,8 +132,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<int, T> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         _ = Parallel.ForEach(
             EnumerateWithIndex(
@@ -173,8 +173,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<T> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         _ = Parallel.ForEach(
             source,

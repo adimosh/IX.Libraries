@@ -65,8 +65,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramTypes #>> action,
         <#= paramNameTypes #>)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {
@@ -105,8 +105,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -151,8 +151,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -197,8 +197,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -243,8 +243,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {

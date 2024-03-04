@@ -26,8 +26,8 @@ public static class IEnumeratorExtensions
     [SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Unavoidable.")]
     public static void ForEach<T>(this IEnumerator<T> source, Action<T> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         while (source.MoveNext())
         {
@@ -43,8 +43,8 @@ public static class IEnumeratorExtensions
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="source" /> or <paramref name="action" /> is <see langword="null"/> (<see langword="Nothing"/> in Visual Basic).</exception>
     public static void ForEach(this IEnumerator source, Action<object> action)
     {
-        _ = Requires.NotNull(source);
-        _ = Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         while (source.MoveNext())
         {

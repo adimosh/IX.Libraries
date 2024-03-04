@@ -23,7 +23,7 @@ public static class BitwiseExtensions
         this BitArray data,
         int howManyBits)
     {
-        BitArray localData = Requires.NotNull(data);
+        BitArray localData = data ?? throw new ArgumentNullException(nameof(data));
 
         BitArray? result = Shift(
             localData,
@@ -65,7 +65,7 @@ public static class BitwiseExtensions
         this byte[] data,
         int howManyBits)
     {
-        var ba = new BitArray(Requires.NotNull(data));
+        var ba = new BitArray(data ?? throw new ArgumentNullException(nameof(data)));
 
         ba = LeftShift(
             ba,
@@ -95,7 +95,7 @@ public static class BitwiseExtensions
         this BitArray data,
         int howManyBits)
     {
-        BitArray localData = Requires.NotNull(data);
+        BitArray localData = data ?? throw new ArgumentNullException(nameof(data));
 
         BitArray? result = Shift(
             localData,
@@ -137,7 +137,7 @@ public static class BitwiseExtensions
         this byte[] data,
         int howManyBits)
     {
-        var ba = new BitArray(Requires.NotNull(data));
+        var ba = new BitArray(data ?? throw new ArgumentNullException(nameof(data)));
 
         ba = RightShift(
             ba,

@@ -41,7 +41,7 @@ public abstract class EditableItemBase : ViewModelBase,
             nameof(limit));
 
         _undoContext = new(InnerContextFactory);
-        _stateChanges = new();
+        _stateChanges = [];
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public abstract class EditableItemBase : ViewModelBase,
     public event EventHandler<EditCommittedEventArgs>? EditCommitted;
 
     /// <summary>
-    ///     Gets a value indicating whether or not a redo can be performed on this item.
+    ///     Gets a value indicating whether a redo can be performed on this item.
     /// </summary>
     /// <value>
     ///     <see langword="true" /> if the call to the <see cref="Redo" /> method would result in a state change,
@@ -60,7 +60,7 @@ public abstract class EditableItemBase : ViewModelBase,
         IsCapturedIntoUndoContext || (_undoContext.IsValueCreated && _undoContext.Value.RedoStackHasData);
 
     /// <summary>
-    ///     Gets a value indicating whether or not an undo can be performed on this item.
+    ///     Gets a value indicating whether an undo can be performed on this item.
     /// </summary>
     /// <value>
     ///     <see langword="true" /> if the call to the <see cref="Undo" /> method would result in a state change,
@@ -219,11 +219,7 @@ public abstract class EditableItemBase : ViewModelBase,
     /// <remarks>This method is meant to be used by containers, and should not be called directly.</remarks>
     public void CaptureIntoUndoContext(IUndoableItem parent)
     {
-        _ = Requires.NotNull(
-            parent,
-            nameof(parent));
-
-        if (parent == ParentUndoContext)
+        if ((parent ?? throw new ArgumentNullException(nameof(parent))) == ParentUndoContext)
         {
             return;
         }
@@ -271,7 +267,7 @@ public abstract class EditableItemBase : ViewModelBase,
 
         // We are not captured, let's proceed with Undo.
 
-        // Let's check whether or not we have an undo inner context first
+        // Let's check whether we have an undo inner context first
         if (!_undoContext.IsValueCreated)
         {
             // Undo inner context not created, there's nothing to undo
@@ -308,16 +304,12 @@ public abstract class EditableItemBase : ViewModelBase,
     /// </exception>
     public void RedoStateChanges(StateChangeBase changesToRedo)
     {
-        _ = Requires.NotNull(
-            changesToRedo,
-            nameof(changesToRedo));
-
         if (!IsCapturedIntoUndoContext)
         {
             throw new ItemNotCapturedIntoUndoContextException();
         }
 
-        DoChanges(changesToRedo);
+        DoChanges(changesToRedo ?? throw new ArgumentNullException(nameof(changesToRedo)));
     }
 
     /// <summary>
@@ -370,7 +362,7 @@ public abstract class EditableItemBase : ViewModelBase,
 
         // We are not captured, let's proceed with Undo.
 
-        // Let's check whether or not we have an undo inner context first
+        // Let's check whether we have an undo inner context first
         if (!_undoContext.IsValueCreated)
         {
             // Undo inner context not created, there's nothing to undo
@@ -407,16 +399,12 @@ public abstract class EditableItemBase : ViewModelBase,
     /// </exception>
     public void UndoStateChanges(StateChangeBase changesToUndo)
     {
-        _ = Requires.NotNull(
-            changesToUndo,
-            nameof(changesToUndo));
-
         if (!IsCapturedIntoUndoContext)
         {
             throw new ItemNotCapturedIntoUndoContextException();
         }
 
-        RevertChanges(changesToUndo);
+        RevertChanges(changesToUndo ?? throw new ArgumentNullException(nameof(changesToUndo)));
     }
 
     /// <summary>
@@ -496,10 +484,9 @@ public abstract class EditableItemBase : ViewModelBase,
         else
         {
             CommitEditInternal(
-                new[]
-                {
-                    stateChange
-                });
+            [
+                stateChange
+            ]);
         }
     }
 
@@ -567,7 +554,7 @@ public abstract class EditableItemBase : ViewModelBase,
 
         StateChangeBase stateChangeBase = changesToCommit.Length == 1
             ? changesToCommit[0]
-            : new CompositeStateChange(changesToCommit.ToList());
+            : new CompositeStateChange([.. changesToCommit]);
 
         if (ParentUndoContext == null && _historyLevels > 0)
         {

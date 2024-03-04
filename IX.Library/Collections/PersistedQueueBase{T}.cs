@@ -89,7 +89,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         _ = directoryShim.RequiresExists(persistenceFolderPath);
 
         // Internal state
-        _poisonedNonRemovableFiles = new();
+        _poisonedNonRemovableFiles = [];
 
         // Persistence folder paths
         var dataFolderPath = pathShim.Combine(

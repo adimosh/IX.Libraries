@@ -11,7 +11,7 @@ namespace IX.Library.Contracts;
 /// </summary>
 public static partial class Requires
 {
-#region Not null
+    #region Not null
 
     /// <summary>
     ///     Called when a contract requires that a collection argument is not null or empty.
@@ -135,9 +135,9 @@ public static partial class Requires
         field = argument!;
     }
 
-#endregion
+    #endregion
 
-#region Fixed length
+    #region Fixed length
 
     /// <summary>Called when a contract requires that an array is of a specific length.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -297,9 +297,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Length at least
+    #region Length at least
 
     /// <summary>Called when a contract requires that an array's length is at least a specific value.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -459,9 +459,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Length at most
+    #region Length at most
 
     /// <summary>Called when a contract requires that an array's length is at most a specific value.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -621,9 +621,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Positive
+    #region Positive
 
     /// <summary>
     ///     Called when a contract requires that a <see cref="TimeSpan"/> argument is positive.
@@ -681,9 +681,9 @@ public static partial class Requires
 
         field = argument;
     }
-#endregion
+    #endregion
 
-#region Non-negative
+    #region Non-negative
 
     /// <summary>
     ///     Called when a contract requires that a <see cref="TimeSpan" /> argument is not negative.
@@ -741,9 +741,9 @@ public static partial class Requires
 
         field = argument;
     }
-#endregion
+    #endregion
 
-#region Generic index
+    #region Generic index
 
     /// <summary>
     /// Called when a contract requires that a specific index is valid for any kind of collection.
@@ -821,9 +821,9 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 
-#region Generic range
+    #region Generic range
 
     /// <summary>Called when a contract requires that a specific index and length, constituting a range, is valid.</summary>
     /// <param name="indexArgument">The numeric index argument to validate.</param>
@@ -963,9 +963,9 @@ public static partial class Requires
         fieldLength = lengthArgument;
     }
 
-#endregion
+    #endregion
 
-#region Generic non-negative numeric range
+    #region Generic non-negative numeric range
 
     /// <summary>Called when a contract requires that a specific numeric range is valid and non-negative.</summary>
     /// <param name="minimumArgument">The numeric minimum argument to validate.</param>
@@ -1332,9 +1332,9 @@ public static partial class Requires
         fieldMaximum = maximumArgument;
     }
 
-#endregion
+    #endregion
 
-#region Generic numeric range
+    #region Generic numeric range
 
     /// <summary>Called when a contract requires that a specific numeric range is valid.</summary>
     /// <param name="minimumArgument">The numeric minimum argument to validate.</param>
@@ -1621,9 +1621,9 @@ public static partial class Requires
         fieldMaximum = maximumArgument;
     }
 
-#endregion
+    #endregion
 
-#region Array index and range
+    #region Array index and range
 
     /// <summary>Called when a contract requires that a specific index is valid for an array.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -2063,9 +2063,9 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 
-#region True and false
+    #region True and false
 
     /// <summary>
     ///     Called when a contract requires that a condition is true.
@@ -2188,9 +2188,9 @@ public static partial class Requires
 
         field = condition;
     }
-#endregion
+    #endregion
 
-#region Argument of type
+    #region Argument of type
 
     /// <summary>
     ///     Called when a contract requires that an argument is of a specific type.
@@ -2254,9 +2254,9 @@ public static partial class Requires
 
         field = convertedValue;
     }
-#endregion
+    #endregion
 
-#region Not disposed
+    #region Not disposed
 
     /// <summary>
     ///     Called when a contract requires that an argument is not disposed.
@@ -2266,10 +2266,7 @@ public static partial class Requires
     /// </param>
     /// <exception cref="ObjectDisposedException">If the reference object is disposed, this exception will be thrown.</exception>
     public static void NotDisposed(DisposableBase reference) =>
-        NotNull(
-                reference,
-                nameof(reference))
-            .ThrowIfCurrentObjectDisposed();
+        reference?.ThrowIfCurrentObjectDisposed();
 
     /// <summary>
     ///     Called when a contract requires that an argument is not disposed.
@@ -2280,14 +2277,11 @@ public static partial class Requires
     /// <exception cref="ObjectDisposedException">If the reference object is disposed, this exception will be thrown.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void RequiresNotDisposed(this DisposableBase reference) =>
-        NotNull(
-                reference,
-                nameof(reference))
-            .ThrowIfCurrentObjectDisposed();
+        reference?.ThrowIfCurrentObjectDisposed();
 
-#endregion
+    #endregion
 
-#region Found by ID
+    #region Found by ID
 
     /// <summary>
     ///     Called when a contract requires that an item is found by its identifier.
@@ -2323,29 +2317,24 @@ public static partial class Requires
         string idName = "id")
         where TItem : IKeyedEntity<TKey>
     {
-        if (source == null)
-        {
-            throw new ArgumentNullException(sourceName);
-        }
-
         if (id == null)
         {
             throw new ArgumentNullException(idName);
         }
 
-        var item = source.FirstOrDefault(p => EqualityComparer<TKey>.Default.Equals(p.Id, id));
+        var item = (source ?? throw new ArgumentNullException(sourceName)).FirstOrDefault(
+            p => EqualityComparer<TKey>.Default.Equals(
+                p.Id,
+                id));
 
-        if (item is null || EqualityComparer<TItem>.Default.Equals(item, default!))
-        {
-            throw new IdCorrespondsToNoItemException(idName);
-        }
-
-        return item;
+        return item is null || EqualityComparer<TItem>.Default.Equals(item, default!)
+            ? throw new IdCorrespondsToNoItemException(idName)
+            : item;
     }
 
-#endregion
+    #endregion
 
-#region Valid entity ID
+    #region Valid entity ID
 
     /// <summary>
     ///     Called when a contract requires that a value is a valid identifier for an entity.
@@ -2461,5 +2450,5 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 }

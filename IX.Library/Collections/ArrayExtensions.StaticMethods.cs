@@ -281,7 +281,7 @@ public static partial class ArrayExtensions
     /// <typeparam name="TInput">The type of the input array items.</typeparam>
     /// <typeparam name="TOutput">The type of the output array items.</typeparam>
     /// <param name="array">The array to convert.</param>
-    /// <param name="converter">The individual items converter.</param>
+    /// <param name="converter">The individual items' converter.</param>
     /// <returns>The converted array.</returns>
     public static TOutput[] ConvertAll<TInput, TOutput>(
         this TInput[] array,

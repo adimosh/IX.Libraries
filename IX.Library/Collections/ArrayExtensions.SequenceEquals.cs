@@ -31,7 +31,7 @@ public static partial class ArrayExtensions
         T[]? right,
         IEqualityComparer<T> comparer)
     {
-        IEqualityComparer<T> localComparer = Requires.NotNull(comparer);
+        IEqualityComparer<T> localComparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
 
         if (left == null)
         {
@@ -85,7 +85,7 @@ public static partial class ArrayExtensions
         T[]? right,
         InFunc<T, T, bool> comparer)
     {
-        InFunc<T, T, bool> localComparer = Requires.NotNull(comparer);
+        InFunc<T, T, bool> localComparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
 
         if (left == null)
         {

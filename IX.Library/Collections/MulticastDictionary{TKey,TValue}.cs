@@ -30,10 +30,7 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
         TValue value) =>
         _ = _innerDictionary.AddOrUpdate(
             key,
-            _ => new()
-            {
-                value
-            },
+            _ => [value],
             (
                 _,
                 v) =>
@@ -86,13 +83,12 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
     /// </summary>
     /// <param name="key">The key.</param>
     /// <param name="action">The action to attempt.</param>
-    /// <returns>Whether or not any action, if one was found, was successful.</returns>
+    /// <returns>Whether any action, if one was found, was successful.</returns>
     public bool TryAct(
         TKey key,
         Func<KeyValuePair<TKey, TValue>, bool> action)
     {
-        _ = Requires.NotNull(
-            action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -121,13 +117,12 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
     /// </summary>
     /// <param name="key">The key.</param>
     /// <param name="action">The action to attempt.</param>
-    /// <returns>Whether or not any action, if one was found, was successful.</returns>
+    /// <returns>Whether any action, if one was found, was successful.</returns>
     public bool TryAct(
         TKey key,
         Func<TKey, TValue, bool> action)
     {
-        _ = Requires.NotNull(
-            action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -155,13 +150,12 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
     /// </summary>
     /// <param name="key">The key.</param>
     /// <param name="action">The action to attempt.</param>
-    /// <returns>Whether or not any action, if one was found, was successful.</returns>
+    /// <returns>Whether any action, if one was found, was successful.</returns>
     public async Task<bool> TryActAsync(
         TKey key,
         Func<KeyValuePair<TKey, TValue>, Task<bool>> action)
     {
-        _ = Requires.NotNull(
-            action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -191,13 +185,12 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
     /// </summary>
     /// <param name="key">The key.</param>
     /// <param name="action">The action to attempt.</param>
-    /// <returns>Whether or not any action, if one was found, was successful.</returns>
+    /// <returns>Whether any action, if one was found, was successful.</returns>
     public async Task<bool> TryActAsync(
         TKey key,
         Func<TKey, TValue, Task<bool>> action)
     {
-        _ = Requires.NotNull(
-            action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (!_innerDictionary.TryGetValue(
                 key,

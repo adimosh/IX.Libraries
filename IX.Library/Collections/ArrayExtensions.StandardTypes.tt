@@ -29,9 +29,7 @@ foreach (var typ in types.Where(p => p != typeof(byte[])))
     /// </exception>
     public static <#= fullTypeName #>[] DeepClone(this <#= fullTypeName #>[] source)
     {
-        Requires.NotNull(source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new <#= fullTypeName #>[length];
 
