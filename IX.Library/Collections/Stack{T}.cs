@@ -50,11 +50,7 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
     /// <param name="source">The source.</param>
     /// <returns>An IX Framework abstracted stack.</returns>
     public static Stack<T> FromStack(GlobalCollectionsGeneric.Stack<T> source) =>
-        new(
-            Requires.NotNull(
-                    source,
-                    nameof(source))
-                .ToArray());
+        new((source ?? throw new ArgumentNullException(nameof(source))).ToArray());
 
     /// <summary>
     ///     Pushes a range of elements to the top of the stack.
@@ -66,9 +62,7 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
     /// </exception>
     public void PushRange(T[] items)
     {
-        foreach (T? item in Requires.NotNull(
-                     items,
-                     nameof(items)))
+        foreach (T? item in items ?? throw new ArgumentNullException(nameof(items)))
         {
             Push(item);
         }
@@ -95,26 +89,16 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
         int startIndex,
         int count)
     {
-        _ = Requires.NotNull(
-            items,
-            nameof(items));
+        if (items is null) throw new ArgumentNullException(nameof(items));
         Requires.ValidArrayRange(
             in startIndex,
             in count,
             items,
             nameof(items));
 
-        var innerArray = new T[count];
-        Array.Copy(
-            items,
-            startIndex,
-            innerArray,
-            0,
-            count);
-
-        foreach (T item in items)
+        for (var i = startIndex; i < items.Length; i++)
         {
-            Push(item);
+            Push(items[i]);
         }
     }
 

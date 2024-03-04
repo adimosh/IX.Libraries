@@ -52,11 +52,7 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
     /// <param name="source">The source.</param>
     /// <returns>An IX Framework abstracted queue.</returns>
     public static Queue<T> FromQueue(GlobalCollectionsGeneric.Queue<T> source) =>
-        new(
-            Requires.NotNull(
-                    source,
-                    nameof(source))
-                .ToArray());
+        new((source ?? throw new ArgumentNullException(nameof(source))).ToArray());
 
     /// <summary>
     ///     Queues a range of elements, adding them to the queue.
@@ -68,9 +64,7 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
     /// </exception>
     public void EnqueueRange(T[] items)
     {
-        foreach (T item in Requires.NotNull(
-                     items,
-                     nameof(items)))
+        foreach (T item in items ?? throw new ArgumentNullException(nameof(items)))
         {
             Enqueue(item);
         }
@@ -97,23 +91,16 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
         int startIndex,
         int count)
     {
+        if (items is null) throw new ArgumentNullException(nameof(items));
         Requires.ValidArrayRange(
             in startIndex,
             in count,
             items,
-            nameof(startIndex));
+            nameof(items));
 
-        var innerArray = new T[count];
-        Array.Copy(
-            items,
-            startIndex,
-            innerArray,
-            0,
-            count);
-
-        foreach (T item in items)
+        for (var i = startIndex; i < items.Length; i++)
         {
-            Enqueue(item);
+            Enqueue(items[i]);
         }
     }
 
