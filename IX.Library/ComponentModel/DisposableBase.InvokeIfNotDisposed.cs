@@ -20,12 +20,11 @@ public abstract partial class DisposableBase
         Action<TParam1> action,
         TParam1 param1)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1);
     }
 
     /// <summary>
@@ -44,12 +43,11 @@ public abstract partial class DisposableBase
         Func<TParam1, TReturn> func,
         TParam1 param1)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1);
     }
 
     /// <summary>
@@ -69,13 +67,12 @@ public abstract partial class DisposableBase
         TParam1 param1,
         TParam2 param2)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2);
     }
 
     /// <summary>
@@ -97,13 +94,12 @@ public abstract partial class DisposableBase
         TParam1 param1,
         TParam2 param2)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2);
     }
 
     /// <summary>
@@ -126,14 +122,13 @@ public abstract partial class DisposableBase
         TParam2 param2,
         TParam3 param3)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3);
     }
 
     /// <summary>
@@ -158,14 +153,13 @@ public abstract partial class DisposableBase
         TParam2 param2,
         TParam3 param3)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3);
     }
 
     /// <summary>
@@ -191,15 +185,14 @@ public abstract partial class DisposableBase
         TParam3 param3,
         TParam4 param4)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3,
-            param4);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4);
     }
 
     /// <summary>
@@ -227,15 +220,14 @@ public abstract partial class DisposableBase
         TParam3 param3,
         TParam4 param4)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3,
-            param4);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4);
     }
 
     /// <summary>
@@ -264,16 +256,15 @@ public abstract partial class DisposableBase
         TParam4 param4,
         TParam5 param5)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5);
     }
 
     /// <summary>
@@ -304,16 +295,15 @@ public abstract partial class DisposableBase
         TParam4 param4,
         TParam5 param5)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5);
     }
 
     /// <summary>
@@ -345,17 +335,16 @@ public abstract partial class DisposableBase
         TParam5 param5,
         TParam6 param6)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6);
     }
 
     /// <summary>
@@ -389,17 +378,16 @@ public abstract partial class DisposableBase
         TParam5 param5,
         TParam6 param6)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6);
     }
 
     /// <summary>
@@ -434,18 +422,17 @@ public abstract partial class DisposableBase
         TParam6 param6,
         TParam7 param7)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6,
-            param7);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6,
+                param7);
     }
 
     /// <summary>
@@ -482,18 +469,17 @@ public abstract partial class DisposableBase
         TParam6 param6,
         TParam7 param7)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6,
-            param7);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6,
+                param7);
     }
 
     /// <summary>
@@ -531,19 +517,18 @@ public abstract partial class DisposableBase
         TParam7 param7,
         TParam8 param8)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6,
-            param7,
-            param8);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6,
+                param7,
+                param8);
     }
 
     /// <summary>
@@ -583,18 +568,17 @@ public abstract partial class DisposableBase
         TParam7 param7,
         TParam8 param8)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            param1,
-            param2,
-            param3,
-            param4,
-            param5,
-            param6,
-            param7,
-            param8);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                param1,
+                param2,
+                param3,
+                param4,
+                param5,
+                param6,
+                param7,
+                param8);
     }
 }

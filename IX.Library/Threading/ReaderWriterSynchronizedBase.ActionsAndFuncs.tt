@@ -54,11 +54,10 @@ for (int i = 1; i <= 8; i++)
     protected void ReadLock<<#= paramTypes #>>(Action<<#= paramTypes #>> action, <#= paramNameTypes #>)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(<#= paramNames #>);
+            (action ?? throw new ArgumentNullException(nameof(action)))(<#= paramNames #>);
         }
     }
 
@@ -87,11 +86,10 @@ for (int i = 1; i <= 8; i++)
     protected TReturn ReadLock<<#= paramTypes #>, TReturn>(Func<<#= paramTypes #>, TReturn> action, <#= paramNameTypes #>)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(<#= paramNames #>);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(<#= paramNames #>);
         }
     }
 
@@ -118,11 +116,10 @@ for (int i = 1; i <= 8; i++)
     protected void WriteLock<<#= paramTypes #>>(Action<<#= paramTypes #>> action, <#= paramNameTypes #>)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(<#= paramNames #>);
+            (action ?? throw new ArgumentNullException(nameof(action)))(<#= paramNames #>);
         }
     }
 
@@ -151,11 +148,10 @@ for (int i = 1; i <= 8; i++)
     protected TReturn WriteLock<<#= paramTypes #>, TReturn>(Func<<#= paramTypes #>, TReturn> action, <#= paramNameTypes #>)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(<#= paramNames #>);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(<#= paramNames #>);
         }
     }
 <#

@@ -15,11 +15,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1>(Action<TParam1> action, TParam1 param1)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1);
         }
     }
 
@@ -34,11 +33,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TReturn>(Func<TParam1, TReturn> action, TParam1 param1)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1);
         }
     }
 
@@ -51,11 +49,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1>(Action<TParam1> action, TParam1 param1)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1);
         }
     }
 
@@ -70,11 +67,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TReturn>(Func<TParam1, TReturn> action, TParam1 param1)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1);
         }
     }
 
@@ -89,11 +85,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2>(Action<TParam1, TParam2> action, TParam1 param1, TParam2 param2)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2);
         }
     }
 
@@ -110,11 +105,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TReturn>(Func<TParam1, TParam2, TReturn> action, TParam1 param1, TParam2 param2)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2);
         }
     }
 
@@ -129,11 +123,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2>(Action<TParam1, TParam2> action, TParam1 param1, TParam2 param2)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2);
         }
     }
 
@@ -150,11 +143,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TReturn>(Func<TParam1, TParam2, TReturn> action, TParam1 param1, TParam2 param2)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2);
         }
     }
 
@@ -171,11 +163,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3>(Action<TParam1, TParam2, TParam3> action, TParam1 param1, TParam2 param2, TParam3 param3)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3);
         }
     }
 
@@ -194,11 +185,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TReturn>(Func<TParam1, TParam2, TParam3, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3);
         }
     }
 
@@ -215,11 +205,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3>(Action<TParam1, TParam2, TParam3> action, TParam1 param1, TParam2 param2, TParam3 param3)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3);
         }
     }
 
@@ -238,11 +227,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TReturn>(Func<TParam1, TParam2, TParam3, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3);
         }
     }
 
@@ -261,11 +249,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3, TParam4>(Action<TParam1, TParam2, TParam3, TParam4> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3, param4);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4);
         }
     }
 
@@ -286,11 +273,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TParam4, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3, param4);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4);
         }
     }
 
@@ -309,11 +295,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3, TParam4>(Action<TParam1, TParam2, TParam3, TParam4> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3, param4);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4);
         }
     }
 
@@ -334,11 +319,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TParam4, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3, param4);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4);
         }
     }
 
@@ -359,11 +343,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5>(Action<TParam1, TParam2, TParam3, TParam4, TParam5> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3, param4, param5);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5);
         }
     }
 
@@ -386,11 +369,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5);
         }
     }
 
@@ -411,11 +393,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5>(Action<TParam1, TParam2, TParam3, TParam4, TParam5> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3, param4, param5);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5);
         }
     }
 
@@ -438,11 +419,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5);
         }
     }
 
@@ -465,11 +445,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6);
         }
     }
 
@@ -494,11 +473,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6);
         }
     }
 
@@ -521,11 +499,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6);
         }
     }
 
@@ -550,11 +527,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6);
         }
     }
 
@@ -579,11 +555,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6, param7);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7);
         }
     }
 
@@ -610,11 +585,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6, param7);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7);
         }
     }
 
@@ -639,11 +613,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6, param7);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7);
         }
     }
 
@@ -670,11 +643,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6, param7);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7);
         }
     }
 
@@ -701,11 +673,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7, TParam8 param8)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6, param7, param8);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7, param8);
         }
     }
 
@@ -734,11 +705,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn ReadLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7, TParam8 param8)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerRead(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6, param7, param8);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7, param8);
         }
     }
 
@@ -765,11 +735,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected void WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8>(Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7, TParam8 param8)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            localAction(param1, param2, param3, param4, param5, param6, param7, param8);
+            (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7, param8);
         }
     }
 
@@ -798,11 +767,10 @@ public abstract partial class ReaderWriterSynchronizedBase
     protected TReturn WriteLock<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8, TReturn>(Func<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8, TReturn> action, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7, TParam8 param8)
     {
         ThrowIfCurrentObjectDisposed();
-        var localAction = Requires.NotNull(action);
 
         using (new ValueSynchronizationLockerWrite(_locker))
         {
-            return localAction(param1, param2, param3, param4, param5, param6, param7, param8);
+            return (action ?? throw new ArgumentNullException(nameof(action)))(param1, param2, param3, param4, param5, param6, param7, param8);
         }
     }
 }

@@ -317,9 +317,7 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     {
         // Validate input
         ThrowIfCurrentObjectDisposed();
-        _ = Requires.NotNull(
-            items,
-            nameof(items));
+        _ = items ?? throw new ArgumentNullException(nameof(items));
 
         // Check disabled collection
         if (Limit == 0)
@@ -369,9 +367,7 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     {
         // Validate input
         ThrowIfCurrentObjectDisposed();
-        _ = Requires.NotNull(
-            items,
-            nameof(items));
+        _ = items ?? throw new ArgumentNullException(nameof(items));
         Requires.ValidArrayRange(
             in startIndex,
             in count,

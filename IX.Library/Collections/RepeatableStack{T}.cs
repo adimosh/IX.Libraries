@@ -38,10 +38,7 @@ public class RepeatableStack<T> : IStack<T>
     /// </remarks>
     public RepeatableStack(IStack<T> originalStack)
     {
-        Requires.NotNull(
-            out _internalStack,
-            originalStack,
-            nameof(originalStack));
+        _internalStack = originalStack ?? throw new ArgumentNullException(nameof(originalStack));
         _internalRepeatingStack = new();
     }
 
@@ -51,10 +48,7 @@ public class RepeatableStack<T> : IStack<T>
     /// <param name="originalData">The original data.</param>
     public RepeatableStack(IEnumerable<T> originalData)
     {
-        _ = Requires.NotNull(
-            originalData,
-            nameof(originalData));
-        _internalStack = new Library.Collections.Stack<T>(originalData);
+        _internalStack = new Library.Collections.Stack<T>(originalData ?? throw new ArgumentNullException(nameof(originalData)));
         _internalRepeatingStack = new();
     }
 
@@ -110,7 +104,7 @@ public class RepeatableStack<T> : IStack<T>
     public void Clear() => _internalStack.Clear();
 
     /// <summary>
-    ///     Checks whether or not a certain item is in the stack.
+    ///     Checks whether a certain item is in the stack.
     /// </summary>
     /// <param name="item">The item to check for.</param>
     /// <returns><see langword="true" /> if the item was found, <see langword="false" /> otherwise.</returns>
@@ -165,7 +159,7 @@ public class RepeatableStack<T> : IStack<T>
     ///     Copies all elements of the stack to a new array.
     /// </summary>
     /// <returns>An array containing all items in the stack.</returns>
-    public T[] ToArray() => _internalStack.ToArray();
+    public T[] ToArray() => [.. _internalStack];
 
     /// <summary>
     ///     Sets the capacity to the actual number of elements in the stack if that number is less than 90 percent of current

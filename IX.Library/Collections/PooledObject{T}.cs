@@ -35,9 +35,7 @@ public sealed class PooledObject<T> : IDisposable
     /// <param name="source">The source pooled object.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator T(PooledObject<T> source) =>
-        Requires.NotNull(
-                source)
-            .Value;
+        (source ?? throw new ArgumentNullException(nameof(source))).Value;
 
     /// <summary>
     ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

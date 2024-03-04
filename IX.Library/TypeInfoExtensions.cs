@@ -29,11 +29,9 @@ public static class TypeInfoExtensions
         this TypeInfo typeInfo,
         out TReturn? value)
     {
-        CustomAttributeData? attributeData = Requires.NotNull(typeInfo).CustomAttributes
-                                                     .FirstOrDefault(
-                                                         attribute =>
-                                                             attribute.AttributeType.FullName ==
-                                                             typeof(TAttribute).FullName);
+        CustomAttributeData? attributeData =
+            (typeInfo ?? throw new ArgumentNullException(nameof(typeInfo))).CustomAttributes.FirstOrDefault(
+                attribute => attribute.AttributeType.FullName == typeof(TAttribute).FullName);
 
         if (attributeData == null)
         {
@@ -95,7 +93,7 @@ public static class TypeInfoExtensions
         this TypeInfo typeInfo,
         string name,
         params Type[] parameters) =>
-        Requires.NotNull(typeInfo).AsType().GetMethodWithExactParameters(
+        (typeInfo ?? throw new ArgumentNullException(nameof(typeInfo))).AsType().GetMethodWithExactParameters(
             name,
             parameters);
 
@@ -118,7 +116,7 @@ public static class TypeInfoExtensions
         this TypeInfo typeInfo,
         string name,
         params TypeInfo[] parameters) =>
-        Requires.NotNull(typeInfo).AsType().GetMethodWithExactParameters(
+        (typeInfo ?? throw new ArgumentNullException(nameof(typeInfo))).AsType().GetMethodWithExactParameters(
             name,
             parameters.Select(p => p.AsType()).ToArray());
 
@@ -129,7 +127,7 @@ public static class TypeInfoExtensions
     /// <returns><see langword="true" /> if there is a parameter-less constructor; otherwise, <see langword="false" />.</returns>
     [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
     public static bool HasPublicParameterlessConstructor(this TypeInfo info) =>
-        !Requires.NotNull(info).IsInterface && info is { IsAbstract: false, IsGenericTypeDefinition: false } &&
+        !(info ?? throw new ArgumentNullException(nameof(info))).IsInterface && info is { IsAbstract: false, IsGenericTypeDefinition: false } &&
         info.DeclaredConstructors.Any(
             p => !p.IsStatic && p is { IsPublic: true, IsGenericMethodDefinition: false } && p.GetParameters().Length == 0);
 
@@ -140,7 +138,7 @@ public static class TypeInfoExtensions
     /// <returns>An instance of the object to instantiate.</returns>
     [RequiresUnreferencedCode("This method uses Activator.CreateInstance")]
     public static object Instantiate(this TypeInfo info) =>
-        Activator.CreateInstance(Requires.NotNull(info).AsType()) ??
+        Activator.CreateInstance((info ?? throw new ArgumentNullException(nameof(info))).AsType()) ??
         throw new InvalidOperationException("Could not instantiate the object.");
 
     /// <summary>
@@ -154,7 +152,7 @@ public static class TypeInfoExtensions
         this TypeInfo info,
         params object[] parameters) =>
         Activator.CreateInstance(
-            Requires.NotNull(info).AsType(),
+            (info ?? throw new ArgumentNullException(nameof(info))).AsType(),
             parameters) ??
         throw new InvalidOperationException("Could not instantiate the object.");
 }

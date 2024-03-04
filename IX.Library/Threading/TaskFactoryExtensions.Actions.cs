@@ -28,8 +28,8 @@ public static partial class TaskFactoryExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -61,8 +61,8 @@ public static partial class TaskFactoryExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -95,8 +95,8 @@ public static partial class TaskFactoryExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -129,8 +129,8 @@ public static partial class TaskFactoryExtensions
         TParam1 param1,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -165,8 +165,8 @@ public static partial class TaskFactoryExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -202,8 +202,8 @@ public static partial class TaskFactoryExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -240,8 +240,8 @@ public static partial class TaskFactoryExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -278,8 +278,8 @@ public static partial class TaskFactoryExtensions
         TParam2 param2,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -318,8 +318,8 @@ public static partial class TaskFactoryExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -359,8 +359,8 @@ public static partial class TaskFactoryExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -401,8 +401,8 @@ public static partial class TaskFactoryExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -443,8 +443,8 @@ public static partial class TaskFactoryExtensions
         TParam3 param3,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -487,8 +487,8 @@ public static partial class TaskFactoryExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -532,8 +532,8 @@ public static partial class TaskFactoryExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -578,8 +578,8 @@ public static partial class TaskFactoryExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -624,8 +624,8 @@ public static partial class TaskFactoryExtensions
         TParam4 param4,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -672,8 +672,8 @@ public static partial class TaskFactoryExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -721,8 +721,8 @@ public static partial class TaskFactoryExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -771,8 +771,8 @@ public static partial class TaskFactoryExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -821,8 +821,8 @@ public static partial class TaskFactoryExtensions
         TParam5 param5,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -873,8 +873,8 @@ public static partial class TaskFactoryExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -926,8 +926,8 @@ public static partial class TaskFactoryExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -980,8 +980,8 @@ public static partial class TaskFactoryExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1034,8 +1034,8 @@ public static partial class TaskFactoryExtensions
         TParam6 param6,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1090,8 +1090,8 @@ public static partial class TaskFactoryExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1147,8 +1147,8 @@ public static partial class TaskFactoryExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1205,8 +1205,8 @@ public static partial class TaskFactoryExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1263,8 +1263,8 @@ public static partial class TaskFactoryExtensions
         TParam7 param7,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1323,8 +1323,8 @@ public static partial class TaskFactoryExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1384,8 +1384,8 @@ public static partial class TaskFactoryExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1446,8 +1446,8 @@ public static partial class TaskFactoryExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -1508,8 +1508,8 @@ public static partial class TaskFactoryExtensions
         TParam8 param8,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,

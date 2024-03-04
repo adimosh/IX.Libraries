@@ -70,8 +70,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -133,8 +133,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -197,8 +197,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,
@@ -261,8 +261,8 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localTaskFactory = Requires.NotNull(taskFactory);
-        var localAction = Requires.NotNull(action);
+        var localTaskFactory = taskFactory ?? throw new ArgumentNullException(nameof(taskFactory));
+        var localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         return StartWithStateOnDefaultTaskSchedulerAsync(
             localTaskFactory,

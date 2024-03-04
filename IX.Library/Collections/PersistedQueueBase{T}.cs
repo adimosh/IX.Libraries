@@ -15,16 +15,10 @@ namespace IX.Library.Collections;
 public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     IQueue<T>
 {
-    private readonly IDirectory _directoryShim;
-    private readonly IFile _fileShim;
-    private readonly IPath _pathShim;
-
     /// <summary>
     ///     The poisoned non-removable files list.
     /// </summary>
     private readonly List<string> _poisonedNonRemovableFiles;
-
-    private readonly DataContractSerializer _serializer;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="IX.Library.Collections.PersistedQueueBase{T}" /> class.
@@ -72,18 +66,10 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         : base(timeout)
     {
         // Dependency validation
-        Requires.NotNull(
-            out _fileShim,
-            fileShim);
-        Requires.NotNull(
-            out _pathShim,
-            pathShim);
-        Requires.NotNull(
-            out _directoryShim,
-            directoryShim);
-        Requires.NotNull(
-            out _serializer,
-            serializer);
+        FileShim = fileShim ?? throw new ArgumentNullException(nameof(fileShim));
+        PathShim = pathShim ?? throw new ArgumentNullException(nameof(pathShim));
+        DirectoryShim = directoryShim ?? throw new ArgumentNullException(nameof(directoryShim));
+        Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
 
         // Parameter validation
         _ = directoryShim.RequiresExists(persistenceFolderPath);
@@ -149,19 +135,19 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     ///     Gets the folder shim.
     /// </summary>
     /// <value>The folder shim.</value>
-    protected IDirectory DirectoryShim => _directoryShim;
+    protected IDirectory DirectoryShim { get; }
 
     /// <summary>
     ///     Gets the file shim.
     /// </summary>
     /// <value>The file shim.</value>
-    protected IFile FileShim => _fileShim;
+    protected IFile FileShim { get; }
 
     /// <summary>
     ///     Gets the path shim.
     /// </summary>
     /// <value>The path shim.</value>
-    protected IPath PathShim => _pathShim;
+    protected IPath PathShim { get; }
 
     /// <summary>
     ///     Gets the poison folder path.
@@ -173,7 +159,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     ///     Gets the serializer.
     /// </summary>
     /// <value>The serializer.</value>
-    protected DataContractSerializer Serializer => _serializer;
+    protected DataContractSerializer Serializer { get; }
 
     /// <summary>
     ///     Copies the elements of the <see cref="IX.Library.Collections.PersistedQueueBase{T}" /> to an <see cref="Array" />, starting at a
@@ -224,10 +210,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
     /// <param name="items">The item range to push.</param>
     public void EnqueueRange(T[] items)
     {
-        _ = Requires.NotNull(
-            items);
-
-        foreach (T item in items)
+        foreach (T item in items ?? throw new ArgumentNullException(nameof(items)))
         {
             Enqueue(item);
         }
@@ -244,12 +227,10 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         int startIndex,
         int count)
     {
-        _ = Requires.NotNull(
-            items);
         Requires.ValidArrayRange(
             in startIndex,
             in count,
-            items);
+            items ?? throw new ArgumentNullException(nameof(items)));
 
         var itemsRange = new ReadOnlySpan<T>(
             items,
@@ -390,8 +371,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         Action<TState, T> actionToInvoke,
         TState state)
     {
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         ThrowIfCurrentObjectDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -514,8 +494,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(actionToInvoke);
-
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -623,11 +602,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         Action<TState, IEnumerable<T>> actionToInvoke,
         TState state)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
-
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -785,9 +761,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(predicate);
-        Requires.NotNull(actionToInvoke);
-
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -963,9 +938,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(predicate);
-        Requires.NotNull(actionToInvoke);
-
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -1148,9 +1122,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(predicate);
-        Requires.NotNull(actionToInvoke);
-
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
         ThrowIfCurrentObjectDisposed();
 
         using var locker = AcquireReadWriteLock();

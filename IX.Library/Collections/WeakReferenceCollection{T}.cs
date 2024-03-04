@@ -75,7 +75,7 @@ where T : class
 
     /// <summary>Adds an item to the <see cref="IX.Library.Collections.WeakReferenceCollection{T}" />.</summary>
     /// <param name="item">The object to add to the <see cref="IX.Library.Collections.WeakReferenceCollection{T}" />.</param>
-    public void Add(T item) => _ = AddWeakReference(Requires.NotNull(item));
+    public void Add(T item) => _ = AddWeakReference(item ?? throw new ArgumentNullException(nameof(item)));
 
     internal WeakReference<T> AddWeakReference(T item)
     {
@@ -130,7 +130,7 @@ where T : class
     /// <returns>true if <paramref name="item" /> was successfully removed from the <see cref="IX.Library.Collections.WeakReferenceCollection{T}" />; otherwise, false. This method also returns false if <paramref name="item" /> is not found in the original <see cref="IX.Library.Collections.WeakReferenceCollection{T}" />.</returns>
     public bool Remove(T item)
     {
-        var localItem = Requires.NotNull(item);
+        var localItem = item ?? throw new ArgumentNullException(nameof(item));
 
         var toReturn = false;
 

@@ -22,7 +22,7 @@ public class ArgumentsException : Exception
                 Resources.AnInvalidSetOfArgumentsWasSpecifiedArgumentNames,
                 string.Join(
                     ", ",
-                    Requires.NotNull(argumentNames)))) =>
+                    argumentNames ?? throw new ArgumentNullException(nameof(argumentNames))))) =>
         ArgumentNames = argumentNames;
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ArgumentsException : Exception
                 Resources.AnInvalidSetOfArgumentsWasSpecifiedArgumentNames,
                 string.Join(
                     ", ",
-                    Requires.NotNull(argumentNames))),
+                    argumentNames ?? throw new ArgumentNullException(nameof(argumentNames)))),
             innerException) =>
         ArgumentNames = argumentNames;
 
@@ -59,7 +59,7 @@ public class ArgumentsException : Exception
                 message,
                 string.Join(
                     ", ",
-                    Requires.NotNull(argumentNames))),
+                    argumentNames ?? throw new ArgumentNullException(nameof(argumentNames)))),
             innerException) =>
         ArgumentNames = argumentNames;
 
@@ -77,7 +77,7 @@ public class ArgumentsException : Exception
                 message,
                 string.Join(
                     ", ",
-                    Requires.NotNull(argumentNames)))) =>
+                    argumentNames ?? throw new ArgumentNullException(nameof(argumentNames))))) =>
         ArgumentNames = argumentNames;
 
     /// <summary>
