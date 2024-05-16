@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!-- Project functional metadata -->
-  <PropertyGroup>
-    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
-      <!-- Package metadata -->
+  <!-- Package metadata -->
   <PropertyGroup>
     <Title>IX Libraries - Core</Title>
     <Description>A library for providing undo/redo functionality to common scenarios.</Description>
