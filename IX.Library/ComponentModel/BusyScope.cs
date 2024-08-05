@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.ComponentModel;
@@ -7,7 +5,6 @@ namespace IX.Library.ComponentModel;
 /// <summary>
 ///     A scope of operations that can be marked as busy or idle.
 /// </summary>
-[PublicAPI]
 public class BusyScope : SynchronizationContextInvokerBase
 {
     private readonly string? _initialDescription;
@@ -26,9 +23,7 @@ public class BusyScope : SynchronizationContextInvokerBase
     /// <param name="description">The scope description.</param>
     /// <exception cref="ArgumentNullException"><paramref name="description" /> is <see langword="null" />.</exception>
     public BusyScope(string description) =>
-        Requires.NotNull<string>(
-            out _initialDescription,
-            description);
+        _initialDescription = description ?? throw new ArgumentNullException(nameof(description));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BusyScope" /> class.
@@ -54,9 +49,7 @@ public class BusyScope : SynchronizationContextInvokerBase
         Requires.NonNegative(
             out _busyCount,
             in initialBusyCount);
-        Requires.NotNull<string>(
-            out _initialDescription,
-            description);
+        _initialDescription = description ?? throw new ArgumentNullException(nameof(description));
     }
 
     /// <summary>

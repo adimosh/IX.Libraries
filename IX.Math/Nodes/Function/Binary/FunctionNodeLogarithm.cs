@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -15,24 +13,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the <see cref="GlobalSystem.Math.Log(double, double)" /> function.
 /// </summary>
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeLogarithm" /> class.
+/// </remarks>
+/// <param name="firstParameter">The first parameter.</param>
+/// <param name="secondParameter">The second parameter.</param>
 [DebuggerDisplay($"log({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "log",
     "logarithm")]
-[UsedImplicitly]
-internal sealed class FunctionNodeLogarithm : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodeLogarithm(
+    NodeBase firstParameter,
+    NodeBase secondParameter) : NumericBinaryFunctionNodeBase(
+        (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+        (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeLogarithm" /> class.
-    /// </summary>
-    /// <param name="firstParameter">The first parameter.</param>
-    /// <param name="secondParameter">The second parameter.</param>
-    public FunctionNodeLogarithm(
-        NodeBase firstParameter,
-        NodeBase secondParameter)
-        : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify()) { }
 
     /// <summary>
     ///     Creates a deep clone of the source object.

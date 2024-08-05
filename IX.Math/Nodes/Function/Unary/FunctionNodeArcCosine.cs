@@ -10,22 +10,17 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Acos(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeArcCosine" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"acos({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "acos",
     "arccos",
     "arccosine")]
-[UsedImplicitly]
-internal sealed class FunctionNodeArcCosine : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeArcCosine(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeArcCosine" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeArcCosine(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.

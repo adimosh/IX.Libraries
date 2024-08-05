@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -13,24 +11,21 @@ namespace IX.Math.Nodes.Function.Binary;
 ///     A node representing the random function.
 /// </summary>
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeRandom" /> class.
+/// </remarks>
+/// <param name="firstParameter">The first parameter.</param>
+/// <param name="secondParameter">The second parameter.</param>
 [DebuggerDisplay($"random({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction(
     "rand",
     "random")]
-[UsedImplicitly]
-internal sealed class FunctionNodeRandom : NumericBinaryFunctionNodeBase
+internal sealed class FunctionNodeRandom(
+    NodeBase firstParameter,
+    NodeBase secondParameter) : NumericBinaryFunctionNodeBase(
+        (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+        (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeRandom" /> class.
-    /// </summary>
-    /// <param name="firstParameter">The first parameter.</param>
-    /// <param name="secondParameter">The second parameter.</param>
-    public FunctionNodeRandom(
-        NodeBase firstParameter,
-        NodeBase secondParameter)
-        : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify()) { }
 
     /// <summary>
     ///     Generates a random value.
@@ -38,7 +33,6 @@ internal sealed class FunctionNodeRandom : NumericBinaryFunctionNodeBase
     /// <param name="min">The minimum.</param>
     /// <param name="max">The maximum.</param>
     /// <returns>The random value.</returns>
-    [UsedImplicitly]
     public static double GenerateRandom(
         double min,
         double max) => RandomNumberGenerator.Generate(

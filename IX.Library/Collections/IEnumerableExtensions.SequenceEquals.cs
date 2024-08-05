@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
@@ -181,8 +179,6 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         IEqualityComparer<T> comparer)
     {
-        _ = Requires.NotNull(comparer);
-
         if (left == null)
         {
             return right == null;
@@ -208,7 +204,7 @@ public static partial class IEnumerableExtensions
 
             if (b1)
             {
-                if (!comparer.Equals(
+                if (!(comparer ?? throw new ArgumentNullException(nameof(comparer))).Equals(
                         e1.Current,
                         e2.Current))
                 {
@@ -238,8 +234,6 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         IComparer<T> comparer)
     {
-        _ = Requires.NotNull(comparer);
-
         if (left == null)
         {
             return right == null;
@@ -265,7 +259,7 @@ public static partial class IEnumerableExtensions
 
             if (b1)
             {
-                if (comparer.Compare(
+                if ((comparer ?? throw new ArgumentNullException(nameof(comparer))).Compare(
                         e1.Current,
                         e2.Current) !=
                     0)
@@ -296,8 +290,6 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         Func<T, T, bool> comparer)
     {
-        _ = Requires.NotNull(comparer);
-
         if (left == null)
         {
             return right == null;
@@ -323,7 +315,7 @@ public static partial class IEnumerableExtensions
 
             if (b1)
             {
-                if (!comparer(
+                if (!(comparer ?? throw new ArgumentNullException(nameof(comparer)))(
                         e1.Current,
                         e2.Current))
                 {
@@ -353,8 +345,6 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         Func<T, T, int> comparer)
     {
-        _ = Requires.NotNull(comparer);
-
         if (left == null)
         {
             return right == null;
@@ -380,7 +370,7 @@ public static partial class IEnumerableExtensions
 
             if (b1)
             {
-                if (comparer(
+                if ((comparer ?? throw new ArgumentNullException(nameof(comparer)))(
                         e1.Current,
                         e2.Current) !=
                     0)

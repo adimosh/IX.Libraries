@@ -18,9 +18,8 @@ namespace IX.Observable;
 /// <seealso cref="INotifyPropertyChanged" />
 /// <seealso cref="INotifyCollectionChanged" />
 /// <seealso cref="IEnumerable{T}" />
-[PublicAPI]
-public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollectionBase<T>, ICollection<T>, IUndoableItem,
-                                                    IEditCommittableItem
+public abstract partial class ObservableCollectionBase<T> : ObservableReadOnlyCollectionBase<T>, ICollection<T>, IUndoableItem,
+                                                            IEditCommittableItem
 {
     private readonly Lazy<UndoableInnerContext> _undoContext;
     private bool _automaticallyCaptureSubItems;
@@ -89,12 +88,6 @@ public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollection
     }
 
     /// <summary>
-    ///     Gets a value indicating whether items are key/value pairs.
-    /// </summary>
-    /// <value><see langword="true" /> if items are key/value pairs; otherwise, <see langword="false" />.</value>
-    public bool ItemsAreKeyValuePairs { get; }
-
-    /// <summary>
     ///     Gets a value indicating whether items are undoable.
     /// </summary>
     /// <value><see langword="true" /> if items are undoable; otherwise, <see langword="false" />.</value>
@@ -108,7 +101,7 @@ public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollection
     /// <remarks>
     ///     <para>This property does nothing if the items of the observable collection are not undoable themselves.</para>
     ///     <para>
-    ///         To check whether or not the items are undoable at runtime, please use the <see cref="ItemsAreUndoable" />
+    ///         To check whether the items are undoable at runtime, please use the <see cref="ItemsAreUndoable" />
     ///         property.
     ///     </para>
     /// </remarks>
@@ -1165,15 +1158,12 @@ public abstract class ObservableCollectionBase<T> : ObservableReadOnlyCollection
     /// <returns>An auto-capture transaction context that reverts the capture if things go wrong.</returns>
     protected virtual OperationTransaction CheckItemAutoRelease(T item)
     {
-        if (AutomaticallyCaptureSubItems && ItemsAreUndoable)
+        if (AutomaticallyCaptureSubItems && ItemsAreUndoable && item is IUndoableItem ui)
         {
-            if (item is IUndoableItem ui)
-            {
-                return new AutoReleaseTransactionContext(
-                    ui,
-                    this,
-                    Tei_EditCommitted);
-            }
+            return new AutoReleaseTransactionContext(
+                ui,
+                this,
+                Tei_EditCommitted);
         }
 
         return new AutoReleaseTransactionContext();

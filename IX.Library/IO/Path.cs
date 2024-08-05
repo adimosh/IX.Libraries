@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Security;
 
 using FS = System.IO;
@@ -11,7 +9,6 @@ namespace IX.Library.IO;
 /// </summary>
 /// <seealso cref="IPath" />
 /// <seealso cref="FS.Path" />
-[PublicAPI]
 public class Path : IPath
 {
     /// <summary>

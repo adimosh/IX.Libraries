@@ -3,7 +3,6 @@ namespace IX.Library.Globalization;
 /// <summary>
 /// Country codes.
 /// </summary>
-[PublicAPI]
 public class CountryCodes
 {
     /// <summary>

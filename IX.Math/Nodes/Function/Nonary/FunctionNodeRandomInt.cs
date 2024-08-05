@@ -13,7 +13,6 @@ namespace IX.Math.Nodes.Function.Nonary;
 /// <seealso cref="NonaryFunctionNodeBase" />
 [DebuggerDisplay("randomint()")]
 [CallableMathematicsFunction("randomint")]
-[UsedImplicitly]
 internal sealed class FunctionNodeRandomInt : NonaryFunctionNodeBase
 {
     /// <summary>
@@ -28,7 +27,6 @@ internal sealed class FunctionNodeRandomInt : NonaryFunctionNodeBase
     ///     Generates a random number.
     /// </summary>
     /// <returns>A random number.</returns>
-    [UsedImplicitly]
     public static long GenerateRandom() => RandomNumberGenerator.GenerateInt();
 
     /// <summary>

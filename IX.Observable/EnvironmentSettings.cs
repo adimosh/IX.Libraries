@@ -5,7 +5,6 @@ namespace IX.Observable;
 /// <summary>
 ///     Environment settings for observable collections.
 /// </summary>
-[PublicAPI]
 public static class EnvironmentSettings
 {
     /// <summary>

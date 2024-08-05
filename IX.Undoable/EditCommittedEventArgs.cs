@@ -5,7 +5,6 @@ namespace IX.Undoable;
 /// <summary>
 ///     Event arguments for edit committed.
 /// </summary>
-[PublicAPI]
 public class EditCommittedEventArgs : EventArgs
 {
     /// <summary>

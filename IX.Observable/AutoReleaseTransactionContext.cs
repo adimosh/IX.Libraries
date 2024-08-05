@@ -10,21 +10,15 @@ namespace IX.Observable;
 /// <seealso cref="OperationTransaction" />
 internal class AutoReleaseTransactionContext : OperationTransaction
 {
-    private readonly EventHandler<EditCommittedEventArgs> _editableHandler;
+    private readonly EventHandler<EditCommittedEventArgs>? _editableHandler;
     private readonly IUndoableItem? _item;
     private readonly IUndoableItem[]? _items;
-    private readonly IUndoableItem _parentContext;
+    private readonly IUndoableItem? _parentContext;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="AutoReleaseTransactionContext" /> class.
     /// </summary>
-    public AutoReleaseTransactionContext()
-    {
-        _editableHandler = null!;
-        _parentContext = null!;
-
-        Success();
-    }
+    public AutoReleaseTransactionContext() => Success();
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="AutoReleaseTransactionContext" /> class.
@@ -38,15 +32,9 @@ internal class AutoReleaseTransactionContext : OperationTransaction
         EventHandler<EditCommittedEventArgs> editableHandler)
     {
         // Contract validation
-        Requires.NotNull(
-            out _item,
-            item);
-        Requires.NotNull(
-            out _parentContext,
-            parentContext);
-        Requires.NotNull(
-            out _editableHandler,
-            editableHandler);
+        _item = item ?? throw new ArgumentNullException(nameof(item));
+        _parentContext = parentContext ?? throw new ArgumentNullException(nameof(parentContext));
+        _editableHandler = editableHandler ?? throw new ArgumentNullException(nameof(editableHandler));
 
         // Data validation
         if (!item.IsCapturedIntoUndoContext || item.ParentUndoContext != parentContext)
@@ -79,14 +67,9 @@ internal class AutoReleaseTransactionContext : OperationTransaction
         EventHandler<EditCommittedEventArgs> editableHandler)
     {
         // Contract validation
-        _ = Requires.NotNull(
-            items);
-        Requires.NotNull(
-            out _parentContext,
-            parentContext);
-        Requires.NotNull(
-            out _editableHandler,
-            editableHandler);
+        if (items is null) throw new ArgumentNullException(nameof(items));
+        _parentContext = parentContext ?? throw new ArgumentNullException(nameof(parentContext));
+        _editableHandler = editableHandler ?? throw new ArgumentNullException(nameof(editableHandler));
 
         // Data validation
         // Multiple enumeration warning: this has to be done, as there is no efficient way to do a transactional capturing otherwise
@@ -130,7 +113,7 @@ internal class AutoReleaseTransactionContext : OperationTransaction
 
                 if (thisL1._item != null)
                 {
-                    thisL1._item.CaptureIntoUndoContext(thisL1._parentContext);
+                    if (thisL1._parentContext is not null) thisL1._item.CaptureIntoUndoContext(thisL1._parentContext);
 
                     if (thisL1._item is IEditCommittableItem tei)
                     {
@@ -145,7 +128,7 @@ internal class AutoReleaseTransactionContext : OperationTransaction
 
                 foreach (IUndoableItem undoableItem in thisL1._items)
                 {
-                    undoableItem.CaptureIntoUndoContext(thisL1._parentContext);
+                    if (thisL1._parentContext is not null) undoableItem.CaptureIntoUndoContext(thisL1._parentContext);
 
                     if (thisL1._item is IEditCommittableItem tei)
                     {

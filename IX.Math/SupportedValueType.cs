@@ -5,7 +5,6 @@ namespace IX.Math;
 /// <summary>
 ///     An enumeration of supported value types.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "Naming",
     "CA1720:Identifier contains type name",

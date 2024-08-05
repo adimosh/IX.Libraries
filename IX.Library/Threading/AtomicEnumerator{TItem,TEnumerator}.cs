@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Threading;
@@ -10,7 +8,6 @@ namespace IX.Library.Threading;
 /// <typeparam name="TItem">The type of the items to enumerate.</typeparam>
 /// <typeparam name="TEnumerator">The type of the enumerator from which this atomic enumerator is derived.</typeparam>
 /// <seealso cref="AtomicEnumerator{TItem}" />
-[PublicAPI]
 internal sealed class AtomicEnumerator<TItem, TEnumerator> : AtomicEnumerator<TItem>
     where TEnumerator : IEnumerator<TItem>
 {
@@ -34,16 +31,11 @@ internal sealed class AtomicEnumerator<TItem, TEnumerator> : AtomicEnumerator<TI
         TEnumerator existingEnumerator,
         Func<ValueSynchronizationLockerRead> readLock)
     {
-        _ = Requires.NotNull(existingEnumerator);
-
-        _existingEnumerator = existingEnumerator;
+        _existingEnumerator = existingEnumerator ?? throw new ArgumentNullException(nameof(existingEnumerator));
+        _readLock = readLock ?? throw new ArgumentNullException(nameof(readLock));
         _current = default!; /* We forgive this possible null reference, as it should not be possible to
-                                      * access it before reading something from the enumerator
-                                      */
-
-        Requires.NotNull(
-            out _readLock,
-            readLock);
+                              * access it before reading something from the enumerator
+                              */
     }
 
     /// <summary>

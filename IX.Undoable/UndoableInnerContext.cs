@@ -9,7 +9,6 @@ namespace IX.Undoable;
 ///     The inner context of an undoable object. This class should not normally be used, instead, use
 ///     <see cref="EditableItemBase" />.
 /// </summary>
-[PublicAPI]
 public class UndoableInnerContext : NotifyPropertyChangedBase
 {
     private int _historyLevels;
@@ -17,12 +16,12 @@ public class UndoableInnerContext : NotifyPropertyChangedBase
     private Lazy<PushDownStack<StateChangeBase>>? _undoStack;
 
     /// <summary>
-    ///     Gets a value indicating whether or not the redo stack has data.
+    ///     Gets a value indicating whether the redo stack has data.
     /// </summary>
     public bool RedoStackHasData => (_redoStack?.IsValueCreated ?? false) && _redoStack.Value.Count > 0;
 
     /// <summary>
-    ///     Gets a value indicating whether or not the undo stack has data.
+    ///     Gets a value indicating whether the undo stack has data.
     /// </summary>
     public bool UndoStackHasData => (_undoStack?.IsValueCreated ?? false) && _undoStack.Value.Count > 0;
 
@@ -187,7 +186,7 @@ public class UndoableInnerContext : NotifyPropertyChangedBase
             {
                 // Both stacks are null at this point, or need to be otherwise reinitialized
 
-                // Let's check for whether or not stacks need to be disposed
+                // Let's check for whether stacks need to be disposed
                 if (_undoStack?.IsValueCreated ?? false)
                 {
                     _undoStack.Value.Dispose();

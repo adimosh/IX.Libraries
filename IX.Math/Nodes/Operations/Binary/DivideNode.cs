@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -24,8 +22,8 @@ internal sealed class DivideNode : SimpleMathematicalOperationNodeBase
         NodeBase left,
         NodeBase right)
         : base(
-            Requires.NotNull(left).Simplify(),
-            Requires.NotNull(right).Simplify()) { }
+            (left ?? throw new ArgumentNullException(nameof(left))).Simplify(),
+            (right ?? throw new ArgumentNullException(nameof(right))).Simplify()) { }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.

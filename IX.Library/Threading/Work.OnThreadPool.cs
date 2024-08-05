@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -8,7 +6,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Methods and extension methods that aim to simplify working with different threads and thread pools.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "Performance",
     "HAA0603:Delegate allocation from a method group",

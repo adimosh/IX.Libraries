@@ -9,7 +9,6 @@ namespace IX.Undoable;
 /// <seealso cref="InvalidOperationException" />
 /// <seealso cref="IUndoableItem" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ItemNotCapturedIntoUndoContextException : InvalidOperationException
 {
@@ -47,6 +46,7 @@ public class ItemNotCapturedIntoUndoContextException : InvalidOperationException
             message,
             innerException) { }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ItemNotCapturedIntoUndoContextException" /> class.
     /// </summary>
@@ -58,10 +58,14 @@ public class ItemNotCapturedIntoUndoContextException : InvalidOperationException
     ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ItemNotCapturedIntoUndoContextException(
         SerializationInfo info,
         StreamingContext context)
         : base(
             info,
             context) { }
+#endif
 }

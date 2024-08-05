@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -20,7 +18,7 @@ internal sealed class NotNode : UnaryOperatorNodeBase
     /// </summary>
     /// <param name="operand">The operand.</param>
     public NotNode(NodeBase operand)
-        : base(Requires.NotNull(operand).Simplify())
+        : base((operand ?? throw new ArgumentNullException(nameof(operand))).Simplify())
     {
         operand.DetermineWeakly(SupportableValueType.Boolean | SupportableValueType.Numeric);
 

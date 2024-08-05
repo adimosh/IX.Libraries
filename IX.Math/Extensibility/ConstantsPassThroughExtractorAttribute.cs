@@ -4,7 +4,6 @@ namespace IX.Math.Extensibility;
 ///     An attribute that will signal a specific class as containing a constants extraction.
 /// </summary>
 /// <seealso cref="Attribute" />
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public class ConstantsPassThroughExtractorAttribute : Attribute
 {

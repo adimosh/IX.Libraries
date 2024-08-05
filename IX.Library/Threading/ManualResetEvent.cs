@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 using GlobalThreading = System.Threading;
@@ -10,7 +8,6 @@ namespace IX.Library.Threading;
 ///     A set/reset event class that implements methods to block and unblock threads based on manual signal interaction.
 /// </summary>
 /// <seealso cref="ISetResetEvent" />
-[PublicAPI]
 public class ManualResetEvent : DisposableBase,
     ISetResetEvent
 {
@@ -54,10 +51,7 @@ public class ManualResetEvent : DisposableBase,
         "IDISP003:Dispose previous before re-assigning.",
         Justification = "This is the constructor, there's nothing to dispose.")]
     public ManualResetEvent(GlobalThreading.ManualResetEvent manualResetEvent) =>
-        Requires.NotNull(
-            out _sre,
-            manualResetEvent,
-            nameof(manualResetEvent));
+        _sre = manualResetEvent ?? throw new ArgumentNullException(nameof(manualResetEvent));
 
     /// <summary>
     ///     Performs an implicit conversion from <see cref="ManualResetEvent" /> to
@@ -66,9 +60,7 @@ public class ManualResetEvent : DisposableBase,
     /// <param name="manualResetEvent">The manual reset event.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator GlobalThreading.ManualResetEvent(ManualResetEvent manualResetEvent) =>
-        Requires.NotNull(
-                manualResetEvent,
-                nameof(manualResetEvent))
+        (manualResetEvent ?? throw new ArgumentNullException(nameof(manualResetEvent)))
             ._sre;
 
     /// <summary>

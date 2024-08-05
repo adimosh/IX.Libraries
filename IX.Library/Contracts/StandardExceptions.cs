@@ -12,7 +12,6 @@ namespace IX.Library.Contracts;
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentInvalidPathException : ArgumentException
 {
@@ -94,6 +93,7 @@ public class ArgumentInvalidPathException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInvalidPathException" /> class.
     /// </summary>
@@ -105,6 +105,9 @@ public class ArgumentInvalidPathException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentInvalidPathException(
         SerializationInfo info,
         StreamingContext context)
@@ -113,6 +116,7 @@ public class ArgumentInvalidPathException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -120,7 +124,6 @@ public class ArgumentInvalidPathException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentDoesNotMatchException : ArgumentException
 {
@@ -202,6 +205,7 @@ public class ArgumentDoesNotMatchException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentDoesNotMatchException" /> class.
     /// </summary>
@@ -213,6 +217,9 @@ public class ArgumentDoesNotMatchException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentDoesNotMatchException(
         SerializationInfo info,
         StreamingContext context)
@@ -221,6 +228,7 @@ public class ArgumentDoesNotMatchException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -228,7 +236,6 @@ public class ArgumentDoesNotMatchException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentInvalidTypeException : ArgumentException
 {
@@ -310,6 +317,7 @@ public class ArgumentInvalidTypeException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInvalidTypeException" /> class.
     /// </summary>
@@ -321,6 +329,9 @@ public class ArgumentInvalidTypeException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentInvalidTypeException(
         SerializationInfo info,
         StreamingContext context)
@@ -329,6 +340,7 @@ public class ArgumentInvalidTypeException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -336,7 +348,6 @@ public class ArgumentInvalidTypeException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotPositiveException : ArgumentException
 {
@@ -418,6 +429,7 @@ public class ArgumentNotPositiveException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotPositiveException" /> class.
     /// </summary>
@@ -429,6 +441,9 @@ public class ArgumentNotPositiveException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotPositiveException(
         SerializationInfo info,
         StreamingContext context)
@@ -437,6 +452,7 @@ public class ArgumentNotPositiveException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -444,7 +460,6 @@ public class ArgumentNotPositiveException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotNegativeException : ArgumentException
 {
@@ -526,6 +541,7 @@ public class ArgumentNotNegativeException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotNegativeException" /> class.
     /// </summary>
@@ -537,6 +553,9 @@ public class ArgumentNotNegativeException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotNegativeException(
         SerializationInfo info,
         StreamingContext context)
@@ -545,6 +564,7 @@ public class ArgumentNotNegativeException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -552,7 +572,6 @@ public class ArgumentNotNegativeException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotPositiveIntegerException : ArgumentException
 {
@@ -634,6 +653,7 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotPositiveIntegerException" /> class.
     /// </summary>
@@ -645,6 +665,9 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotPositiveIntegerException(
         SerializationInfo info,
         StreamingContext context)
@@ -653,6 +676,7 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -660,7 +684,6 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotNegativeIntegerException : ArgumentException
 {
@@ -742,6 +765,7 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotNegativeIntegerException" /> class.
     /// </summary>
@@ -753,6 +777,9 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotNegativeIntegerException(
         SerializationInfo info,
         StreamingContext context)
@@ -761,6 +788,7 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -768,7 +796,6 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotInRangeException : ArgumentException
 {
@@ -850,6 +877,7 @@ public class ArgumentNotInRangeException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotInRangeException" /> class.
     /// </summary>
@@ -861,6 +889,9 @@ public class ArgumentNotInRangeException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotInRangeException(
         SerializationInfo info,
         StreamingContext context)
@@ -869,6 +900,7 @@ public class ArgumentNotInRangeException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -876,7 +908,6 @@ public class ArgumentNotInRangeException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentInRangeException : ArgumentException
 {
@@ -958,6 +989,7 @@ public class ArgumentInRangeException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInRangeException" /> class.
     /// </summary>
@@ -969,6 +1001,9 @@ public class ArgumentInRangeException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentInRangeException(
         SerializationInfo info,
         StreamingContext context)
@@ -977,6 +1012,7 @@ public class ArgumentInRangeException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -984,7 +1020,6 @@ public class ArgumentInRangeException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotLessThanException : ArgumentException
 {
@@ -1066,6 +1101,7 @@ public class ArgumentNotLessThanException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotLessThanException" /> class.
     /// </summary>
@@ -1077,6 +1113,9 @@ public class ArgumentNotLessThanException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotLessThanException(
         SerializationInfo info,
         StreamingContext context)
@@ -1085,6 +1124,7 @@ public class ArgumentNotLessThanException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1092,7 +1132,6 @@ public class ArgumentNotLessThanException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotLessThanOrEqualToException : ArgumentException
 {
@@ -1174,6 +1213,7 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotLessThanOrEqualToException" /> class.
     /// </summary>
@@ -1185,6 +1225,9 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotLessThanOrEqualToException(
         SerializationInfo info,
         StreamingContext context)
@@ -1193,6 +1236,7 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1200,7 +1244,6 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotGreaterThanException : ArgumentException
 {
@@ -1282,6 +1325,7 @@ public class ArgumentNotGreaterThanException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanException" /> class.
     /// </summary>
@@ -1293,6 +1337,9 @@ public class ArgumentNotGreaterThanException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotGreaterThanException(
         SerializationInfo info,
         StreamingContext context)
@@ -1301,6 +1348,7 @@ public class ArgumentNotGreaterThanException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1308,7 +1356,6 @@ public class ArgumentNotGreaterThanException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
 {
@@ -1390,6 +1437,7 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanOrEqualToException" /> class.
     /// </summary>
@@ -1401,6 +1449,9 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotGreaterThanOrEqualToException(
         SerializationInfo info,
         StreamingContext context)
@@ -1409,6 +1460,7 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1416,7 +1468,6 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotValidIndexException : ArgumentException
 {
@@ -1498,6 +1549,7 @@ public class ArgumentNotValidIndexException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotValidIndexException" /> class.
     /// </summary>
@@ -1509,6 +1561,9 @@ public class ArgumentNotValidIndexException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotValidIndexException(
         SerializationInfo info,
         StreamingContext context)
@@ -1517,6 +1572,7 @@ public class ArgumentNotValidIndexException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1524,7 +1580,6 @@ public class ArgumentNotValidIndexException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNotValidLengthException : ArgumentException
 {
@@ -1606,6 +1661,7 @@ public class ArgumentNotValidLengthException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotValidLengthException" /> class.
     /// </summary>
@@ -1617,6 +1673,9 @@ public class ArgumentNotValidLengthException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNotValidLengthException(
         SerializationInfo info,
         StreamingContext context)
@@ -1625,6 +1684,7 @@ public class ArgumentNotValidLengthException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1632,7 +1692,6 @@ public class ArgumentNotValidLengthException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNullOrEmptyArrayException : ArgumentException
 {
@@ -1714,6 +1773,7 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyArrayException" /> class.
     /// </summary>
@@ -1725,6 +1785,9 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNullOrEmptyArrayException(
         SerializationInfo info,
         StreamingContext context)
@@ -1733,6 +1796,7 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1740,7 +1804,6 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNullOrEmptyBinaryException : ArgumentException
 {
@@ -1822,6 +1885,7 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyBinaryException" /> class.
     /// </summary>
@@ -1833,6 +1897,9 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNullOrEmptyBinaryException(
         SerializationInfo info,
         StreamingContext context)
@@ -1841,6 +1908,7 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1848,7 +1916,6 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNullOrEmptyCollectionException : ArgumentException
 {
@@ -1930,6 +1997,7 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyCollectionException" /> class.
     /// </summary>
@@ -1941,6 +2009,9 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNullOrEmptyCollectionException(
         SerializationInfo info,
         StreamingContext context)
@@ -1949,6 +2020,7 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -1956,7 +2028,6 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNullOrEmptyStringException : ArgumentException
 {
@@ -2038,6 +2109,7 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyStringException" /> class.
     /// </summary>
@@ -2049,6 +2121,9 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNullOrEmptyStringException(
         SerializationInfo info,
         StreamingContext context)
@@ -2057,6 +2132,7 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -2065,7 +2141,6 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
 {
@@ -2147,6 +2222,7 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrWhiteSpaceStringException" /> class.
     /// </summary>
@@ -2158,6 +2234,9 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ArgumentNullOrWhiteSpaceStringException(
         SerializationInfo info,
         StreamingContext context)
@@ -2166,6 +2245,7 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
             context)
     {
     }
+#endif
 }
 
 /// <summary>
@@ -2173,7 +2253,6 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class IdCorrespondsToNoItemException : ArgumentException
 {
@@ -2255,6 +2334,7 @@ public class IdCorrespondsToNoItemException : ArgumentException
     {
     }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="IdCorrespondsToNoItemException" /> class.
     /// </summary>
@@ -2266,6 +2346,9 @@ public class IdCorrespondsToNoItemException : ArgumentException
     ///     The <see cref="StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected IdCorrespondsToNoItemException(
         SerializationInfo info,
         StreamingContext context)
@@ -2274,6 +2357,7 @@ public class IdCorrespondsToNoItemException : ArgumentException
             context)
     {
     }
+#endif
 }
 #pragma warning restore SA1402 // File may only contain a single type
 #pragma warning restore SA1649 // File name should match first type name

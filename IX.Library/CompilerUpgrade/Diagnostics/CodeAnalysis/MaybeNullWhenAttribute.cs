@@ -8,7 +8,6 @@ namespace System.Diagnostics.CodeAnalysis;
 ///     corresponding type disallows it. This type is only provided to stop warnings from unsupported frameworks.
 /// </summary>
 [AttributeUsage(AttributeTargets.Parameter)]
-[PublicAPI]
 public sealed class MaybeNullWhenAttribute : Attribute
 {
     /// <summary>Initializes a new instance of the <see cref="MaybeNullWhenAttribute"/> class with the specified return value condition.</summary>

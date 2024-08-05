@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
@@ -7,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for array types.
 /// </summary>
-[PublicAPI]
 public static partial class ArrayExtensions
 {
     /// <summary>
@@ -23,10 +20,7 @@ public static partial class ArrayExtensions
     public static T[] DeepClone<T>(this T[] source)
         where T : IDeepCloneable<T>
     {
-        _ = Requires.NotNull(
-            source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new T[length];
 
@@ -51,10 +45,7 @@ public static partial class ArrayExtensions
     public static T[] CopyWithShallowClones<T>(this T[] source)
         where T : IShallowCloneable<T>
     {
-        _ = Requires.NotNull(
-            source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new T[length];
 
@@ -86,10 +77,7 @@ public static partial class ArrayExtensions
     /// </exception>
     public static T[] Copy<T>(this T[] source)
     {
-        _ = Requires.NotNull(
-            source);
-
-        var length = source.Length;
+        var length = (source ?? throw new ArgumentNullException(nameof(source))).Length;
 
         var destination = new T[length];
 
@@ -129,11 +117,9 @@ public static partial class ArrayExtensions
         this T[] source,
         int length)
     {
-        _ = Requires.NotNull(
-            source);
         Requires.ValidArrayLength(
             in length,
-            source,
+            source ?? throw new ArgumentNullException(nameof(source)),
             nameof(length));
 
         var destination = new T[length];
@@ -178,12 +164,10 @@ public static partial class ArrayExtensions
         int sourceIndex,
         int length)
     {
-        _ = Requires.NotNull(
-            source);
         Requires.ValidArrayRange(
             in sourceIndex,
             in length,
-            source,
+            source ?? throw new ArgumentNullException(nameof(source)),
             nameof(length));
 
         var destination = new T[length];
@@ -216,10 +200,8 @@ public static partial class ArrayExtensions
         this T[] source,
         Action<T> action)
     {
-        _ = Requires.NotNull(
-            source);
-        _ = Requires.NotNull(
-            action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         for (var i = 0; i < source.Length; i++)
         {
@@ -253,10 +235,8 @@ public static partial class ArrayExtensions
         Func<T, Task> action,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            source);
-        _ = Requires.NotNull(
-            action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -296,10 +276,8 @@ public static partial class ArrayExtensions
         Func<T, ValueTask> action,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            source);
-        _ = Requires.NotNull(
-            action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -339,10 +317,8 @@ public static partial class ArrayExtensions
         Func<T, CancellationToken, Task> action,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            source);
-        _ = Requires.NotNull(
-            action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {
@@ -382,10 +358,8 @@ public static partial class ArrayExtensions
         Func<T, CancellationToken, ValueTask> action,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            source);
-        _ = Requires.NotNull(
-            action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         if (cancellationToken.IsCancellationRequested)
         {

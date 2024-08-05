@@ -10,28 +10,22 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Random.Next(int)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeRandom" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"random({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "rand",
     "random")]
-[UsedImplicitly]
-internal sealed class FunctionNodeRandom : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeRandom(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeRandom" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeRandom(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Generates a random number.
     /// </summary>
     /// <param name="max">The maximum.</param>
     /// <returns>A random number.</returns>
-    [UsedImplicitly]
     public static double GenerateRandom(double max) => RandomNumberGenerator.Generate(max);
 
     /// <summary>

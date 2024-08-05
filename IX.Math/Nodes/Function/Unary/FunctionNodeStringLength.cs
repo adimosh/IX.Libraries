@@ -11,7 +11,6 @@ namespace IX.Math.Nodes.Function.Unary;
 /// <seealso cref="UnaryFunctionNodeBase" />
 [DebuggerDisplay($"strlen({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("strlen")]
-[UsedImplicitly]
 internal sealed class FunctionNodeStringLength : UnaryFunctionNodeBase
 {
     /// <summary>
@@ -37,15 +36,7 @@ internal sealed class FunctionNodeStringLength : UnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is StringNode stringParam)
-        {
-            return new NumericNode(Convert.ToInt64(stringParam.Value.Length));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is StringNode stringParam ? new NumericNode(Convert.ToInt64(stringParam.Value.Length)) : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

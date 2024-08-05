@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Ceiling(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeCeiling" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"ceil({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "ceil",
     "ceiling")]
-[UsedImplicitly]
-internal sealed class FunctionNodeCeiling : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeCeiling(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeCeiling" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeCeiling(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,21 +27,15 @@ internal sealed class FunctionNodeCeiling : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            switch (numericParam.Value)
+    public override NodeBase Simplify() =>
+        Parameter is not NumericNode numericParam
+            ? this
+            : numericParam.Value switch
             {
-                case long lv:
-                    return new NumericNode(lv);
-                case double dv:
-                    return new NumericNode(GlobalSystem.Math.Ceiling(dv));
-            }
-        }
-
-        return this;
-    }
+                long lv => new NumericNode(lv),
+                double dv => new NumericNode(GlobalSystem.Math.Ceiling(dv)),
+                _ => this
+            };
 
     /// <summary>
     ///     Creates a deep clone of the source object.

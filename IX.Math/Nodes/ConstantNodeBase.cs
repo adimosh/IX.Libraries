@@ -4,7 +4,6 @@ namespace IX.Math.Nodes;
 /// A base class for constants.
 /// </summary>
 /// <seealso cref="NodeBase" />
-[PublicAPI]
 public abstract class ConstantNodeBase : CachedExpressionNodeBase
 {
     /// <summary>
@@ -15,7 +14,7 @@ public abstract class ConstantNodeBase : CachedExpressionNodeBase
     }
 
     /// <summary>
-    /// Gets a value indicating whether or not this node is actually a constant.
+    /// Gets a value indicating whether this node is actually a constant.
     /// </summary>
     /// <value><see langword="true"/> if the node is a constant, <see langword="false"/> otherwise.</value>
     public sealed override bool IsConstant => true;

@@ -1,5 +1,3 @@
-using IX.Library.Collections;
-
 using System.Text.RegularExpressions;
 using IX.Math.ExpressionState;
 using IX.Math.Extensibility;

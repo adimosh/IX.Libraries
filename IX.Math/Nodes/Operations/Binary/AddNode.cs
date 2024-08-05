@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -16,21 +14,18 @@ namespace IX.Math.Nodes.Operations.Binary;
 ///     A node representing an addition operation.
 /// </summary>
 /// <seealso cref="BinaryOperatorNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="AddNode" /> class.
+/// </remarks>
+/// <param name="left">The left.</param>
+/// <param name="right">The right.</param>
 [DebuggerDisplay($"{{{nameof(Left)}}} + {{{nameof(Right)}}}")]
-internal sealed class AddNode : BinaryOperatorNodeBase
+internal sealed class AddNode(
+    NodeBase left,
+    NodeBase right) : BinaryOperatorNodeBase(
+        (left ?? throw new ArgumentNullException(nameof(left))).Simplify(),
+        (right ?? throw new ArgumentNullException(nameof(right))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="AddNode" /> class.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    public AddNode(
-        NodeBase left,
-        NodeBase right)
-        : base(
-            Requires.NotNull(left).Simplify(),
-            Requires.NotNull(right).Simplify()) { }
-
     /// <summary>
     ///     Gets the return type of this node.
     /// </summary>

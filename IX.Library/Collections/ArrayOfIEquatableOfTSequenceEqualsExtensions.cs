@@ -3,7 +3,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for array types of <see cref="IEquatable{T}" />.
 /// </summary>
-[PublicAPI]
 public static class ArrayOfIEquatableOfTSequenceEqualsExtensions
 {
     /// <summary>
@@ -22,7 +21,7 @@ public static class ArrayOfIEquatableOfTSequenceEqualsExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null;
         }
 

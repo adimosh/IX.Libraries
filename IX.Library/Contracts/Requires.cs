@@ -9,10 +9,9 @@ namespace IX.Library.Contracts;
 /// <summary>
 ///     Methods for approximating the works of contract-oriented programming.
 /// </summary>
-[PublicAPI]
 public static partial class Requires
 {
-#region Not null
+    #region Not null
 
     /// <summary>
     ///     Called when a contract requires that a collection argument is not null or empty.
@@ -34,10 +33,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static TCollection NotEmpty<TCollection, T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         TCollection? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -61,11 +57,8 @@ public static partial class Requires
     /// <param name="argumentName">The argument name.</param>
     /// <exception cref="ArgumentNullOrEmptyCollectionException">The argument is <see langword="null" /> or empty.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotEmpty<TCollection, T>(
         out TCollection field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         TCollection? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -98,10 +91,7 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static T[] NotEmpty<T>(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -131,11 +121,8 @@ public static partial class Requires
     ///     The argument is <see langword="null" /> or empty.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void NotEmpty<T>(
         out T[] field,
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
@@ -148,9 +135,9 @@ public static partial class Requires
         field = argument!;
     }
 
-#endregion
+    #endregion
 
-#region Fixed length
+    #region Fixed length
 
     /// <summary>Called when a contract requires that an array is of a specific length.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -164,9 +151,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] FixedLength<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -206,10 +191,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void FixedLength<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -247,9 +230,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] FixedLength<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -289,10 +270,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void FixedLength<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -318,9 +297,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Length at least
+    #region Length at least
 
     /// <summary>Called when a contract requires that an array's length is at least a specific value.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -334,9 +313,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtLeast<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -376,10 +353,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtLeast<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -417,9 +392,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtLeast<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -459,10 +432,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtLeast<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -488,9 +459,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Length at most
+    #region Length at most
 
     /// <summary>Called when a contract requires that an array's length is at most a specific value.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -504,9 +475,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtMost<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -546,10 +515,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtMost<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in int length,
         [CallerArgumentExpression("array")]
@@ -587,9 +554,7 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static T[] LengthAtMost<T>(
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -629,10 +594,8 @@ public static partial class Requires
     ///     array.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("array:null => halt")]
     public static void LengthAtMost<T>(
         out T[] field,
-        [NoEnumeration] [AssertionCondition(AssertionConditionType.IS_NOT_NULL)]
         T[]? array,
         in long length,
         [CallerArgumentExpression("array")]
@@ -658,9 +621,9 @@ public static partial class Requires
         field = array;
     }
 
-#endregion
+    #endregion
 
-#region Positive
+    #region Positive
 
     /// <summary>
     ///     Called when a contract requires that a <see cref="TimeSpan"/> argument is positive.
@@ -718,9 +681,9 @@ public static partial class Requires
 
         field = argument;
     }
-#endregion
+    #endregion
 
-#region Non-negative
+    #region Non-negative
 
     /// <summary>
     ///     Called when a contract requires that a <see cref="TimeSpan" /> argument is not negative.
@@ -778,9 +741,9 @@ public static partial class Requires
 
         field = argument;
     }
-#endregion
+    #endregion
 
-#region Generic index
+    #region Generic index
 
     /// <summary>
     /// Called when a contract requires that a specific index is valid for any kind of collection.
@@ -858,9 +821,9 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 
-#region Generic range
+    #region Generic range
 
     /// <summary>Called when a contract requires that a specific index and length, constituting a range, is valid.</summary>
     /// <param name="indexArgument">The numeric index argument to validate.</param>
@@ -1000,9 +963,9 @@ public static partial class Requires
         fieldLength = lengthArgument;
     }
 
-#endregion
+    #endregion
 
-#region Generic non-negative numeric range
+    #region Generic non-negative numeric range
 
     /// <summary>Called when a contract requires that a specific numeric range is valid and non-negative.</summary>
     /// <param name="minimumArgument">The numeric minimum argument to validate.</param>
@@ -1369,9 +1332,9 @@ public static partial class Requires
         fieldMaximum = maximumArgument;
     }
 
-#endregion
+    #endregion
 
-#region Generic numeric range
+    #region Generic numeric range
 
     /// <summary>Called when a contract requires that a specific numeric range is valid.</summary>
     /// <param name="minimumArgument">The numeric minimum argument to validate.</param>
@@ -1658,9 +1621,9 @@ public static partial class Requires
         fieldMaximum = maximumArgument;
     }
 
-#endregion
+    #endregion
 
-#region Array index and range
+    #region Array index and range
 
     /// <summary>Called when a contract requires that a specific index is valid for an array.</summary>
     /// <typeparam name="T">The type of items in the array.</typeparam>
@@ -2100,9 +2063,9 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 
-#region True and false
+    #region True and false
 
     /// <summary>
     ///     Called when a contract requires that a condition is true.
@@ -2120,9 +2083,7 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static bool True(
-        [AssertionCondition(AssertionConditionType.IS_TRUE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2151,10 +2112,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static void True(
         out bool field,
-        [AssertionCondition(AssertionConditionType.IS_TRUE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2185,9 +2144,7 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static bool False(
-        [AssertionCondition(AssertionConditionType.IS_FALSE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2216,10 +2173,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [AssertionMethod]
     public static void False(
         out bool field,
-        [AssertionCondition(AssertionConditionType.IS_FALSE)]
         bool condition,
         [CallerArgumentExpression("condition")]
         string argumentName = "condition")
@@ -2233,9 +2188,9 @@ public static partial class Requires
 
         field = condition;
     }
-#endregion
+    #endregion
 
-#region Argument of type
+    #region Argument of type
 
     /// <summary>
     ///     Called when a contract requires that an argument is of a specific type.
@@ -2256,10 +2211,8 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static T ArgumentOfType<T>(
-        [NoEnumeration][AssertionCondition(AssertionConditionType.IS_NOT_NULL)] object? argument,
+        object? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
     {
@@ -2288,11 +2241,9 @@ public static partial class Requires
     ///     The condition is not being met.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("argument:null => halt")]
-    [AssertionMethod]
     public static void ArgumentOfType<T>(
         out T field,
-        [NoEnumeration, AssertionCondition(AssertionConditionType.IS_NOT_NULL)] object? argument,
+        object? argument,
         [CallerArgumentExpression("argument")]
         string argumentName = "argument")
     {
@@ -2303,9 +2254,9 @@ public static partial class Requires
 
         field = convertedValue;
     }
-#endregion
+    #endregion
 
-#region Not disposed
+    #region Not disposed
 
     /// <summary>
     ///     Called when a contract requires that an argument is not disposed.
@@ -2315,10 +2266,7 @@ public static partial class Requires
     /// </param>
     /// <exception cref="ObjectDisposedException">If the reference object is disposed, this exception will be thrown.</exception>
     public static void NotDisposed(DisposableBase reference) =>
-        NotNull(
-                reference,
-                nameof(reference))
-            .ThrowIfCurrentObjectDisposed();
+        reference?.ThrowIfCurrentObjectDisposed();
 
     /// <summary>
     ///     Called when a contract requires that an argument is not disposed.
@@ -2329,14 +2277,11 @@ public static partial class Requires
     /// <exception cref="ObjectDisposedException">If the reference object is disposed, this exception will be thrown.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void RequiresNotDisposed(this DisposableBase reference) =>
-        NotNull(
-                reference,
-                nameof(reference))
-            .ThrowIfCurrentObjectDisposed();
+        reference?.ThrowIfCurrentObjectDisposed();
 
-#endregion
+    #endregion
 
-#region Found by ID
+    #region Found by ID
 
     /// <summary>
     ///     Called when a contract requires that an item is found by its identifier.
@@ -2351,8 +2296,6 @@ public static partial class Requires
     /// <exception cref="ArgumentNullException">Either the source collection or the identifier are <c>null</c> (<c>Nothing</c> in Visual Basic).</exception>
     /// <exception cref="IdCorrespondsToNoItemException">There is no usable item in the source collection that can be fetched by the supplied identifier.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("source:null => halt; id:null => halt")]
-    [AssertionMethod]
     [DiagCA.SuppressMessage(
         "Performance",
         "HAA0301:Closure Allocation Source",
@@ -2374,29 +2317,24 @@ public static partial class Requires
         string idName = "id")
         where TItem : IKeyedEntity<TKey>
     {
-        if (source == null)
-        {
-            throw new ArgumentNullException(sourceName);
-        }
-
         if (id == null)
         {
             throw new ArgumentNullException(idName);
         }
 
-        var item = source.FirstOrDefault(p => EqualityComparer<TKey>.Default.Equals(p.Id, id));
+        var item = (source ?? throw new ArgumentNullException(sourceName)).FirstOrDefault(
+            p => EqualityComparer<TKey>.Default.Equals(
+                p.Id,
+                id));
 
-        if (item is null || EqualityComparer<TItem>.Default.Equals(item, default!))
-        {
-            throw new IdCorrespondsToNoItemException(idName);
-        }
-
-        return item;
+        return item is null || EqualityComparer<TItem>.Default.Equals(item, default!)
+            ? throw new IdCorrespondsToNoItemException(idName)
+            : item;
     }
 
-#endregion
+    #endregion
 
-#region Valid entity ID
+    #region Valid entity ID
 
     /// <summary>
     ///     Called when a contract requires that a value is a valid identifier for an entity.
@@ -2512,5 +2450,5 @@ public static partial class Requires
         field = argument;
     }
 
-#endregion
+    #endregion
 }

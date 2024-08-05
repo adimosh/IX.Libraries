@@ -1,12 +1,27 @@
 <Project>
 
+  <!-- SourceLink -->
+  <PropertyGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- Icon -->
+  <PropertyGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
   <!-- Packability -->
   <PropertyGroup Condition="'$(IsTestProject)'=='true'">
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
-    <SourceRoot Include="$(NuGetPackageRoot)" />
+    <SourceRoot Include="$(NuGetPackageRoot)\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
@@ -43,16 +58,10 @@
     </PackageReference>
 
     <!-- IDisposable Analyzer -->
-    <PackageReference Include="IDisposableAnalyzers" Version="4.0.7">
+    <PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <!-- JetBrains annotations -->
-  <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
-    <PackageReference Include="JetBrains.Annotations" Version="2023.2.0" />
-    <Using Include="JetBrains.Annotations" />
   </ItemGroup>
 
   <!-- Most common global usings -->

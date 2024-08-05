@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
@@ -9,12 +7,11 @@ namespace IX.Library.Collections;
 ///     A queue that pushes out extra items above a certain limit.
 /// </summary>
 /// <typeparam name="T">The type of items in the queue.</typeparam>
-/// <seealso cref="IX.Library.Collections.PushingCollectionBase{T}" />
-/// <seealso cref="IX.Library.Collections.IQueue{T}" />
+/// <seealso cref="PushingCollectionBase{T}" />
+/// <seealso cref="IQueue{T}" />
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushOutQueueOf{0}")]
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",
@@ -23,7 +20,7 @@ public class PushOutQueue<T> : PushingCollectionBase<T>,
     IQueue<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushOutQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="PushOutQueue{T}" /> class.
     /// </summary>
     public PushOutQueue()
         : this(Constants.DefaultPushDownLimit) { }
@@ -32,7 +29,7 @@ public class PushOutQueue<T> : PushingCollectionBase<T>,
     ///     Initializes a new instance of the <see cref="PushOutQueue{T}" /> class.
     /// </summary>
     /// <param name="limit">The limit.</param>
-    /// <exception cref="IX.Abstractions.Collections.LimitArgumentNegativeException">
+    /// <exception cref="LimitArgumentNegativeException">
     ///     <paramref name="limit" /> is a negative
     ///     integer.
     /// </exception>

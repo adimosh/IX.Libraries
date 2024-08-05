@@ -4,8 +4,6 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-using IX.Library.Contracts;
-
 namespace IX.Library.ComponentModel;
 
 /// <summary>
@@ -29,7 +27,7 @@ for (int i = 1; i <= 8; i++)
     }
 
     string paramTypes = string.Join(", ", types);
-    string paramNames = string.Join($",{Environment.NewLine}            ", names);
+    string paramNames = string.Join($",{Environment.NewLine}                ", names);
     string paramNameTypes = string.Join($",{Environment.NewLine}        ", nameTypes);
 #>
 
@@ -61,12 +59,11 @@ for (int i = 1; i <= 8; i++)
         Action<<#= paramTypes #>> action,
         <#= paramNameTypes #>)
     {
-        Requires.NotNull(action);
-
         ThrowIfCurrentObjectDisposed();
 
-        action.Invoke(
-            <#= paramNames #>);
+        (action ?? throw new ArgumentNullException(nameof(action)))
+            .Invoke(
+                <#= paramNames #>);
     }
 
     /// <summary>
@@ -99,12 +96,11 @@ for (int i = 1; i <= 8; i++)
         Func<<#= paramTypes #>, TReturn> func,
         <#= paramNameTypes #>)
     {
-        Requires.NotNull(func);
-
         ThrowIfCurrentObjectDisposed();
 
-        return func.Invoke(
-            <#= paramNames #>);
+        return (func ?? throw new ArgumentNullException(nameof(func)))
+            .Invoke(
+                <#= paramNames #>);
     }
 <#
 }

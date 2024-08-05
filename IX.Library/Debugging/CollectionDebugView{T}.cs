@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
@@ -11,10 +9,9 @@ namespace IX.Library.Debugging;
 /// </summary>
 /// <typeparam name="T">The type of the item contained in the collection.</typeparam>
 [ComVisible(false)]
-[PublicAPI]
 public sealed class CollectionDebugView<T>
 {
-    private readonly ICollection<T> collection;
+    private readonly ICollection<T> _collection;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="CollectionDebugView{T}" /> class.
@@ -25,9 +22,7 @@ public sealed class CollectionDebugView<T>
     ///     is <see langword="null" /> (<see langword="Nothing" /> in Visual Studio).
     /// </exception>
     public CollectionDebugView(ICollection<T> collection) =>
-        Requires.NotNull(
-            out this.collection,
-            collection);
+        _collection = collection ?? throw new ArgumentNullException(nameof(collection));
 
     /// <summary>
     ///     Gets the items.
@@ -42,8 +37,8 @@ public sealed class CollectionDebugView<T>
     {
         get
         {
-            var items = new T[collection.Count];
-            collection.CopyTo(
+            var items = new T[_collection.Count];
+            _collection.CopyTo(
                 items,
                 0);
 

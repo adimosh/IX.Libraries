@@ -7,7 +7,6 @@ namespace IX.Library.DataGeneration;
 ///     the same output. This class is thread-safe, and its internal items container is immutable.
 /// </summary>
 /// <seealso cref="PredictableDataStore{T}" />
-[PublicAPI]
 public class RandomIntegerPredictableDataStore : PredictableDataStore<int>
 {
     /// <summary>

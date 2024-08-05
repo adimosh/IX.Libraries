@@ -71,10 +71,9 @@ for (int i = 1; i <= 8; i++)
         <#= paramTypes #>, bool> predicate,
         <#= paramNameTypes #>)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (predicate(item, <#= paramNames #>))
             {
@@ -116,12 +115,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, <#= paramNames #>))
             {
@@ -165,12 +163,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, <#= paramNames #>))
             {
@@ -214,12 +211,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, <#= paramNames #>, cancellationToken))
             {
@@ -263,12 +259,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (await predicate(item, <#= paramNames #>, cancellationToken))
             {
@@ -315,10 +310,9 @@ for (int i = 1; i <= 8; i++)
         <#= paramTypes #>, bool> predicate,
         <#= paramNameTypes #>)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!predicate(item, <#= paramNames #>))
             {
@@ -360,12 +354,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, <#= paramNames #>))
             {
@@ -409,12 +402,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, <#= paramNames #>))
             {
@@ -458,12 +450,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, <#= paramNames #>, cancellationToken))
             {
@@ -507,12 +498,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        Requires.NotNull(source);
-        Requires.NotNull(predicate);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in source)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
             if (!await predicate(item, <#= paramNames #>, cancellationToken))
             {
@@ -558,12 +548,11 @@ for (int i = 1; i <= 8; i++)
         Func<TItem, <#= paramTypes #>, bool> action,
         <#= paramNameTypes #>)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (localAction(item, <#= paramNames #>))
+            if (action(item, <#= paramNames #>))
             {
                 yield return item;
             }
@@ -602,14 +591,13 @@ for (int i = 1; i <= 8; i++)
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 yield return item;
             }
@@ -650,14 +638,13 @@ for (int i = 1; i <= 8; i++)
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 yield return item;
             }
@@ -698,14 +685,13 @@ for (int i = 1; i <= 8; i++)
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 yield return item;
             }
@@ -746,14 +732,13 @@ for (int i = 1; i <= 8; i++)
         [EnumeratorCancellation]
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 yield return item;
             }
@@ -795,12 +780,11 @@ for (int i = 1; i <= 8; i++)
         Func<TItem, <#= paramTypes #>, bool> action,
         <#= paramNameTypes #>)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (localAction(item, <#= paramNames #>))
+            if (action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -840,12 +824,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -885,12 +868,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -930,12 +912,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 return item;
             }
@@ -975,12 +956,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource)
+        foreach (TItem item in source ?? throw new ArgumentNullException(nameof(source)))
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 return item;
             }
@@ -1022,12 +1002,11 @@ for (int i = 1; i <= 8; i++)
         Func<TItem, <#= paramTypes #>, bool> action,
         <#= paramNameTypes #>)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
-            if (localAction(item, <#= paramNames #>))
+            if (action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -1067,12 +1046,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -1112,12 +1090,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
-            if (await localAction(item, <#= paramNames #>))
+            if (await action(item, <#= paramNames #>))
             {
                 return item;
             }
@@ -1157,12 +1134,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 return item;
             }
@@ -1202,12 +1178,11 @@ for (int i = 1; i <= 8; i++)
         <#= paramNameTypes #>,
         CancellationToken cancellationToken = default)
     {
-        var localSource = Requires.NotNull(source);
-        var localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
-        foreach (TItem item in localSource.Reverse())
+        foreach (TItem item in (source ?? throw new ArgumentNullException(nameof(source))).Reverse())
         {
-            if (await localAction(item, <#= paramNames #>, cancellationToken))
+            if (await action(item, <#= paramNames #>, cancellationToken))
             {
                 return item;
             }

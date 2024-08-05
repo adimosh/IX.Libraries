@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -9,11 +6,10 @@ using FSDir = System.IO.Directory;
 namespace IX.Library.IO;
 
 /// <summary>
-///     A class for implementing <see cref="IDirectory" /> with <see cref="System.IO.Directory" />.
+///     A class for implementing <see cref="IDirectory" /> with <see cref="FSDir" />.
 /// </summary>
 /// <seealso cref="IDirectory" />
 /// <seealso cref="FSDir" />
-[PublicAPI]
 public class Directory : IDirectory
 {
     /// <summary>

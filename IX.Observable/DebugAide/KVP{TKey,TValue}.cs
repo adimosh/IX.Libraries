@@ -9,7 +9,6 @@ namespace IX.Observable.DebugAide;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
 [DebuggerDisplay("[{Key}] = \"{Value}\"")]
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class Kvp<TKey, TValue>
 {
@@ -20,7 +19,6 @@ public sealed class Kvp<TKey, TValue>
     ///     The key.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    [UsedImplicitly]
     public TKey Key { get; internal set; } = default!;
 
     /// <summary>
@@ -30,6 +28,5 @@ public sealed class Kvp<TKey, TValue>
     ///     The value.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    [UsedImplicitly]
     public TValue Value { get; internal set; } = default!;
 }

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using GlobalThreading = System.Threading;
 
 namespace IX.Library.Threading;
@@ -7,7 +5,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Extension methods for reader/writer lock classes.
 /// </summary>
-[PublicAPI]
 public static class ReaderWriterLockExtensions
 {
     /// <summary>
@@ -21,8 +18,5 @@ public static class ReaderWriterLockExtensions
     ///     <see langword="Nothing" /> in Visual Basic).
     /// </exception>
     public static IReaderWriterLock AsAbstraction(this GlobalThreading.ReaderWriterLockSlim source) =>
-        new ReaderWriterLockSlim(
-            Requires.NotNull(
-                source,
-                nameof(source)));
+        new ReaderWriterLockSlim(source ?? throw new ArgumentNullException(nameof(source)));
 }

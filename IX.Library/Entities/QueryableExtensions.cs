@@ -5,7 +5,6 @@ namespace IX.Library.Entities;
 /// <summary>
 /// Extensions for <see cref="IEnumerable{T}"/>, <see cref="IQueryable{T}"/> and derived interfaces.
 /// </summary>
-[PublicAPI]
 public static class QueryableExtensions
 {
     /// <summary>

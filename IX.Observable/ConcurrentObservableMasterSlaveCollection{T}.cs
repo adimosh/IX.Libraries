@@ -13,7 +13,6 @@ namespace IX.Observable;
 /// <seealso cref="IX.Observable.ObservableCollectionBase{TItem}" />
 [DebuggerDisplay("Count = {" + nameof(Count) + "}")]
 [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
-[PublicAPI]
 public class ConcurrentObservableMasterSlaveCollection<T> : ObservableMasterSlaveCollection<T>
 {
     private Lazy<ReaderWriterLockSlim> _locker;

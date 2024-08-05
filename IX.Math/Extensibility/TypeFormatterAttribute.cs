@@ -4,7 +4,6 @@ namespace IX.Math.Extensibility;
 ///     An attribute that will signal a specific class as containing a type formatter.
 /// </summary>
 /// <seealso cref="Attribute" />
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
 public class TypeFormatterAttribute : Attribute
 {

@@ -6,7 +6,6 @@ namespace IX.Math.Nodes;
 ///     A base class for a function node.
 /// </summary>
 /// <seealso cref="OperationNodeBase" />
-[PublicAPI]
 public abstract class FunctionNodeBase : OperationNodeBase
 {
     /// <summary>
@@ -15,7 +14,7 @@ public abstract class FunctionNodeBase : OperationNodeBase
     protected private FunctionNodeBase() { }
 
     /// <summary>
-    ///     Gets the concrete type of a parameter.
+    ///     Gets the concrete type of parameter.
     /// </summary>
     /// <param name="parameter">The parameter.</param>
     /// <returns>The parameter type.</returns>

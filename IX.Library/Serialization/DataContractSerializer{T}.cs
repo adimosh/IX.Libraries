@@ -13,7 +13,6 @@ namespace IX.Library.Serialization;
 /// <para>Since the <see cref="XmlObjectSerializer"/> is a class with its own methods and state, a decision has been made to not implement
 /// the strongly-typed Data Contract Serializer as a child of it.</para>
 /// </remarks>
-[PublicAPI]
 public class DataContractSerializer<T>
 {
     private const string SerializerTrimmerWarning =

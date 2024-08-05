@@ -5,7 +5,6 @@ namespace IX.Library;
 /// </summary>
 /// <typeparam name="TContext">The type of the cloning context.</typeparam>
 /// <typeparam name="TResult">The type of object to clone.</typeparam>
-[PublicAPI]
 public interface IContextAwareShallowCloneable<in TContext, out TResult>
     where TContext : notnull
     where TResult : notnull

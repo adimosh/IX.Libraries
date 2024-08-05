@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -8,7 +6,6 @@ namespace IX.Library.System;
 /// <summary>
 ///     Extensions for <see cref="Assembly" />.
 /// </summary>
-[PublicAPI]
 public static class AssemblyExtensions
 {
     /// <summary>
@@ -24,7 +21,7 @@ public static class AssemblyExtensions
     [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
     public static IEnumerable<TypeInfo> GetTypesAssignableFrom<T>(this Assembly assembly)
     {
-        return Requires.NotNull(assembly)
+        return (assembly ?? throw new ArgumentNullException(nameof(assembly)))
             .DefinedTypes.Where(Filter);
 
         static bool Filter(TypeInfo p) =>
@@ -45,7 +42,7 @@ public static class AssemblyExtensions
     [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
     public static IEnumerable<TypeInfo> GetTypesAssignableFrom<T>(this IEnumerable<Assembly> assemblies)
     {
-        return Requires.NotNull(assemblies)
+        return (assemblies ?? throw new ArgumentNullException(nameof(assemblies)))
             .SelectMany(GetAssignableTypes);
 
         static IEnumerable<TypeInfo> GetAssignableTypes(Assembly p) => p.GetTypesAssignableFrom<T>();

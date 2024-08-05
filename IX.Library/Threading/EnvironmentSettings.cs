@@ -3,7 +3,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Environment settings for the standard extensions.
 /// </summary>
-[PublicAPI]
 public static class EnvironmentSettings
 {
     /// <summary>
@@ -19,7 +18,6 @@ public static class EnvironmentSettings
     /// <summary>
     ///     Environmental settings for delayed disposal.
     /// </summary>
-    [PublicAPI]
     public static class DelayedDisposal
     {
         /// <summary>

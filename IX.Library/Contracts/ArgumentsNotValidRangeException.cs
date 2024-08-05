@@ -7,7 +7,6 @@ namespace IX.Library.Contracts;
 ///     An exception representing that a certain set of arguments do not form a valid range of values.
 /// </summary>
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class ArgumentsNotValidRangeException : ArgumentsException
 {

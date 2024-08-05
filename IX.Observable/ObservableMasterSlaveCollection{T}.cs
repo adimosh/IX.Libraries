@@ -21,7 +21,6 @@ namespace IX.Observable;
 /// <seealso cref="Observable.ObservableCollectionBase{TItem}" />
 [DebuggerDisplay("ObservableMasterSlaveCollection, Count = {" + nameof(Count) + "}")]
 [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
-[PublicAPI]
 public class ObservableMasterSlaveCollection<T> : ObservableListBase<T>
 {
     /// <summary>

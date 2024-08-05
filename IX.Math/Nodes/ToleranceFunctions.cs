@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Math.Nodes;
@@ -7,7 +5,6 @@ namespace IX.Math.Nodes;
 /// <summary>
 ///     Contains functions related to tolerance.
 /// </summary>
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "RedundantCast",

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.DataGeneration;
 
 /// <summary>
@@ -15,7 +13,7 @@ public static partial class DataGenerator
     private static readonly char[] AlphaNumericCharacters;
 
     private static readonly char[] BasicSymbolCharacters =
-    {
+    [
         '`',
         '~',
         '!',
@@ -46,7 +44,7 @@ public static partial class DataGenerator
         '.',
         '<',
         '>'
-    };
+    ];
 
     // Character classes
     private static readonly char[] LowerCaseAlphaCharacters;
@@ -81,7 +79,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomAlphanumericString(Random random)
     {
-        Random localRandom = Requires.NotNull(random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -146,7 +144,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomAlphaString(Random random)
     {
-        Random localRandom = Requires.NotNull(random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -211,7 +209,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomLowercaseString(Random random)
     {
-        Random localRandom = Requires.NotNull(random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -276,8 +274,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomNumericString(Random random)
     {
-        Random localRandom = Requires.NotNull(
-            random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -342,8 +339,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomString(Random random)
     {
-        Random localRandom = Requires.NotNull(
-            random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -392,8 +388,7 @@ public static partial class DataGenerator
         Random random,
         char[] fromCharacters)
     {
-        Random localRandom = Requires.NotNull(
-            random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -419,10 +414,8 @@ public static partial class DataGenerator
         int length,
         char[] fromCharacters)
     {
-        Random localRandom = Requires.NotNull(
-            random);
-        var localFromCharacters = Requires.NotNull(
-            fromCharacters);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
+        var localFromCharacters = fromCharacters ?? throw new ArgumentNullException(nameof(fromCharacters));
         var randomString = new char[length];
 
         for (var i = 0; i < length; i++)
@@ -465,8 +458,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomSymbolString(Random random)
     {
-        Random localRandom = Requires.NotNull(
-            random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)
@@ -531,8 +523,7 @@ public static partial class DataGenerator
     /// <returns>A random string.</returns>
     public static string RandomUppercaseString(Random random)
     {
-        Random localRandom = Requires.NotNull(
-            random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         int length;
 
         lock (localRandom)

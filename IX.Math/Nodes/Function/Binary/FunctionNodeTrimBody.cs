@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -17,16 +15,12 @@ namespace IX.Math.Nodes.Function.Binary;
 /// <seealso cref="BinaryFunctionNodeBase" />
 [DebuggerDisplay($"trimbody({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction("trimbody")]
-[UsedImplicitly]
-internal sealed class FunctionNodeTrimBody : BinaryFunctionNodeBase
+internal sealed class FunctionNodeTrimBody(
+    NodeBase stringParameter,
+    NodeBase numericParameter) : BinaryFunctionNodeBase(
+    (stringParameter ?? throw new ArgumentNullException(nameof(stringParameter))).Simplify(),
+    (numericParameter ?? throw new ArgumentNullException(nameof(numericParameter))).Simplify())
 {
-    public FunctionNodeTrimBody(
-        NodeBase stringParameter,
-        NodeBase numericParameter)
-        : base(
-            Requires.NotNull(stringParameter).Simplify(),
-            Requires.NotNull(numericParameter).Simplify()) { }
-
     /// <summary>
     ///     Gets the return type of this node.
     /// </summary>

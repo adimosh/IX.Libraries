@@ -1,12 +1,9 @@
-using IX.Library.Threading;
-
 namespace IX.Observable;
 
 /// <summary>
 ///     A base class for collections that are observable.
 /// </summary>
 /// <seealso cref="NotifyCollectionChangedInvokerBase" />
-[PublicAPI]
 public abstract partial class ObservableBase : NotifyCollectionChangedInvokerBase
 {
     /// <summary>

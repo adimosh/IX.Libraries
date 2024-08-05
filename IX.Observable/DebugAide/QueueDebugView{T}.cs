@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -9,7 +7,6 @@ namespace IX.Observable.DebugAide;
 ///     A debug view for an observable queue.
 /// </summary>
 /// <typeparam name="T">The type of object in the queue.</typeparam>
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class QueueDebugView<T>
 {
@@ -20,8 +17,7 @@ public sealed class QueueDebugView<T>
     /// </summary>
     /// <param name="queue">The queue.</param>
     /// <exception cref="ArgumentNullException">queue is null.</exception>
-    [UsedImplicitly]
-    public QueueDebugView(ObservableQueue<T> queue) => Requires.NotNull(out _queue, queue);
+    public QueueDebugView(ObservableQueue<T> queue) => _queue = queue ?? throw new ArgumentNullException(nameof(queue));
 
     /// <summary>
     ///     Gets the items.
@@ -30,7 +26,6 @@ public sealed class QueueDebugView<T>
     ///     The items.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    [UsedImplicitly]
     public T[] Items
     {
         get

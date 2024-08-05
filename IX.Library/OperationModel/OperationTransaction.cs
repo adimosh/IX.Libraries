@@ -7,7 +7,6 @@ namespace IX.Library.OperationModel;
 /// <para>This class is in no way related to transactions or distributed transactions, and will not promote a transaction scope to a distributed transaction.</para>
 /// </remarks>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public abstract class OperationTransaction : DisposableBase
 {
     private readonly List<Tuple<Action<object>, object>> _revertSteps;

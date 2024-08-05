@@ -12,7 +12,6 @@ namespace IX.Library.ComponentModel;
 ///         be the aim of the code, please use a standard <see cref="WeakReference{T}" /> instead.
 ///     </para>
 /// </remarks>
-[PublicAPI]
 public class SmartDisposableWeakReference<T>
     where T : DisposableBase
 {

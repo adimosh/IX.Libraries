@@ -7,7 +7,7 @@ namespace IX.Library.ComponentModel;
 ///     <para>
 ///         <font color="#ff0000">Warning!</font> Due to the lack of AsyncLocal support in .NET Framework less than 4.6 and
 ///         .NET Standard less than 1.3, for those versions the context is NOT thread-safe. Please take great care in using
-///         this context especially in multi-threaded environments.
+///         this context especially in multithreaded environments.
 ///     </para>
 ///     <para>
 ///         <font color="#ff0000">Warning!</font> The context only suppresses notifications that would normally be launched
@@ -42,7 +42,6 @@ namespace IX.Library.ComponentModel;
 ///     objects.Add("d");
 /// }</code>
 /// </example>
-[PublicAPI]
 public class SuppressNotificationsContext : DisposableBase
 {
     [SuppressMessage(

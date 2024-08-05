@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 
 namespace IX.Library.Collections;
@@ -7,7 +5,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Extensions for the <see cref="BitArray" /> class.
 /// </summary>
-[PublicAPI]
 public static class BitArrayExtensions
 {
     /// <summary>
@@ -16,7 +13,7 @@ public static class BitArrayExtensions
     /// <param name="source">The source bit array.</param>
     public static void AddOne(this BitArray source)
     {
-        BitArray ba = Requires.NotNull(source);
+        BitArray ba = source ?? throw new ArgumentNullException(nameof(source));
 
         for (var i = 0; i < ba.Length; i++)
         {

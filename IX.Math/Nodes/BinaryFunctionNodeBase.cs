@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq.Expressions;
@@ -13,7 +11,6 @@ namespace IX.Math.Nodes;
 ///     A base class for a function that takes two parameters.
 /// </summary>
 /// <seealso cref="FunctionNodeBase" />
-[PublicAPI]
 public abstract class BinaryFunctionNodeBase : FunctionNodeBase
 {
     /// <summary>
@@ -39,8 +36,8 @@ public abstract class BinaryFunctionNodeBase : FunctionNodeBase
         NodeBase firstParameter,
         NodeBase secondParameter)
     {
-        NodeBase firstParameterTemp = Requires.NotNull(firstParameter);
-        NodeBase secondParameterTemp = Requires.NotNull(secondParameter);
+        NodeBase firstParameterTemp = firstParameter ?? throw new ArgumentNullException(nameof(firstParameter));
+        NodeBase secondParameterTemp = secondParameter ?? throw new ArgumentNullException(nameof(secondParameter));
 
         EnsureCompatibleParameters(
             firstParameter,

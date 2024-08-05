@@ -6,7 +6,6 @@ namespace IX.Library.Threading;
 /// An interface that can be used to create custom awaiters.
 /// </summary>
 /// <typeparam name="TResult">The type of the result.</typeparam>
-[PublicAPI]
 public interface IAwaiter<out TResult> : INotifyCompletion
 {
     /// <summary>

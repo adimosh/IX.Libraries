@@ -1,4 +1,3 @@
-using IX.Library;
 using IX.Math.Extensibility;
 using IX.Math.Formatters;
 using IX.Math.Nodes;
@@ -13,7 +12,6 @@ namespace IX.Math;
 /// <summary>
 /// A representation of a computed expression, resulting from a string expression.
 /// </summary>
-[PublicAPI]
 public sealed class ComputedExpression : DisposableBase, IDeepCloneable<ComputedExpression>
 {
     private readonly IParameterRegistry? _parametersRegistry;

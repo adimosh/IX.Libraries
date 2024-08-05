@@ -5,11 +5,10 @@ namespace IX.Math.Extensibility;
 /// <summary>
 ///     A service contract for a class that can evaluate and interpret possible constants.
 /// </summary>
-[PublicAPI]
 public interface IConstantInterpreter
 {
     /// <summary>
-    ///     Evaluates part of an expression, determining whether or not it is a constant.
+    ///     Evaluates part of an expression, determining whether it is a constant.
     /// </summary>
     /// <param name="expressionPart">The expression part.</param>
     /// <returns>

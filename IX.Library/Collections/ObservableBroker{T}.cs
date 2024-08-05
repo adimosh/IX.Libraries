@@ -6,7 +6,6 @@ namespace IX.Library.Collections;
 /// A broker for the Observable pattern.
 /// </summary>
 /// <typeparam name="T">The type of data observed.</typeparam>
-[PublicAPI]
 public abstract class ObservableBroker<T> : DisposableBase,
                                             IObservable<T>
 {

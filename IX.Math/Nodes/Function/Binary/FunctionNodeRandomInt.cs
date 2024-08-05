@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -15,7 +13,6 @@ namespace IX.Math.Nodes.Function.Binary;
 /// <seealso cref="NumericBinaryFunctionNodeBase" />
 [DebuggerDisplay($"randomint({{{nameof(FirstParameter)}}}, {{{nameof(SecondParameter)}}})")]
 [CallableMathematicsFunction("randomint")]
-[UsedImplicitly]
 internal sealed class FunctionNodeRandomInt : NumericBinaryFunctionNodeBase
 {
     /// <summary>
@@ -27,8 +24,8 @@ internal sealed class FunctionNodeRandomInt : NumericBinaryFunctionNodeBase
         NodeBase firstParameter,
         NodeBase secondParameter)
         : base(
-            Requires.NotNull(firstParameter).Simplify(),
-            Requires.NotNull(secondParameter).Simplify())
+            (firstParameter ?? throw new ArgumentNullException(nameof(firstParameter))).Simplify(),
+            (secondParameter ?? throw new ArgumentNullException(nameof(secondParameter))).Simplify())
     {
         if (firstParameter is ParameterNode up1)
         {
@@ -47,7 +44,6 @@ internal sealed class FunctionNodeRandomInt : NumericBinaryFunctionNodeBase
     /// <param name="min">The minimum.</param>
     /// <param name="max">The maximum.</param>
     /// <returns>A random value.</returns>
-    [UsedImplicitly]
     public static long GenerateRandom(
         long min,
         long max) =>

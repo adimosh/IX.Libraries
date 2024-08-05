@@ -6,7 +6,6 @@ namespace IX.Library.ComponentModel;
 ///     An abstract base class for a synchronization context invoker.
 /// </summary>
 /// <seealso cref="DisposableBase" />
-[PublicAPI]
 public abstract partial class SynchronizationContextInvokerBase : DisposableBase,
     INotifyThreadException
 {
@@ -71,11 +70,11 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         Action<object> action,
         object state)
     {
+        // Contracts validation
+        if (action is null) throw new ArgumentNullException(nameof(action));
         ThrowIfCurrentObjectDisposed();
 
-        _ = Requires.NotNull(
-            action);
-
+        // Operation
         SynchronizationContext? currentSynchronizationContext =
             _synchronizationContext ?? EnvironmentSettings.GetUsableSynchronizationContext();
 
@@ -134,11 +133,11 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         Action<object> action,
         object state)
     {
+        // Contracts validation
+        if (action is null) throw new ArgumentNullException(nameof(action));
         ThrowIfCurrentObjectDisposed();
 
-        _ = Requires.NotNull(
-            action);
-
+        // Operation
         SynchronizationContext? currentSynchronizationContext =
             _synchronizationContext ?? EnvironmentSettings.GetUsableSynchronizationContext();
 
@@ -182,11 +181,11 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         Action<object> action,
         object state)
     {
+        // Contracts validation
+        if (action is null) throw new ArgumentNullException(nameof(action));
         ThrowIfCurrentObjectDisposed();
 
-        _ = Requires.NotNull(
-            action);
-
+        // Operation
         SynchronizationContext? currentSynchronizationContext =
             _synchronizationContext ?? EnvironmentSettings.GetUsableSynchronizationContext();
 

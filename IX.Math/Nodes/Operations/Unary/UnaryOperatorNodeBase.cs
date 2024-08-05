@@ -1,4 +1,3 @@
-using IX.Library.Contracts;
 using IX.Math.Extensibility;
 
 namespace IX.Math.Nodes.Operations.Unary;
@@ -15,7 +14,7 @@ internal abstract class UnaryOperatorNodeBase : OperationNodeBase
     /// <param name="operand">The operand.</param>
     /// <exception cref="ArgumentNullException">operand
     /// is <c>null</c> (<c>Nothing</c> in Visual Basic).</exception>
-    protected private UnaryOperatorNodeBase(NodeBase operand) => Operand = Requires.NotNull(operand);
+    protected private UnaryOperatorNodeBase(NodeBase operand) => Operand = operand ?? throw new ArgumentNullException(nameof(operand));
 
     /// <summary>
     ///     Gets a value indicating whether this node supports tolerance.

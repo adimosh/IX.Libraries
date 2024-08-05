@@ -5,7 +5,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Extensions for <see cref="CancellationToken" />.
 /// </summary>
-[PublicAPI]
 public static class CancellationTokenExtensions
 {
     /// <summary>

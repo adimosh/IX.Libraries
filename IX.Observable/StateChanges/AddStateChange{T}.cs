@@ -7,7 +7,6 @@ namespace IX.Observable.StateChanges;
 /// </summary>
 /// <typeparam name="T">The type of item.</typeparam>
 /// <seealso cref="StateChangeBase" />
-[PublicAPI]
 public record AddStateChange<T>(
     T AddedItem,
     int Index) : StateChangeBase;

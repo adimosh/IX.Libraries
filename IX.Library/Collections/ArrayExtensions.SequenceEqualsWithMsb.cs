@@ -17,7 +17,7 @@ public static partial class ArrayExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null;
         }
 

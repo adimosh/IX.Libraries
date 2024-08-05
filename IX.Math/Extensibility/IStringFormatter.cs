@@ -5,7 +5,6 @@ namespace IX.Math.Extensibility;
 /// <summary>
 /// A service contract for a string formatter of objects.
 /// </summary>
-[PublicAPI]
 public interface IStringFormatter
 {
     /// <summary>

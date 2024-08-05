@@ -8,7 +8,6 @@ namespace IX.Library.Collections;
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
-[PublicAPI]
 public class LevelDictionary<TKey, TValue> : DisposableBase,
     IDictionary<TKey, TValue>
     where TKey : notnull
@@ -381,7 +380,6 @@ public class LevelDictionary<TKey, TValue> : DisposableBase,
     /// <summary>
     ///     An enumerable wrapper that holds values.
     /// </summary>
-    [PublicAPI]
     public readonly struct KeyLevelEnumerable : IEnumerable<TValue>
     {
         private readonly TValue[] _values;

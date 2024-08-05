@@ -9,7 +9,6 @@ namespace IX.Math.Nodes;
 ///     A base class for functions that take no parameters.
 /// </summary>
 /// <seealso cref="FunctionNodeBase" />
-[PublicAPI]
 public abstract class NonaryFunctionNodeBase : FunctionNodeBase
 {
     /// <summary>

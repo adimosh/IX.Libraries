@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -16,7 +13,6 @@ namespace IX.Library.Collections;
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushOutQueueOf{0}")]
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",
@@ -321,9 +317,7 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     {
         // Validate input
         ThrowIfCurrentObjectDisposed();
-        _ = Requires.NotNull(
-            items,
-            nameof(items));
+        _ = items ?? throw new ArgumentNullException(nameof(items));
 
         // Check disabled collection
         if (Limit == 0)
@@ -373,9 +367,7 @@ public abstract class PushingCollectionBase<T> : ReaderWriterSynchronizedBase,
     {
         // Validate input
         ThrowIfCurrentObjectDisposed();
-        _ = Requires.NotNull(
-            items,
-            nameof(items));
+        _ = items ?? throw new ArgumentNullException(nameof(items));
         Requires.ValidArrayRange(
             in startIndex,
             in count,

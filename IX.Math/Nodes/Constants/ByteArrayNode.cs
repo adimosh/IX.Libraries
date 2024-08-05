@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -13,18 +11,15 @@ namespace IX.Math.Nodes.Constants;
 ///     A binary value node. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="ConstantNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="ByteArrayNode" /> class.
+/// </remarks>
+/// <param name="value">The value of the constant.</param>
 [DebuggerDisplay($"{{{nameof(DisplayValue)}}}")]
-[PublicAPI]
-public class ByteArrayNode : ConstantNodeBase, ISpecialRequestNode
+public class ByteArrayNode(byte[] value) : ConstantNodeBase, ISpecialRequestNode
 {
     private string? _cachedDistilledStringValue;
     private Func<Type, object>? _specialObjectRequestFunction;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ByteArrayNode" /> class.
-    /// </summary>
-    /// <param name="value">The value of the constant.</param>
-    public ByteArrayNode(byte[] value) => Value = Requires.NotNull(value);
 
     /// <summary>
     ///     Gets the display value.
@@ -40,11 +35,7 @@ public class ByteArrayNode : ConstantNodeBase, ISpecialRequestNode
     /// <summary>
     ///     Gets the value of the node.
     /// </summary>
-    [SuppressMessage(
-        "Performance",
-        "CA1819:Properties should not return arrays",
-        Justification = "We specifically want this here, as this is a binary representation.")]
-    public byte[] Value { get; }
+    public byte[] Value { get; } = value ?? throw new ArgumentNullException(nameof(value));
 
     /// <summary>
     ///     Sets the request special object function.

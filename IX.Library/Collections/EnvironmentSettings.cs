@@ -3,7 +3,6 @@ namespace IX.Library.Collections;
 /// <summary>
 ///     Environment settings for guaranteed collections.
 /// </summary>
-[PublicAPI]
 public static class EnvironmentSettings
 {
     /// <summary>

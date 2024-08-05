@@ -3,23 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
 
-#if NETSTANDARD2_1
 /// <summary>
 ///     An empty enumerator.
 /// </summary>
 /// <typeparam name="T">The type of items in the enumerator.</typeparam>
 /// <seealso cref="IEnumerator{T}" />
 /// <seealso cref="IEnumerator" />
-/// <seealso cref="IAsyncEnumerator{T}" />
-#else
-/// <summary>
-///     An empty enumerator.
-/// </summary>
-/// <typeparam name="T">The type of items in the enumerator.</typeparam>
-/// <seealso cref="IEnumerator{T}" />
-/// <seealso cref="IEnumerator" />
-#endif
-[PublicAPI]
 [SuppressMessage(
     "ReSharper",
     "PartialTypeWithSinglePart",

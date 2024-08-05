@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using IX.Observable.DebugAide;
@@ -21,7 +19,6 @@ namespace IX.Observable;
     ItemName = "Entry",
     KeyName = "Key",
     ValueName = "Value")]
-[PublicAPI]
 public partial class ConcurrentObservableDictionary<TKey, TValue> : ObservableDictionary<TKey, TValue>
     where TKey : notnull
 {

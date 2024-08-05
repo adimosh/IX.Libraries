@@ -10,7 +10,6 @@ namespace IX.Math.Nodes;
 ///     A base class for a node representing an operation.
 /// </summary>
 /// <seealso cref="NodeBase" />
-[PublicAPI]
 public abstract class OperationNodeBase : CachedExpressionNodeBase, ISpecialRequestNode
 {
     /// <summary>
@@ -19,7 +18,7 @@ public abstract class OperationNodeBase : CachedExpressionNodeBase, ISpecialRequ
     protected private OperationNodeBase() { }
 
     /// <summary>
-    ///     Gets a value indicating whether or not this node is actually a constant.
+    ///     Gets a value indicating whether this node is actually a constant.
     /// </summary>
     /// <value><see langword="true" /> if the node is a constant, <see langword="false" /> otherwise.</value>
     public override bool IsConstant => false;

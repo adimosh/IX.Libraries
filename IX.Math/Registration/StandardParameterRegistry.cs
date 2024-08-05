@@ -11,7 +11,7 @@ internal class StandardParameterRegistry : IParameterRegistry
     public StandardParameterRegistry(List<IStringFormatter> stringFormatters)
     {
         _parameterContexts = new();
-        this._stringFormatters = stringFormatters;
+        _stringFormatters = stringFormatters;
     }
 
     public bool Populated => _parameterContexts.Count > 0;

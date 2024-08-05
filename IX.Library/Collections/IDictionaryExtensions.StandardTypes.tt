@@ -35,7 +35,7 @@ foreach (var typ in types.Where(p => p != typeof(byte[])))
     public static Dictionary<TKey, <#= fullTypeName #>> DeepClone<TKey>(this Dictionary<TKey, <#= fullTypeName #>> source)
         where TKey : notnull
     {
-        var localSource = Requires.NotNull(source);
+        var localSource = source ?? throw new ArgumentNullException(nameof(source));
 
         var destination = new Dictionary<TKey, <#= fullTypeName #>>();
 

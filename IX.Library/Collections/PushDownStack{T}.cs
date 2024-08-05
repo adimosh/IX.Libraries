@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
@@ -15,7 +13,6 @@ namespace IX.Library.Collections;
 [DataContract(
     Namespace = Constants.DataContractNamespace,
     Name = "PushDownStackOf{0}")]
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",
@@ -24,16 +21,16 @@ public class PushDownStack<T> : PushingCollectionBase<T>,
     IStack<T>
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushDownStack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="PushDownStack{T}" /> class.
     /// </summary>
     public PushDownStack()
         : this(Constants.DefaultPushDownLimit) { }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.PushDownStack{T}" /> class.
+    ///     Initializes a new instance of the <see cref="PushDownStack{T}" /> class.
     /// </summary>
     /// <param name="limit">The limit.</param>
-    /// <exception cref="IX.Library.Collections.LimitArgumentNegativeException">
+    /// <exception cref="LimitArgumentNegativeException">
     ///     <paramref name="limit" /> is a negative
     ///     integer.
     /// </exception>

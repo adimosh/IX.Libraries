@@ -3,7 +3,6 @@ namespace IX.Undoable;
 /// <summary>
 ///     Service contract for an object that supports advertising a commit of an edited set of changes.
 /// </summary>
-[PublicAPI]
 public interface IEditCommittableItem
 {
     /// <summary>

@@ -2,8 +2,6 @@
 // Copyright (c) Adrian Mos with all rights reserved. Part of the IX Framework.
 // </copyright>
 
-using IX.Library.Threading;
-
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using IX.Observable.DebugAide;
@@ -23,7 +21,6 @@ namespace IX.Observable;
     Namespace = Constants.DataContractNamespace,
     Name = "ConcurrentObservable{0}List",
     ItemName = "Item")]
-[PublicAPI]
 public class ConcurrentObservableList<T> : ObservableList<T>
 {
     private Lazy<ReaderWriterLockSlim> _locker;

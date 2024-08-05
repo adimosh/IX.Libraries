@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Linq.Expressions;
 
 using IX.Math.Registration;
@@ -10,7 +8,6 @@ namespace IX.Math.Nodes;
 ///     A node representing a parameter.
 /// </summary>
 /// <seealso cref="NodeBase" />
-[PublicAPI]
 public class ParameterNode : NodeBase
 {
     private readonly IParameterRegistry _parametersRegistry;
@@ -27,9 +24,9 @@ public class ParameterNode : NodeBase
     {
         Name = Requires.NotNullOrWhiteSpace(parameterName);
 
-        this._parametersRegistry = Requires.NotNull(parametersRegistry);
+        _parametersRegistry = parametersRegistry ?? throw new ArgumentNullException(nameof(parametersRegistry));
 
-        _ = this._parametersRegistry.AdvertiseParameter(parameterName);
+        _ = _parametersRegistry.AdvertiseParameter(parameterName);
     }
 
     /// <summary>
@@ -61,7 +58,7 @@ public class ParameterNode : NodeBase
     public SupportableValueType SupportedReturnType => _parametersRegistry.AdvertiseParameter(Name).SupportedReturnType;
 
     /// <summary>
-    ///     Gets a value indicating whether or not this node is actually a constant.
+    ///     Gets a value indicating whether this node is actually a constant.
     /// </summary>
     /// <value><see langword="true" /> if the node is a constant, <see langword="false" /> otherwise.</value>
     public override bool IsConstant => false;
@@ -79,11 +76,7 @@ public class ParameterNode : NodeBase
     /// <returns>A deep clone.</returns>
     public override NodeBase DeepClone(NodeCloningContext context)
     {
-        _ = Requires.NotNull(
-            context,
-            nameof(context));
-
-        _ = context.ParameterRegistry.CloneFrom(_parametersRegistry.AdvertiseParameter(Name));
+        _ = (context ?? throw new ArgumentNullException(nameof(context))).ParameterRegistry.CloneFrom(_parametersRegistry.AdvertiseParameter(Name));
 
         return new ParameterNode(
             Name,

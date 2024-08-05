@@ -1,4 +1,3 @@
-using IX.Library.Globalization;
 using IX.Library.Globalization.CharsetDetection.Probers;
 using IX.Library.Collections;
 using IX.Library.Globalization.CharsetDetectionContrib;
@@ -11,7 +10,6 @@ namespace IX.Library.Globalization;
 /// A character set detection engine.
 /// </summary>
 /// <seealso cref="ICharsetDetectionEngine"/>
-[PublicAPI]
 public class CharsetDetectionEngine : ICharsetDetectionEngine
 {
     private static readonly Dictionary<string, string> FixedToSupportCodepageName =
@@ -55,7 +53,7 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
         }
         catch (NotSupportedException)
         {
-#if STANDARD_GT_20
+#if NETSTANDARD2_0_OR_GREATER || NET6_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);
@@ -70,7 +68,7 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
         }
         catch (ArgumentException)
         {
-#if STANDARD_GT_20
+#if NETSTANDARD2_0_OR_GREATER || NET6_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);

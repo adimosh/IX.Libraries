@@ -4,7 +4,6 @@ namespace IX.Library.Entities;
 ///     A data contract for an entity with a simple key.
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
-[PublicAPI]
 public interface IKeyedEntity<TKey>
 {
     /// <summary>

@@ -8,7 +8,6 @@ namespace IX.Observable.StateChanges;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
 /// <seealso cref="StateChangeBase" />
-[PublicAPI]
 public record DictionaryChangeStateChange<TKey, TValue>(
     TKey Key,
     TValue NewValue,

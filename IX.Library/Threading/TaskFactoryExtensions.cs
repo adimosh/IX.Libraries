@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -9,7 +7,6 @@ namespace IX.Library.Threading;
 ///     A class containing extension methods for <see cref="TaskFactory" />, mostly intended for use with
 ///     <see cref="Task.Factory" />.
 /// </summary>
-[PublicAPI]
 public static partial class TaskFactoryExtensions
 {
     /// <summary>
@@ -22,18 +19,13 @@ public static partial class TaskFactoryExtensions
     public static Task StartLongRunningOnDefaultTaskSchedulerAsync(
         this TaskFactory taskFactory,
         Action action,
-        CancellationToken cancellationToken = default)
-    {
-        TaskFactory localTaskFactory = Requires.NotNull(taskFactory);
-        Action localAction = Requires.NotNull(action);
-
-        return StartWithStateOnDefaultTaskSchedulerAsync(
-            localTaskFactory,
+        CancellationToken cancellationToken = default) =>
+        StartWithStateOnDefaultTaskSchedulerAsync(
+            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
             rawState => rawState(),
-            localAction,
+            action ?? throw new ArgumentNullException(nameof(action)),
             true,
             cancellationToken);
-    }
 
     /// <summary>
     ///     Starts a long-running task on a new thread.
@@ -46,18 +38,13 @@ public static partial class TaskFactoryExtensions
     public static Task<TResult> StartLongRunningOnDefaultTaskSchedulerAsync<TResult>(
         this TaskFactory taskFactory,
         Func<TResult> action,
-        CancellationToken cancellationToken = default)
-    {
-        TaskFactory localTaskFactory = Requires.NotNull(taskFactory);
-        Func<TResult> localAction = Requires.NotNull(action);
-
-        return StartWithStateOnDefaultTaskSchedulerAsync(
-            localTaskFactory,
+        CancellationToken cancellationToken = default) =>
+        StartWithStateOnDefaultTaskSchedulerAsync(
+            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
             StateAsAction<TResult>,
-            localAction,
+            action ?? throw new ArgumentNullException(nameof(action)),
             true,
             cancellationToken);
-    }
 
     /// <summary>
     ///     Starts a task on a new thread.
@@ -69,18 +56,13 @@ public static partial class TaskFactoryExtensions
     public static Task StartOnDefaultTaskSchedulerAsync(
         this TaskFactory taskFactory,
         Action action,
-        CancellationToken cancellationToken = default)
-    {
-        TaskFactory localTaskFactory = Requires.NotNull(taskFactory);
-        Action localAction = Requires.NotNull(action);
-
-        return StartWithStateOnDefaultTaskSchedulerAsync(
-            localTaskFactory,
+        CancellationToken cancellationToken = default) =>
+        StartWithStateOnDefaultTaskSchedulerAsync(
+            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
             rawState => rawState(),
-            localAction,
+            action ?? throw new ArgumentNullException(nameof(action)),
             false,
             cancellationToken);
-    }
 
     /// <summary>
     ///     Starts a task on a new thread.
@@ -93,18 +75,13 @@ public static partial class TaskFactoryExtensions
     public static Task<TResult> StartOnDefaultTaskSchedulerAsync<TResult>(
         this TaskFactory taskFactory,
         Func<TResult> action,
-        CancellationToken cancellationToken = default)
-    {
-        TaskFactory localTaskFactory = Requires.NotNull(taskFactory);
-        Func<TResult> localAction = Requires.NotNull(action);
-
-        return StartWithStateOnDefaultTaskSchedulerAsync(
-            localTaskFactory,
+        CancellationToken cancellationToken = default) =>
+        StartWithStateOnDefaultTaskSchedulerAsync(
+            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
             StateAsAction<TResult>,
-            localAction,
+            action ?? throw new ArgumentNullException(nameof(action)),
             false,
             cancellationToken);
-    }
 
     [SuppressMessage(
         "Performance",
@@ -117,18 +94,15 @@ public static partial class TaskFactoryExtensions
         bool longRunning,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(taskFactory);
-        _ = Requires.NotNull(action);
-
         TaskCreationOptions creationOptions = TaskCreationOptions.HideScheduler |
                                               (longRunning
                                                   ? TaskCreationOptions.LongRunning
                                                   : TaskCreationOptions.PreferFairness);
 
-        return taskFactory.StartNew(
+        return (taskFactory ?? throw new ArgumentNullException(nameof(taskFactory))).StartNew(
             StartAction,
             new Tuple<Action<TState>, CultureInfo, CultureInfo, TState>(
-                action,
+                action ?? throw new ArgumentNullException(nameof(action)),
                 CultureInfo.CurrentCulture,
                 CultureInfo.CurrentUICulture,
                 state),
@@ -158,18 +132,15 @@ public static partial class TaskFactoryExtensions
         bool longRunning,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(taskFactory);
-        _ = Requires.NotNull(action);
-
         TaskCreationOptions creationOptions = TaskCreationOptions.HideScheduler |
                                               (longRunning
                                                   ? TaskCreationOptions.LongRunning
                                                   : TaskCreationOptions.PreferFairness);
 
-        return taskFactory.StartNew(
+        return (taskFactory ?? throw new ArgumentNullException(nameof(taskFactory))).StartNew(
             StartAction,
             new Tuple<Func<TState, TResult>, CultureInfo, CultureInfo, TState>(
-                action,
+                action ?? throw new ArgumentNullException(nameof(action)),
                 CultureInfo.CurrentCulture,
                 CultureInfo.CurrentUICulture,
                 state),

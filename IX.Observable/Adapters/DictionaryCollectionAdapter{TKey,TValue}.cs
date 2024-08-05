@@ -1,4 +1,7 @@
+#if !NET462 && !NET47 && !NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
+#endif
+
 using System.Runtime.Serialization;
 
 namespace IX.Observable.Adapters;

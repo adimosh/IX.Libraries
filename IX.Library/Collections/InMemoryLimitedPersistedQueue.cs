@@ -1,4 +1,3 @@
-using IX.Library.ComponentModel;
 using IX.Library.IO;
 
 using System.Diagnostics.CodeAnalysis;
@@ -10,8 +9,7 @@ namespace IX.Library.Collections;
 /// </summary>
 /// <typeparam name="T">The type of object in the queue.</typeparam>
 /// <seealso cref="DisposableBase" />
-/// <seealso cref="IX.Library.Collections.IQueue{T}" />
-[PublicAPI]
+/// <seealso cref="IQueue{T}" />
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",
@@ -21,7 +19,7 @@ public class InMemoryLimitedPersistedQueue<T> : PersistedQueueBase<T>
     private readonly Queue<string> _internalQueue;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.InMemoryLimitedPersistedQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="InMemoryLimitedPersistedQueue{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">The persistence folder path.</param>
     /// <param name="fileShim">The file shim.</param>
@@ -109,7 +107,7 @@ public class InMemoryLimitedPersistedQueue<T> : PersistedQueueBase<T>
     /// </summary>
     /// <param name="array">
     ///     The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied
-    ///     from <see cref="IX.Library.Collections.PersistedQueue{T}" />. The <see cref="T:System.Array" /> must have zero-based indexing.
+    ///     from <see cref="PersistedQueue{T}" />. The <see cref="T:System.Array" /> must have zero-based indexing.
     /// </param>
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
     public override void CopyTo(

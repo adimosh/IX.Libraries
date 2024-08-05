@@ -3,7 +3,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     A class that provides methods and extensions to fire events.
 /// </summary>
-[PublicAPI]
 public static class Fire
 {
     /// <summary>

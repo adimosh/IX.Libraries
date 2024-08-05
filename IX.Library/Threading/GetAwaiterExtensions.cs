@@ -5,7 +5,6 @@ namespace IX.Library.Threading;
 /// <summary>
 ///     Asynchronous support extension methods for various objects that would be useful to <see langword="await" /> on.
 /// </summary>
-[PublicAPI]
 public static class GetAwaiterExtensions
 {
     /// <summary>

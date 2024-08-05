@@ -99,8 +99,8 @@ for (int i = 1; i <= 8; i++)
         }
 #>
     {
-        Requires.NotNull(source);
-        Requires.NotNull(action);
+        if (source is null) throw new ArgumentNullException(nameof(source));
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         foreach (TItem item in source)
         {

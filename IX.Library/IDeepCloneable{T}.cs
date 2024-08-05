@@ -4,7 +4,6 @@ namespace IX.Library;
 ///     Interface for implementing deep cloning for an object.
 /// </summary>
 /// <typeparam name="T">The type of object to clone.</typeparam>
-[PublicAPI]
 public interface IDeepCloneable<out T>
     where T : notnull
 {

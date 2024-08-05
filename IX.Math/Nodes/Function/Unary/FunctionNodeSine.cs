@@ -10,21 +10,16 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Sin(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeSine" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"sin({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "sin",
     "sine")]
-[UsedImplicitly]
-internal sealed class FunctionNodeSine : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeSine(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeSine" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeSine(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.
@@ -32,15 +27,9 @@ internal sealed class FunctionNodeSine : NumericUnaryFunctionNodeBase
     /// <returns>
     ///     A simplified node, or this instance.
     /// </returns>
-    public override NodeBase Simplify()
-    {
-        if (Parameter is NumericNode numericParam)
-        {
-            return new NumericNode(GlobalSystem.Math.Sin(numericParam.ExtractFloat()));
-        }
-
-        return this;
-    }
+    public override NodeBase Simplify() => Parameter is NumericNode numericParam
+        ? new NumericNode(GlobalSystem.Math.Sin(numericParam.ExtractFloat()))
+        : this;
 
     /// <summary>
     ///     Creates a deep clone of the source object.

@@ -3,7 +3,6 @@ namespace IX.Math.Registration;
 /// <summary>
 ///     A service contract for a parameter registry.
 /// </summary>
-[PublicAPI]
 public interface IParameterRegistry
 {
     /// <summary>

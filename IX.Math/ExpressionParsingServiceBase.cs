@@ -17,7 +17,6 @@ namespace IX.Math;
 /// </summary>
 /// <seealso cref="DisposableBase" />
 /// <seealso cref="IExpressionParsingService" />
-[PublicAPI]
 public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBase,
     IExpressionParsingService
 {
@@ -48,27 +47,23 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     protected private ExpressionParsingServiceBase(MathDefinition definition)
     {
         // Preconditions
-        Requires.NotNull(
-            out _workingDefinition,
-            definition,
-            nameof(definition));
+        _workingDefinition = definition ?? throw new ArgumentNullException(nameof(definition));
 
         // Initialized internal state
-        _constantExtractors = new();
-        _constantInterpreters = new();
-        _constantPassThroughExtractors = new();
-        _stringFormatters = new();
+        _constantExtractors = [];
+        _constantInterpreters = [];
+        _constantPassThroughExtractors = [];
+        _stringFormatters = [];
 
-        _nonaryFunctions = new();
-        _unaryFunctions = new();
-        _binaryFunctions = new();
-        _ternaryFunctions = new();
+        _nonaryFunctions = [];
+        _unaryFunctions = [];
+        _binaryFunctions = [];
+        _ternaryFunctions = [];
 
-        _assembliesToRegister = new()
-        {
-            typeof(ExpressionParsingService).GetTypeInfo()
-                .Assembly
-        };
+        _assembliesToRegister =
+        [
+            typeof(ExpressionParsingService).GetTypeInfo().Assembly
+        ];
     }
 
     /// <summary>
@@ -169,9 +164,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// <param name="assembly">The assembly to register.</param>
     public void RegisterFunctionsAssembly(Assembly assembly)
     {
-        _ = Requires.NotNull(
-            assembly,
-            nameof(assembly));
+        if (assembly is null) throw new ArgumentNullException(nameof(assembly));
 
         ThrowIfCurrentObjectDisposed();
 
@@ -203,9 +196,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// </exception>
     public void RegisterTypeFormatter(IStringFormatter formatter)
     {
-        _ = Requires.NotNull(
-            formatter,
-            nameof(formatter));
+        if (formatter is null) throw new ArgumentNullException(nameof(formatter));
 
         if (_interpretationDone != 0)
         {

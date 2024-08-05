@@ -20,7 +20,7 @@ public class TestBattery : IClassFixture<CachedExpressionProviderFixture>
     /// <param name="fixture">The fixture.</param>
     public TestBattery(CachedExpressionProviderFixture fixture)
     {
-        this._fixture = fixture;
+        _fixture = fixture;
         _comparer = new();
     }
 

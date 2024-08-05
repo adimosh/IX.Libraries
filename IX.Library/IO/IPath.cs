@@ -3,7 +3,6 @@ namespace IX.Library.IO;
 /// <summary>
 ///     Abstracts the <see cref="Path" /> class' static methods into a mock-able interface.
 /// </summary>
-[PublicAPI]
 public interface IPath
 {
     /// <summary>

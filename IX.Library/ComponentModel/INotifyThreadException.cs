@@ -15,7 +15,6 @@ namespace IX.Library.ComponentModel;
 ///         otherwise crash the application.
 ///     </para>
 /// </remarks>
-[PublicAPI]
 public interface INotifyThreadException
 {
     /// <summary>

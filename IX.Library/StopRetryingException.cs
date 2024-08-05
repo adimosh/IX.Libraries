@@ -8,7 +8,6 @@ namespace IX.Library;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public class StopRetryingException : Exception
 {
@@ -38,8 +37,10 @@ public class StopRetryingException : Exception
         Exception innerException)
         : base(
             message,
-            innerException) { }
+            innerException)
+    { }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="StopRetryingException" /> class.
     /// </summary>
@@ -51,10 +52,15 @@ public class StopRetryingException : Exception
     ///     The <see cref="StreamingContext" /> that contains contextual information about the source or
     ///     destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected StopRetryingException(
         SerializationInfo info,
         StreamingContext context)
         : base(
             info,
-            context) { }
+            context)
+    { }
+#endif
 }

@@ -3,7 +3,6 @@ namespace IX.Undoable;
 /// <summary>
 ///     A contract for an item that is editable in a transactional-style way.
 /// </summary>
-[PublicAPI]
 public interface ITransactionEditableItem : IEditCommittableItem
 {
     /// <summary>

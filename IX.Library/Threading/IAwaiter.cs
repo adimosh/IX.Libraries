@@ -5,7 +5,6 @@ namespace IX.Library.Threading;
 /// <summary>
 /// An interface that can be used to create custom awaiters.
 /// </summary>
-[PublicAPI]
 public interface IAwaiter : INotifyCompletion
 {
     /// <summary>

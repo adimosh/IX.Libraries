@@ -47,7 +47,6 @@ for (int i = 1; i <= 8; i++)
     }
 #>
 /// <returns>The result of the method.</returns>
-[PublicAPI]
 public delegate TResult InFunc<<#= paramTypes #>, out TResult>(<#= paramNameTypes #>);
 
 /// <summary>
@@ -68,7 +67,6 @@ public delegate TResult InFunc<<#= paramTypes #>, out TResult>(<#= paramNameType
 <#
     }
 #>
-[PublicAPI]
 public delegate void InAction<<#= paramTypes #>>(<#= paramNameTypes #>);
 <#
 }

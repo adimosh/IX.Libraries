@@ -48,7 +48,6 @@ for (int i = 1; i <= 8; i++)
 <#
     }
 #>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<<#= paramTypes #>> : IEquatable<ImmutableValueTuple<<#= paramTypes #>>>
 {
     /// <summary>

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,7 +8,6 @@ namespace IX.Library.Collections;
 /// </summary>
 /// <typeparam name="T">The type of items contained in this queue.</typeparam>
 /// <seealso cref="IX.Library.Collections.IQueue{T}" />
-[PublicAPI]
 [SuppressMessage(
     "Design",
     "CA1010:Generic interface should also be implemented",
@@ -35,10 +32,7 @@ public class RepeatableQueue<T> : IQueue<T>
     /// <param name="originalQueue">The original queue.</param>
     public RepeatableQueue(IQueue<T> originalQueue)
     {
-        Requires.NotNull(
-            out _internalQueue,
-            originalQueue,
-            nameof(originalQueue));
+        _internalQueue = originalQueue ?? throw new ArgumentNullException(nameof(originalQueue));
         _internalRepeatingQueue = new Queue<T>();
     }
 
@@ -48,11 +42,7 @@ public class RepeatableQueue<T> : IQueue<T>
     /// <param name="originalData">The original data.</param>
     public RepeatableQueue(IEnumerable<T> originalData)
     {
-        _ = Requires.NotNull(
-            originalData,
-            nameof(originalData));
-
-        _internalQueue = new Queue<T>(originalData);
+        _internalQueue = new Queue<T>(originalData ?? throw new ArgumentNullException(nameof(originalData)));
         _internalRepeatingQueue = new Queue<T>();
     }
 
@@ -132,7 +122,7 @@ public class RepeatableQueue<T> : IQueue<T>
     }
 
     /// <summary>
-    ///     Verifies whether or not an item is contained in the queue.
+    ///     Verifies whether an item is contained in the queue.
     /// </summary>
     /// <param name="item">The item to verify.</param>
     /// <returns><see langword="true" /> if the item is queued, <see langword="false" /> otherwise.</returns>
@@ -187,7 +177,7 @@ public class RepeatableQueue<T> : IQueue<T>
     ///     Copies all elements of the queue into a new array.
     /// </summary>
     /// <returns>The created array with all element of the queue.</returns>
-    public T[] ToArray() => _internalQueue.ToArray();
+    public T[] ToArray() => [.. _internalQueue];
 
     /// <summary>
     ///     Trims the excess free space from within the queue, reducing the capacity to the actual number of elements.

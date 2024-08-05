@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,7 +6,6 @@ namespace IX.Observable.DebugAide;
 /// <summary>Debug view for an observable dictionary.</summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value.</typeparam>
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class DictionaryDebugView<TKey, TValue>
     where TKey : notnull
@@ -18,11 +15,8 @@ public sealed class DictionaryDebugView<TKey, TValue>
     /// <summary>Initializes a new instance of the <see cref="DictionaryDebugView{TKey, TValue}" /> class.</summary>
     /// <param name="dictionary">The dictionary.</param>
     /// <exception cref="ArgumentNullException">dictionary is null.</exception>
-    [UsedImplicitly]
     public DictionaryDebugView(ObservableDictionary<TKey, TValue> dictionary) =>
-        Requires.NotNull(
-            out _dict,
-            dictionary);
+        _dict = dictionary ?? throw new ArgumentNullException(nameof(dictionary));
 
     /// <summary>
     ///     Gets the items, in debug view.
@@ -31,7 +25,6 @@ public sealed class DictionaryDebugView<TKey, TValue>
     ///     The items.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    [UsedImplicitly]
     public Kvp<TKey, TValue>[] Items
     {
         get

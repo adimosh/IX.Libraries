@@ -10,22 +10,17 @@ namespace IX.Math.Nodes.Function.Unary;
 ///     A node representing the <see cref="GlobalSystem.Math.Atan(double)" /> function.
 /// </summary>
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="FunctionNodeArcTangent" /> class.
+/// </remarks>
+/// <param name="parameter">The parameter.</param>
 [DebuggerDisplay($"atan({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction(
     "atan",
     "arctg",
     "arctangent")]
-[UsedImplicitly]
-internal sealed class FunctionNodeArcTangent : NumericUnaryFunctionNodeBase
+internal sealed class FunctionNodeArcTangent(NodeBase parameter) : NumericUnaryFunctionNodeBase(parameter)
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionNodeArcTangent" /> class.
-    /// </summary>
-    /// <param name="parameter">The parameter.</param>
-    public FunctionNodeArcTangent(NodeBase parameter)
-        : base(parameter)
-    {
-    }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.

@@ -1,5 +1,3 @@
-using IX.Library.Threading;
-
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using IX.Observable.DebugAide;
@@ -24,7 +22,6 @@ namespace IX.Observable;
     Namespace = Constants.DataContractNamespace,
     Name = "Observable{0}Stack",
     ItemName = "Item")]
-[PublicAPI]
 public class ConcurrentObservableStack<T> : ObservableStack<T>
 {
     private Lazy<ReaderWriterLockSlim> _locker;

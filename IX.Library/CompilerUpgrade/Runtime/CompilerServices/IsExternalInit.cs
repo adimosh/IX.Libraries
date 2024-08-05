@@ -6,6 +6,5 @@ namespace System.Runtime.CompilerServices;
 /// <summary>
 ///     Dummy class for allowing init-only properties in pre-.NET 5.0 frameworks.
 /// </summary>
-[PublicAPI]
 public class IsExternalInit { }
 #endif

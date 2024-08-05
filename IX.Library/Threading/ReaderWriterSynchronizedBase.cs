@@ -8,7 +8,6 @@ namespace IX.Library.Threading;
 /// </summary>
 /// <seealso cref="ComponentModel.DisposableBase" />
 [DataContract(Namespace = Constants.DataContractNamespace)]
-[PublicAPI]
 public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
 {
     private readonly bool _lockInherited;
@@ -41,9 +40,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     /// </exception>
     protected ReaderWriterSynchronizedBase(IReaderWriterLock? locker)
     {
-        Requires.NotNull(
-            out _locker,
-            locker);
+        _locker = locker ?? throw new ArgumentNullException(nameof(locker));
         _lockInherited = true;
         lockerTimeout = EnvironmentSettings.LockAcquisitionTimeout;
     }
@@ -71,9 +68,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
         IReaderWriterLock locker,
         TimeSpan timeout)
     {
-        Requires.NotNull(
-            out _locker,
-            locker);
+        _locker = locker ?? throw new ArgumentNullException(nameof(locker));
         _lockInherited = true;
         lockerTimeout = timeout;
     }
@@ -118,12 +113,12 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected void ReadLock(Action action)
     {
         ThrowIfCurrentObjectDisposed();
-        Action localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         using (new ValueSynchronizationLockerRead(
                    _locker,
                    lockerTimeout))
-            localAction();
+            action();
     }
 
     /// <summary>
@@ -135,12 +130,12 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected T ReadLock<T>(Func<T> action)
     {
         ThrowIfCurrentObjectDisposed();
-        Func<T> localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         using (new ValueSynchronizationLockerRead(
                    _locker,
                    lockerTimeout))
-            return localAction();
+            return action();
     }
 
     /// <summary>
@@ -163,7 +158,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected void WriteLock(Action action)
     {
         ThrowIfCurrentObjectDisposed();
-        Action localAction = Requires.NotNull(action);
+        Action localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         using (new ValueSynchronizationLockerWrite(
                    _locker,
@@ -180,12 +175,12 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected T WriteLock<T>(Func<T> action)
     {
         ThrowIfCurrentObjectDisposed();
-        Func<T> localAction = Requires.NotNull(action);
+        if (action is null) throw new ArgumentNullException(nameof(action));
 
         using (new ValueSynchronizationLockerWrite(
                    _locker,
                    lockerTimeout))
-            return localAction();
+            return action();
     }
 
     /// <summary>

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -9,7 +7,6 @@ namespace IX.Observable.DebugAide;
 ///     A debug view class for an observable stack.
 /// </summary>
 /// <typeparam name="T">The type of object in the stack.</typeparam>
-[UsedImplicitly]
 [ExcludeFromCodeCoverage]
 public sealed class StackDebugView<T>
 {
@@ -20,8 +17,7 @@ public sealed class StackDebugView<T>
     /// </summary>
     /// <param name="stack">The stack.</param>
     /// <exception cref="ArgumentNullException">stack is null.</exception>
-    [UsedImplicitly]
-    public StackDebugView(ObservableStack<T> stack) => Requires.NotNull(out _stack, stack);
+    public StackDebugView(ObservableStack<T> stack) => _stack = stack ?? throw new ArgumentNullException(nameof(stack));
 
     /// <summary>
     ///     Gets the items.
@@ -30,7 +26,6 @@ public sealed class StackDebugView<T>
     ///     The items.
     /// </value>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    [UsedImplicitly]
     public T[] Items
     {
         get

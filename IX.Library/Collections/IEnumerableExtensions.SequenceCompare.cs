@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.Collections;
@@ -26,7 +24,7 @@ public static partial class IEnumerableExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 
@@ -72,7 +70,7 @@ public static partial class IEnumerableExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 
@@ -119,11 +117,11 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         IComparer<T> comparer)
     {
-        IComparer<T> localComparer = Requires.NotNull(comparer);
+        IComparer<T> localComparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
 
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 
@@ -172,11 +170,11 @@ public static partial class IEnumerableExtensions
         IEnumerable<T>? right,
         Func<T, T, int> comparer)
     {
-        Func<T, T, int> localComparer = Requires.NotNull(comparer);
+        Func<T, T, int> localComparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
 
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 
@@ -224,7 +222,7 @@ public static partial class IEnumerableExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 
@@ -270,7 +268,7 @@ public static partial class IEnumerableExtensions
     {
         if (left == null)
         {
-            // Left is null, we return based on whether or not right is null as well
+            // Left is null, we return based on whether right is null as well
             return right == null ? 0 : int.MinValue;
         }
 

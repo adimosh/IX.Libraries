@@ -4,7 +4,6 @@ namespace IX.Math;
 ///     A service that is able to parse strings containing mathematical expressions and solve them. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="ExpressionParsingServiceBase"/>
-[PublicAPI]
 public sealed class ExpressionParsingService : ExpressionParsingServiceBase
 {
     /// <summary>

@@ -1,6 +1,3 @@
-using IX.Library.Contracts;
-using IX.Library.Threading;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
@@ -9,11 +6,10 @@ using FSFile = System.IO.File;
 namespace IX.Library.IO;
 
 /// <summary>
-///     A class for implementing <see cref="IFile" /> with <see cref="T:System.IO.File" />.
+///     A class for implementing <see cref="IFile" /> with <see cref="FSFile" />.
 /// </summary>
 /// <seealso cref="IFile" />
 /// <seealso cref="T:System.IO.File" />
-[PublicAPI]
 [SuppressMessage(
     "Performance",
     "HAA0603:Delegate allocation from a method group",
@@ -44,9 +40,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        _ = Requires.NotNull(
-            contents,
-            nameof(contents));
+        if (contents is null) throw new ArgumentNullException(nameof(contents));
 
         if (encoding == null)
         {
@@ -89,9 +83,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        _ = Requires.NotNull(
-            contents,
-            nameof(contents));
+        if (contents is null) throw new ArgumentNullException(nameof(contents));
 
         return new(encoding == null
             ? Work.OnThreadPoolAsync(
@@ -1084,9 +1076,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        _ = Requires.NotNull(
-            contents,
-            nameof(contents));
+        if (contents is null) throw new ArgumentNullException(nameof(contents));
 
         if (encoding == null)
         {
@@ -1129,9 +1119,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        _ = Requires.NotNull(
-            contents,
-            nameof(contents));
+        if (contents is null) throw new ArgumentNullException(nameof(contents));
 
         return new(
             encoding == null

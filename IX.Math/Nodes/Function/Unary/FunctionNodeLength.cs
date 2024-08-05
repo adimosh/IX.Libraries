@@ -11,14 +11,8 @@ namespace IX.Math.Nodes.Function.Unary;
 /// <seealso cref="UnaryFunctionNodeBase" />
 [DebuggerDisplay($"length({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("length")]
-[UsedImplicitly]
-internal sealed class FunctionNodeLength : UnaryFunctionNodeBase
+internal sealed class FunctionNodeLength(NodeBase parameter) : UnaryFunctionNodeBase(parameter)
 {
-    public FunctionNodeLength(NodeBase parameter)
-        : base(parameter)
-    {
-    }
-
     /// <summary>
     ///     Gets the return type of this node.
     /// </summary>

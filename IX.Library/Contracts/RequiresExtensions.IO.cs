@@ -19,8 +19,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("directoryPath:null => halt")]
-    [AssertionMethod]
     public static string RequiresExists(
         this IDirectory directoryShim,
         string directoryPath,
@@ -52,8 +50,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("directoryPath:null => halt")]
-    [AssertionMethod]
     public static void RequiresExists(
         this IDirectory directoryShim,
         out string field,
@@ -84,8 +80,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("filePath:null => halt")]
-    [AssertionMethod]
     public static string RequiresExists(
         this IFile fileShim,
         string filePath,
@@ -117,8 +111,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("filePath:null => halt")]
-    [AssertionMethod]
     public static void RequiresExists(
         this IFile fileShim,
         out string field,
@@ -149,8 +141,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("testPath:null => halt")]
-    [AssertionMethod]
     public static string RequiresValid(
         this IPath pathShim,
         string testPath,
@@ -188,8 +178,6 @@ public static partial class RequiresExtensions
     /// <exception cref="ArgumentNullOrWhiteSpaceStringException">The path is null, empty or whitespace-only.</exception>
     /// <exception cref="ArgumentInvalidPathException">The path is invalid, non-existent or inaccessible.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [ContractAnnotation("testPath:null => halt")]
-    [AssertionMethod]
     public static void RequiresValid(
         this IPath pathShim,
         out string field,

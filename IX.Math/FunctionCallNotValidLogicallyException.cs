@@ -7,7 +7,6 @@ namespace IX.Math;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-[PublicAPI]
 public class FunctionCallNotValidLogicallyException : Exception
 {
     /// <summary>

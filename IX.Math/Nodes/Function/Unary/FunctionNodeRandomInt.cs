@@ -12,7 +12,6 @@ namespace IX.Math.Nodes.Function.Unary;
 /// <seealso cref="NumericUnaryFunctionNodeBase" />
 [DebuggerDisplay($"randomint({{{nameof(Parameter)}}})")]
 [CallableMathematicsFunction("randomint")]
-[UsedImplicitly]
 internal sealed class FunctionNodeRandomInt : NumericUnaryFunctionNodeBase
 {
     /// <summary>
@@ -33,7 +32,6 @@ internal sealed class FunctionNodeRandomInt : NumericUnaryFunctionNodeBase
     /// </summary>
     /// <param name="max">The maximum.</param>
     /// <returns>A random number.</returns>
-    [UsedImplicitly]
     public static long GenerateRandom(long max) => RandomNumberGenerator.GenerateInt(max);
 
     /// <summary>

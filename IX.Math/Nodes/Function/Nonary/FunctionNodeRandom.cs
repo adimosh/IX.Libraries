@@ -15,7 +15,6 @@ namespace IX.Math.Nodes.Function.Nonary;
 [CallableMathematicsFunction(
     "rand",
     "random")]
-[UsedImplicitly]
 internal sealed class FunctionNodeRandom : NonaryFunctionNodeBase
 {
     /// <summary>
@@ -30,7 +29,6 @@ internal sealed class FunctionNodeRandom : NonaryFunctionNodeBase
     ///     Generates a random number.
     /// </summary>
     /// <returns>A randomly-generated number.</returns>
-    [UsedImplicitly]
     public static double GenerateRandom() => RandomNumberGenerator.Generate();
 
     /// <summary>

@@ -1,4 +1,3 @@
-using IX.Library.Contracts;
 using IX.Library.Globalization;
 
 using System.Globalization;
@@ -32,15 +31,12 @@ public static class ConstantsGenerator
         string stringIndicator,
         string content)
     {
+        // Contract validation
         _ = Requires.NotNullOrWhiteSpace(
             originalExpression,
             nameof(originalExpression));
-        _ = Requires.NotNull(
-            constantsTable,
-            nameof(constantsTable));
-        _ = Requires.NotNull(
-            reverseConstantsTable,
-            nameof(reverseConstantsTable));
+        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
+        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
         _ = Requires.NotNullOrWhiteSpace(
             stringIndicator,
             nameof(stringIndicator));
@@ -48,6 +44,7 @@ public static class ConstantsGenerator
             content,
             nameof(content));
 
+        // Operation
         if (reverseConstantsTable.TryGetValue(
                 content,
                 out var key))
@@ -86,19 +83,17 @@ public static class ConstantsGenerator
         string originalExpression,
         string content)
     {
+        // Contract validation
         _ = Requires.NotNullOrWhiteSpace(
             originalExpression,
             nameof(originalExpression));
-        _ = Requires.NotNull(
-            constantsTable,
-            nameof(constantsTable));
-        _ = Requires.NotNull(
-            reverseConstantsTable,
-            nameof(reverseConstantsTable));
+        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
+        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
         _ = Requires.NotNullOrWhiteSpace(
             content,
             nameof(content));
 
+        // Operation
         if (reverseConstantsTable.TryGetValue(
                 content,
                 out var key))
@@ -140,16 +135,14 @@ public static class ConstantsGenerator
         double value,
         params string[] alternateNames)
     {
+        // Contract validation
         _ = Requires.NotNullOrWhiteSpace(
             name,
             nameof(name));
-        _ = Requires.NotNull(
-            constantsTable,
-            nameof(constantsTable));
-        _ = Requires.NotNull(
-            reverseConstantsTable,
-            nameof(reverseConstantsTable));
+        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
+        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
 
+        // Operation
         if (reverseConstantsTable.TryGetValue(
                 name,
                 out _))

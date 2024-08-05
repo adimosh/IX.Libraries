@@ -3,7 +3,6 @@ namespace IX.Library.Entities;
 /// <summary>
 ///     A data contract for an entity that needs to remain in the database, or to be recoverable.
 /// </summary>
-[PublicAPI]
 public interface IPersistentEntity
 {
     /// <summary>

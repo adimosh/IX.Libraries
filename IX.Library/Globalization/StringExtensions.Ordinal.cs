@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.Globalization;
 
 /// <summary>
@@ -72,7 +70,7 @@ public static partial class StringExtensions
         source.OrdinalIndexOfInsensitive(value) >= 0;
 
     /// <summary>
-    ///     Checks whether or not the source string ends with a selected value in a case-sensitive manner using the comparison
+    ///     Checks whether the source string ends with a selected value in a case-sensitive manner using the comparison
     ///     rules of the UI thread culture.
     /// </summary>
     /// <param name="source">The source to search in.</param>
@@ -83,13 +81,13 @@ public static partial class StringExtensions
     public static bool OrdinalEndsWith(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .EndsWith(
                 value,
                 StringComparison.Ordinal);
 
     /// <summary>
-    ///     Checks whether or not the source string ends with a selected value in a case-insensitive manner using the
+    ///     Checks whether the source string ends with a selected value in a case-insensitive manner using the
     ///     comparison rules of the UI thread culture.
     /// </summary>
     /// <param name="source">The source to search in.</param>
@@ -100,7 +98,7 @@ public static partial class StringExtensions
     public static bool OrdinalEndsWithInsensitive(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .EndsWith(
                 value,
                 StringComparison.OrdinalIgnoreCase);
@@ -145,7 +143,7 @@ public static partial class StringExtensions
     public static int OrdinalIndexOf(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 StringComparison.Ordinal);
@@ -162,7 +160,7 @@ public static partial class StringExtensions
         this string source,
         string value,
         int startIndex) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
@@ -182,7 +180,7 @@ public static partial class StringExtensions
         string value,
         int startIndex,
         int count) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
@@ -201,7 +199,7 @@ public static partial class StringExtensions
     public static int OrdinalIndexOfInsensitive(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 StringComparison.OrdinalIgnoreCase);
@@ -218,7 +216,7 @@ public static partial class StringExtensions
         this string source,
         string value,
         int startIndex) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
@@ -238,7 +236,7 @@ public static partial class StringExtensions
         string value,
         int startIndex,
         int count) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
@@ -246,7 +244,7 @@ public static partial class StringExtensions
                 StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    ///     Checks whether or not the source string starts with a selected value in a case-sensitive manner using the
+    ///     Checks whether the source string starts with a selected value in a case-sensitive manner using the
     ///     comparison rules of the UI thread culture.
     /// </summary>
     /// <param name="source">The source to search in.</param>
@@ -257,13 +255,13 @@ public static partial class StringExtensions
     public static bool OrdinalStartsWith(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .StartsWith(
                 value,
                 StringComparison.Ordinal);
 
     /// <summary>
-    ///     Checks whether or not the source string starts with a selected value in a case-insensitive manner using the
+    ///     Checks whether the source string starts with a selected value in a case-insensitive manner using the
     ///     comparison rules of the UI thread culture.
     /// </summary>
     /// <param name="source">The source to search in.</param>
@@ -274,7 +272,7 @@ public static partial class StringExtensions
     public static bool OrdinalStartsWithInsensitive(
         this string source,
         string value) =>
-        Requires.NotNull(source)
+        (source ?? throw new ArgumentNullException(nameof(source)))
             .StartsWith(
                 value,
                 StringComparison.OrdinalIgnoreCase);

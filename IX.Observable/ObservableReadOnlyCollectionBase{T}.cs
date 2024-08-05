@@ -11,7 +11,6 @@ namespace IX.Observable;
 /// <typeparam name="T">The type of the item.</typeparam>
 /// <seealso cref="INotifyPropertyChanged" />
 /// <seealso cref="IEnumerable{T}" />
-[PublicAPI]
 public abstract class ObservableReadOnlyCollectionBase<T> : ObservableBase,
     IReadOnlyCollection<T>,
     ICollection
@@ -25,7 +24,7 @@ public abstract class ObservableReadOnlyCollectionBase<T> : ObservableBase,
     /// <param name="internalContainer">The internal container of items.</param>
     protected ObservableReadOnlyCollectionBase(ICollectionAdapter<T> internalContainer)
     {
-        Requires.NotNull(out _internalContainer, internalContainer);
+        _internalContainer = internalContainer ?? throw new ArgumentNullException(nameof(internalContainer));
         _internalContainer.MustReset -= InternalContainer_MustReset;
         _internalContainer.MustReset += InternalContainer_MustReset;
     }
@@ -40,7 +39,7 @@ public abstract class ObservableReadOnlyCollectionBase<T> : ObservableBase,
         SynchronizationContext context)
         : base(context)
     {
-        Requires.NotNull(out _internalContainer, internalContainer);
+        _internalContainer = internalContainer ?? throw new ArgumentNullException(nameof(internalContainer));
         _internalContainer.MustReset -= InternalContainer_MustReset;
         _internalContainer.MustReset += InternalContainer_MustReset;
     }
@@ -257,7 +256,7 @@ public abstract class ObservableReadOnlyCollectionBase<T> : ObservableBase,
     ///     Copies the elements of the <see cref="ObservableCollectionBase{T}" /> to a new <see cref="Array" />, starting at a
     ///     particular index.
     /// </summary>
-    /// <param name="fromIndex">The zero-based index from which which copying begins.</param>
+    /// <param name="fromIndex">The zero-based index from which copying begins.</param>
     /// <returns>A newly-formed array.</returns>
     /// <remarks>On concurrent collections, this method is read-synchronized.</remarks>
     public T[] CopyToArray(int fromIndex)

@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -12,20 +10,18 @@ namespace IX.Math.Nodes.Operations.Binary;
 ///     A node representing a logical and operation.
 /// </summary>
 /// <seealso cref="LogicalOperationNodeBase" />
+/// <remarks>
+///     Initializes a new instance of the <see cref="AndNode" /> class.
+/// </remarks>
+/// <param name="left">The left.</param>
+/// <param name="right">The right.</param>
 [DebuggerDisplay($"{{{nameof(Left)}}} & {{{nameof(Right)}}}")]
-internal sealed class AndNode : LogicalOperationNodeBase
+internal sealed class AndNode(
+    NodeBase left,
+    NodeBase right) : LogicalOperationNodeBase(
+        (left ?? throw new ArgumentNullException(nameof(left))).Simplify(),
+        (right ?? throw new ArgumentNullException(nameof(right))).Simplify())
 {
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="AndNode" /> class.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    public AndNode(
-        NodeBase left,
-        NodeBase right)
-        : base(
-            Requires.NotNull(left).Simplify(),
-            Requires.NotNull(right).Simplify()) { }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.

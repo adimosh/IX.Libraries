@@ -10,9 +10,9 @@ internal class ListListAdapter<T> : ModernListAdapter<T, List<T>.Enumerator>
 {
     private readonly List<T> _list;
 
-    public ListListAdapter() => _list = new();
+    public ListListAdapter() => _list = [];
 
-    public ListListAdapter(IEnumerable<T> source) => _list = new(source);
+    public ListListAdapter(IEnumerable<T> source) => _list = [..source];
 
     public override int Count => _list.Count;
 

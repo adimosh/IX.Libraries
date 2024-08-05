@@ -1,5 +1,3 @@
-using IX.Library.Contracts;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq.Expressions;
@@ -13,7 +11,6 @@ namespace IX.Math.Nodes;
 ///     A base class for a unary function (a function with only one parameter).
 /// </summary>
 /// <seealso cref="FunctionNodeBase" />
-[PublicAPI]
 public abstract class UnaryFunctionNodeBase : FunctionNodeBase
 {
     /// <summary>
@@ -27,7 +24,7 @@ public abstract class UnaryFunctionNodeBase : FunctionNodeBase
         Justification = "We specifically want this to happen.")]
     protected UnaryFunctionNodeBase(NodeBase parameter)
     {
-        NodeBase parameterTemp = Requires.NotNull(parameter);
+        NodeBase parameterTemp = parameter ?? throw new ArgumentNullException(nameof(parameter));
 
         EnsureCompatibleParameter(parameterTemp);
 

@@ -5,7 +5,6 @@ namespace IX.Library;
 /// An immutable value tuple.
 /// </summary>
 /// <typeparam name="TItem1">The type of the item at index 1.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1> : IEquatable<ImmutableValueTuple<TItem1>>
 {
     /// <summary>
@@ -76,7 +75,6 @@ public readonly struct ImmutableValueTuple<TItem1> : IEquatable<ImmutableValueTu
 /// </summary>
 /// <typeparam name="TItem1">The type of the item at index 1.</typeparam>
 /// <typeparam name="TItem2">The type of the item at index 2.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2> : IEquatable<ImmutableValueTuple<TItem1, TItem2>>
 {
     /// <summary>
@@ -159,7 +157,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2> : IEquatable<Immutabl
 /// <typeparam name="TItem1">The type of the item at index 1.</typeparam>
 /// <typeparam name="TItem2">The type of the item at index 2.</typeparam>
 /// <typeparam name="TItem3">The type of the item at index 3.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3>>
 {
     /// <summary>
@@ -254,7 +251,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3> : IEquatable<
 /// <typeparam name="TItem2">The type of the item at index 2.</typeparam>
 /// <typeparam name="TItem3">The type of the item at index 3.</typeparam>
 /// <typeparam name="TItem4">The type of the item at index 4.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4>>
 {
     /// <summary>
@@ -361,7 +357,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4> : IEq
 /// <typeparam name="TItem3">The type of the item at index 3.</typeparam>
 /// <typeparam name="TItem4">The type of the item at index 4.</typeparam>
 /// <typeparam name="TItem5">The type of the item at index 5.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5>>
 {
     /// <summary>
@@ -480,7 +475,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem
 /// <typeparam name="TItem4">The type of the item at index 4.</typeparam>
 /// <typeparam name="TItem5">The type of the item at index 5.</typeparam>
 /// <typeparam name="TItem6">The type of the item at index 6.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6>>
 {
     /// <summary>
@@ -611,7 +605,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem
 /// <typeparam name="TItem5">The type of the item at index 5.</typeparam>
 /// <typeparam name="TItem6">The type of the item at index 6.</typeparam>
 /// <typeparam name="TItem7">The type of the item at index 7.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6, TItem7> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6, TItem7>>
 {
     /// <summary>
@@ -754,7 +747,6 @@ public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem
 /// <typeparam name="TItem6">The type of the item at index 6.</typeparam>
 /// <typeparam name="TItem7">The type of the item at index 7.</typeparam>
 /// <typeparam name="TItem8">The type of the item at index 8.</typeparam>
-[PublicAPI]
 public readonly struct ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6, TItem7, TItem8> : IEquatable<ImmutableValueTuple<TItem1, TItem2, TItem3, TItem4, TItem5, TItem6, TItem7, TItem8>>
 {
     /// <summary>

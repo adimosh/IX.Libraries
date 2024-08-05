@@ -6,7 +6,6 @@ namespace IX.Library.Threading;
 ///     Interface IInterruptible.
 /// </summary>
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public interface IInterruptible : IDisposable
 {
     /// <summary>

@@ -1,11 +1,8 @@
-using IX.Library.Contracts;
-
 namespace IX.Library.DataGeneration;
 
 /// <summary>
 ///     A static class that is used for generating random data for testing.
 /// </summary>
-[PublicAPI]
 public static partial class DataGenerator
 {
     // Random generator
@@ -81,7 +78,7 @@ public static partial class DataGenerator
         int limit,
         Random random)
     {
-        Random localRandom = Requires.NotNull(random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         Requires.Positive(in limit);
 
         var array = new int[limit];

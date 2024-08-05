@@ -5,7 +5,6 @@ namespace IX.Math.Extensibility;
 /// <summary>
 ///     A service contract for extractors of constant values from the expression.
 /// </summary>
-[PublicAPI]
 public interface IConstantsExtractor
 {
     /// <summary>

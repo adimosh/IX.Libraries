@@ -3,7 +3,6 @@ namespace IX.Library.ComponentModel;
 /// <summary>
 ///     Global settings on how the synchronization context should work.
 /// </summary>
-[PublicAPI]
 public static class EnvironmentSettings
 {
     /// <summary>

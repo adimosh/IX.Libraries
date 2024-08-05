@@ -16,7 +16,6 @@ namespace IX.Observable;
     Namespace = Constants.DataContractNamespace,
     Name = "Observable{0}List",
     ItemName = "Item")]
-[PublicAPI]
 public class ObservableList<T> : ObservableListBase<T>
 {
     /// <summary>

@@ -5,7 +5,6 @@ namespace IX.Library;
 /// <summary>
 ///     Represents an abstraction over the <see cref="T:System.Environment" /> class.
 /// </summary>
-[PublicAPI]
 public interface IEnvironment
 {
     /// <summary>
@@ -21,7 +20,7 @@ public interface IEnvironment
     /// </summary>
     bool IsSingleProcessor { get; }
 
-    #if NET60_OR_GREATER
+#if NET6_0_OR_GREATER
     /// <summary>
     ///     Gets the unique identifier for the current process.
     /// </summary>
@@ -29,10 +28,10 @@ public interface IEnvironment
     ///     The process identifier.
     /// </value>
     public int ProcessId { get; }
-    #endif
+#endif
 
     /// <summary>
-    ///     Gets a value indicating whether or not the current process is a 64-bit process.
+    ///     Gets a value indicating whether the current process is a 64-bit process.
     /// </summary>
     /// <value>
     ///     <c>true</c> if the current process is 64-bit; otherwise, <c>false</c>.
@@ -137,14 +136,14 @@ public interface IEnvironment
     /// </value>
     int TickCount { get; }
 
-    #if NET60_OR_GREATER
+#if NET6_0_OR_GREATER
     /// <summary>Gets the number of milliseconds elapsed since the system started.</summary>
     /// <value>
     ///     A 64-bit signed integer containing the amount of time in milliseconds that has passed since the last time the
     ///     computer was started.
     /// </value>
     public long TickCount64 { get; }
-    #endif
+#endif
 
     /// <summary>
     ///     Gets or sets the exit code.

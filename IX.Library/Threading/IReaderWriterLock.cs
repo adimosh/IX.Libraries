@@ -4,7 +4,6 @@ namespace IX.Library.Threading;
 ///     A service contract for a reader/writer lock.
 /// </summary>
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public interface IReaderWriterLock : IDisposable
 {
     /// <summary>

@@ -18,12 +18,11 @@ namespace IX.Library.Collections;
 ///     <para>This queue cannot handle system faults, such as a power outage or a general operating system failure.</para>
 ///     <para>
 ///         If you need those types of errors also handled, and you need data persistence across those as well, please
-///         use <see cref="IX.Library.Collections.PersistedQueue{T}" /> instead.
+///         use <see cref="PersistedQueue{T}" /> instead.
 ///     </para>
 /// </remarks>
 /// <seealso cref="ReaderWriterSynchronizedBase" />
-/// <seealso cref="IX.Library.Collections.IPersistedQueue{T}" />
-[PublicAPI]
+/// <seealso cref="IPersistedQueue{T}" />
 public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
     IPersistedQueue<T>
 {
@@ -39,7 +38,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
     private Queue<T>? _queue;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="IX.Library.Collections.DisasterRecoveryPersistedQueue{T}" /> class.
+    ///     Initializes a new instance of the <see cref="DisasterRecoveryPersistedQueue{T}" /> class.
     /// </summary>
     /// <param name="persistenceFolderPath">
     ///     The persistence folder path. The path must evaluate to an existing and accessible path.
@@ -66,15 +65,9 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
             persistenceFolderPath);
 
         // Dependencies
-        Requires.NotNull(
-            out _fileShim,
-            fileShim);
-        Requires.NotNull(
-            out _directoryShim,
-            directoryShim);
-        Requires.NotNull(
-            out _pathShim,
-            pathShim);
+        _fileShim = fileShim ?? throw new ArgumentNullException(nameof(fileShim));
+        _directoryShim = directoryShim ?? throw new ArgumentNullException(nameof(directoryShim));
+        _pathShim = pathShim ?? throw new ArgumentNullException(nameof(pathShim));
 
         // Automatic disaster detection logic
         AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
@@ -166,8 +159,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Array array,
         int index)
     {
-        _ = Requires.NotNull(
-            array);
+        if (array is null) throw new ArgumentNullException(nameof(array));
         Requires.NonNegative(
             index);
 
@@ -243,10 +235,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Action<TState, IEnumerable<T>> actionToInvoke,
         TState state)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -273,7 +263,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
             }
 
             var index = 1;
-            T[] items = _queue.ToArray();
+            T[] items = [.. _queue];
             for (; index < items.Length; index++)
             {
                 if (!predicate(
@@ -327,10 +317,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -456,10 +444,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -585,10 +571,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -722,10 +706,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            predicate);
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -802,8 +784,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Action<TState, T> actionToInvoke,
         TState state)
     {
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -856,8 +837,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {
@@ -947,8 +927,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        _ = Requires.NotNull(
-            actionToInvoke);
+        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
 
         using (AcquireWriteLock())
         {

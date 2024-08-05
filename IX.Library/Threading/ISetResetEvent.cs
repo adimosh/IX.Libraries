@@ -6,7 +6,6 @@ namespace IX.Library.Threading;
 ///     An abstraction contract for set/reset events.
 /// </summary>
 /// <seealso cref="IDisposable" />
-[PublicAPI]
 public interface ISetResetEvent : IDisposable
 {
     /// <summary>

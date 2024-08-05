@@ -3,7 +3,6 @@ namespace IX.Library.Entities;
 /// <summary>
 ///     A data contract for an entity with an abbreviated name.
 /// </summary>
-[PublicAPI]
 public interface IEntityWithAbbreviatedName
 {
     /// <summary>

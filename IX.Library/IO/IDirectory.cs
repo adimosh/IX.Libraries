@@ -5,7 +5,6 @@ namespace IX.Library.IO;
 /// <summary>
 ///     Abstracts the <see cref="GlobalIO.Directory" /> class' static methods into a mock-able interface.
 /// </summary>
-[PublicAPI]
 public interface IDirectory
 {
     /// <summary>

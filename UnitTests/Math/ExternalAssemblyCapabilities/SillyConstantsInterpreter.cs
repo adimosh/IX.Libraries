@@ -9,12 +9,11 @@ namespace UnitTests.Math.ExternalAssemblyCapabilities;
 ///     A constants interpreter used for testing purposes.
 /// </summary>
 /// <seealso cref="IConstantInterpreter" />
-[UsedImplicitly]
 [ConstantsInterpreter]
 public class SillyConstantsInterpreter : IConstantInterpreter
 {
     /// <summary>
-    ///     Evaluates part of an expression, determining whether or not it is a constant.
+    ///     Evaluates part of an expression, determining whether it is a constant.
     /// </summary>
     /// <param name="expressionPart">The expression part.</param>
     /// <returns>
