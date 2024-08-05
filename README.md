@@ -35,9 +35,9 @@ version support information across various frameworks and OSes.
 
 ## Releases
 
-- NuGet: [![IX.StandardExtensions NuGet](https://img.shields.io/nuget/dt/IX.StandardExtensions.svg)](https://www.nuget.org/packages/IX.StandardExtensions/)
-- Latest stable: [![IX.StandardExtensions NuGet](https://img.shields.io/nuget/v/IX.StandardExtensions.svg)](https://www.nuget.org/packages/IX.StandardExtensions/)
-- Latest with pre-release: [![IX.StandardExtensions NuGet pre-release](https://img.shields.io/nuget/vpre/IX.StandardExtensions.svg)](https://www.nuget.org/packages/IX.StandardExtensions/)
+- NuGet: [![IX.Libraries NuGet](https://img.shields.io/nuget/dt/IX.Library.svg)](https://www.nuget.org/packages/IX.Library/)
+- Latest stable: [![IX.Libraries NuGet](https://img.shields.io/nuget/v/IX.Library.svg)](https://www.nuget.org/packages/IX.Library/)
+- Latest with pre-release: [![IX.Libraries NuGet pre-release](https://img.shields.io/nuget/vpre/IX.Library.svg)](https://www.nuget.org/packages/IX.Library/)
 
 
 ## Highlights
