@@ -11,11 +11,11 @@ public static class TypeExtensions
     /// <summary>
     ///     Gets the attribute data by type without version binding.
     /// </summary>
-    /// <typeparam name="TAttribute">The type of the t attribute.</typeparam>
-    /// <typeparam name="TReturn">The type of the t return.</typeparam>
+    /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
+    /// <typeparam name="TReturn">The type of the return.</typeparam>
     /// <param name="typeInfo">The type information.</param>
     /// <param name="value">The value.</param>
-    /// <returns>System.Boolean.</returns>
+    /// <returns><c>true</c> if the attribute was recognized and has data, <c>false</c> otherwise.</returns>
     [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
     public static bool GetAttributeDataByTypeWithoutVersionBinding<TAttribute, TReturn>(
         this Type typeInfo,
@@ -48,7 +48,7 @@ public static class TypeExtensions
     {
         MethodInfo? mi = null;
 
-        foreach (MethodInfo p in Requires.NotNull(typeInfo).GetRuntimeMethods())
+        foreach (MethodInfo p in (typeInfo ?? throw new ArgumentNullException(nameof(typeInfo))).GetRuntimeMethods())
         {
             if (p.Name != name)
             {

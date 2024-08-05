@@ -30,6 +30,7 @@ internal static class SymbolExpressionGenerator
         symbolTable.Add(
             itemName,
             symb);
+        // TODO: Add extra validation for this case, or remove the nullability completely
         reverseSymbolTable.Add(
             symb.Expression,
             itemName);

@@ -47,10 +47,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     protected private ExpressionParsingServiceBase(MathDefinition definition)
     {
         // Preconditions
-        Requires.NotNull(
-            out _workingDefinition,
-            definition,
-            nameof(definition));
+        _workingDefinition = definition ?? throw new ArgumentNullException(nameof(definition));
 
         // Initialized internal state
         _constantExtractors = [];
@@ -167,9 +164,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// <param name="assembly">The assembly to register.</param>
     public void RegisterFunctionsAssembly(Assembly assembly)
     {
-        _ = Requires.NotNull(
-            assembly,
-            nameof(assembly));
+        if (assembly is null) throw new ArgumentNullException(nameof(assembly));
 
         ThrowIfCurrentObjectDisposed();
 
@@ -201,9 +196,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// </exception>
     public void RegisterTypeFormatter(IStringFormatter formatter)
     {
-        _ = Requires.NotNull(
-            formatter,
-            nameof(formatter));
+        if (formatter is null) throw new ArgumentNullException(nameof(formatter));
 
         if (_interpretationDone != 0)
         {

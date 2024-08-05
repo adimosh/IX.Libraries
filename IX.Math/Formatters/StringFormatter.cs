@@ -75,11 +75,7 @@ public static class StringFormatter
         Expression expression,
         List<IStringFormatter>? stringFormatters)
     {
-        _ = Requires.NotNull(
-            expression,
-            nameof(expression));
-
-        if (expression.Type == typeof(string))
+        if ((expression ?? throw new ArgumentNullException(nameof(expression))).Type == typeof(string))
         {
             return expression;
         }

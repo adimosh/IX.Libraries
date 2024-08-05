@@ -16,9 +16,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
     ///     <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
     /// </exception>
     public SaveWhenDisposingMemoryStream(Action<byte[]> saveFile) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -33,9 +31,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
         byte[] buffer,
         Action<byte[]> saveFile)
         : base(buffer) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -50,9 +46,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
         int capacity,
         Action<byte[]> saveFile)
         : base(capacity) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -74,9 +68,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
         : base(
             buffer,
             writable) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -98,9 +90,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
             buffer,
             index,
             count) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -128,9 +118,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
             index,
             count,
             writable) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SaveWhenDisposingMemoryStream" /> class.
@@ -164,9 +152,7 @@ public class SaveWhenDisposingMemoryStream : MemoryStream
             count,
             writable,
             publiclyVisible) =>
-        Requires.NotNull(
-            out _saveFile,
-            saveFile);
+        _saveFile = saveFile ?? throw new ArgumentNullException(nameof(saveFile));
 
     /// <summary>
     ///     Releases the unmanaged resources used by the <see cref="MemoryStream" /> class and optionally releases

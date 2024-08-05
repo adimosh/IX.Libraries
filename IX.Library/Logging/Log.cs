@@ -14,18 +14,15 @@ public static class Log
     /// Sets a logger factory as a default logging provider.
     /// </summary>
     /// <param name="loggerFactory">The logger factory.</param>
-    public static void SetLoggerFactory(ILoggerFactory loggerFactory) => Requires.NotNull(
-        out _loggerFactory,
-        loggerFactory);
+    public static void SetLoggerFactory(ILoggerFactory loggerFactory) =>
+        _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
 
     /// <summary>
     /// Sets a logger provider as a default logging provider.
     /// </summary>
     /// <param name="loggerProvider">The logger provider.</param>
     public static void SetLoggerProvider(ILoggerProvider loggerProvider) =>
-        Requires.NotNull(
-            out _loggerProvider,
-            loggerProvider);
+        _loggerProvider = loggerProvider ?? throw new ArgumentNullException(nameof(loggerProvider));
 
     internal static ILogger? GetLogger<T>() => GetLogger(typeof(T));
 

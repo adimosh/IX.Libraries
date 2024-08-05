@@ -27,9 +27,9 @@ public abstract class TernaryFunctionNodeBase : FunctionNodeBase
         NodeBase secondParameter,
         NodeBase thirdParameter)
     {
-        NodeBase firstParameterTemp = Requires.NotNull(firstParameter);
-        NodeBase secondParameterTemp = Requires.NotNull(secondParameter);
-        NodeBase thirdParameterTemp = Requires.NotNull(thirdParameter);
+        NodeBase firstParameterTemp = firstParameter ?? throw new ArgumentNullException(nameof(firstParameter));
+        NodeBase secondParameterTemp = secondParameter ?? throw new ArgumentNullException(nameof(secondParameter));
+        NodeBase thirdParameterTemp = thirdParameter ?? throw new ArgumentNullException(nameof(thirdParameter));
 
         // ReSharper disable once VirtualMemberCallInConstructor
         EnsureCompatibleParameters(
@@ -75,19 +75,19 @@ public abstract class TernaryFunctionNodeBase : FunctionNodeBase
     /// <param name="func">The function.</param>
     protected override void SetSpecialObjectRequestFunctionForSubObjects(Func<Type, object> func)
     {
-        if (FirstParameter is ISpecialRequestNode srnl)
+        if (FirstParameter is ISpecialRequestNode firstSpecialRequestNode)
         {
-            srnl.SetRequestSpecialObjectFunction(func);
+            firstSpecialRequestNode.SetRequestSpecialObjectFunction(func);
         }
 
-        if (SecondParameter is ISpecialRequestNode srnr)
+        if (SecondParameter is ISpecialRequestNode secondSpecialRequestNode)
         {
-            srnr.SetRequestSpecialObjectFunction(func);
+            secondSpecialRequestNode.SetRequestSpecialObjectFunction(func);
         }
 
-        if (ThirdParameter is ISpecialRequestNode trnr)
+        if (ThirdParameter is ISpecialRequestNode thirdSpecialRequestNode)
         {
-            trnr.SetRequestSpecialObjectFunction(func);
+            thirdSpecialRequestNode.SetRequestSpecialObjectFunction(func);
         }
     }
 

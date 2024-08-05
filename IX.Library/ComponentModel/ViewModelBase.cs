@@ -99,10 +99,10 @@ public abstract class ViewModelBase : NotifyPropertyChangedBase, INotifyDataErro
     /// <returns>The validation errors for the property or entity.</returns>
     public IEnumerable GetErrors(string? propertyName) =>
         _entityErrors.Value.TryGetValue(
-            Requires.NotNull(propertyName),
+            propertyName ?? throw new ArgumentNullException(nameof(propertyName)),
             out List<string>? propertyErrors)
             ? propertyErrors.ToArray()
-            : Array.Empty<string>();
+            : [];
 
     /// <summary>
     ///     Validates this object.
@@ -219,7 +219,7 @@ public abstract class ViewModelBase : NotifyPropertyChangedBase, INotifyDataErro
         [CallerMemberName] string nameOfProperty = "")
         where T : class
     {
-        T? previousValue = Interlocked.Exchange(
+        T previousValue = Interlocked.Exchange(
             ref backingField,
             value);
 

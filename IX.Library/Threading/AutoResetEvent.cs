@@ -51,10 +51,7 @@ public class AutoResetEvent : DisposableBase,
         "IDISP003:Dispose previous before re-assigning.",
         Justification = "This is a constructor, the analyzer is thrown off.")]
     public AutoResetEvent(GlobalThreading.AutoResetEvent autoResetEvent) =>
-        Requires.NotNull(
-            out _sre,
-            autoResetEvent,
-            nameof(autoResetEvent));
+        _sre = autoResetEvent ?? throw new ArgumentNullException(nameof(autoResetEvent));
 
     /// <summary>
     ///     Performs an implicit conversion from <see cref="GlobalThreading.AutoResetEvent" /> to
@@ -72,9 +69,7 @@ public class AutoResetEvent : DisposableBase,
     /// <param name="autoResetEvent">The automatic reset event.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator GlobalThreading.AutoResetEvent(AutoResetEvent autoResetEvent) =>
-        Requires.NotNull(
-                autoResetEvent,
-                nameof(autoResetEvent))
+        (autoResetEvent ?? throw new ArgumentNullException(nameof(autoResetEvent)))
             ._sre;
 
     /// <summary>

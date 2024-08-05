@@ -17,8 +17,8 @@ internal sealed class LeftShiftNode : ByteShiftOperationNodeBase
         NodeBase left,
         NodeBase right)
         : base(
-            Requires.NotNull(left).Simplify(),
-            Requires.NotNull(right).Simplify()) { }
+            (left ?? throw new ArgumentNullException(nameof(left))).Simplify(),
+            (right ?? throw new ArgumentNullException(nameof(right))).Simplify()) { }
 
     /// <summary>
     ///     Simplifies this node, if possible, reflexively returns otherwise.

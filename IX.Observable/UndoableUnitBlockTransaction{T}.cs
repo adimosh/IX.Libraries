@@ -9,15 +9,13 @@ internal class UndoableUnitBlockTransaction<T> : OperationTransaction
 
     internal UndoableUnitBlockTransaction(ObservableCollectionBase<T> collectionBase)
     {
-        _ = Requires.NotNull(collectionBase);
-
-        _collectionBase = collectionBase;
+        _collectionBase = collectionBase ?? throw new ArgumentNullException(nameof(collectionBase));
 
         AddRevertStep(
             state => { ((ObservableCollectionBase<T>)state).FailExplicitUndoBlockTransaction(); },
             collectionBase);
 
-        StateChanges = new(new());
+        StateChanges = new([]);
     }
 
     internal CompositeStateChange StateChanges { get; }

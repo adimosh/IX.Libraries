@@ -19,7 +19,7 @@ internal sealed class SubtractNode : UnaryOperatorNodeBase
     /// <param name="operand">The operand.</param>
     /// <exception cref="ExpressionNotValidLogicallyException">The expression is not logically valid.</exception>
     public SubtractNode(NodeBase operand)
-        : base(Requires.NotNull(operand).Simplify())
+        : base((operand ?? throw new ArgumentNullException(nameof(operand))).Simplify())
     {
         operand.DetermineStrongly(SupportedValueType.Numeric);
 

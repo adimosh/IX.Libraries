@@ -30,7 +30,7 @@ public sealed class PubSubEvent<TKey, TEventArgs> : ReaderWriterSynchronizedBase
     /// <param name="handler">The handler.</param>
     /// <returns>A subscription token that can later be used to unsubscribe.</returns>
     public IPublishedEventSubscriptionToken Subscribe(EventHandler<TEventArgs> handler) =>
-        SubscribeInternal(Requires.NotNull(handler), EventSubscriptionSynchronizationOptions.BackgroundThread, false);
+        SubscribeInternal(handler ?? throw new ArgumentNullException(nameof(handler)), EventSubscriptionSynchronizationOptions.BackgroundThread, false);
 
     /// <summary>
     /// Subscribes to the event with specified handler with invocation using the specified synchronization options.
@@ -39,7 +39,7 @@ public sealed class PubSubEvent<TKey, TEventArgs> : ReaderWriterSynchronizedBase
     /// <param name="synchronizationOptions">The synchronization options.</param>
     /// <returns>A subscription token that can later be used to unsubscribe.</returns>
     public IPublishedEventSubscriptionToken Subscribe(EventHandler<TEventArgs> handler, EventSubscriptionSynchronizationOptions synchronizationOptions) =>
-        SubscribeInternal(Requires.NotNull(handler), synchronizationOptions, false);
+        SubscribeInternal(handler ?? throw new ArgumentNullException(nameof(handler)), synchronizationOptions, false);
 
     /// <summary>
     /// Subscribes to the event with specified handler with invocation on the background thread, and keeps the reference alive.
@@ -47,7 +47,7 @@ public sealed class PubSubEvent<TKey, TEventArgs> : ReaderWriterSynchronizedBase
     /// <param name="handler">The handler.</param>
     /// <returns>A subscription token that can later be used to unsubscribe.</returns>
     public IPublishedEventSubscriptionToken SubscribeAndKeepReference(EventHandler<TEventArgs> handler) =>
-        SubscribeInternal(Requires.NotNull(handler), EventSubscriptionSynchronizationOptions.BackgroundThread, true);
+        SubscribeInternal(handler ?? throw new ArgumentNullException(nameof(handler)), EventSubscriptionSynchronizationOptions.BackgroundThread, true);
 
     /// <summary>
     /// Subscribes to the event with specified handler with invocation using the specified synchronization options, and keeps the reference alive.
@@ -56,7 +56,7 @@ public sealed class PubSubEvent<TKey, TEventArgs> : ReaderWriterSynchronizedBase
     /// <param name="synchronizationOptions">The synchronization options.</param>
     /// <returns>A subscription token that can later be used to unsubscribe.</returns>
     public IPublishedEventSubscriptionToken SubscribeAndKeepReference(EventHandler<TEventArgs> handler, EventSubscriptionSynchronizationOptions synchronizationOptions) =>
-        SubscribeInternal(Requires.NotNull(handler), synchronizationOptions, true);
+        SubscribeInternal(handler ?? throw new ArgumentNullException(nameof(handler)), synchronizationOptions, true);
 
     private IPublishedEventSubscriptionToken SubscribeInternal(
         EventHandler<TEventArgs> eventHandler,

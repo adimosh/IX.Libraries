@@ -46,6 +46,7 @@ public class ItemNotInEditModeException : InvalidOperationException
             message,
             innerException) { }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ItemNotInEditModeException" /> class.
     /// </summary>
@@ -57,10 +58,14 @@ public class ItemNotInEditModeException : InvalidOperationException
     ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
     ///     information about the source or destination.
     /// </param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected ItemNotInEditModeException(
         SerializationInfo info,
         StreamingContext context)
         : base(
             info,
             context) { }
+#endif
 }

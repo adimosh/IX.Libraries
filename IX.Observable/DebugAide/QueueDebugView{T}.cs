@@ -17,7 +17,7 @@ public sealed class QueueDebugView<T>
     /// </summary>
     /// <param name="queue">The queue.</param>
     /// <exception cref="ArgumentNullException">queue is null.</exception>
-    public QueueDebugView(ObservableQueue<T> queue) => Requires.NotNull(out _queue, queue);
+    public QueueDebugView(ObservableQueue<T> queue) => _queue = queue ?? throw new ArgumentNullException(nameof(queue));
 
     /// <summary>
     ///     Gets the items.

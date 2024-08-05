@@ -15,23 +15,17 @@ public readonly struct SynchronizationContextAwaiter : INotifyCompletion
     /// Initializes a new instance of the <see cref="SynchronizationContextAwaiter"/> struct.
     /// </summary>
     /// <param name="context">The context.</param>
-    public SynchronizationContextAwaiter(SynchronizationContext context)
-    {
-        Requires.NotNull(
-            out _context,
-            context);
-    }
+    public SynchronizationContextAwaiter(SynchronizationContext context) =>
+        _context = context ?? throw new ArgumentNullException(nameof(context));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SynchronizationContextAwaiter"/> struct.
     /// </summary>
     /// <exception cref="ArgumentNullException"></exception>
-    public SynchronizationContextAwaiter()
-    {
+    public SynchronizationContextAwaiter() =>
         _context = SynchronizationContext.Current ??
                    throw new InvalidOperationException(
                        Resources.ThereIsNoCurrentSynchronizationContextToAttemptCapturing);
-    }
 
     /// <summary>
     /// Schedules the continuation action that's invoked when the instance completes.
@@ -43,8 +37,6 @@ public readonly struct SynchronizationContextAwaiter : INotifyCompletion
         Justification = "Unavoidable.")]
     public void OnCompleted(Action continuation)
     {
-        Requires.NotNull(continuation);
-
         static void SendOrPostCallback(object state)
         {
             var action = (Action)state;
@@ -53,6 +45,6 @@ public readonly struct SynchronizationContextAwaiter : INotifyCompletion
 
         _context.Send(
             SendOrPostCallback,
-            continuation);
+            continuation ?? throw new ArgumentNullException(nameof(continuation)));
     }
 }

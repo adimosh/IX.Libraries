@@ -80,7 +80,7 @@ public abstract partial class DisposableBase : IDisposable
     {
         ThrowIfCurrentObjectDisposed();
 
-        Requires.NotNull(action)();
+        (action ?? throw new ArgumentNullException(nameof(action)))();
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public abstract partial class DisposableBase : IDisposable
     {
         ThrowIfCurrentObjectDisposed();
 
-        return Requires.NotNull(func)();
+        return (func ?? throw new ArgumentNullException(nameof(func)))();
     }
 
     /// <summary>

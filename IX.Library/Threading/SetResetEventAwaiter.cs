@@ -10,10 +10,7 @@ public class SetResetEventAwaiter : IAwaiter
     private int _isCompleted;
 
     internal SetResetEventAwaiter(ISetResetEvent mre) =>
-        Requires.NotNull(
-            out _mre,
-            mre,
-            nameof(mre));
+        _mre = mre ?? throw new ArgumentNullException(nameof(mre));
 
     /// <summary>
     ///     Gets a value indicating whether this awaiter has completed.

@@ -31,16 +31,11 @@ internal sealed class AtomicEnumerator<TItem, TEnumerator> : AtomicEnumerator<TI
         TEnumerator existingEnumerator,
         Func<ValueSynchronizationLockerRead> readLock)
     {
-        _ = Requires.NotNull(existingEnumerator);
-
-        _existingEnumerator = existingEnumerator;
+        _existingEnumerator = existingEnumerator ?? throw new ArgumentNullException(nameof(existingEnumerator));
+        _readLock = readLock ?? throw new ArgumentNullException(nameof(readLock));
         _current = default!; /* We forgive this possible null reference, as it should not be possible to
-                                      * access it before reading something from the enumerator
-                                      */
-
-        Requires.NotNull(
-            out _readLock,
-            readLock);
+                              * access it before reading something from the enumerator
+                              */
     }
 
     /// <summary>

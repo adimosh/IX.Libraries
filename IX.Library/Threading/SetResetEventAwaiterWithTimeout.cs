@@ -15,10 +15,7 @@ public class SetResetEventAwaiterWithTimeout : IAwaiter<bool>
         ISetResetEvent mre,
         int timeout)
     {
-        Requires.NotNull(
-            out _mre,
-            mre,
-            nameof(mre));
+        _mre = mre ?? throw new ArgumentNullException(nameof(mre));
 
         _tsTimeout = TimeSpan.FromMilliseconds(timeout);
     }
@@ -27,10 +24,7 @@ public class SetResetEventAwaiterWithTimeout : IAwaiter<bool>
         ISetResetEvent mre,
         TimeSpan timeout)
     {
-        Requires.NotNull(
-            out _mre,
-            mre,
-            nameof(mre));
+        _mre = mre ?? throw new ArgumentNullException(nameof(mre));
 
         _tsTimeout = timeout;
     }
@@ -39,10 +33,7 @@ public class SetResetEventAwaiterWithTimeout : IAwaiter<bool>
         ISetResetEvent mre,
         double timeout)
     {
-        Requires.NotNull(
-            out _mre,
-            mre,
-            nameof(mre));
+        _mre = mre ?? throw new ArgumentNullException(nameof(mre));
 
         _tsTimeout = TimeSpan.FromMilliseconds(timeout);
     }

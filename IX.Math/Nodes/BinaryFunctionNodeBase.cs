@@ -36,8 +36,8 @@ public abstract class BinaryFunctionNodeBase : FunctionNodeBase
         NodeBase firstParameter,
         NodeBase secondParameter)
     {
-        NodeBase firstParameterTemp = Requires.NotNull(firstParameter);
-        NodeBase secondParameterTemp = Requires.NotNull(secondParameter);
+        NodeBase firstParameterTemp = firstParameter ?? throw new ArgumentNullException(nameof(firstParameter));
+        NodeBase secondParameterTemp = secondParameter ?? throw new ArgumentNullException(nameof(secondParameter));
 
         EnsureCompatibleParameters(
             firstParameter,

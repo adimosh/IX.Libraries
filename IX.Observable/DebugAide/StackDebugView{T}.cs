@@ -17,7 +17,7 @@ public sealed class StackDebugView<T>
     /// </summary>
     /// <param name="stack">The stack.</param>
     /// <exception cref="ArgumentNullException">stack is null.</exception>
-    public StackDebugView(ObservableStack<T> stack) => Requires.NotNull(out _stack, stack);
+    public StackDebugView(ObservableStack<T> stack) => _stack = stack ?? throw new ArgumentNullException(nameof(stack));
 
     /// <summary>
     ///     Gets the items.

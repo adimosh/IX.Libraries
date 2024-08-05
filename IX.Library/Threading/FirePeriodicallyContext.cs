@@ -59,8 +59,8 @@ internal sealed class FirePeriodicallyContext : DisposableBase,
         _state = state;
         _timeSpan = timeSpan;
         _timer = new(
-            TimerTick!,
-            Requires.NotNull(tickerDelegate),
+            TimerTick,
+            tickerDelegate ?? throw new ArgumentNullException(nameof(tickerDelegate)),
             initialDelay,
             timeSpan);
     }
@@ -91,9 +91,9 @@ internal sealed class FirePeriodicallyContext : DisposableBase,
         _timer.Dispose();
     }
 
-    private void TimerTick(object stateObject)
+    private void TimerTick(object? stateObject)
     {
-        var ticker = (FirePeriodicallyTicker)stateObject;
+        if (stateObject is not FirePeriodicallyTicker ticker) return;
 
         _ = Interlocked.Increment(ref _iteration);
 

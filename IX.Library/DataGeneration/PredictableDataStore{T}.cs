@@ -78,8 +78,7 @@ public class PredictableDataStore<T> : ReaderWriterSynchronizedBase,
         object state,
         bool parallelGenerate = false)
     {
-        Func<object, T> localGenerator = Requires.NotNull(
-            generator);
+        Func<object, T> localGenerator = generator ?? throw new ArgumentNullException(nameof(generator));
 
         _items = new T[capacity];
 

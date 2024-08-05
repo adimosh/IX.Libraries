@@ -78,15 +78,20 @@ public class LimitArgumentNegativeException : ArgumentException
             message,
             innerException) { }
 
+#if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="IX.Library.Collections.LimitArgumentNegativeException" /> class.
     /// </summary>
     /// <param name="serializationInfo">The serialization information.</param>
     /// <param name="streamingContext">The streaming context.</param>
+#if NET8_0
+    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
+#endif
     protected LimitArgumentNegativeException(
         SerializationInfo serializationInfo,
         StreamingContext streamingContext)
         : base(
             serializationInfo,
             streamingContext) { }
+#endif
 }

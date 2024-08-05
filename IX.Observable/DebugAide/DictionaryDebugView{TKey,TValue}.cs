@@ -16,9 +16,7 @@ public sealed class DictionaryDebugView<TKey, TValue>
     /// <param name="dictionary">The dictionary.</param>
     /// <exception cref="ArgumentNullException">dictionary is null.</exception>
     public DictionaryDebugView(ObservableDictionary<TKey, TValue> dictionary) =>
-        Requires.NotNull(
-            out _dict,
-            dictionary);
+        _dict = dictionary ?? throw new ArgumentNullException(nameof(dictionary));
 
     /// <summary>
     ///     Gets the items, in debug view.

@@ -17,7 +17,8 @@ public sealed class CollectionDebugView<T>
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <exception cref="ArgumentNullException">collection is null.</exception>
-    public CollectionDebugView(ObservableCollectionBase<T> collection) => Requires.NotNull(out _collection, collection);
+    public CollectionDebugView(ObservableCollectionBase<T> collection) =>
+        _collection = collection ?? throw new ArgumentNullException(nameof(collection));
 
     /// <summary>
     ///     Gets the items.

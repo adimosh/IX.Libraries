@@ -70,7 +70,7 @@ public abstract class ObservableListBase<T> : ObservableCollectionBase<T>,
             suppressUndoable) { }
 
     /// <summary>
-    ///     Gets a value indicating whether or not this list is of a fixed size.
+    ///     Gets a value indicating whether this list is of a fixed size.
     /// </summary>
     public virtual bool IsFixedSize =>
         InvokeIfNotDisposed(

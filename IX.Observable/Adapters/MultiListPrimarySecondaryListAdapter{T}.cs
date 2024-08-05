@@ -16,7 +16,7 @@ internal class MultiListPrimarySecondaryListAdapter<T> : ModernListAdapter<T, IE
     {
         get
         {
-            _primaryList ??= new ObservableList<T>();
+            _primaryList ??= [];
 
             return _primaryList.Count + _secondaryLists.Sum(p => p.Count());
         }
@@ -248,7 +248,7 @@ internal class MultiListPrimarySecondaryListAdapter<T> : ModernListAdapter<T, IE
     internal void SetMaster<TList>(TList masterList)
         where TList : class, IList<T>, INotifyCollectionChanged
     {
-        TList newMaster = Requires.NotNull(masterList);
+        TList newMaster = masterList ?? throw new ArgumentNullException(nameof(masterList));
         IList<T>? oldMaster = _primaryList;
 
         if (oldMaster != null)
@@ -270,15 +270,14 @@ internal class MultiListPrimarySecondaryListAdapter<T> : ModernListAdapter<T, IE
     internal void SetSlave<TList>(TList slaveList)
         where TList : class, IEnumerable<T>, INotifyCollectionChanged
     {
-        _secondaryLists.Add(Requires.NotNull(slaveList));
+        _secondaryLists.Add(slaveList ?? throw new ArgumentNullException(nameof(slaveList)));
         slaveList.CollectionChanged += List_CollectionChanged;
     }
 
     internal void RemoveSlave<TList>(TList slaveList)
         where TList : class, IEnumerable<T>, INotifyCollectionChanged
     {
-        var localSlaveList = Requires.NotNull(
-            slaveList);
+        var localSlaveList = slaveList ?? throw new ArgumentNullException(nameof(slaveList));
 
         try
         {
