@@ -182,7 +182,7 @@ public partial class ConcurrentDictionary<TKey, TValue> : ConcurrentCollections.
         finally
         {
             _threadStaticMethods = null;
-#if !FRAMEWORK_ADVANCED && !FRAMEWORK_GT_471
+#if !FRAMEWORK_ADVANCED && !NET472_OR_GREATER
             _threadStaticAddFactory = null;
 #endif
             _threadStaticUpdateFactory = null;

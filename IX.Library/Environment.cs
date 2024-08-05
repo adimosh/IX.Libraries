@@ -25,7 +25,7 @@ public sealed class Environment : IEnvironment
     /// </summary>
     public bool IsSingleProcessor => GlobalSystem.Environment.ProcessorCount == 1;
 
-    #if NET60_OR_GREATER
+#if NET6_0_OR_GREATER
     /// <summary>
     ///     Gets the unique identifier for the current process.
     /// </summary>
@@ -33,10 +33,10 @@ public sealed class Environment : IEnvironment
     ///     The process identifier.
     /// </value>
     public int ProcessId => GlobalSystem.Environment.ProcessId;
-    #endif
+#endif
 
     /// <summary>
-    ///     Gets a value indicating whether or not the current process is a 64-bit process.
+    ///     Gets a value indicating whether the current process is a 64-bit process.
     /// </summary>
     /// <value>
     ///     <c>true</c> if the current process is 64-bit; otherwise, <c>false</c>.
@@ -145,14 +145,14 @@ public sealed class Environment : IEnvironment
     /// </value>
     public int TickCount => GlobalSystem.Environment.TickCount;
 
-    #if NET60_OR_GREATER
+#if NET6_0_OR_GREATER
     /// <summary>Gets the number of milliseconds elapsed since the system started.</summary>
     /// <value>
     ///     A 64-bit signed integer containing the amount of time in milliseconds that has passed since the last time the
     ///     computer was started.
     /// </value>
     public long TickCount64 => GlobalSystem.Environment.TickCount64;
-    #endif
+#endif
 
     /// <summary>
     ///     Gets or sets the exit code.
@@ -282,9 +282,9 @@ public sealed class Environment : IEnvironment
     {
         GlobalSystem.Environment.Exit(exitCode);
 
-        #if !FRAMEWORK_ADVANCED
+#if !FRAMEWORK_ADVANCED
         throw new InvalidOperationException();
-        #endif
+#endif
     }
 
     /// <summary>
@@ -296,9 +296,9 @@ public sealed class Environment : IEnvironment
     {
         GlobalSystem.Environment.FailFast(message);
 
-        #if !FRAMEWORK_ADVANCED
+#if !FRAMEWORK_ADVANCED
         throw new InvalidOperationException();
-        #endif
+#endif
     }
 
     /// <summary>
@@ -315,9 +315,9 @@ public sealed class Environment : IEnvironment
             message,
             exception);
 
-        #if !FRAMEWORK_ADVANCED
+#if !FRAMEWORK_ADVANCED
         throw new InvalidOperationException();
-        #endif
+#endif
     }
 
     /// <summary>

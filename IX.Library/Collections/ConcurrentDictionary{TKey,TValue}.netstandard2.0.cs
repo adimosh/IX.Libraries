@@ -8,7 +8,7 @@ namespace IX.Library.Collections;
     Justification = "This conflicts with how XML documentation works.")]
 public partial class ConcurrentDictionary<TKey, TValue>
 {
-    #if !FRAMEWORK_ADVANCED && !FRAMEWORK_GT_471
+    #if !FRAMEWORK_ADVANCED && !NET472_OR_GREATER
         [ThreadStatic]
         [SuppressMessage(
             "ReSharper",

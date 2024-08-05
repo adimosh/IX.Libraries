@@ -185,42 +185,36 @@
   <!-- .NET Framework -->
   <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <DefineConstants>$(DefineConstants);NET462_OR_GREATER</DefineConstants>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;NET462_OR_GREATER;NET47_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
-    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;FRAMEWORK_GT_471;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NETSTANDARD20_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
-    <DefineConstants>$(DefineConstants);FRAMEWORK_GT_462;FRAMEWORK_GT_47;FRAMEWORK_GT_471;FRAMEWORK_GT_472;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <!-- .NET Standard -->
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
-    <DefineConstants>$(DefineConstants);NETSTANDARD20_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
     <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-    <DefineConstants>$(DefineConstants);STANDARD_GT_20;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <!-- .NET -->
@@ -230,7 +224,6 @@
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
     <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0'">
@@ -240,7 +233,6 @@
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
     <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_NET60;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER;NET70_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
@@ -251,7 +243,17 @@
     <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
     <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-    <DefineConstants>$(DefineConstants);STANDARD_GT_20;STANDARD_GT_21;STANDARD_GT_NET50;STANDARD_GT_NET60;STANDARD_GT_NET70;STANDARD_GT_20;STANDARD_GT_21;NET462_OR_GREATER;NET47_OR_GREATER;NET471_OR_GREATER;NET472_OR_GREATER;NET48_OR_GREATER;NETSTANDARD20_OR_GREATER;NETSTANDARD21_OR_GREATER;NET50_OR_GREATER;NET60_OR_GREATER;NET70_OR_GREATER;NET80_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net9.0'">
+    <TargetFrameworkIs5>true</TargetFrameworkIs5>
+    <TargetFrameworkIs6>true</TargetFrameworkIs6>
+    <TargetFrameworkIs7>true</TargetFrameworkIs7>
+    <TargetFrameworkIs8>true</TargetFrameworkIs8>
+    <TargetFrameworkIs9>true</TargetFrameworkIs9>
+    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
+    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
   </PropertyGroup>
 
   <!-- Extra debug symbols for target framework type -->

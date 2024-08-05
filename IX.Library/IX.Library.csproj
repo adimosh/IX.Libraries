@@ -2,7 +2,7 @@
 
   <!-- Project functional metadata -->
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net462;net47;net472;netstandard2.0;net6.0;net8.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
     <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
