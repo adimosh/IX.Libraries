@@ -11,7 +11,7 @@ namespace IX.Library.Threading;
 public class ManualResetEventSlim : DisposableBase,
     ISetResetEvent
 {
-    private readonly bool eventLocal;
+    private readonly bool _eventLocal;
 
     /// <summary>
     ///     The manual reset event.
@@ -20,15 +20,15 @@ public class ManualResetEventSlim : DisposableBase,
         "IDisposableAnalyzers.Correctness",
         "IDISP006:Implement IDisposable.",
         Justification = "This is properly disposed, but the analyzer can't tell.")]
-    private readonly GlobalThreading.ManualResetEventSlim internalResetEvent;
+    private readonly GlobalThreading.ManualResetEventSlim _internalResetEvent;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="ManualResetEventSlim" /> class.
     /// </summary>
     public ManualResetEventSlim()
     {
-        internalResetEvent = new();
-        eventLocal = true;
+        _internalResetEvent = new();
+        _eventLocal = true;
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ public class ManualResetEventSlim : DisposableBase,
     /// <param name="initialState">The initial signal state.</param>
     public ManualResetEventSlim(bool initialState)
     {
-        internalResetEvent = new(initialState);
-        eventLocal = true;
+        _internalResetEvent = new(initialState);
+        _eventLocal = true;
     }
 
     /// <summary>
@@ -50,9 +50,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     is <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
     /// </exception>
     public ManualResetEventSlim(GlobalThreading.ManualResetEventSlim manualResetEvent) =>
-        Requires.NotNull(
-            out internalResetEvent,
-            manualResetEvent);
+        _internalResetEvent = manualResetEvent ?? throw new ArgumentNullException(nameof(manualResetEvent));
 
     /// <summary>
     ///     Performs an implicit conversion from <see cref="ManualResetEventSlim" /> to
@@ -61,8 +59,8 @@ public class ManualResetEventSlim : DisposableBase,
     /// <param name="manualResetEvent">The manual reset event.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator GlobalThreading.ManualResetEventSlim(ManualResetEventSlim manualResetEvent) =>
-        Requires.NotNull(manualResetEvent)
-            .internalResetEvent;
+        (manualResetEvent ?? throw new ArgumentNullException(nameof(manualResetEvent)))
+            ._internalResetEvent;
 
     /// <summary>
     ///     Performs an implicit conversion from <see cref="ManualResetEventSlim" /> to
@@ -85,7 +83,7 @@ public class ManualResetEventSlim : DisposableBase,
     /// <returns><see langword="true" /> if the signal has been reset, <see langword="false" /> otherwise.</returns>
     public bool Reset()
     {
-        internalResetEvent.Reset();
+        _internalResetEvent.Reset();
 
         return true;
     }
@@ -96,7 +94,7 @@ public class ManualResetEventSlim : DisposableBase,
     /// <returns><see langword="true" /> if the signal has been set, <see langword="false" /> otherwise.</returns>
     public bool Set()
     {
-        internalResetEvent.Set();
+        _internalResetEvent.Set();
 
         return true;
     }
@@ -104,7 +102,7 @@ public class ManualResetEventSlim : DisposableBase,
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
     /// </summary>
-    public void WaitOne() => internalResetEvent.Wait();
+    public void WaitOne() => _internalResetEvent.Wait();
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -115,7 +113,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     is reached.
     /// </returns>
     public bool WaitOne(int millisecondsTimeout) =>
-        internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
+        _internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -126,7 +124,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     is reached.
     /// </returns>
     public bool WaitOne(double millisecondsTimeout) =>
-        internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
+        _internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -136,7 +134,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     <see langword="true" /> if the event is set within the timeout period, <see langword="false" /> if the timeout
     ///     is reached.
     /// </returns>
-    public bool WaitOne(TimeSpan timeout) => internalResetEvent.Wait(timeout);
+    public bool WaitOne(TimeSpan timeout) => _internalResetEvent.Wait(timeout);
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -153,7 +151,7 @@ public class ManualResetEventSlim : DisposableBase,
     public bool WaitOne(
         int millisecondsTimeout,
         bool exitSynchronizationDomain) =>
-        internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
+        _internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -170,7 +168,7 @@ public class ManualResetEventSlim : DisposableBase,
     public bool WaitOne(
         double millisecondsTimeout,
         bool exitSynchronizationDomain) =>
-        internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
+        _internalResetEvent.Wait(TimeSpan.FromMilliseconds(millisecondsTimeout));
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -187,7 +185,7 @@ public class ManualResetEventSlim : DisposableBase,
     public bool WaitOne(
         TimeSpan timeout,
         bool exitSynchronizationDomain) =>
-        internalResetEvent.Wait(timeout);
+        _internalResetEvent.Wait(timeout);
 
     /// <summary>
     ///     Enters a wait period and, should there be no signal set, blocks the thread calling.
@@ -197,7 +195,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     A potentially awaitable value task.
     /// </returns>
     public async ValueTask WaitOneAsync(CancellationToken cancellationToken = default) =>
-        _ = await internalResetEvent.WaitHandle.WaitOneAsync(
+        _ = await _internalResetEvent.WaitHandle.WaitOneAsync(
             Timeout.InfiniteTimeSpan,
             cancellationToken);
 
@@ -213,7 +211,7 @@ public class ManualResetEventSlim : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         int millisecondsTimeout,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -229,7 +227,7 @@ public class ManualResetEventSlim : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         double millisecondsTimeout,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -245,7 +243,7 @@ public class ManualResetEventSlim : DisposableBase,
     public ValueTask<bool> WaitOneAsync(
         TimeSpan timeout,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             timeout,
             cancellationToken);
 
@@ -266,7 +264,7 @@ public class ManualResetEventSlim : DisposableBase,
         int millisecondsTimeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -287,7 +285,7 @@ public class ManualResetEventSlim : DisposableBase,
         double millisecondsTimeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             millisecondsTimeout,
             cancellationToken);
 
@@ -308,7 +306,7 @@ public class ManualResetEventSlim : DisposableBase,
         TimeSpan timeout,
         bool exitSynchronizationDomain,
         CancellationToken cancellationToken = default) =>
-        internalResetEvent.WaitHandle.WaitOneAsync(
+        _internalResetEvent.WaitHandle.WaitOneAsync(
             timeout,
             cancellationToken);
 
@@ -346,7 +344,7 @@ public class ManualResetEventSlim : DisposableBase,
     ///     Converts to a <see cref="GlobalThreading.ManualResetEventSlim" />.
     /// </summary>
     /// <returns>The <see cref="GlobalThreading.ManualResetEventSlim" /> that is encapsulated in this instance.</returns>
-    public GlobalThreading.ManualResetEventSlim ToManualResetEventSlim() => internalResetEvent;
+    public GlobalThreading.ManualResetEventSlim ToManualResetEventSlim() => _internalResetEvent;
 
     /// <summary>
     ///     Disposes in the managed context.
@@ -355,9 +353,9 @@ public class ManualResetEventSlim : DisposableBase,
     {
         base.DisposeManagedContext();
 
-        if (eventLocal)
+        if (_eventLocal)
         {
-            internalResetEvent.Dispose();
+            _internalResetEvent.Dispose();
         }
     }
 }

@@ -67,8 +67,8 @@ public abstract class AtomicEnumerator<TItem> : AtomicEnumerator, IEnumerator<TI
         where TCollection : class, IEnumerable<TItem>
     {
         // Validate arguments
-        _ = Requires.NotNull(collection);
-        _ = Requires.NotNull(readLock);
+        if (collection is null) throw new ArgumentNullException(nameof(collection));
+        if (readLock is null) throw new ArgumentNullException(nameof(readLock));
 
         Delegate initializer = ConstructionDelegates.GetOrAdd(
             collection.GetType(),
@@ -135,13 +135,8 @@ public abstract class AtomicEnumerator<TItem> : AtomicEnumerator, IEnumerator<TI
     public static AtomicEnumerator<TItem> FromEnumerator<TEnumerator>(
         TEnumerator enumerator,
         Func<ValueSynchronizationLockerRead> readLock)
-        where TEnumerator : IEnumerator<TItem>
-    {
-        _ = Requires.NotNull(enumerator);
-        _ = Requires.NotNull(readLock);
-
-        return new AtomicEnumerator<TItem, TEnumerator>(
-            enumerator,
-            readLock);
-    }
+        where TEnumerator : IEnumerator<TItem> =>
+        new AtomicEnumerator<TItem, TEnumerator>(
+            enumerator ?? throw new ArgumentNullException(nameof(enumerator)),
+            readLock ?? throw new ArgumentNullException(nameof(readLock)));
 }

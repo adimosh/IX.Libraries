@@ -18,8 +18,5 @@ public static class ReaderWriterLockExtensions
     ///     <see langword="Nothing" /> in Visual Basic).
     /// </exception>
     public static IReaderWriterLock AsAbstraction(this GlobalThreading.ReaderWriterLockSlim source) =>
-        new ReaderWriterLockSlim(
-            Requires.NotNull(
-                source,
-                nameof(source)));
+        new ReaderWriterLockSlim(source ?? throw new ArgumentNullException(nameof(source)));
 }

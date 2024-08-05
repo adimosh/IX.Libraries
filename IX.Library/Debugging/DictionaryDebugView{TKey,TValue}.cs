@@ -23,10 +23,7 @@ public sealed class DictionaryDebugView<TKey, TValue>
     ///     is <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
     /// </exception>
     public DictionaryDebugView(IDictionary<TKey, TValue> dictionary) =>
-        Requires.NotNull(
-            out _dict,
-            dictionary,
-            nameof(dictionary));
+        _dict = dictionary ?? throw new ArgumentNullException(nameof(dictionary));
 
     /// <summary>
     ///     Gets the items.

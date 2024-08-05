@@ -158,7 +158,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected void WriteLock(Action action)
     {
         ThrowIfCurrentObjectDisposed();
-        Action localAction = Requires.NotNull(action);
+        Action localAction = action ?? throw new ArgumentNullException(nameof(action));
 
         using (new ValueSynchronizationLockerWrite(
                    _locker,

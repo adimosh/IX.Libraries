@@ -78,7 +78,7 @@ public static partial class DataGenerator
         int limit,
         Random random)
     {
-        Random localRandom = Requires.NotNull(random);
+        Random localRandom = random ?? throw new ArgumentNullException(nameof(random));
         Requires.Positive(in limit);
 
         var array = new int[limit];

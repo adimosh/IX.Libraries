@@ -22,9 +22,7 @@ public sealed class CollectionDebugView<T>
     ///     is <see langword="null" /> (<see langword="Nothing" /> in Visual Studio).
     /// </exception>
     public CollectionDebugView(ICollection<T> collection) =>
-        Requires.NotNull(
-            out _collection,
-            collection);
+        _collection = collection ?? throw new ArgumentNullException(nameof(collection));
 
     /// <summary>
     ///     Gets the items.
