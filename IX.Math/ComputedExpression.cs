@@ -12,8 +12,9 @@ namespace IX.Math;
 /// <summary>
 /// A representation of a computed expression, resulting from a string expression.
 /// </summary>
-public sealed class ComputedExpression : DisposableBase, IDeepCloneable<ComputedExpression>
+public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<ComputedExpression>
 {
+    private readonly ConcurrentDictionary<Type[], Delegate?> _cachedCompiledExpressions;
     private readonly IParameterRegistry? _parametersRegistry;
     private readonly List<IStringFormatter> _stringFormatters;
     private readonly Func<Type, object>? _specialObjectRequestFunc;
@@ -32,6 +33,7 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
         _parametersRegistry = parameterRegistry;
         _stringFormatters = stringFormatters;
         _specialObjectRequestFunc = specialObjectRequestFunc;
+        _cachedCompiledExpressions = new();
 
         _initialExpression = initialExpression;
         _body = body;
@@ -41,13 +43,13 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
     }
 
     /// <summary>
-    /// Gets a value indicating whether or not the expression was actually recognized. <see langword="true"/> can possibly return an actual expression or a static value.
+    /// Gets a value indicating whether the expression was actually recognized. <see langword="true"/> can possibly return an actual expression or a static value.
     /// </summary>
     /// <value><see langword="true"/> if the expression is recognized correctly, <see langword="false"/> otherwise.</value>
     public bool RecognizedCorrectly { get; }
 
     /// <summary>
-    /// Gets a value indicating whether or not the expression is constant.
+    /// Gets a value indicating whether the expression is constant.
     /// </summary>
     /// <value><see langword="true"/> if the expression is constant, <see langword="false"/> otherwise.</value>
     public bool IsConstant { get; }
@@ -61,15 +63,7 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
     public bool IsTolerant { get; }
 
     /// <summary>
-    /// Gets a value indicating whether this computed expression is compiled.
-    /// </summary>
-    /// <value>
-    ///   <c>true</c> if this expression is compiled; otherwise, <c>false</c>.
-    /// </value>
-    public bool IsCompiled { get; private set; }
-
-    /// <summary>
-    /// Gets a value indicating whether or not the expression has undefined parameters.
+    /// Gets a value indicating whether the expression has undefined parameters.
     /// </summary>
     /// <value><see langword="true"/> if the expression has undefined parameters, <see langword="false"/> otherwise.</value>
     public bool HasUndefinedParameters =>
@@ -132,7 +126,7 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
 
         var convertedArguments = FormatArgumentsAccordingToParameters(
             arguments,
-            _parametersRegistry?.Dump() ?? Array.Empty<ParameterContext>());
+            _parametersRegistry?.Dump() ?? []);
 
         object[]? FormatArgumentsAccordingToParameters(
             object[] parameterValues,
@@ -835,28 +829,28 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
             return _initialExpression;
         }
 
-        Delegate? del;
+        Delegate? del = _cachedCompiledExpressions.GetOrAdd(
+            convertedArguments.Select(p => p.GetType()).ToArray(),
+            () =>
+            {
+                if (_body == null)
+                {
+                    return null;
+                }
 
-        if (_body == null)
-        {
-            del = null;
-        }
-        else
-        {
-            try
-            {
-                del = Expression.Lambda(
-                                    tolerance == null ? _body.GenerateExpression() : _body.GenerateExpression(tolerance),
-                                    _parametersRegistry?.Dump().Select(p => p.ParameterExpression) ??
-                                    Array.Empty<ParameterExpression>())
-                                .Compile();
-            }
-            catch
-            {
-                // Expression is somehow not valid
-                del = null;
-            }
-        }
+                try
+                {
+                    return Expression.Lambda(
+                                         tolerance == null ? _body.GenerateExpression() : _body.GenerateExpression(tolerance),
+                                         _parametersRegistry?.Dump().Select(p => p.ParameterExpression) ?? Array.Empty<ParameterExpression>())
+                                     .Compile();
+                }
+                catch
+                {
+                    // Expression is somehow not valid
+                    return null;
+                }
+            });
 
         if (del == null)
         {
@@ -914,11 +908,9 @@ public sealed class ComputedExpression : DisposableBase, IDeepCloneable<Computed
 
         var pars = new List<object?>();
 
-        _ = Requires.NotNull(
-            dataFinder,
-            nameof(dataFinder));
+        if (dataFinder is null) throw new ArgumentNullException(nameof(dataFinder));
 
-        foreach (ParameterContext p in _parametersRegistry?.Dump() ?? Array.Empty<ParameterContext>())
+        foreach (ParameterContext p in _parametersRegistry?.Dump() ?? [])
         {
             if (!dataFinder.TryGetData(
                     p.Name,
