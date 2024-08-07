@@ -93,6 +93,7 @@ public class ArgumentInvalidPathException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInvalidPathException" /> class.
@@ -205,6 +206,7 @@ public class ArgumentDoesNotMatchException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentDoesNotMatchException" /> class.
@@ -317,6 +319,7 @@ public class ArgumentInvalidTypeException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInvalidTypeException" /> class.
@@ -429,6 +432,7 @@ public class ArgumentNotPositiveException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotPositiveException" /> class.
@@ -541,6 +545,7 @@ public class ArgumentNotNegativeException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotNegativeException" /> class.
@@ -653,6 +658,7 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotPositiveIntegerException" /> class.
@@ -765,6 +771,7 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotNegativeIntegerException" /> class.
@@ -877,6 +884,7 @@ public class ArgumentNotInRangeException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotInRangeException" /> class.
@@ -989,6 +997,7 @@ public class ArgumentInRangeException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentInRangeException" /> class.
@@ -1101,6 +1110,7 @@ public class ArgumentNotLessThanException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotLessThanException" /> class.
@@ -1213,6 +1223,7 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotLessThanOrEqualToException" /> class.
@@ -1325,6 +1336,7 @@ public class ArgumentNotGreaterThanException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanException" /> class.
@@ -1437,6 +1449,7 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanOrEqualToException" /> class.
@@ -1549,6 +1562,7 @@ public class ArgumentNotValidIndexException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotValidIndexException" /> class.
@@ -1661,6 +1675,7 @@ public class ArgumentNotValidLengthException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNotValidLengthException" /> class.
@@ -1773,6 +1788,7 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyArrayException" /> class.
@@ -1885,6 +1901,7 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyBinaryException" /> class.
@@ -1997,6 +2014,7 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyCollectionException" /> class.
@@ -2109,6 +2127,7 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyStringException" /> class.
@@ -2222,6 +2241,7 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentNullOrWhiteSpaceStringException" /> class.
@@ -2334,6 +2354,7 @@ public class IdCorrespondsToNoItemException : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="IdCorrespondsToNoItemException" /> class.

@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 
 namespace IX.Library.Contracts;
 
@@ -8,7 +7,7 @@ namespace IX.Library.Contracts;
 /// </summary>
 [Serializable]
 [ExcludeFromCodeCoverage]
-public class ArgumentsNotValidRangeException : ArgumentsException
+public partial class ArgumentsNotValidRangeException : ArgumentsException
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="ArgumentsNotValidRangeException" /> class.
@@ -58,22 +57,4 @@ public class ArgumentsNotValidRangeException : ArgumentsException
         : base(
             message,
             argumentNames) { }
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentsNotValidRangeException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being
-    ///     thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual information about the source or
-    ///     destination.
-    /// </param>
-    protected ArgumentsNotValidRangeException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context) { }
 }

@@ -13,13 +13,13 @@ public class WorkUnitTests
 {
     private const int MaxWaitTime = 5000;
     private const int StandardWaitTime = 300;
-    private readonly ITestOutputHelper output;
+    private readonly ITestOutputHelper _output;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WorkUnitTests"/> class.
     /// </summary>
     /// <param name="output">The test output.</param>
-    public WorkUnitTests(ITestOutputHelper output) => Requires.NotNull(out this.output, output, nameof(output));
+    public WorkUnitTests(ITestOutputHelper output) => this._output = output ?? throw new ArgumentNullException(nameof(output));
 
     /// <summary>
     /// Test basic Fire.AndForget mechanism.
@@ -61,8 +61,8 @@ public class WorkUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -107,8 +107,8 @@ public class WorkUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -140,9 +140,9 @@ public class WorkUnitTests
                 {
                     #if DEBUG
                     var (dt2, wt2) = state;
-                    output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
                     Thread.Sleep(wt2);
-                    output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
                     #else
                         Thread.Sleep(state);
                     #endif
@@ -157,7 +157,7 @@ public class WorkUnitTests
                 (task, _) =>
                 {
                     #if DEBUG
-                    output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
                     Interlocked.Exchange(
                         ref ex,
@@ -171,7 +171,7 @@ public class WorkUnitTests
 
             result = await mre.WithTimeout(MaxWaitTime);
             #if DEBUG
-            output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+            _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
             #endif
         }
 
@@ -187,8 +187,8 @@ public class WorkUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
             throw;
         }
     }

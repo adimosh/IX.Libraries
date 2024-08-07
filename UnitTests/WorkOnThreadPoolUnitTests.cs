@@ -13,13 +13,13 @@ public class WorkOnThreadPoolUnitTests
 {
     private const int MaxWaitTime = 5000;
     private const int StandardWaitTime = 300;
-    private readonly ITestOutputHelper output;
+    private readonly ITestOutputHelper _output;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WorkOnThreadPoolUnitTests"/> class.
     /// </summary>
     /// <param name="output">The test output.</param>
-    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => Requires.NotNull(out this.output, output, nameof(output));
+    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => this._output = output ?? throw new ArgumentNullException(nameof(output));
 
     /// <summary>
     ///     Tests running on the thread pool and, because of a lack of a synchronization context, not returning to the same
@@ -83,8 +83,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -128,8 +128,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -159,11 +159,11 @@ public class WorkOnThreadPoolUnitTests
                 () =>
                 {
                     #if DEBUG
-                    output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
                     Thread.Sleep(waitTime);
                     #if DEBUG
-                    output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
 
                     throw new ArgumentNotPositiveIntegerException(argumentName);
@@ -172,7 +172,7 @@ public class WorkOnThreadPoolUnitTests
                 {
                     var exception = task.Exception!.GetBaseException();
                     #if DEBUG
-                    output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
                     Interlocked.Exchange(
                         ref ex,
@@ -185,7 +185,7 @@ public class WorkOnThreadPoolUnitTests
 
             result = mre.Wait(MaxWaitTime);
             #if DEBUG
-            output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+            _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
             #endif
         }
 
@@ -199,8 +199,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
             throw;
         }
     }
