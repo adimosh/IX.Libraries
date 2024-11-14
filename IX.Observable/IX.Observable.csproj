@@ -1,22 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Project functional metadata -->
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net462;net47;netstandard2.0;net8.0;net9.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
-    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0</TargetFrameworks>
   </PropertyGroup>
 
+  <!-- Package metadata -->
   <PropertyGroup>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Title>IX Libraries - Undoable</Title>
+    <Description>A library for providing undo/redo functionality to common scenarios.</Description>
   </PropertyGroup>
 
+  <!-- References -->
   <ItemGroup>
     <ProjectReference Include="..\IX.Library\IX.Library.csproj" />
     <ProjectReference Include="..\IX.Undoable\IX.Undoable.csproj" />
   </ItemGroup>
 
+  <!-- Signing -->
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>../Common/ix.framework.strongname.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <!-- Resources -->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Text templates -->
   <ItemGroup>
     <None Update="ConcurrentObservableDictionary{TKey,TValue}.ActionsAndFuncs.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -26,10 +45,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ObservableBase.ActionsAndFuncs.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,11 +65,9 @@
     </Compile>
   </ItemGroup>
 
+  <!-- Services -->
   <ItemGroup>
-    <EmbeddedResource Update="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-
+  
 </Project>
