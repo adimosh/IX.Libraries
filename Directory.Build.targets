@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <!-- SourceLink -->
-  <ItemGroup Condition="'$(Configuration)'!='Debug' And '$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
+  <ItemGroup Condition="'$(Configuration)'!='Debug' And '$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true' And '$(TargetFrameworkIsFramework)' == 'true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -49,20 +49,6 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(TargetFrameworkIs5)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
-    <!-- CLR Heap Allocation Analyzer -->
-    <PackageReference Include="ClrHeapAllocationAnalyzer" Version="3.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-
-    <!-- IDisposable Analyzer -->
-    <PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 
   <!-- Most common global usings -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
