@@ -3,10 +3,10 @@
 $CurrentPath = (Get-Location -PSProvider FileSystem).ProviderPath
 
 # recursively get all folders matching given includes, except ignored folders
-$FoldersToRemove = Get-ChildItem .\ -include bin,obj,TestResults -Recurse   | where {$_ -notmatch '_tools' -and $_ -notmatch '_build'} | foreach {$_.fullname}
+$FoldersToRemove = Get-ChildItem .\ -include bin,obj,TestResults,Output -Recurse   | where {$_ -notmatch '_tools' -and $_ -notmatch '_build'} | foreach {$_.fullname}
 
 # recursively get all folders matching given includes
-$AllFolders = Get-ChildItem .\ -include bin,obj,TestResults -Recurse | foreach {$_.fullname}
+$AllFolders = Get-ChildItem .\ -include bin,obj,TestResults,Output -Recurse | foreach {$_.fullname}
 
 # subtract arrays to calculate ignored ones
 $IgnoredFolders = $AllFolders | where {$FoldersToRemove -notcontains $_} 
