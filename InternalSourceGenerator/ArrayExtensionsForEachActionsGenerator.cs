@@ -5,15 +5,8 @@ using System.Text;
 namespace InternalSourceGenerator;
 
 [Generator]
-public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
+public class ArrayExtensionsForEachActionsGenerator : IIncrementalGenerator
 {
-    /// <summary>
-    /// Called before generation occurs. A generator can use the <paramref name="context" />
-    /// to register callbacks required to perform generation.
-    /// </summary>
-    /// <param name="context">The <see cref="T:Microsoft.CodeAnalysis.GeneratorInitializationContext" /> to register callbacks on</param>
-    public void Initialize(GeneratorInitializationContext context) { }
-
     /// <summary>
     /// Called to perform source generation. A generator can use the <paramref name="context" />
     /// to add source files via the <see cref="M:Microsoft.CodeAnalysis.GeneratorExecutionContext.AddSource(System.String,Microsoft.CodeAnalysis.Text.SourceText)" />
@@ -27,7 +20,7 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
     /// discover information about the users compilation and make decisions on what source to
     /// provide.
     /// </remarks>
-    public void Execute(GeneratorExecutionContext context)
+    private void AddStaticCode(IncrementalGeneratorPostInitializationContext context)
     {
         const string baseNamespace = "IX.Library";
         const string collectionsNamespace = $"{baseNamespace}.Collections";
@@ -686,4 +679,11 @@ public class ArrayExtensionsForEachActionsGenerator : ISourceGenerator
 
         context.AddSource("ArrayExtensions.g.cs", arrayExtensionsStringBuilder.ToString());
     }
+
+    /// <summary>
+    /// Called to initialize the generator and register generation steps via callbacks
+    /// on the <paramref name="context" />
+    /// </summary>
+    /// <param name="context">The <see cref="T:Microsoft.CodeAnalysis.IncrementalGeneratorInitializationContext" /> to register callbacks on</param>
+    public void Initialize(IncrementalGeneratorInitializationContext context) => context.RegisterPostInitializationOutput(AddStaticCode);
 }
