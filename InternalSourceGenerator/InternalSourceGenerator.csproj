@@ -7,6 +7,7 @@
   <PropertyGroup>
     <IsIxSourceGenerator>true</IsIxSourceGenerator>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
