@@ -1,4 +1,4 @@
-# PowerShell script that recursively deletes all 'bin', 'obj' and 'TestResults' (or any other specified) folders inside current folder
+# PowerShell script that recursively gathers all NuGet package files into one output folder
 
 $CurrentPath = (Get-Location -PSProvider FileSystem).ProviderPath
 
