@@ -16,18 +16,10 @@
   </PropertyGroup>
 
   <!-- References -->
-  <ItemGroup Condition="'$(TargetFramework)'=='net462'">
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFrameworkIsFramework)'=='true'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFrameworkAdvanced)'!='true'">
-    <PackageReference Include="System.Memory" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
