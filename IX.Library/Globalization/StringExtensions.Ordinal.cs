@@ -5,275 +5,235 @@ namespace IX.Library.Globalization;
 /// </summary>
 public static partial class StringExtensions
 {
-    /// <summary>
-    ///     Compares the source string with a selected value in a case-sensitive manner using the comparison rules of the UI
-    ///     thread culture.
-    /// </summary>
     /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     The comparison of the two strings, with 0 meaning equality.
-    /// </returns>
-    public static int OrdinalCompareTo(
-        this string source,
-        string value) =>
-        string.Compare(
-            source,
-            value,
-            StringComparison.Ordinal);
+    extension(string source)
+    {
+        /// <summary>
+        ///     Compares the source string with a selected value in a case-sensitive manner using the comparison rules of the UI
+        ///     thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     The comparison of the two strings, with 0 meaning equality.
+        /// </returns>
+        public int OrdinalCompareTo(string value) =>
+            string.Compare(
+                source,
+                value,
+                StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Compares the source string with a selected value in a case-insensitive manner using the comparison rules of the UI
-    ///     thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     The comparison of the two strings, with 0 meaning equality.
-    /// </returns>
-    public static int OrdinalCompareToInsensitive(
-        this string source,
-        string value) =>
-        string.Compare(
-            source,
-            value,
-            StringComparison.OrdinalIgnoreCase);
+        /// <summary>
+        ///     Compares the source string with a selected value in a case-insensitive manner using the comparison rules of the UI
+        ///     thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     The comparison of the two strings, with 0 meaning equality.
+        /// </returns>
+        public int OrdinalCompareToInsensitive(string value) =>
+            string.Compare(
+                source,
+                value,
+                StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>
-    ///     Determines whether a source string contains the specified value string in a case-sensitive manner using the
-    ///     comparison rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string contains the specified value string; otherwise,
-    ///     <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalContains(
-        this string source,
-        string value) =>
-        source.OrdinalIndexOf(value) >= 0;
+        /// <summary>
+        ///     Determines whether a source string contains the specified value string in a case-sensitive manner using the
+        ///     comparison rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string contains the specified value string; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
+        public bool OrdinalContains(string value) =>
+            source.OrdinalIndexOf(value) >= 0;
 
-    /// <summary>
-    ///     Determines whether a source string contains the specified value string in a case-insensitive manner using the
-    ///     comparison rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string contains the specified value string; otherwise,
-    ///     <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalContainsInsensitive(
-        this string source,
-        string value) =>
-        source.OrdinalIndexOfInsensitive(value) >= 0;
+        /// <summary>
+        ///     Determines whether a source string contains the specified value string in a case-insensitive manner using the
+        ///     comparison rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string contains the specified value string; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
+        public bool OrdinalContainsInsensitive(string value) =>
+            source.OrdinalIndexOfInsensitive(value) >= 0;
 
-    /// <summary>
-    ///     Checks whether the source string ends with a selected value in a case-sensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalEndsWith(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Checks whether the source string ends with a selected value in a case-sensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalEndsWith(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .EndsWith(
                 value,
                 StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Checks whether the source string ends with a selected value in a case-insensitive manner using the
-    ///     comparison rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalEndsWithInsensitive(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Checks whether the source string ends with a selected value in a case-insensitive manner using the
+        ///     comparison rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalEndsWithInsensitive(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .EndsWith(
                 value,
                 StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>
-    ///     Equates the source string with a selected value in a case-sensitive manner using the comparison rules of the UI
-    ///     thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalEquals(
-        this string source,
-        string value) =>
-        source.OrdinalCompareTo(value) == 0;
+        /// <summary>
+        ///     Equates the source string with a selected value in a case-sensitive manner using the comparison rules of the UI
+        ///     thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalEquals(string value) =>
+            source.OrdinalCompareTo(value) == 0;
 
-    /// <summary>
-    ///     Equates the source string with a selected value in a case-insensitive manner using the comparison rules of the UI
-    ///     thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalEqualsInsensitive(
-        this string source,
-        string value) =>
-        source.OrdinalCompareToInsensitive(value) == 0;
+        /// <summary>
+        ///     Equates the source string with a selected value in a case-insensitive manner using the comparison rules of the UI
+        ///     thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalEqualsInsensitive(string value) =>
+            source.OrdinalCompareToInsensitive(value) == 0;
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     The index where the string is found, otherwise -1.
-    /// </returns>
-    public static int OrdinalIndexOf(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     The index where the string is found, otherwise -1.
+        /// </returns>
+        public int OrdinalIndexOf(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <param name="startIndex">The index in the source string to start searching at.</param>
-    /// <returns>The index where the string is found, otherwise -1.</returns>
-    public static int OrdinalIndexOf(
-        this string source,
-        string value,
-        int startIndex) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <param name="startIndex">The index in the source string to start searching at.</param>
+        /// <returns>The index where the string is found, otherwise -1.</returns>
+        public int OrdinalIndexOf(
+            string value,
+            int startIndex) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
                 StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <param name="startIndex">The index in the source string to start searching at.</param>
-    /// <param name="count">The number of characters to search.</param>
-    /// <returns>The index where the string is found, otherwise -1.</returns>
-    public static int OrdinalIndexOf(
-        this string source,
-        string value,
-        int startIndex,
-        int count) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-sensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <param name="startIndex">The index in the source string to start searching at.</param>
+        /// <param name="count">The number of characters to search.</param>
+        /// <returns>The index where the string is found, otherwise -1.</returns>
+        public int OrdinalIndexOf(
+            string value,
+            int startIndex,
+            int count) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
                 count,
                 StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     The index where the string is found, otherwise -1.
-    /// </returns>
-    public static int OrdinalIndexOfInsensitive(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     The index where the string is found, otherwise -1.
+        /// </returns>
+        public int OrdinalIndexOfInsensitive(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <param name="startIndex">The index in the source string to start searching at.</param>
-    /// <returns>The index where the string is found, otherwise -1.</returns>
-    public static int OrdinalIndexOfInsensitive(
-        this string source,
-        string value,
-        int startIndex) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <param name="startIndex">The index in the source string to start searching at.</param>
+        /// <returns>The index where the string is found, otherwise -1.</returns>
+        public int OrdinalIndexOfInsensitive(
+            string value,
+            int startIndex) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
                 StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>
-    ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
-    ///     rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <param name="startIndex">The index in the source string to start searching at.</param>
-    /// <param name="count">The number of characters to search.</param>
-    /// <returns>The index where the string is found, otherwise -1.</returns>
-    public static int OrdinalIndexOfInsensitive(
-        this string source,
-        string value,
-        int startIndex,
-        int count) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Finds the index of the specified value string in a source string in a case-insensitive manner using the comparison
+        ///     rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <param name="startIndex">The index in the source string to start searching at.</param>
+        /// <param name="count">The number of characters to search.</param>
+        /// <returns>The index where the string is found, otherwise -1.</returns>
+        public int OrdinalIndexOfInsensitive(
+            string value,
+            int startIndex,
+            int count) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .IndexOf(
                 value,
                 startIndex,
                 count,
                 StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>
-    ///     Checks whether the source string starts with a selected value in a case-sensitive manner using the
-    ///     comparison rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalStartsWith(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Checks whether the source string starts with a selected value in a case-sensitive manner using the
+        ///     comparison rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalStartsWith(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .StartsWith(
                 value,
                 StringComparison.Ordinal);
 
-    /// <summary>
-    ///     Checks whether the source string starts with a selected value in a case-insensitive manner using the
-    ///     comparison rules of the UI thread culture.
-    /// </summary>
-    /// <param name="source">The source to search in.</param>
-    /// <param name="value">The string value to do the evaluation.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
-    /// </returns>
-    public static bool OrdinalStartsWithInsensitive(
-        this string source,
-        string value) =>
-        (source ?? throw new ArgumentNullException(nameof(source)))
+        /// <summary>
+        ///     Checks whether the source string starts with a selected value in a case-insensitive manner using the
+        ///     comparison rules of the UI thread culture.
+        /// </summary>
+        /// <param name="value">The string value to do the evaluation.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the source string is equal to the value; otherwise, <see langword="false" />.
+        /// </returns>
+        public bool OrdinalStartsWithInsensitive(string value) =>
+            (source ?? throw new ArgumentNullException(nameof(source)))
             .StartsWith(
                 value,
                 StringComparison.OrdinalIgnoreCase);
+    }
 }

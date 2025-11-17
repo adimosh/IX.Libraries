@@ -91,7 +91,7 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
         int startIndex,
         int count)
     {
-        if (items is null) throw new ArgumentNullException(nameof(items));
+        ArgumentNullException.ThrowIfNull(items);
         Requires.ValidArrayRange(
             in startIndex,
             in count,

@@ -747,10 +747,7 @@ public abstract partial class ObservableCollectionBase<T> : ObservableReadOnlyCo
     {
         ThrowIfCurrentObjectDisposed();
 
-        if (parent == null)
-        {
-            throw new ArgumentNullException(nameof(parent));
-        }
+        ArgumentNullException.ThrowIfNull(parent);
 
         using (AcquireWriteLock())
         {

@@ -9,79 +9,75 @@ namespace IX.Library.Threading;
 /// </summary>
 public static partial class TaskFactoryExtensions
 {
-    /// <summary>
-    ///     Starts a long-running task on a new thread.
-    /// </summary>
     /// <param name="taskFactory">The task factory to extend.</param>
-    /// <param name="action">The action to start on a new thread.</param>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="Task" /> that represents the started long-running task.</returns>
-    public static Task StartLongRunningOnDefaultTaskSchedulerAsync(
-        this TaskFactory taskFactory,
-        Action action,
-        CancellationToken cancellationToken = default) =>
-        StartWithStateOnDefaultTaskSchedulerAsync(
-            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
-            rawState => rawState(),
-            action ?? throw new ArgumentNullException(nameof(action)),
-            true,
-            cancellationToken);
+    extension(TaskFactory taskFactory)
+    {
+        /// <summary>
+        ///     Starts a long-running task on a new thread.
+        /// </summary>
+        /// <param name="action">The action to start on a new thread.</param>
+        /// <param name="cancellationToken">The cancellation token for this operation.</param>
+        /// <returns>A <see cref="Task" /> that represents the started long-running task.</returns>
+        public Task StartLongRunningOnDefaultTaskSchedulerAsync(
+            Action action,
+            CancellationToken cancellationToken = default) =>
+            StartWithStateOnDefaultTaskSchedulerAsync(
+                taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
+                rawState => rawState(),
+                action ?? throw new ArgumentNullException(nameof(action)),
+                true,
+                cancellationToken);
 
-    /// <summary>
-    ///     Starts a long-running task on a new thread.
-    /// </summary>
-    /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <param name="taskFactory">The task factory to extend.</param>
-    /// <param name="action">The action to start on a new thread.</param>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="Task" /> that represents the started long-running task.</returns>
-    public static Task<TResult> StartLongRunningOnDefaultTaskSchedulerAsync<TResult>(
-        this TaskFactory taskFactory,
-        Func<TResult> action,
-        CancellationToken cancellationToken = default) =>
-        StartWithStateOnDefaultTaskSchedulerAsync(
-            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
-            StateAsAction<TResult>,
-            action ?? throw new ArgumentNullException(nameof(action)),
-            true,
-            cancellationToken);
+        /// <summary>
+        ///     Starts a long-running task on a new thread.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the return value.</typeparam>
+        /// <param name="action">The action to start on a new thread.</param>
+        /// <param name="cancellationToken">The cancellation token for this operation.</param>
+        /// <returns>A <see cref="Task" /> that represents the started long-running task.</returns>
+        public Task<TResult> StartLongRunningOnDefaultTaskSchedulerAsync<TResult>(
+            Func<TResult> action,
+            CancellationToken cancellationToken = default) =>
+            StartWithStateOnDefaultTaskSchedulerAsync(
+                taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
+                StateAsAction<TResult>,
+                action ?? throw new ArgumentNullException(nameof(action)),
+                true,
+                cancellationToken);
 
-    /// <summary>
-    ///     Starts a task on a new thread.
-    /// </summary>
-    /// <param name="taskFactory">The task factory to extend.</param>
-    /// <param name="action">The action to start on a new thread.</param>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="Task" /> that represents the started task.</returns>
-    public static Task StartOnDefaultTaskSchedulerAsync(
-        this TaskFactory taskFactory,
-        Action action,
-        CancellationToken cancellationToken = default) =>
-        StartWithStateOnDefaultTaskSchedulerAsync(
-            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
-            rawState => rawState(),
-            action ?? throw new ArgumentNullException(nameof(action)),
-            false,
-            cancellationToken);
+        /// <summary>
+        ///     Starts a task on a new thread.
+        /// </summary>
+        /// <param name="action">The action to start on a new thread.</param>
+        /// <param name="cancellationToken">The cancellation token for this operation.</param>
+        /// <returns>A <see cref="Task" /> that represents the started task.</returns>
+        public Task StartOnDefaultTaskSchedulerAsync(
+            Action action,
+            CancellationToken cancellationToken = default) =>
+            StartWithStateOnDefaultTaskSchedulerAsync(
+                taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
+                rawState => rawState(),
+                action ?? throw new ArgumentNullException(nameof(action)),
+                false,
+                cancellationToken);
 
-    /// <summary>
-    ///     Starts a task on a new thread.
-    /// </summary>
-    /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <param name="taskFactory">The task factory to extend.</param>
-    /// <param name="action">The action to start on a new thread.</param>
-    /// <param name="cancellationToken">The cancellation token for this operation.</param>
-    /// <returns>A <see cref="Task" /> that represents the started task.</returns>
-    public static Task<TResult> StartOnDefaultTaskSchedulerAsync<TResult>(
-        this TaskFactory taskFactory,
-        Func<TResult> action,
-        CancellationToken cancellationToken = default) =>
-        StartWithStateOnDefaultTaskSchedulerAsync(
-            taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
-            StateAsAction<TResult>,
-            action ?? throw new ArgumentNullException(nameof(action)),
-            false,
-            cancellationToken);
+        /// <summary>
+        ///     Starts a task on a new thread.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the return value.</typeparam>
+        /// <param name="action">The action to start on a new thread.</param>
+        /// <param name="cancellationToken">The cancellation token for this operation.</param>
+        /// <returns>A <see cref="Task" /> that represents the started task.</returns>
+        public Task<TResult> StartOnDefaultTaskSchedulerAsync<TResult>(
+            Func<TResult> action,
+            CancellationToken cancellationToken = default) =>
+            StartWithStateOnDefaultTaskSchedulerAsync(
+                taskFactory ?? throw new ArgumentNullException(nameof(taskFactory)),
+                StateAsAction<TResult>,
+                action ?? throw new ArgumentNullException(nameof(action)),
+                false,
+                cancellationToken);
+    }
 
     [SuppressMessage(
         "Performance",

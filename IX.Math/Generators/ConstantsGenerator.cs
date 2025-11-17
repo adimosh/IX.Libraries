@@ -35,8 +35,8 @@ public static class ConstantsGenerator
         _ = Requires.NotNullOrWhiteSpace(
             originalExpression,
             nameof(originalExpression));
-        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
-        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
+        ArgumentNullException.ThrowIfNull(constantsTable);
+        ArgumentNullException.ThrowIfNull(reverseConstantsTable);
         _ = Requires.NotNullOrWhiteSpace(
             stringIndicator,
             nameof(stringIndicator));
@@ -87,8 +87,8 @@ public static class ConstantsGenerator
         _ = Requires.NotNullOrWhiteSpace(
             originalExpression,
             nameof(originalExpression));
-        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
-        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
+        ArgumentNullException.ThrowIfNull(constantsTable);
+        ArgumentNullException.ThrowIfNull(reverseConstantsTable);
         _ = Requires.NotNullOrWhiteSpace(
             content,
             nameof(content));
@@ -139,8 +139,8 @@ public static class ConstantsGenerator
         _ = Requires.NotNullOrWhiteSpace(
             name,
             nameof(name));
-        if (constantsTable is null) throw new ArgumentNullException(nameof(constantsTable));
-        if (reverseConstantsTable is null) throw new ArgumentNullException(nameof(reverseConstantsTable));
+        ArgumentNullException.ThrowIfNull(constantsTable);
+        ArgumentNullException.ThrowIfNull(reverseConstantsTable);
 
         // Operation
         if (reverseConstantsTable.TryGetValue(

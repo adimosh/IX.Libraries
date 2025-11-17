@@ -28,10 +28,7 @@ internal class StandardParameterRegistry : IParameterRegistry
 
     public ParameterContext CloneFrom(ParameterContext previousContext)
     {
-        if (previousContext == null)
-        {
-            throw new ArgumentNullException(nameof(previousContext));
-        }
+        ArgumentNullException.ThrowIfNull(previousContext);
 
         var name = previousContext.Name;
         if (_parameterContexts.TryGetValue(name, out ParameterContext existingValue))

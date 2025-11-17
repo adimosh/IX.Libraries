@@ -47,8 +47,8 @@ public abstract class AtomicEnumerator : DisposableBase
         where TCollection : class, IEnumerable<TItem>
     {
         // Validate arguments
-        if (collection is null) throw new ArgumentNullException(nameof(collection));
-        if (readLock is null) throw new ArgumentNullException(nameof(readLock));
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(readLock);
 
         Delegate initializer = ConstructionDelegates.GetOrAdd(
             typeof(TCollection),

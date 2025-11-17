@@ -145,7 +145,7 @@ public class WorkOnThreadPoolUnitTests
                 10));
         int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
-        Exception ex = null;
+        Exception? ex = null;
 
         // ACT
         using (var mre = new ManualResetEventSlim())

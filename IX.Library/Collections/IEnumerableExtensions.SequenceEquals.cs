@@ -163,326 +163,317 @@ public static partial class IEnumerableExtensions
         }
     }
 
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another.
-    /// </summary>
+    /// <param name="left">The left operand enumerable.</param>
     /// <typeparam name="T">The type of the enumerable item.</typeparam>
-    /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <param name="comparer">The comparer to use when equating items.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEquals<T>(
-        this IEnumerable<T>? left,
-        IEnumerable<T>? right,
-        IEqualityComparer<T> comparer)
+    extension<T>(IEnumerable<T>? left)
     {
-        if (left == null)
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <param name="comparer">The comparer to use when equating items.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEquals(
+            IEnumerable<T>? right,
+            IEqualityComparer<T> comparer)
         {
-            return right == null;
-        }
+            if (left == null)
+            {
+                return right == null;
+            }
 
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<T> e1 = left.GetEnumerator();
-        using IEnumerator<T> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
+            if (right == null)
             {
                 return false;
             }
 
-            if (b1)
+            using IEnumerator<T> e1 = left.GetEnumerator();
+            using IEnumerator<T> e2 = right.GetEnumerator();
+
+            while (true)
             {
-                if (!(comparer ?? throw new ArgumentNullException(nameof(comparer))).Equals(
-                        e1.Current,
-                        e2.Current))
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
                 {
                     return false;
                 }
+
+                if (b1)
+                {
+                    if (!(comparer ?? throw new ArgumentNullException(nameof(comparer))).Equals(
+                            e1.Current,
+                            e2.Current))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
+        }
+
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <param name="comparer">The comparer to use when equating items.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEquals(
+            IEnumerable<T>? right,
+            IComparer<T> comparer)
+        {
+            if (left == null)
             {
-                return true;
+                return right == null;
+            }
+
+            if (right == null)
+            {
+                return false;
+            }
+
+            using IEnumerator<T> e1 = left.GetEnumerator();
+            using IEnumerator<T> e2 = right.GetEnumerator();
+
+            while (true)
+            {
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
+                {
+                    return false;
+                }
+
+                if (b1)
+                {
+                    if ((comparer ?? throw new ArgumentNullException(nameof(comparer))).Compare(
+                            e1.Current,
+                            e2.Current) !=
+                        0)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <param name="comparer">The comparer to use when equating items.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEquals(
+            IEnumerable<T>? right,
+            Func<T, T, bool> comparer)
+        {
+            if (left == null)
+            {
+                return right == null;
+            }
+
+            if (right == null)
+            {
+                return false;
+            }
+
+            using IEnumerator<T> e1 = left.GetEnumerator();
+            using IEnumerator<T> e2 = right.GetEnumerator();
+
+            while (true)
+            {
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
+                {
+                    return false;
+                }
+
+                if (b1)
+                {
+                    if (!(comparer ?? throw new ArgumentNullException(nameof(comparer)))(
+                            e1.Current,
+                            e2.Current))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <param name="comparer">The comparer to use when equating items.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEquals(
+            IEnumerable<T>? right,
+            Func<T, T, int> comparer)
+        {
+            if (left == null)
+            {
+                return right == null;
+            }
+
+            if (right == null)
+            {
+                return false;
+            }
+
+            using IEnumerator<T> e1 = left.GetEnumerator();
+            using IEnumerator<T> e2 = right.GetEnumerator();
+
+            while (true)
+            {
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
+                {
+                    return false;
+                }
+
+                if (b1)
+                {
+                    if ((comparer ?? throw new ArgumentNullException(nameof(comparer)))(
+                            e1.Current,
+                            e2.Current) !=
+                        0)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
     }
 
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another.
-    /// </summary>
-    /// <typeparam name="T">The type of the enumerable item.</typeparam>
     /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <param name="comparer">The comparer to use when equating items.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEquals<T>(
-        this IEnumerable<T>? left,
-        IEnumerable<T>? right,
-        IComparer<T> comparer)
+    extension(IEnumerable<object>? left)
     {
-        if (left == null)
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another by object comparison.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEqualsByObjectComparison(IEnumerable<object>? right)
         {
-            return right == null;
-        }
+            if (left == null)
+            {
+                return right == null;
+            }
 
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<T> e1 = left.GetEnumerator();
-        using IEnumerator<T> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
+            if (right == null)
             {
                 return false;
             }
 
-            if (b1)
+            using IEnumerator<object> e1 = left.GetEnumerator();
+            using IEnumerator<object> e2 = right.GetEnumerator();
+
+            while (true)
             {
-                if ((comparer ?? throw new ArgumentNullException(nameof(comparer))).Compare(
-                        e1.Current,
-                        e2.Current) !=
-                    0)
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
                 {
                     return false;
                 }
+
+                if (b1)
+                {
+                    if (!(e1.Current?.Equals(e2.Current) ?? e2.Current == null))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
+        }
+
+        /// <summary>
+        ///     Determines whether two enumerable objects have all members in sequence equal to one another by reference.
+        /// </summary>
+        /// <param name="right">The right operand enumerable.</param>
+        /// <returns>
+        ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
+        ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
+        /// </returns>
+        public bool SequenceEqualsByReference(IEnumerable<object>? right)
+        {
+            if (left == null)
             {
-                return true;
+                return right == null;
             }
-        }
-    }
 
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another.
-    /// </summary>
-    /// <typeparam name="T">The type of the enumerable item.</typeparam>
-    /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <param name="comparer">The comparer to use when equating items.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEquals<T>(
-        this IEnumerable<T>? left,
-        IEnumerable<T>? right,
-        Func<T, T, bool> comparer)
-    {
-        if (left == null)
-        {
-            return right == null;
-        }
-
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<T> e1 = left.GetEnumerator();
-        using IEnumerator<T> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
+            if (right == null)
             {
                 return false;
             }
 
-            if (b1)
+            using IEnumerator<object> e1 = left.GetEnumerator();
+            using IEnumerator<object> e2 = right.GetEnumerator();
+
+            while (true)
             {
-                if (!(comparer ?? throw new ArgumentNullException(nameof(comparer)))(
-                        e1.Current,
-                        e2.Current))
+                var b1 = e1.MoveNext();
+                var b2 = e2.MoveNext();
+
+                if (b1 != b2)
                 {
                     return false;
                 }
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
 
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another.
-    /// </summary>
-    /// <typeparam name="T">The type of the enumerable item.</typeparam>
-    /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <param name="comparer">The comparer to use when equating items.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEquals<T>(
-        this IEnumerable<T>? left,
-        IEnumerable<T>? right,
-        Func<T, T, int> comparer)
-    {
-        if (left == null)
-        {
-            return right == null;
-        }
-
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<T> e1 = left.GetEnumerator();
-        using IEnumerator<T> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
-            {
-                return false;
-            }
-
-            if (b1)
-            {
-                if ((comparer ?? throw new ArgumentNullException(nameof(comparer)))(
-                        e1.Current,
-                        e2.Current) !=
-                    0)
+                if (b1)
                 {
-                    return false;
+                    if (!ReferenceEquals(
+                            e1.Current,
+                            e2.Current))
+                    {
+                        return false;
+                    }
                 }
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
-
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another by object comparison.
-    /// </summary>
-    /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEqualsByObjectComparison(
-        this IEnumerable<object>? left,
-        IEnumerable<object>? right)
-    {
-        if (left == null)
-        {
-            return right == null;
-        }
-
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<object> e1 = left.GetEnumerator();
-        using IEnumerator<object> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
-            {
-                return false;
-            }
-
-            if (b1)
-            {
-                if (!(e1.Current?.Equals(e2.Current) ?? e2.Current == null))
+                else
                 {
-                    return false;
+                    return true;
                 }
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
-
-    /// <summary>
-    ///     Determines whether two enumerable objects have all members in sequence equal to one another by reference.
-    /// </summary>
-    /// <param name="left">The left operand enumerable.</param>
-    /// <param name="right">The right operand enumerable.</param>
-    /// <returns>
-    ///     <see langword="true" /> if the two enumerable objects have the same length and each element at each position
-    ///     in one enumerable is equal to the equivalent in the other, <see langword="false" /> otherwise.
-    /// </returns>
-    public static bool SequenceEqualsByReference(
-        this IEnumerable<object>? left,
-        IEnumerable<object>? right)
-    {
-        if (left == null)
-        {
-            return right == null;
-        }
-
-        if (right == null)
-        {
-            return false;
-        }
-
-        using IEnumerator<object> e1 = left.GetEnumerator();
-        using IEnumerator<object> e2 = right.GetEnumerator();
-
-        while (true)
-        {
-            var b1 = e1.MoveNext();
-            var b2 = e2.MoveNext();
-
-            if (b1 != b2)
-            {
-                return false;
-            }
-
-            if (b1)
-            {
-                if (!ReferenceEquals(
-                        e1.Current,
-                        e2.Current))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
             }
         }
     }

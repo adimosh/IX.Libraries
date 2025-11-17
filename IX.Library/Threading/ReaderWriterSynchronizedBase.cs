@@ -113,7 +113,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected void ReadLock(Action action)
     {
         ThrowIfCurrentObjectDisposed();
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         using (new ValueSynchronizationLockerRead(
                    _locker,
@@ -130,7 +130,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected T ReadLock<T>(Func<T> action)
     {
         ThrowIfCurrentObjectDisposed();
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         using (new ValueSynchronizationLockerRead(
                    _locker,
@@ -175,7 +175,7 @@ public abstract partial class ReaderWriterSynchronizedBase : DisposableBase
     protected T WriteLock<T>(Func<T> action)
     {
         ThrowIfCurrentObjectDisposed();
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         using (new ValueSynchronizationLockerWrite(
                    _locker,

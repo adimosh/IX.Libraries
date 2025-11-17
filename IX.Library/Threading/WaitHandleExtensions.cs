@@ -57,33 +57,33 @@ public static class WaitHandleExtensions
         }
     }
 
-    /// <summary>
-    ///     Asynchronously waits for the wait handle.
-    /// </summary>
     /// <param name="handle">The handle.</param>
-    /// <param name="millisecondsTimeout">The timeout, in milliseconds.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns><c>true</c> if the timeout has not been reached, <c>false</c> otherwise.</returns>
-    public static ValueTask<bool> WaitOneAsync(
-        this WaitHandle handle,
-        int millisecondsTimeout,
-        CancellationToken cancellationToken) =>
-        handle.WaitOneAsync(
-            TimeSpan.FromMilliseconds(millisecondsTimeout),
-            cancellationToken);
+    extension(WaitHandle handle)
+    {
+        /// <summary>
+        ///     Asynchronously waits for the wait handle.
+        /// </summary>
+        /// <param name="millisecondsTimeout">The timeout, in milliseconds.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns><c>true</c> if the timeout has not been reached, <c>false</c> otherwise.</returns>
+        public ValueTask<bool> WaitOneAsync(
+            int millisecondsTimeout,
+            CancellationToken cancellationToken) =>
+            handle.WaitOneAsync(
+                TimeSpan.FromMilliseconds(millisecondsTimeout),
+                cancellationToken);
 
-    /// <summary>
-    ///     Asynchronously waits for the wait handle.
-    /// </summary>
-    /// <param name="handle">The handle.</param>
-    /// <param name="millisecondsTimeout">The timeout, in milliseconds.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns><c>true</c> if the timeout has not been reached, <c>false</c> otherwise.</returns>
-    public static ValueTask<bool> WaitOneAsync(
-        this WaitHandle handle,
-        double millisecondsTimeout,
-        CancellationToken cancellationToken) =>
-        handle.WaitOneAsync(
-            TimeSpan.FromMilliseconds(millisecondsTimeout),
-            cancellationToken);
+        /// <summary>
+        ///     Asynchronously waits for the wait handle.
+        /// </summary>
+        /// <param name="millisecondsTimeout">The timeout, in milliseconds.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns><c>true</c> if the timeout has not been reached, <c>false</c> otherwise.</returns>
+        public ValueTask<bool> WaitOneAsync(
+            double millisecondsTimeout,
+            CancellationToken cancellationToken) =>
+            handle.WaitOneAsync(
+                TimeSpan.FromMilliseconds(millisecondsTimeout),
+                cancellationToken);
+    }
 }

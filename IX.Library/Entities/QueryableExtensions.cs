@@ -81,7 +81,7 @@ public static class QueryableExtensions
         int? skip = default,
         int? take = default)
     {
-        if (query == null) throw new ArgumentNullException(nameof(query));
+        ArgumentNullException.ThrowIfNull(query);
 
         if (skip != null)
         {

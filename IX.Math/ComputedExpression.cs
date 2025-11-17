@@ -908,7 +908,7 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
 
         var pars = new List<object?>();
 
-        if (dataFinder is null) throw new ArgumentNullException(nameof(dataFinder));
+        ArgumentNullException.ThrowIfNull(dataFinder);
 
         foreach (ParameterContext p in _parametersRegistry?.Dump() ?? [])
         {

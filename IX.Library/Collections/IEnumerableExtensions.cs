@@ -30,8 +30,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<int, T> action)
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(action);
 
         var i = 0;
         foreach (T item in source)
@@ -56,8 +56,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable source,
         Action<int, object> action)
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(action);
 
         var i = 0;
         foreach (var item in source)
@@ -83,8 +83,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable<T> source,
         Action<T> action)
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(action);
 
         foreach (T item in source)
         {
@@ -105,8 +105,8 @@ public static partial class IEnumerableExtensions
         this IEnumerable source,
         Action<object> action)
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(action);
 
         foreach (var item in source)
         {
@@ -114,70 +114,67 @@ public static partial class IEnumerableExtensions
         }
     }
 
-    /// <summary>
-    ///     Executes an independent action in parallel, with an iterator that respects the original sequence.
-    /// </summary>
-    /// <typeparam name="T">The enumerable type.</typeparam>
     /// <param name="source">The enumerable source.</param>
-    /// <param name="action">The action to execute.</param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
-    ///     <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
-    /// </exception>
-    [SuppressMessage(
-        "Performance",
-        "HAA0603:Delegate allocation from a method group",
-        Justification = "This is acceptable.")]
-    public static void ParallelFor<T>(
-        this IEnumerable<T> source,
-        Action<int, T> action)
+    /// <typeparam name="T">The enumerable type.</typeparam>
+    extension<T>(IEnumerable<T> source)
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
-
-        _ = Parallel.ForEach(
-            EnumerateWithIndex(
-                source,
-                action),
-            PerformParallelAction);
-
-        static IEnumerable<(int Index, T Item, Action<int, T> Action)> EnumerateWithIndex(
-            IEnumerable<T> sourceEnumerable,
-            Action<int, T> actionToPerform)
+        /// <summary>
+        ///     Executes an independent action in parallel, with an iterator that respects the original sequence.
+        /// </summary>
+        /// <param name="action">The action to execute.</param>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
+        ///     <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
+        /// </exception>
+        [SuppressMessage(
+            "Performance",
+            "HAA0603:Delegate allocation from a method group",
+            Justification = "This is acceptable.")]
+        public void ParallelFor(Action<int, T> action)
         {
-            var i = 0;
-            foreach (T item in sourceEnumerable)
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(action);
+
+            _ = Parallel.ForEach(
+                EnumerateWithIndex(
+                    source,
+                    action),
+                PerformParallelAction);
+
+            static IEnumerable<(int Index, T Item, Action<int, T> Action)> EnumerateWithIndex(
+                IEnumerable<T> sourceEnumerable,
+                Action<int, T> actionToPerform)
             {
-                yield return (i, item, actionToPerform);
-                i++;
+                var i = 0;
+                foreach (T item in sourceEnumerable)
+                {
+                    yield return (i, item, actionToPerform);
+                    i++;
+                }
             }
+
+            static void PerformParallelAction((int Index, T Item, Action<int, T> Action) state) =>
+                state.Action(
+                    state.Index,
+                    state.Item);
         }
 
-        static void PerformParallelAction((int Index, T Item, Action<int, T> Action) state) =>
-            state.Action(
-                state.Index,
-                state.Item);
-    }
+        /// <summary>
+        ///     Executes an independent action for each one of the elements of an enumerable, in parallel.
+        /// </summary>
+        /// <param name="action">The action to execute.</param>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
+        ///     <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
+        /// </exception>
+        public void ParallelForEach(Action<T> action)
+        {
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(action);
 
-    /// <summary>
-    ///     Executes an independent action for each one of the elements of an enumerable, in parallel.
-    /// </summary>
-    /// <typeparam name="T">The enumerable type.</typeparam>
-    /// <param name="source">The enumerable source.</param>
-    /// <param name="action">The action to execute.</param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="source" /> or <paramref name="action" /> is
-    ///     <see langword="null" /> (<see langword="Nothing" /> in Visual Basic).
-    /// </exception>
-    public static void ParallelForEach<T>(
-        this IEnumerable<T> source,
-        Action<T> action)
-    {
-        if (source is null) throw new ArgumentNullException(nameof(source));
-        if (action is null) throw new ArgumentNullException(nameof(action));
-
-        _ = Parallel.ForEach(
-            source,
-            action);
+            _ = Parallel.ForEach(
+                source,
+                action);
+        }
     }
 }

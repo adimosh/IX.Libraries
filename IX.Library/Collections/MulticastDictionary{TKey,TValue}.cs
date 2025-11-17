@@ -88,7 +88,7 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
         TKey key,
         Func<KeyValuePair<TKey, TValue>, bool> action)
     {
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -122,7 +122,7 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
         TKey key,
         Func<TKey, TValue, bool> action)
     {
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -155,7 +155,7 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
         TKey key,
         Func<KeyValuePair<TKey, TValue>, Task<bool>> action)
     {
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         if (!_innerDictionary.TryGetValue(
                 key,
@@ -190,7 +190,7 @@ public class MulticastDictionary<TKey, TValue> : DisposableBase
         TKey key,
         Func<TKey, TValue, Task<bool>> action)
     {
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
 
         if (!_innerDictionary.TryGetValue(
                 key,
