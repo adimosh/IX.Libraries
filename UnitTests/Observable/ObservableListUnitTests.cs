@@ -12,10 +12,9 @@ public class ObservableListUnitTests
     ///     Generates the test data.
     /// </summary>
     /// <returns>The test data.</returns>
-    public static object[][] GenerateData() => new[]
-    {
-        new object[]
-        {
+    public static object[][] GenerateData() =>
+    [
+        [
             new ObservableList<int>
             {
                 1,
@@ -23,10 +22,9 @@ public class ObservableListUnitTests
                 19,
                 23,
                 4,
-            },
-        },
-        new object[]
-        {
+            }
+        ],
+        [
             new ConcurrentObservableList<int>
             {
                 1,
@@ -34,9 +32,9 @@ public class ObservableListUnitTests
                 19,
                 23,
                 4,
-            },
-        },
-    };
+            }
+        ]
+    ];
 
     /// <summary>
     ///     Tests Undo after Add on an ObservableList.
@@ -94,7 +92,7 @@ public class ObservableListUnitTests
         // ARRANGE
         EnvironmentSettings.AlwaysSuppressCurrentSynchronizationContext = true;
 
-        list.AddRange(new[] { 6, 5, 2 });
+        list.AddRange([6, 5, 2]);
 
         Assert.True(list.Contains(6));
         Assert.True(list.Contains(5));
@@ -123,7 +121,7 @@ public class ObservableListUnitTests
         // ARRANGE
         EnvironmentSettings.AlwaysSuppressCurrentSynchronizationContext = true;
 
-        list.AddRange(new[] { 6, 5, 2 });
+        list.AddRange([6, 5, 2]);
         Assert.True(list.Contains(6));
         Assert.True(list.Contains(5));
         Assert.True(list.Contains(2));

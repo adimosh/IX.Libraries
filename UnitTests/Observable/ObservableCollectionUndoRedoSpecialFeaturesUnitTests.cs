@@ -11,42 +11,37 @@ public class ObservableCollectionUndoRedoSpecialFeaturesUnitTests
     ///     Generates the test data.
     /// </summary>
     /// <returns>The test data.</returns>
-    public static object[][] GeneratePredefinedData() => new[]
-    {
-        new object[]
-        {
+    public static object[][] GeneratePredefinedData() =>
+    [
+        [
             new ObservableList<int>(
-                new[]
-                {
-                    1,
+            [
+                1,
                     7,
                     19,
                     23,
-                    4,
-                }),
-        },
-        new object[]
-        {
+                    4
+            ])
+        ],
+        [
             new ConcurrentObservableList<int>(
-                new[]
-                {
-                    1,
+            [
+                1,
                     7,
                     19,
                     23,
-                    4,
-                }),
-        },
-    };
+                    4
+            ])
+        ]
+    ];
 
     /// <summary>
     ///     Generates the test data.
     /// </summary>
     /// <returns>The test data.</returns>
-    public static object[][] GenerateSuppressedUndoContextData() => new[]
-    {
-        new object[]
-        {
+    public static object[][] GenerateSuppressedUndoContextData() =>
+    [
+        [
             new ObservableList<int>(true)
             {
                 1,
@@ -54,10 +49,9 @@ public class ObservableCollectionUndoRedoSpecialFeaturesUnitTests
                 19,
                 23,
                 4,
-            },
-        },
-        new object[]
-        {
+            }
+        ],
+        [
             new ConcurrentObservableList<int>(true)
             {
                 1,
@@ -65,9 +59,9 @@ public class ObservableCollectionUndoRedoSpecialFeaturesUnitTests
                 19,
                 23,
                 4,
-            },
-        },
-    };
+            }
+        ]
+    ];
 
     /// <summary>
     ///     When a list has predefined data (straight from the constructor), it should not be able to undo or redo.
@@ -797,7 +791,7 @@ public class ObservableCollectionUndoRedoSpecialFeaturesUnitTests
     public void UnitTest17()
     {
         // ARRANGE
-        using (var capturingList = new ObservableList<CapturedItem>(new[] { new CapturedItem() }))
+        using (var capturingList = new ObservableList<CapturedItem>([new CapturedItem()]))
         {
             // Capture into a parent context
             using (var upperCapturingList = new ObservableList<ObservableList<CapturedItem>>
@@ -868,7 +862,7 @@ public class ObservableCollectionUndoRedoSpecialFeaturesUnitTests
     public void UnitTest7()
     {
         // ARRANGE
-        using (var capturingList = new ObservableList<CapturedItem>(new[] { new CapturedItem() }))
+        using (var capturingList = new ObservableList<CapturedItem>([new CapturedItem()]))
         {
             Assert.Null(capturingList[0].ParentUndoContext);
 

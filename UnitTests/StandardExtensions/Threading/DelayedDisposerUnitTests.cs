@@ -1,4 +1,3 @@
-using Xunit.Abstractions;
 using EnvironmentSettings = IX.Library.Threading.EnvironmentSettings;
 
 namespace UnitTests.StandardExtensions.Threading;

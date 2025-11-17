@@ -101,13 +101,12 @@ public class ObservableListCapturedItemsUnitTests
 
         // ACT
         list.AddRange(
-            new CapturedItem[]
-            {
-                new() { TestProperty = "6" },
+        [
+            new() { TestProperty = "6" },
                 new() { TestProperty = "7" },
                 new() { TestProperty = "8" },
-                new() { TestProperty = "9" },
-            });
+                new() { TestProperty = "9" }
+        ]);
 
         // ASSERT
         cca = NotifyCollectionChangedAction.Remove;
@@ -204,10 +203,10 @@ public class ObservableListCapturedItemsUnitTests
 
         cca = NotifyCollectionChangedAction.Add;
         CapturedItem[] items =
-        {
+        [
             new() { TestProperty = "a" },
-            new() { TestProperty = "b" },
-        };
+            new() { TestProperty = "b" }
+        ];
 
         list.InsertRange(
             5,

@@ -1,7 +1,5 @@
 using IX.Library.DataGeneration;
 
-using Xunit.Abstractions;
-
 using ManualResetEventSlim = System.Threading.ManualResetEventSlim;
 
 namespace UnitTests;

@@ -11,33 +11,29 @@ public class RightBitwiseExtensionsUnitTests
     /// Generates data for tests.
     /// </summary>
     /// <returns>The data, as a jagged array.</returns>
-    public static object[][] TestDataGenerator() => new[]
-    {
-        new object[]
-        {
+    public static object[][] TestDataGenerator() =>
+    [
+        [
             new byte[] { 0b00000000, 0b00000001 },
             3,
-            new byte[] { 0b00000000, 0b00001000 },
-        },
-        new object[]
-        {
+            new byte[] { 0b00000000, 0b00001000 }
+        ],
+        [
             new byte[] { 0b00000000, 0b10000001 },
             3,
-            new byte[] { 0b00000000, 0b00001000 },
-        },
-        new object[]
-        {
+            new byte[] { 0b00000000, 0b00001000 }
+        ],
+        [
             new byte[] { 0b00000001, 0b10000001 },
             3,
-            new byte[] { 0b00001000, 0b00001000 },
-        },
-        new object[]
-        {
+            new byte[] { 0b00001000, 0b00001000 }
+        ],
+        [
             new byte[] { 0b10000001, 0b10000001 },
             3,
-            new byte[] { 0b00001000, 0b00001100 },
-        },
-    };
+            new byte[] { 0b00001000, 0b00001100 }
+        ]
+    ];
 
     /// <summary>
     /// Tests the bitwise extensions.

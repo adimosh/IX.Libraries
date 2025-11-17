@@ -13,31 +13,28 @@ public class ObservableMasterSlaveCollectionUnitTests
     /// </summary>
     /// <returns>The test data.</returns>
     public static object[][] GenerateData() =>
-        new[]
-        {
-            new object[]
-            {
-                new ObservableMasterSlaveCollection<int>
+    [
+        [
+            new ObservableMasterSlaveCollection<int>
                 {
                     1,
                     7,
                     19,
                     23,
                     4,
-                },
-            },
-            new object[]
-            {
-                new ConcurrentObservableMasterSlaveCollection<int>
+                }
+        ],
+        [
+            new ConcurrentObservableMasterSlaveCollection<int>
                 {
                     1,
                     7,
                     19,
                     23,
                     4,
-                },
-            },
-        };
+                }
+        ]
+    ];
 
     /// <summary>
     ///     Observables the master slave collection undo at add.

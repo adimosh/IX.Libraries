@@ -3,8 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
-using Xunit;
-
 namespace UnitTests;
 
 public static class PropertyTester
@@ -113,7 +111,8 @@ public static class PropertyTester
         // check can get and set
         try
         {
-            getMethod.Invoke(propertyContainer, new object[] { });
+            getMethod.Invoke(propertyContainer,
+                             []);
         }
         catch
         {
@@ -122,7 +121,8 @@ public static class PropertyTester
 
         try
         {
-            setMethod.Invoke(propertyContainer, new object[] { value1 });
+            setMethod.Invoke(propertyContainer,
+                             [value1]);
         }
         catch
         {
@@ -139,16 +139,20 @@ public static class PropertyTester
             }
         };
 
-        Assert.Equal(getMethod.Invoke(propertyContainer, new object[] { }), value1);
+        Assert.Equal(getMethod.Invoke(propertyContainer,
+                                      []), value1);
 
-        setMethod.Invoke(propertyContainer, new object[] { value2 });
+        setMethod.Invoke(propertyContainer,
+                         [value2]);
         Assert.True(propertyChanged);
 
-        Assert.Equal(getMethod.Invoke(propertyContainer, new object[] { }), value2);
+        Assert.Equal(getMethod.Invoke(propertyContainer,
+                                      []), value2);
 
         // check we don't get property changed when setting to the same value
         propertyChanged = false;
-        setMethod.Invoke(propertyContainer, new object[] { value2 });
+        setMethod.Invoke(propertyContainer,
+                         [value2]);
         Assert.False(propertyChanged);
     }
 }

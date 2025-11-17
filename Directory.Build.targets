@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <!-- Further analyzers - only in debug, as they tend to be rather heavy -->
-  <PropertyGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(TargetFrameworkIs5)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
+  <PropertyGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(TargetFrameworkIs8)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
