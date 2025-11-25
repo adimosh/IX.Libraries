@@ -10,7 +10,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>3a21ceec-78a5-4791-8830-febf91a86d27</ProjectGuid>
+    <ProjectGuid>{bf662796-4657-4e09-99db-f25df7789026}</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -31,7 +31,7 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <HelpFileFormat>Markdown</HelpFileFormat>
-    <SyntaxFilters>C#, Visual Basic, Managed C++, F#, XAML Usage</SyntaxFilters>
+    <SyntaxFilters>C#, XAML Usage</SyntaxFilters>
     <PresentationStyle>Markdown</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
@@ -40,10 +40,10 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\IX.Library\IX.Library.csproj" />
-      <DocumentationSource sourceFile="..\IX.Undoable\IX.Undoable.csproj" />
-      <DocumentationSource sourceFile="..\IX.Math\IX.Math.csproj" />
-      <DocumentationSource sourceFile="..\IX.Observable\IX.Observable.csproj" />
+      <DocumentationSource sourceFile="..\IX.Library\IX.Library.csproj" targetFramework="net8.0" />
+      <DocumentationSource sourceFile="..\IX.Undoable\IX.Undoable.csproj" targetFramework="net8.0" />
+      <DocumentationSource sourceFile="..\IX.Math\IX.Math.csproj" targetFramework="net8.0" />
+      <DocumentationSource sourceFile="..\IX.Observable\IX.Observable.csproj" targetFramework="net8.0" />
     </DocumentationSources>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
     <BinaryTOC>True</BinaryTOC>
@@ -70,33 +70,27 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Content" />
-    <Folder Include="Content\VersionHistory" />
-    <Folder Include="icons" />
-    <Folder Include="media" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\VersionHistory\v1.0.0.0.aml" />
-    <None Include="Content\VersionHistory\VersionHistory.aml" />
-    <None Include="Content\Welcome.aml" />
-  </ItemGroup>
-  <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons\Help.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Content\VersionHistory\" />
+    <Folder Include="icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\VersionHistory\v1.0.0.aml" />
+    <None Include="Content\VersionHistory\v1.0.1.aml" />
+    <None Include="Content\VersionHistory\v1.0.2.aml" />
+    <None Include="Content\VersionHistory\v1.0.3.aml" />
+    <None Include="Content\VersionHistory\v1.0.4.aml" />
+    <None Include="Content\VersionHistory\VersionHistory.aml" />
+    <None Include="Content\Welcome.aml" />
+  </ItemGroup>
   <!-- Import the common build targets during NuGet restore because before the packages are being installed, $(SHFBROOT) is not set yet -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="'$(MSBuildRestoreSessionId)' != ''" />
   <!-- Import the SHFB build targets during build -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" Condition="'$(MSBuildRestoreSessionId)' == ''" />
-  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
-       evaluated correctly. -->
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-  </PropertyGroup>
 </Project>
