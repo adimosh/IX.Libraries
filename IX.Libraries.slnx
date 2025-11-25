@@ -17,14 +17,6 @@
   <Folder Name="/Solution Items/Tools/">
     <File Path="cleanup.ps1" />
   </Folder>
-  <Project Path="Documentation/Documentation.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4">
-    <BuildDependency Project="InternalSourceGenerator/InternalSourceGenerator.csproj" />
-    <BuildDependency Project="IX.Library/IX.Library.csproj" />
-    <BuildDependency Project="IX.Math/IX.Math.csproj" />
-    <BuildDependency Project="IX.Observable/IX.Observable.csproj" />
-    <BuildDependency Project="IX.Undoable/IX.Undoable.csproj" />
-    <Build Solution="Debug|*" Project="false" />
-  </Project>
   <Project Path="InternalSourceGenerator/InternalSourceGenerator.csproj" />
   <Project Path="IX.Library/IX.Library.csproj" />
   <Project Path="IX.Math/IX.Math.csproj" />
