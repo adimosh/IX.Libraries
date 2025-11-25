@@ -49,11 +49,7 @@ public static class WaitHandleExtensions
         {
             registeredHandle?.Unregister(null);
 
-            #if FRAMEWORK_ADVANCED
             await tokenRegistration.DisposeAsync();
-            #else
-            tokenRegistration.Dispose();
-            #endif
         }
     }
 

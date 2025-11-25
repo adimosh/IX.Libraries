@@ -25,7 +25,6 @@ public sealed class Environment : IEnvironment
     /// </summary>
     public bool IsSingleProcessor => GlobalSystem.Environment.ProcessorCount == 1;
 
-#if NET8_0_OR_GREATER
     /// <summary>
     ///     Gets the unique identifier for the current process.
     /// </summary>
@@ -33,7 +32,6 @@ public sealed class Environment : IEnvironment
     ///     The process identifier.
     /// </value>
     public int ProcessId => GlobalSystem.Environment.ProcessId;
-#endif
 
     /// <summary>
     ///     Gets a value indicating whether the current process is a 64-bit process.
@@ -145,14 +143,12 @@ public sealed class Environment : IEnvironment
     /// </value>
     public int TickCount => GlobalSystem.Environment.TickCount;
 
-#if NET8_0_OR_GREATER
     /// <summary>Gets the number of milliseconds elapsed since the system started.</summary>
     /// <value>
     ///     A 64-bit signed integer containing the amount of time in milliseconds that has passed since the last time the
     ///     computer was started.
     /// </value>
     public long TickCount64 => GlobalSystem.Environment.TickCount64;
-#endif
 
     /// <summary>
     ///     Gets or sets the exit code.
@@ -278,28 +274,14 @@ public sealed class Environment : IEnvironment
     /// </summary>
     /// <param name="exitCode">The exit code.</param>
     [DoesNotReturn]
-    public void Exit(int exitCode)
-    {
-        GlobalSystem.Environment.Exit(exitCode);
-
-#if !FRAMEWORK_ADVANCED
-        throw new InvalidOperationException();
-#endif
-    }
+    public void Exit(int exitCode) => GlobalSystem.Environment.Exit(exitCode);
 
     /// <summary>
     ///     Fails the current process fast.
     /// </summary>
     /// <param name="message">The message to fail with.</param>
     [DoesNotReturn]
-    public void FailFast(string? message)
-    {
-        GlobalSystem.Environment.FailFast(message);
-
-#if !FRAMEWORK_ADVANCED
-        throw new InvalidOperationException();
-#endif
-    }
+    public void FailFast(string? message) => GlobalSystem.Environment.FailFast(message);
 
     /// <summary>
     ///     Fails the current process fast.
@@ -309,16 +291,10 @@ public sealed class Environment : IEnvironment
     [DoesNotReturn]
     public void FailFast(
         string? message,
-        Exception? exception)
-    {
+        Exception? exception) =>
         GlobalSystem.Environment.FailFast(
             message,
             exception);
-
-#if !FRAMEWORK_ADVANCED
-        throw new InvalidOperationException();
-#endif
-    }
 
     /// <summary>
     ///     Gets the command line arguments.

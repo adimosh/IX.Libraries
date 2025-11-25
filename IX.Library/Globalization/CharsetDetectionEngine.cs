@@ -21,14 +21,14 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
         };
 
     private static readonly ObjectPool<CharsetProber[]> UnicodeProbersPool = new(
-        () => new CharsetProber[]
-        {
+        () =>
+        [
             new PureProber(),
             new EscCharsetProber(),
             new MBCSGroupProber(),
             new SBCSGroupProber(),
             new Latin1Prober()
-        });
+        ]);
 
     /// <summary>
     /// Gets a compatible encoding (if any is applicable) based on its short name.
@@ -42,18 +42,13 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
             return Encoding.ASCII;
         }
 
-        var encodingName = FixedToSupportCodepageName.TryGetValue(
-            encodingShortName,
-            out var supportCodepageName)
-            ? supportCodepageName
-            : encodingShortName;
+        var encodingName = FixedToSupportCodepageName.GetValueOrDefault(encodingShortName, encodingShortName);
         try
         {
             return Encoding.GetEncoding(encodingName);
         }
         catch (NotSupportedException)
         {
-#if NETSTANDARD2_0_OR_GREATER || NET8_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);
@@ -62,13 +57,9 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
             {
                 return null;
             }
-#else
-            return null;
-#endif
         }
         catch (ArgumentException)
         {
-#if NETSTANDARD2_0_OR_GREATER || NET8_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);
@@ -77,9 +68,6 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
             {
                 return null;
             }
-#else
-            return null;
-#endif
         }
     }
 

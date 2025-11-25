@@ -27,7 +27,7 @@ public static class StreamExtensions
 
             if (stream.Length == 0)
             {
-                return Array.Empty<byte>();
+                return [];
             }
 
             var streamLength = stream.Length;
@@ -58,7 +58,7 @@ public static class StreamExtensions
         {
             // Heavy path - we will probably need a lot of allocation here
             // This path is extremely heavy in resource usage and probably very slow
-            List<byte> bytes = new List<byte>();
+            List<byte> bytes = [];
 
             int readSize = 1024;
             var buffer = new byte[readSize];
@@ -74,11 +74,7 @@ public static class StreamExtensions
                     break;
                 }
 
-                #if FRAMEWORK_ADVANCED
                 bytes.AddRange(buffer[..actualRead]);
-                #else
-                bytes.AddRange(buffer.Take(actualRead));
-                #endif
             }
             while (true);
 
@@ -109,7 +105,7 @@ public static class StreamExtensions
 
             if (stream.Length == 0)
             {
-                return Array.Empty<byte>();
+                return [];
             }
 
             var streamLength = stream.Length;
@@ -141,7 +137,7 @@ public static class StreamExtensions
         {
             // Heavy path - we will probably need a lot of allocation here
             // This path is extremely heavy in resource usage and probably very slow
-            List<byte> bytes = new List<byte>();
+            List<byte> bytes = [];
 
             int readSize = 1024;
             var buffer = new byte[readSize];
@@ -158,11 +154,7 @@ public static class StreamExtensions
                     break;
                 }
 
-                #if FRAMEWORK_ADVANCED
                 bytes.AddRange(buffer[..actualRead]);
-                #else
-                bytes.AddRange(buffer.Take(actualRead));
-                #endif
             }
             while (true);
 

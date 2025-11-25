@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Runtime.Serialization;
 
 #pragma warning disable SA1649 // File name should match first type name
 #pragma warning disable SA1402 // File may only contain a single type
@@ -92,32 +91,6 @@ public class ArgumentInvalidPathException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentInvalidPathException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentInvalidPathException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -205,32 +178,6 @@ public class ArgumentDoesNotMatchException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentDoesNotMatchException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentDoesNotMatchException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -318,32 +265,6 @@ public class ArgumentInvalidTypeException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentInvalidTypeException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentInvalidTypeException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -431,32 +352,6 @@ public class ArgumentNotPositiveException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotPositiveException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotPositiveException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -544,32 +439,6 @@ public class ArgumentNotNegativeException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotNegativeException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotNegativeException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -657,32 +526,6 @@ public class ArgumentNotPositiveIntegerException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotPositiveIntegerException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotPositiveIntegerException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -770,32 +613,6 @@ public class ArgumentNotNegativeIntegerException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotNegativeIntegerException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotNegativeIntegerException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -883,32 +700,6 @@ public class ArgumentNotInRangeException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotInRangeException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotInRangeException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -996,32 +787,6 @@ public class ArgumentInRangeException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentInRangeException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentInRangeException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1109,32 +874,6 @@ public class ArgumentNotLessThanException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotLessThanException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotLessThanException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1222,32 +961,6 @@ public class ArgumentNotLessThanOrEqualToException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotLessThanOrEqualToException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotLessThanOrEqualToException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1335,32 +1048,6 @@ public class ArgumentNotGreaterThanException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotGreaterThanException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1448,32 +1135,6 @@ public class ArgumentNotGreaterThanOrEqualToException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotGreaterThanOrEqualToException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotGreaterThanOrEqualToException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1561,32 +1222,6 @@ public class ArgumentNotValidIndexException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotValidIndexException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotValidIndexException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1674,32 +1309,6 @@ public class ArgumentNotValidLengthException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNotValidLengthException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNotValidLengthException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1787,32 +1396,6 @@ public class ArgumentNullOrEmptyArrayException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyArrayException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNullOrEmptyArrayException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -1900,32 +1483,6 @@ public class ArgumentNullOrEmptyBinaryException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyBinaryException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNullOrEmptyBinaryException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -2013,32 +1570,6 @@ public class ArgumentNullOrEmptyCollectionException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyCollectionException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNullOrEmptyCollectionException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -2126,32 +1657,6 @@ public class ArgumentNullOrEmptyStringException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNullOrEmptyStringException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNullOrEmptyStringException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -2240,32 +1745,6 @@ public class ArgumentNullOrWhiteSpaceStringException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ArgumentNullOrWhiteSpaceStringException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected ArgumentNullOrWhiteSpaceStringException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 
 /// <summary>
@@ -2353,32 +1832,6 @@ public class IdCorrespondsToNoItemException : ArgumentException
             internalException)
     {
     }
-
-    // TODO: Remove this in next breaking changes version
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="IdCorrespondsToNoItemException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object
-    ///     data about the exception being thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual
-    ///     information about the source or destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected IdCorrespondsToNoItemException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context)
-    {
-    }
-#endif
 }
 #pragma warning restore SA1402 // File may only contain a single type
 #pragma warning restore SA1649 // File name should match first type name

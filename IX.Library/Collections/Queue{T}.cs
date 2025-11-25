@@ -103,43 +103,4 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
             Enqueue(items[i]);
         }
     }
-
-    #if !FRAMEWORK_ADVANCED
-    /// <summary>
-    ///     Attempts to de-queue an item and to remove it from queue.
-    /// </summary>
-    /// <param name="item">The item that has been de-queued, default if unsuccessful.</param>
-    /// <returns>
-    ///     <see langword="true" /> if an item is de-queued successfully, <see langword="false" /> otherwise, or if the
-    ///     queue is empty.
-    /// </returns>
-    public bool TryDequeue([MaybeNullWhen(false)] out T item)
-    {
-        if (Count == 0)
-        {
-            item = default;
-            return false;
-        }
-
-        item = Dequeue();
-        return true;
-    }
-
-    /// <summary>
-    ///     Attempts to peek at the current queue and return the item that is next in line to be dequeued.
-    /// </summary>
-    /// <param name="item">The item, or default if unsuccessful.</param>
-    /// <returns><see langword="true" /> if an item is found, <see langword="false" /> otherwise, or if the queue is empty.</returns>
-    public bool TryPeek([MaybeNullWhen(false)] out T item)
-    {
-        if (Count == 0)
-        {
-            item = default;
-            return false;
-        }
-
-        item = Peek();
-        return true;
-    }
-    #endif
 }

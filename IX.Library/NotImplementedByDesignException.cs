@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 
 namespace IX.Library;
 
@@ -52,27 +51,4 @@ public class NotImplementedByDesignException : NotImplementedException
         : base(
             message,
             innerException) { }
-
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="NotImplementedByDesignException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being
-    ///     thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual information about the source or
-    ///     destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected NotImplementedByDesignException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context) { }
-#endif
 }

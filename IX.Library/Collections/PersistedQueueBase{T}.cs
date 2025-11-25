@@ -518,11 +518,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
 
             try
             {
-#if FRAMEWORK_ADVANCED
                 await using Stream stream = FileShim.OpenRead(possibleFilePath);
-#else
-                using Stream stream = FileShim.OpenRead(possibleFilePath);
-#endif
 
                 obj = (T)(Serializer.ReadObject(stream) ?? throw new SerializationException());
 
@@ -786,11 +782,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
             {
                 T obj;
 
-#if FRAMEWORK_ADVANCED
                 await using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#else
-                using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#endif
                 {
                     obj = (T)(Serializer.ReadObject(stream) ?? throw new SerializationException());
                 }
@@ -963,11 +955,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
             {
                 T obj;
 
-#if FRAMEWORK_ADVANCED
                 await using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#else
-                using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#endif
                 {
                     obj = (T)(Serializer.ReadObject(stream) ?? throw new SerializationException());
                 }
@@ -1147,11 +1135,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
             {
                 T obj;
 
-#if FRAMEWORK_ADVANCED
                 await using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#else
-                using (Stream stream = FileShim.OpenRead(possibleFilePath))
-#endif
                 {
                     obj = (T)(Serializer.ReadObject(stream) ?? throw new SerializationException());
                 }

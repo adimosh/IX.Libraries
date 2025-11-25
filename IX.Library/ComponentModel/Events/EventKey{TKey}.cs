@@ -19,13 +19,9 @@ public readonly struct EventKey<TKey> : IEquatable<EventKey<TKey>>
     {
         Key = key;
         Type = type;
-        #if FRAMEWORK_ADVANCED
         _hashCode = HashCode.Combine(
             key,
             type);
-        #else
-        _hashCode = key.GetHashCode();
-        #endif
     }
 
     /// <summary>

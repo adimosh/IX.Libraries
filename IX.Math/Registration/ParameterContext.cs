@@ -1,7 +1,3 @@
-#if NET462
-using IX.Library;
-#endif
-
 using System.Globalization;
 using System.Linq.Expressions;
 using IX.Math.Extensibility;

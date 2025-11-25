@@ -47,11 +47,7 @@ internal static class ParsingFormatter
         }
 
         return ParseSpecific(
-            #if FRAMEWORK_ADVANCED
             in eSpan,
-            #else
-            expression,
-            #endif
             out result);
 
         static bool ParseHexSpecific(
@@ -59,11 +55,7 @@ internal static class ParsingFormatter
             out long hexResult)
         {
             if (long.TryParse(
-                    #if FRAMEWORK_ADVANCED
                     hexExpression,
-                    #else
-                    hexExpression.ToString(),
-                    #endif
                     HexNumberStyle,
                     CultureInfo.CurrentCulture,
                     out var intVal))
@@ -77,11 +69,7 @@ internal static class ParsingFormatter
         }
 
         static bool ParseSpecific(
-            #if FRAMEWORK_ADVANCED
             in ReadOnlySpan<char> specificExpression,
-            #else
-            string specificExpression,
-            #endif
             out object? specificResult)
         {
             IFormatProvider formatProvider = CultureInfo.CurrentCulture;

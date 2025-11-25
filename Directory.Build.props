@@ -148,6 +148,26 @@
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
@@ -177,6 +197,14 @@
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0'">
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
@@ -190,58 +218,20 @@
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
   </PropertyGroup>
 
-  <!-- .NET Framework -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
-    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <DefineConstants>$(DefineConstants)</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
-    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
-    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
-    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
-    <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-  </PropertyGroup>
-
-  <!-- .NET Standard -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-  </PropertyGroup>
-
-  <!-- .NET -->
+  <!-- Actual -->
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
     <TargetFrameworkIs8>true</TargetFrameworkIs8>
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net9.0'">
     <TargetFrameworkIs8>true</TargetFrameworkIs8>
     <TargetFrameworkIs9>true</TargetFrameworkIs9>
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
     <TargetFrameworkIs8>true</TargetFrameworkIs8>
     <TargetFrameworkIs9>true</TargetFrameworkIs9>
     <TargetFrameworkIs10>true</TargetFrameworkIs10>
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-  </PropertyGroup>
-
-  <!-- Extra debug symbols for target framework type -->
-  <PropertyGroup Condition="'$(TargetFrameworkAdvanced)'=='true'">
-    <DefineConstants>$(DefineConstants);FRAMEWORK_ADVANCED</DefineConstants>
   </PropertyGroup>
 
   <!-- Packability -->
@@ -271,10 +261,10 @@
 
   <!-- Branding -->
   <PropertyGroup>
-    <Authors>Adrian Mos</Authors>
-    <Company />
+    <Authors>Adrian Moș</Authors>
+    <Company>Moș A Adrian, PFA</Company>
     <Product>IX Libraries</Product>
-    <Copyright>Adrian Mos, 2023</Copyright>
+    <Copyright>Adrian Moș, 2023</Copyright>
     <PackageProjectUrl>https://github.com/adimosh/IX.Libraries/</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

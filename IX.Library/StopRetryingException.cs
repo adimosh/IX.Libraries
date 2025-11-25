@@ -36,30 +36,5 @@ public class StopRetryingException : Exception
         Exception innerException)
         : base(
             message,
-            innerException)
-    { }
-
-#if !NET9_0_OR_GREATER
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="StopRetryingException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="global::System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being
-    ///     thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="global::System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or
-    ///     destination.
-    /// </param>
-#if NET8_0
-    [Obsolete("This will be removed for .NET 8.0 onwards in the next version with breaking changes.")]
-#endif
-    protected StopRetryingException(
-        global::System.Runtime.Serialization.SerializationInfo info,
-        global::System.Runtime.Serialization.StreamingContext context)
-        : base(
-            info,
-            context)
-    { }
-#endif
+            innerException) { }
 }

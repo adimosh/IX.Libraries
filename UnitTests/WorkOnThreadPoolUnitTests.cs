@@ -1,5 +1,6 @@
 using IX.Library.DataGeneration;
 
+using Environment = System.Environment;
 using ManualResetEventSlim = System.Threading.ManualResetEventSlim;
 
 namespace UnitTests;
@@ -14,7 +15,7 @@ public class WorkOnThreadPoolUnitTests
     private readonly ITestOutputHelper _output;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="WorkOnThreadPoolUnitTests"/> class.
+    ///     Initializes a new instance of the <see cref="WorkOnThreadPoolUnitTests" /> class.
     /// </summary>
     /// <param name="output">The test output.</param>
     public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => _output = output ?? throw new ArgumentNullException(nameof(output));
@@ -28,13 +29,18 @@ public class WorkOnThreadPoolUnitTests
     public async Task Test1()
     {
         // ARRANGE
-        var currentThreadId = global::System.Environment.CurrentManagedThreadId;
+        var currentThreadId = Environment.CurrentManagedThreadId;
         var separateThreadId = currentThreadId;
 
-        void LocalMethod() => separateThreadId = global::System.Environment.CurrentManagedThreadId;
+        void LocalMethod()
+        {
+            separateThreadId = Environment.CurrentManagedThreadId;
+        }
 
         // ACT
-        await Work.OnThreadPoolAsync(LocalMethod, TestContext.Current.CancellationToken);
+        await Work.OnThreadPoolAsync(
+            LocalMethod,
+            TestContext.Current.CancellationToken);
 
         // ASSERT
         Assert.NotEqual(
@@ -43,21 +49,22 @@ public class WorkOnThreadPoolUnitTests
     }
 
     /// <summary>
-    /// Test basic Fire.AndForget mechanism.
+    ///     Test basic Fire.AndForget mechanism.
     /// </summary>
     [Fact(DisplayName = "Test basic Fire.AndForget mechanism")]
     public void Test2()
     {
         // ARRANGE
-        int initialValue = DataGenerator.RandomInteger();
-        int floatingValue = initialValue;
-        int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
+        var initialValue = DataGenerator.RandomInteger();
+        var floatingValue = initialValue;
+        var waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
 
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(ev =>
+            _ = Work.OnThreadPoolAsync(
+                ev =>
                 {
                     Thread.Sleep(waitTime);
 
@@ -66,120 +73,120 @@ public class WorkOnThreadPoolUnitTests
                         DataGenerator.RandomInteger());
 
                     ev.Set();
-                }, mre, TestContext.Current.CancellationToken);
+                }, mre,
+                TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
+            result = mre.Wait(
+                MaxWaitTime,
+                TestContext.Current.CancellationToken);
         }
 
         // ASSERT
         try
         {
             Assert.True(result);
-            Assert.NotEqual(initialValue, floatingValue);
+            Assert.NotEqual(
+                initialValue,
+                floatingValue);
         }
         catch
         {
             _output.WriteLine("Assert phase failed.");
-            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine(
+                $"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
 
     /// <summary>
-    /// Test Fire.AndForget distinct threading mechanism.
+    ///     Test Fire.AndForget distinct threading mechanism.
     /// </summary>
     [Fact(DisplayName = "Test Fire.AndForget distinct threading mechanism")]
     public void Test3()
     {
         // ARRANGE
-        int initialValue = global::System.Environment.CurrentManagedThreadId;
-        int floatingValue = initialValue;
-        int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
+        var initialValue = Environment.CurrentManagedThreadId;
+        var floatingValue = initialValue;
+        var waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
 
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(ev =>
+            _ = Work.OnThreadPoolAsync(
+                ev =>
                 {
                     Thread.Sleep(waitTime);
 
                     _ = Interlocked.Exchange(
                         ref floatingValue,
-                        global::System.Environment.CurrentManagedThreadId);
+                        Environment.CurrentManagedThreadId);
 
                     ev.Set();
-                }, mre, TestContext.Current.CancellationToken);
+                }, mre,
+                TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
+            result = mre.Wait(
+                MaxWaitTime,
+                TestContext.Current.CancellationToken);
         }
 
         // ASSERT
         try
         {
             Assert.True(result);
-            Assert.NotEqual(initialValue, floatingValue);
+            Assert.NotEqual(
+                initialValue,
+                floatingValue);
         }
         catch
         {
             _output.WriteLine("Assert phase failed.");
-            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine(
+                $"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
 
     /// <summary>
-    /// Test Fire.AndForget exception mechanism.
+    ///     Test Fire.AndForget exception mechanism.
     /// </summary>
     [Fact(DisplayName = "Test Fire.AndForget exception mechanism")]
     public void Test4()
     {
         // ARRANGE
-        string argumentName = DataGenerator.RandomLowercaseString(
+        var argumentName = DataGenerator.RandomLowercaseString(
             DataGenerator.RandomInteger(
                 5,
                 10));
-        int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
+        var waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
         Exception? ex = null;
 
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            #if DEBUG
-            DateTime dt = DateTime.UtcNow;
-            #endif
-            Work.OnThreadPoolAsync(() =>
+            Work.OnThreadPoolAsync(
+                () =>
                 {
-                    #if DEBUG
-                    _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-                    #endif
                     Thread.Sleep(waitTime);
-                    #if DEBUG
-                    _output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-                    #endif
 
                     throw new ArgumentNotPositiveIntegerException(argumentName);
                 }, TestContext.Current.CancellationToken).ContinueWith(
                 task =>
                 {
-                    var exception = task.Exception!.GetBaseException();
-                    #if DEBUG
-                    _output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-                    #endif
+                    Exception exception = task.Exception!.GetBaseException();
                     Interlocked.Exchange(
                         ref ex,
                         exception);
 
                     // ReSharper disable once AccessToDisposedClosure - Guaranteed to either not be disposed or not relevant to context anymore at this point
                     mre.Set();
-                },
-                TaskContinuationOptions.OnlyOnFaulted);
+                }, TaskContinuationOptions.OnlyOnFaulted);
 
-            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
-            #if DEBUG
-            _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-            #endif
+            result = mre.Wait(
+                MaxWaitTime,
+                TestContext.Current.CancellationToken);
         }
 
         // ASSERT
@@ -188,7 +195,9 @@ public class WorkOnThreadPoolUnitTests
             Assert.True(result);
             Assert.NotNull(ex);
             Assert.IsType<ArgumentNotPositiveIntegerException>(ex);
-            Assert.Equal(argumentName, ((ArgumentNotPositiveIntegerException)ex).ParamName);
+            Assert.Equal(
+                argumentName,
+                ((ArgumentNotPositiveIntegerException)ex).ParamName);
         }
         catch
         {

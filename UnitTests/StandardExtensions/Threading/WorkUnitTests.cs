@@ -35,8 +35,7 @@ public class WorkUnitTests
         // ACT
         await using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
@@ -45,8 +44,7 @@ public class WorkUnitTests
                         DataGenerator.RandomInteger());
 
                     _ = ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
             result = await mre.WithTimeout(MaxWaitTime);
         }
@@ -81,8 +79,7 @@ public class WorkUnitTests
         // ACT
         await using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
@@ -91,8 +88,7 @@ public class WorkUnitTests
                         Thread.CurrentThread.ManagedThreadId);
 
                     _ = ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
             result = await mre.WithTimeout(MaxWaitTime);
         }
@@ -130,33 +126,14 @@ public class WorkUnitTests
         // ACT
         await using (var mre = new ManualResetEventSlim())
         {
-            #if DEBUG
-            DateTime dt = DateTime.UtcNow;
-            #endif
-            _ = Work.OnThreadPoolAsync(
-                state =>
+            _ = Work.OnThreadPoolAsync(state =>
                 {
-                    #if DEBUG
-                    var (dt2, wt2) = state;
-                    _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
-                    Thread.Sleep(wt2);
-                    _output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt2).TotalMilliseconds} ms.");
-                    #else
-                        Thread.Sleep(state);
-                    #endif
+                    Thread.Sleep(state);
 
                     throw new ArgumentNotPositiveIntegerException(argumentName);
-                },
-                #if DEBUG
-                (dt, waitTime)).ContinueWith(
-                #else
-                    waitTime).ContinueWith(
-                #endif
+                }, waitTime, TestContext.Current.CancellationToken).ContinueWith(
                 (task, _) =>
                 {
-                    #if DEBUG
-                    _output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-                    #endif
                     Interlocked.Exchange(
                         ref ex,
                         task.Exception);
@@ -168,9 +145,6 @@ public class WorkUnitTests
                 TaskContinuationOptions.OnlyOnFaulted);
 
             result = await mre.WithTimeout(MaxWaitTime);
-            #if DEBUG
-            _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
-            #endif
         }
 
         // ASSERT

@@ -101,12 +101,7 @@ internal sealed class StringExtractor : Extensibility.IConstantsExtractor
 
             sb ??= new(originalExpression.Length);
 
-            #if FRAMEWORK_ADVANCED
             sb.Append(header);
-            #else
-            sb.Append(header.ToString());
-            #endif
-
             sb.Append(itemName);
 
             process = rest;
@@ -117,11 +112,7 @@ internal sealed class StringExtractor : Extensibility.IConstantsExtractor
             return originalExpression;
         }
 
-        #if FRAMEWORK_ADVANCED
         sb.Append(process);
-        #else
-        sb.Append(process.ToString());
-        #endif
 
         return sb.ToString();
     }

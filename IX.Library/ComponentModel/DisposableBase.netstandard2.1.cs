@@ -1,4 +1,3 @@
-#if FRAMEWORK_ADVANCED
 using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Library.ComponentModel;
@@ -89,4 +88,3 @@ public abstract partial class DisposableBase : IAsyncDisposable
         }
     }
 }
-#endif

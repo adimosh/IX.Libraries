@@ -1,6 +1,4 @@
-#if !NET462 && !NET47 && !NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
-#endif
 
 using System.Runtime.Serialization;
 
@@ -82,9 +80,7 @@ internal class DictionaryCollectionAdapter<TKey, TValue> : ModernCollectionAdapt
 
     public bool TryGetValue(
         TKey key,
-#if !NET462 && !NET47 && !NETSTANDARD2_0
         [MaybeNullWhen(false)]
-#endif
         out TValue value) =>
         _dictionary.TryGetValue(
             key,

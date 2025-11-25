@@ -100,47 +100,5 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
         {
             Push(items[i]);
         }
-    }
-
-    #if !FRAMEWORK_ADVANCED
-    /// <summary>
-    ///     Attempts to peek at the topmost item from the stack, without removing it.
-    /// </summary>
-    /// <param name="item">The topmost element in the stack, default if unsuccessful.</param>
-    /// <returns>
-    ///     <see langword="true" /> if an item is peeked at successfully, <see langword="false" /> otherwise, or if the
-    ///     stack is empty.
-    /// </returns>
-    public bool TryPeek([MaybeNullWhen(false)] out T item)
-    {
-        if (Count == 0)
-        {
-            item = default;
-            return false;
-        }
-
-        item = Peek();
-        return true;
-    }
-
-    /// <summary>
-    ///     Attempts to pop the topmost item from the stack, and remove it if successful.
-    /// </summary>
-    /// <param name="item">The topmost element in the stack, default if unsuccessful.</param>
-    /// <returns>
-    ///     <see langword="true" /> if an item is popped successfully, <see langword="false" /> otherwise, or if the
-    ///     stack is empty.
-    /// </returns>
-    public bool TryPop([MaybeNullWhen(false)] out T item)
-    {
-        if (Count == 0)
-        {
-            item = default;
-            return false;
-        }
-
-        item = Pop();
-        return true;
-    }
-    #endif
+    } 
 }

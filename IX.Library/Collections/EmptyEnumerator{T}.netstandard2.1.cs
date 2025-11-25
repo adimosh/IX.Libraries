@@ -1,8 +1,4 @@
-#if FRAMEWORK_ADVANCED
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 
 namespace IX.Library.Collections;
 
@@ -39,5 +35,3 @@ public sealed partial class EmptyEnumerator<T> : IAsyncEnumerator<T>
         Justification = "This method was originally meant to actually be async.")]
     ValueTask<bool> IAsyncEnumerator<T>.MoveNextAsync() => new(false);
 }
-
-#endif

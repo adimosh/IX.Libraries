@@ -28,14 +28,6 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
-  <!-- SourceLink -->
-  <ItemGroup Condition="'$(Configuration)'!='Debug' And '$(IsTestProject)'!='true' And '$(IsIxSourceGenerator)' != 'true' And '$(TargetFrameworkIsFramework)' == 'true'">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true' And '$(ProjectName)' != 'Documentation' And '$(IsTestProject)' != 'true'">
     <None Include="..\Common\Resources\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
@@ -44,11 +36,6 @@
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
     <Compile Include="..\Common\Code\StandardSuppressions.cs" Link="Properties\StandardSuppressions.cs" />
   </ItemGroup>
-
-  <!-- Further analyzers - only in debug, as they tend to be rather heavy -->
-  <PropertyGroup Condition="'$(Configuration)'=='Debug' And '$(IsTestProject)'!='true' And '$(TargetFrameworkIs8)'!='true' And '$(IsIxSourceGenerator)' != 'true'">
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-  </PropertyGroup>
 
   <!-- Most common global usings -->
   <ItemGroup Condition="'$(IsIxSourceGenerator)' != 'true'">
