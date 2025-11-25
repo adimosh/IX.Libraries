@@ -17,7 +17,7 @@ public class WorkOnThreadPoolUnitTests
     /// Initializes a new instance of the <see cref="WorkOnThreadPoolUnitTests"/> class.
     /// </summary>
     /// <param name="output">The test output.</param>
-    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => this._output = output ?? throw new ArgumentNullException(nameof(output));
+    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => _output = output ?? throw new ArgumentNullException(nameof(output));
 
     /// <summary>
     ///     Tests running on the thread pool and, because of a lack of a synchronization context, not returning to the same
@@ -28,13 +28,13 @@ public class WorkOnThreadPoolUnitTests
     public async Task Test1()
     {
         // ARRANGE
-        var currentThreadId = Thread.CurrentThread.ManagedThreadId;
+        var currentThreadId = global::System.Environment.CurrentManagedThreadId;
         var separateThreadId = currentThreadId;
 
-        void LocalMethod() => separateThreadId = Thread.CurrentThread.ManagedThreadId;
+        void LocalMethod() => separateThreadId = global::System.Environment.CurrentManagedThreadId;
 
         // ACT
-        await Work.OnThreadPoolAsync(LocalMethod);
+        await Work.OnThreadPoolAsync(LocalMethod, TestContext.Current.CancellationToken);
 
         // ASSERT
         Assert.NotEqual(
@@ -57,8 +57,7 @@ public class WorkOnThreadPoolUnitTests
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
@@ -67,10 +66,9 @@ public class WorkOnThreadPoolUnitTests
                         DataGenerator.RandomInteger());
 
                     ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
         }
 
         // ASSERT
@@ -94,7 +92,7 @@ public class WorkOnThreadPoolUnitTests
     public void Test3()
     {
         // ARRANGE
-        int initialValue = Thread.CurrentThread.ManagedThreadId;
+        int initialValue = global::System.Environment.CurrentManagedThreadId;
         int floatingValue = initialValue;
         int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
@@ -102,20 +100,18 @@ public class WorkOnThreadPoolUnitTests
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
                     _ = Interlocked.Exchange(
                         ref floatingValue,
-                        Thread.CurrentThread.ManagedThreadId);
+                        global::System.Environment.CurrentManagedThreadId);
 
                     ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
         }
 
         // ASSERT
@@ -153,8 +149,7 @@ public class WorkOnThreadPoolUnitTests
             #if DEBUG
             DateTime dt = DateTime.UtcNow;
             #endif
-            Work.OnThreadPoolAsync(
-                () =>
+            Work.OnThreadPoolAsync(() =>
                 {
                     #if DEBUG
                     _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
@@ -165,7 +160,7 @@ public class WorkOnThreadPoolUnitTests
                     #endif
 
                     throw new ArgumentNotPositiveIntegerException(argumentName);
-                }).ContinueWith(
+                }, TestContext.Current.CancellationToken).ContinueWith(
                 task =>
                 {
                     var exception = task.Exception!.GetBaseException();
@@ -181,7 +176,7 @@ public class WorkOnThreadPoolUnitTests
                 },
                 TaskContinuationOptions.OnlyOnFaulted);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
             #if DEBUG
             _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
             #endif

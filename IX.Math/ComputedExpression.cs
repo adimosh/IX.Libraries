@@ -2,7 +2,6 @@ using IX.Math.Extensibility;
 using IX.Math.Formatters;
 using IX.Math.Nodes;
 using IX.Math.Registration;
-
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq.Expressions;
@@ -14,7 +13,7 @@ namespace IX.Math;
 /// </summary>
 public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<ComputedExpression>
 {
-    private readonly ConcurrentDictionary<Type[], Delegate?> _cachedCompiledExpressions;
+    private readonly ConcurrentDictionary<Type[], object?> _cachedCompiledExpressions;
     private readonly IParameterRegistry? _parametersRegistry;
     private readonly List<IStringFormatter> _stringFormatters;
     private readonly Func<Type, object>? _specialObjectRequestFunc;
@@ -84,7 +83,7 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
     /// </summary>
     /// <returns>An array of required parameter names.</returns>
     public string[] GetParameterNames() =>
-        _parametersRegistry?.Dump().Select(p => p.Name).ToArray() ?? Array.Empty<string>();
+        _parametersRegistry?.Dump().Select(p => p.Name).ToArray() ?? [];
 
     /// <summary>
     /// Computes the expression and returns a result.
@@ -132,10 +131,7 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
             object[] parameterValues,
             ParameterContext[] parameters)
         {
-            if (parameterValues.Length != parameters.Length)
-            {
-                return null;
-            }
+            if (parameterValues.Length != parameters.Length) return null;
 
             var finalValues = new object[parameterValues.Length];
 
@@ -688,7 +684,7 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
                                         convertedParam(),
                                         out var baResult)
                                         ? baResult
-                                        : Array.Empty<byte>());
+                                        : []);
                                 break;
 
                             case SupportedValueType.Numeric:
@@ -829,20 +825,25 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
             return _initialExpression;
         }
 
-        Delegate? del = _cachedCompiledExpressions.GetOrAdd(
+        object? result = _cachedCompiledExpressions.GetOrAdd(
             convertedArguments.Select(p => p.GetType()).ToArray(),
-            () =>
+            _ =>
             {
                 if (_body == null)
                 {
                     return null;
                 }
 
+                if (_body.IsConstant && _body is ConstantNodeBase cnb)
+                {
+                    return cnb.DistillValue();
+                }
+
                 try
                 {
                     return Expression.Lambda(
                                          tolerance == null ? _body.GenerateExpression() : _body.GenerateExpression(tolerance),
-                                         _parametersRegistry?.Dump().Select(p => p.ParameterExpression) ?? Array.Empty<ParameterExpression>())
+                                         _parametersRegistry?.Dump().Select(p => p.ParameterExpression) ?? [])
                                      .Compile();
                 }
                 catch
@@ -852,28 +853,34 @@ public sealed partial class ComputedExpression : DisposableBase, IDeepCloneable<
                 }
             });
 
-        if (del == null)
+        switch (result)
         {
-            // Delegate could not be compiled with the given arguments.
-            return _initialExpression;
-        }
+            case Delegate del:
+                // Expression is valid and cannot be determined to be constant
+                try
+                {
+                    return del.DynamicInvoke(convertedArguments) ?? _initialExpression;
+                }
+                catch (OutOfMemoryException)
+                {
+                    throw;
+                }
+                catch (DivideByZeroException)
+                {
+                    throw;
+                }
+                catch
+                {
+                    // Dynamic invocation of generated expression failed.
+                    return _initialExpression;
+                }
 
-        try
-        {
-            return del.DynamicInvoke(convertedArguments) ?? _initialExpression;
-        }
-        catch (OutOfMemoryException)
-        {
-            throw;
-        }
-        catch (DivideByZeroException)
-        {
-            throw;
-        }
-        catch
-        {
-            // Dynamic invocation of generated expression failed.
-            return _initialExpression;
+            case not null:
+                // Expression was a constant - short-path to resolution
+                return result;
+            default:
+                // Delegate could not be compiled with the given arguments, expression might not be valid
+                return _initialExpression;
         }
     }
 

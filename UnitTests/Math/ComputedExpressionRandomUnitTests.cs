@@ -30,7 +30,7 @@ public class ComputedExpressionRandomUnitTests
         var lowLimit = r.Next(dingLimit);
 
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("random(x, y)");
+        using ComputedExpression del = service.Interpret("random(x, y)", TestContext.Current.CancellationToken);
 
         if (del == null)
         {
@@ -70,7 +70,7 @@ public class ComputedExpressionRandomUnitTests
         var limit = r.Next();
 
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("random(x)");
+        using ComputedExpression del = service.Interpret("random(x)", TestContext.Current.CancellationToken);
 
         if (del == null)
         {
@@ -104,7 +104,7 @@ public class ComputedExpressionRandomUnitTests
     public void ComputedRandomNonaryFunctionCallExpression()
     {
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("random()");
+        using ComputedExpression del = service.Interpret("random()", TestContext.Current.CancellationToken);
 
         if (del == null)
         {
@@ -149,7 +149,7 @@ public class ComputedExpressionRandomUnitTests
         var lowLimit = r.Next(dingLimit);
 
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("randomint(x, y)");
+        using ComputedExpression del = service.Interpret("randomint(x, y)", TestContext.Current.CancellationToken);
 
         if (del == null)
         {
@@ -189,7 +189,7 @@ public class ComputedExpressionRandomUnitTests
         var limit = r.Next();
 
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("randomint(x)");
+        using ComputedExpression del = service.Interpret("randomint(x)", TestContext.Current.CancellationToken);
 
         if (del == null)
         {
@@ -223,7 +223,7 @@ public class ComputedExpressionRandomUnitTests
     public void ComputedRandomIntNonaryFunctionCallExpression()
     {
         using var service = new ExpressionParsingService();
-        using ComputedExpression del = service.Interpret("randomint()");
+        using ComputedExpression del = service.Interpret("randomint()", TestContext.Current.CancellationToken);
 
         if (del == null)
         {

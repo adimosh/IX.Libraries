@@ -328,7 +328,7 @@ public class BasicExpressionsUnitTests
         ComputedExpression del;
         try
         {
-            del = service.Interpret(expression);
+            del = service.Interpret(expression, TestContext.Current.CancellationToken);
         }
         catch (Exception ex)
         {
