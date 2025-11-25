@@ -1,7 +1,5 @@
 using IX.Library.DataGeneration;
 
-using Xunit.Abstractions;
-
 using ManualResetEventSlim = System.Threading.ManualResetEventSlim;
 
 namespace UnitTests;
@@ -13,13 +11,13 @@ public class WorkOnThreadPoolUnitTests
 {
     private const int MaxWaitTime = 5000;
     private const int StandardWaitTime = 300;
-    private readonly ITestOutputHelper output;
+    private readonly ITestOutputHelper _output;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WorkOnThreadPoolUnitTests"/> class.
     /// </summary>
     /// <param name="output">The test output.</param>
-    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => Requires.NotNull(out this.output, output, nameof(output));
+    public WorkOnThreadPoolUnitTests(ITestOutputHelper output) => _output = output ?? throw new ArgumentNullException(nameof(output));
 
     /// <summary>
     ///     Tests running on the thread pool and, because of a lack of a synchronization context, not returning to the same
@@ -30,13 +28,13 @@ public class WorkOnThreadPoolUnitTests
     public async Task Test1()
     {
         // ARRANGE
-        var currentThreadId = Thread.CurrentThread.ManagedThreadId;
+        var currentThreadId = global::System.Environment.CurrentManagedThreadId;
         var separateThreadId = currentThreadId;
 
-        void LocalMethod() => separateThreadId = Thread.CurrentThread.ManagedThreadId;
+        void LocalMethod() => separateThreadId = global::System.Environment.CurrentManagedThreadId;
 
         // ACT
-        await Work.OnThreadPoolAsync(LocalMethod);
+        await Work.OnThreadPoolAsync(LocalMethod, TestContext.Current.CancellationToken);
 
         // ASSERT
         Assert.NotEqual(
@@ -59,8 +57,7 @@ public class WorkOnThreadPoolUnitTests
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
@@ -69,10 +66,9 @@ public class WorkOnThreadPoolUnitTests
                         DataGenerator.RandomInteger());
 
                     ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
         }
 
         // ASSERT
@@ -83,8 +79,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -96,7 +92,7 @@ public class WorkOnThreadPoolUnitTests
     public void Test3()
     {
         // ARRANGE
-        int initialValue = Thread.CurrentThread.ManagedThreadId;
+        int initialValue = global::System.Environment.CurrentManagedThreadId;
         int floatingValue = initialValue;
         int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
@@ -104,20 +100,18 @@ public class WorkOnThreadPoolUnitTests
         // ACT
         using (var mre = new ManualResetEventSlim())
         {
-            _ = Work.OnThreadPoolAsync(
-                ev =>
+            _ = Work.OnThreadPoolAsync(ev =>
                 {
                     Thread.Sleep(waitTime);
 
                     _ = Interlocked.Exchange(
                         ref floatingValue,
-                        Thread.CurrentThread.ManagedThreadId);
+                        global::System.Environment.CurrentManagedThreadId);
 
                     ev.Set();
-                },
-                mre);
+                }, mre, TestContext.Current.CancellationToken);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
         }
 
         // ASSERT
@@ -128,8 +122,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Expected Value: {initialValue}; Actual Value: {floatingValue}; Wait Time: {waitTime}; Wait Result: {result}.");
             throw;
         }
     }
@@ -147,7 +141,7 @@ public class WorkOnThreadPoolUnitTests
                 10));
         int waitTime = DataGenerator.RandomNonNegativeInteger(StandardWaitTime) + 1;
         bool result;
-        Exception ex = null;
+        Exception? ex = null;
 
         // ACT
         using (var mre = new ManualResetEventSlim())
@@ -155,24 +149,23 @@ public class WorkOnThreadPoolUnitTests
             #if DEBUG
             DateTime dt = DateTime.UtcNow;
             #endif
-            Work.OnThreadPoolAsync(
-                () =>
+            Work.OnThreadPoolAsync(() =>
                 {
                     #if DEBUG
-                    output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Beginning inner method after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
                     Thread.Sleep(waitTime);
                     #if DEBUG
-                    output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Inner method wait finished after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
 
                     throw new ArgumentNotPositiveIntegerException(argumentName);
-                }).ContinueWith(
+                }, TestContext.Current.CancellationToken).ContinueWith(
                 task =>
                 {
                     var exception = task.Exception!.GetBaseException();
                     #if DEBUG
-                    output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+                    _output.WriteLine($"Exception handler started after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
                     #endif
                     Interlocked.Exchange(
                         ref ex,
@@ -183,9 +176,9 @@ public class WorkOnThreadPoolUnitTests
                 },
                 TaskContinuationOptions.OnlyOnFaulted);
 
-            result = mre.Wait(MaxWaitTime);
+            result = mre.Wait(MaxWaitTime, TestContext.Current.CancellationToken);
             #if DEBUG
-            output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
+            _output.WriteLine($"Outer method unlocked after {(DateTime.UtcNow - dt).TotalMilliseconds} ms.");
             #endif
         }
 
@@ -199,8 +192,8 @@ public class WorkOnThreadPoolUnitTests
         }
         catch
         {
-            output.WriteLine("Assert phase failed.");
-            output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
+            _output.WriteLine("Assert phase failed.");
+            _output.WriteLine($"Test parameters: Wait Time: {waitTime}; Wait Result: {result}; Resulting exception: {ex?.ToString() ?? "null"}.");
             throw;
         }
     }

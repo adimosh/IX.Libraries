@@ -13,10 +13,9 @@ public class ObservableDictionaryUnitTests
     ///     Generates the test data.
     /// </summary>
     /// <returns>The test data.</returns>
-    public static object[][] GenerateData() => new[]
-    {
-        new object[]
-        {
+    public static object[][] GenerateData() =>
+    [
+        [
             new ObservableDictionary<int, int>
             {
                 [1] = 1,
@@ -24,10 +23,9 @@ public class ObservableDictionaryUnitTests
                 [19] = 19,
                 [23] = 23,
                 [4] = 4,
-            },
-        },
-        new object[]
-        {
+            }
+        ],
+        [
             new ConcurrentObservableDictionary<int, int>
             {
                 [1] = 1,
@@ -35,9 +33,9 @@ public class ObservableDictionaryUnitTests
                 [19] = 19,
                 [23] = 23,
                 [4] = 4,
-            },
-        },
-    };
+            }
+        ]
+    ];
 
     /// <summary>
     ///     Observables the dictionary undo at add.

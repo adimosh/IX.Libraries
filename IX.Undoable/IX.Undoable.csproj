@@ -2,18 +2,23 @@
 
   <!-- Project functional metadata -->
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <TargetFrameworks>net462;net47;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net462;net47;netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
-    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <!-- Package metadata -->
   <PropertyGroup>
-    <Title>IX Libraries - Core</Title>
+    <Title>IX Libraries - Undoable</Title>
     <Description>A library for providing undo/redo functionality to common scenarios.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <!-- References -->
+  <ItemGroup>
+    <ProjectReference Include="..\IX.Library\IX.Library.csproj" />
+  </ItemGroup>
 
   <!-- Signing -->
   <PropertyGroup>
@@ -22,10 +27,7 @@
     <AssemblyOriginatorKeyFile>../Common/ix.framework.strongname.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\IX.Library\IX.Library.csproj" />
-  </ItemGroup>
-
+  <!-- Resources -->
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
@@ -44,5 +46,5 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
+  
 </Project>

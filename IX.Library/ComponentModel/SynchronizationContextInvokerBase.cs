@@ -71,7 +71,7 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         object state)
     {
         // Contracts validation
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
         ThrowIfCurrentObjectDisposed();
 
         // Operation
@@ -134,7 +134,7 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         object state)
     {
         // Contracts validation
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
         ThrowIfCurrentObjectDisposed();
 
         // Operation
@@ -182,7 +182,7 @@ public abstract partial class SynchronizationContextInvokerBase : DisposableBase
         object state)
     {
         // Contracts validation
-        if (action is null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
         ThrowIfCurrentObjectDisposed();
 
         // Operation

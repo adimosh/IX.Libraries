@@ -10,37 +10,32 @@ namespace IX.Math.Generators;
 
 internal static class FunctionsDictionaryGenerator
 {
-    [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
-    internal static void GenerateInternalNonaryFunctionsDictionary(
-        this IEnumerable<Assembly> assemblies,
-        Dictionary<string, Type> typeDictionary) =>
-        GenerateTypeAssignableFrom<NonaryFunctionNodeBase>(
-            assemblies,
-            typeDictionary);
+    extension(IEnumerable<Assembly> assemblies)
+    {
+        [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
+        internal void GenerateInternalNonaryFunctionsDictionary(Dictionary<string, Type> typeDictionary) =>
+            GenerateTypeAssignableFrom<NonaryFunctionNodeBase>(
+                assemblies,
+                typeDictionary);
 
-    [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
-    internal static void GenerateInternalUnaryFunctionsDictionary(
-        this IEnumerable<Assembly> assemblies,
-        Dictionary<string, Type> typeDictionary) =>
-        GenerateTypeAssignableFrom<UnaryFunctionNodeBase>(
-            assemblies,
-            typeDictionary);
+        [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
+        internal void GenerateInternalUnaryFunctionsDictionary(Dictionary<string, Type> typeDictionary) =>
+            GenerateTypeAssignableFrom<UnaryFunctionNodeBase>(
+                assemblies,
+                typeDictionary);
 
-    [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
-    internal static void GenerateInternalBinaryFunctionsDictionary(
-        this IEnumerable<Assembly> assemblies,
-        Dictionary<string, Type> typeDictionary) =>
-        GenerateTypeAssignableFrom<BinaryFunctionNodeBase>(
-            assemblies,
-            typeDictionary);
+        [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
+        internal void GenerateInternalBinaryFunctionsDictionary(Dictionary<string, Type> typeDictionary) =>
+            GenerateTypeAssignableFrom<BinaryFunctionNodeBase>(
+                assemblies,
+                typeDictionary);
 
-    [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
-    internal static void GenerateInternalTernaryFunctionsDictionary(
-        this IEnumerable<Assembly> assemblies,
-        Dictionary<string, Type> typeDictionary) =>
-        GenerateTypeAssignableFrom<TernaryFunctionNodeBase>(
-            assemblies,
-            typeDictionary);
+        [RequiresUnreferencedCode("This method uses reflection to get in-depth type information.")]
+        internal void GenerateInternalTernaryFunctionsDictionary(Dictionary<string, Type> typeDictionary) =>
+            GenerateTypeAssignableFrom<TernaryFunctionNodeBase>(
+                assemblies,
+                typeDictionary);
+    }
 
     [SuppressMessage(
         "Performance",

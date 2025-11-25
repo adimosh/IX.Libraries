@@ -12,11 +12,9 @@ public class ByteArrayExtensionsUnitTests
     /// </summary>
     /// <returns>The data, as a jagged array.</returns>
     public static object[][] TestDataGenerator() =>
-        new[]
-        {
-            new object[]
-            {
-                new byte[]
+    [
+        [
+            new byte[]
                 {
                     2,
                     1,
@@ -34,10 +32,9 @@ public class ByteArrayExtensionsUnitTests
                     177
                 },
                 0
-            },
-            new object[]
-            {
-                new byte[]
+        ],
+        [
+            new byte[]
                 {
                     2,
                     1,
@@ -54,10 +51,9 @@ public class ByteArrayExtensionsUnitTests
                     177
                 },
                 0
-            },
-            new object[]
-            {
-                new byte[]
+        ],
+        [
+            new byte[]
                 {
                     2,
                     1,
@@ -75,10 +71,9 @@ public class ByteArrayExtensionsUnitTests
                     177
                 },
                 1
-            },
-            new object[]
-            {
-                new byte[]
+        ],
+        [
+            new byte[]
                 {
                     0,
                     0,
@@ -96,8 +91,8 @@ public class ByteArrayExtensionsUnitTests
                     177
                 },
                 1
-            }
-        };
+        ]
+    ];
 
     /// <summary>
     ///     Tests the byte array comparison with MSB.

@@ -40,7 +40,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        if (contents is null) throw new ArgumentNullException(nameof(contents));
+        ArgumentNullException.ThrowIfNull(contents);
 
         if (encoding == null)
         {
@@ -83,7 +83,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        if (contents is null) throw new ArgumentNullException(nameof(contents));
+        ArgumentNullException.ThrowIfNull(contents);
 
         return new(encoding == null
             ? Work.OnThreadPoolAsync(
@@ -1076,7 +1076,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        if (contents is null) throw new ArgumentNullException(nameof(contents));
+        ArgumentNullException.ThrowIfNull(contents);
 
         if (encoding == null)
         {
@@ -1119,7 +1119,7 @@ public class File : IFile
         _ = Requires.NotNullOrWhiteSpace(
             path,
             nameof(path));
-        if (contents is null) throw new ArgumentNullException(nameof(contents));
+        ArgumentNullException.ThrowIfNull(contents);
 
         return new(
             encoding == null

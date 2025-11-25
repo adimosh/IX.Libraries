@@ -159,7 +159,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Array array,
         int index)
     {
-        if (array is null) throw new ArgumentNullException(nameof(array));
+        ArgumentNullException.ThrowIfNull(array);
         Requires.NonNegative(
             index);
 
@@ -235,8 +235,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Action<TState, IEnumerable<T>> actionToInvoke,
         TState state)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -317,8 +317,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -444,8 +444,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -571,8 +571,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -706,8 +706,8 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -784,7 +784,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         Action<TState, T> actionToInvoke,
         TState state)
     {
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -837,7 +837,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {
@@ -927,7 +927,7 @@ public class DisasterRecoveryPersistedQueue<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
 
         using (AcquireWriteLock())
         {

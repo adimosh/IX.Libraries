@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="gather_packed.ps1" />
+  </Folder>
+  <Folder Name="/Solution Items/Docs/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="Usage.md" />
+  </Folder>
+  <Folder Name="/Solution Items/Resources/">
+    <File Path="Common/Resources/icon.png" />
+  </Folder>
+  <Folder Name="/Solution Items/Tools/">
+    <File Path="cleanup.ps1" />
+  </Folder>
+  <Project Path="InternalSourceGenerator/InternalSourceGenerator.csproj" />
+  <Project Path="IX.Library/IX.Library.csproj" />
+  <Project Path="IX.Math/IX.Math.csproj" />
+  <Project Path="IX.Observable/IX.Observable.csproj" />
+  <Project Path="IX.Undoable/IX.Undoable.csproj" />
+  <Project Path="UnitTests/UnitTests.csproj" />
+</Solution>

@@ -3,54 +3,40 @@
 
   <!-- Build configuration -->
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <TargetFrameworks>net462;net47;net472;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net462;net47;net472;netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
-    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <FailObsoleteTargetFrameworks>true</FailObsoleteTargetFrameworks>
-  </PropertyGroup>
-
+  
   <!-- Package metadata -->
   <PropertyGroup>
     <Title>IX Mathematics</Title>
     <Description>A library for transforming text expressions containing mathematical operations into executable delegates.</Description>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>false</DelaySign>
-    <AssemblyOriginatorKeyFile>../Common/ix.framework.strongname.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
   <!-- References -->
-  <ItemGroup Condition="'$(TargetFramework)'=='net462'">
-    <PackageReference Include="System.ValueTuple" Version="[4.5.0,5)" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFrameworkIsFramework)'=='true'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFrameworkAdvanced)'!='true'">
-    <PackageReference Include="System.Memory" Version="[4.5.5,5)" />
-  </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\IX.Library\IX.Library.csproj">
-      <CopyLocal>False</CopyLocal>
-      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
+    <ProjectReference Include="..\IX.Library\IX.Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="IX.Library.Collections" />
   </ItemGroup>
-  
+
+  <!-- Signing -->
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>../Common/ix.framework.strongname.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
   <!-- Resources -->
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">

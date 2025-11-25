@@ -39,11 +39,11 @@ public class SerializationUnitTests
             ddc1,
             ddc2,
             ddc3,
-            ddc4,
+            ddc4
         };
 
         // The deserialized list
-        ConcurrentObservableList<DummyDataContract> l2;
+        ConcurrentObservableList<DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -81,6 +81,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -132,7 +133,7 @@ public class SerializationUnitTests
         };
 
         // The deserialized list
-        ObservableList<DummyDataContract> l2;
+        ObservableList<DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -170,6 +171,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -221,7 +223,7 @@ public class SerializationUnitTests
         };
 
         // The deserialized list
-        ObservableDictionary<int, DummyDataContract> l2;
+        ObservableDictionary<int, DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -259,6 +261,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -316,7 +319,7 @@ public class SerializationUnitTests
         };
 
         // The deserialized list
-        ConcurrentObservableDictionary<int, DummyDataContract> l2;
+        ConcurrentObservableDictionary<int, DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -354,6 +357,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -411,7 +415,7 @@ public class SerializationUnitTests
         };
 
         // The deserialized list
-        ObservableQueue<DummyDataContract> l2;
+        ObservableQueue<DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -449,6 +453,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -500,7 +505,7 @@ public class SerializationUnitTests
         };
 
         // The deserialized list
-        ConcurrentObservableQueue<DummyDataContract> l2;
+        ConcurrentObservableQueue<DummyDataContract>? l2;
 
         // The serialization content
         string content;
@@ -538,6 +543,7 @@ public class SerializationUnitTests
         {
             // ASSERT
             // ======
+            Assert.NotNull(l2);
 
             // Serialization content is OK
             Assert.False(string.IsNullOrWhiteSpace(content));
@@ -578,6 +584,6 @@ public class SerializationUnitTests
         /// </summary>
         /// <param name="other">An object to compare with this object.</param>
         /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-        public bool Equals(DummyDataContract other) => RandomValue == other?.RandomValue;
+        public bool Equals(DummyDataContract? other) => RandomValue == other?.RandomValue;
     }
 }

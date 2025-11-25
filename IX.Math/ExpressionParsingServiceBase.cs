@@ -164,7 +164,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// <param name="assembly">The assembly to register.</param>
     public void RegisterFunctionsAssembly(Assembly assembly)
     {
-        if (assembly is null) throw new ArgumentNullException(nameof(assembly));
+        ArgumentNullException.ThrowIfNull(assembly);
 
         ThrowIfCurrentObjectDisposed();
 
@@ -196,7 +196,7 @@ public abstract class ExpressionParsingServiceBase : ReaderWriterSynchronizedBas
     /// </exception>
     public void RegisterTypeFormatter(IStringFormatter formatter)
     {
-        if (formatter is null) throw new ArgumentNullException(nameof(formatter));
+        ArgumentNullException.ThrowIfNull(formatter);
 
         if (_interpretationDone != 0)
         {

@@ -26,7 +26,7 @@ public static partial class IDictionaryExtensions
         where TKey : notnull
         where TValue : IShallowCloneable<TValue>
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
+        ArgumentNullException.ThrowIfNull(source);
 
         var destination = new Dictionary<TKey, TValue>();
 
@@ -55,7 +55,7 @@ public static partial class IDictionaryExtensions
         where TKey : notnull
         where TValue : IDeepCloneable<TValue>
     {
-        if (source is null) throw new ArgumentNullException(nameof(source));
+        ArgumentNullException.ThrowIfNull(source);
 
         var destination = new Dictionary<TKey, TValue>();
 

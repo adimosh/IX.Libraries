@@ -67,7 +67,7 @@ internal class AutoReleaseTransactionContext : OperationTransaction
         EventHandler<EditCommittedEventArgs> editableHandler)
     {
         // Contract validation
-        if (items is null) throw new ArgumentNullException(nameof(items));
+        ArgumentNullException.ThrowIfNull(items);
         _parentContext = parentContext ?? throw new ArgumentNullException(nameof(parentContext));
         _editableHandler = editableHandler ?? throw new ArgumentNullException(nameof(editableHandler));
 

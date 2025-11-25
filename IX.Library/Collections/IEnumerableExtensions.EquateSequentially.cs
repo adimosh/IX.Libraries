@@ -12,78 +12,73 @@ namespace IX.Library.Collections;
     Justification = "These are extensions for IEnumerable, so we must allow this.")]
 public static partial class IEnumerableExtensions
 {
-    /// <summary>
-    ///     Equates two enumerable collections sequentially.
-    /// </summary>
-    /// <typeparam name="T">The type of item.</typeparam>
     /// <param name="left">The left item of comparison.</param>
-    /// <param name="right">The right item of comparison.</param>
-    /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
-    /// <remarks>
-    ///     <para>
-    ///         For a guide on how this method is used, please refer to
-    ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T,T,bool}, Func{T, bool})" />
-    ///         and view its remarks section.
-    ///     </para>
-    /// </remarks>
-    public static IEnumerable<bool> EquateSequentially<T>(
-        this IEnumerable<T> left,
-        IEnumerable<T> right) =>
-        EquateSequentially(
-            left,
-            right,
-            null,
-            null);
+    /// <typeparam name="T">The type of item.</typeparam>
+    extension<T>(IEnumerable<T> left)
+    {
+        /// <summary>
+        ///     Equates two enumerable collections sequentially.
+        /// </summary>
+        /// <param name="right">The right item of comparison.</param>
+        /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
+        /// <remarks>
+        ///     <para>
+        ///         For a guide on how this method is used, please refer to
+        ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T,T,bool}, Func{T, bool})" />
+        ///         and view its remarks section.
+        ///     </para>
+        /// </remarks>
+        public IEnumerable<bool> EquateSequentially(IEnumerable<T> right) =>
+            EquateSequentially(
+                left,
+                right,
+                null,
+                null);
 
-    /// <summary>
-    ///     Equates two enumerable collections sequentially, skipping items defined as &quot;empty&quot;.
-    /// </summary>
-    /// <typeparam name="T">The type of item.</typeparam>
-    /// <param name="left">The left item of comparison.</param>
-    /// <param name="right">The right item of comparison.</param>
-    /// <param name="determineEmpty">A function that determines whether an item is &quot;empty&quot; or not.</param>
-    /// <remarks>
-    ///     <para>
-    ///         For a guide on how this method is used, please refer to
-    ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T, T, bool}, Func{T, bool})" />
-    ///         and view its remarks section.
-    ///     </para>
-    /// </remarks>
-    /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
-    public static IEnumerable<bool> EquateSequentially<T>(
-        this IEnumerable<T> left,
-        IEnumerable<T> right,
-        Func<T, bool> determineEmpty) =>
-        EquateSequentially(
-            left,
-            right,
-            null,
-            determineEmpty);
+        /// <summary>
+        ///     Equates two enumerable collections sequentially, skipping items defined as &quot;empty&quot;.
+        /// </summary>
+        /// <param name="right">The right item of comparison.</param>
+        /// <param name="determineEmpty">A function that determines whether an item is &quot;empty&quot; or not.</param>
+        /// <remarks>
+        ///     <para>
+        ///         For a guide on how this method is used, please refer to
+        ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T, T, bool}, Func{T, bool})" />
+        ///         and view its remarks section.
+        ///     </para>
+        /// </remarks>
+        /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
+        public IEnumerable<bool> EquateSequentially(
+            IEnumerable<T> right,
+            Func<T, bool> determineEmpty) =>
+            EquateSequentially(
+                left,
+                right,
+                null,
+                determineEmpty);
 
-    /// <summary>
-    ///     Equates two enumerable collections sequentially with a custom comparer.
-    /// </summary>
-    /// <typeparam name="T">The type of item.</typeparam>
-    /// <param name="left">The left item of comparison.</param>
-    /// <param name="right">The right item of comparison.</param>
-    /// <param name="comparer">A comparer function to use.</param>
-    /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
-    /// <remarks>
-    ///     <para>
-    ///         For a guide on how this method is used, please refer to
-    ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T, T, bool}, Func{T, bool})" />
-    ///         and view its remarks section.
-    ///     </para>
-    /// </remarks>
-    public static IEnumerable<bool> EquateSequentially<T>(
-        this IEnumerable<T> left,
-        IEnumerable<T> right,
-        Func<T, T, bool> comparer) =>
-        EquateSequentially(
-            left,
-            right,
-            comparer,
-            null);
+        /// <summary>
+        ///     Equates two enumerable collections sequentially with a custom comparer.
+        /// </summary>
+        /// <param name="right">The right item of comparison.</param>
+        /// <param name="comparer">A comparer function to use.</param>
+        /// <returns>An enumerable stating which item is equal to its correspondent.</returns>
+        /// <remarks>
+        ///     <para>
+        ///         For a guide on how this method is used, please refer to
+        ///         <see cref="EquateSequentially{T}(IEnumerable{T}, IEnumerable{T}, Func{T, T, bool}, Func{T, bool})" />
+        ///         and view its remarks section.
+        ///     </para>
+        /// </remarks>
+        public IEnumerable<bool> EquateSequentially(
+            IEnumerable<T> right,
+            Func<T, T, bool> comparer) =>
+            EquateSequentially(
+                left,
+                right,
+                comparer,
+                null);
+    }
 
     /// <summary>
     ///     Equates two enumerable collections sequentially with a custom comparer, skipping items defined as &quot;empty&quot;

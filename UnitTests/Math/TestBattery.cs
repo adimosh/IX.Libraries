@@ -86,7 +86,7 @@ public class TestBattery : IClassFixture<CachedExpressionProviderFixture>
                             q => expression.IndexOf(
                                 q.Key,
                                 StringComparison.Ordinal)).Select(p => p.Value).ToArray() ??
-                        Array.Empty<object>());
+                        []);
                 }
             }
 
@@ -171,7 +171,7 @@ public class TestBattery : IClassFixture<CachedExpressionProviderFixture>
         {
             ComputedExpression del = _fixture.CachedService.Interpret(expression);
 
-            object result = del.Compute(parameters?.OrderBy(q => expression.IndexOf(q.Key, StringComparison.Ordinal)).Select(p => p.Value).ToArray() ?? new object[0]);
+            object result = del.Compute(parameters?.OrderBy(q => expression.IndexOf(q.Key, StringComparison.Ordinal)).Select(p => p.Value).ToArray() ?? []);
 
             AssertResults(in expectedResult, in result);
         }

@@ -129,7 +129,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF8 with BOM")]
     public void TestBomUtf8()
     {
-        byte[] buf = { 0xEF, 0xBB, 0xBF, 0x68, 0x65, 0x6C, 0x6C, 0x6F, 0x21 };
+        byte[] buf = [0xEF, 0xBB, 0xBF, 0x68, 0x65, 0x6C, 0x6C, 0x6F, 0x21];
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.UTF8, result.Encoding);
         Assert.Equal(1.0f, result.Confidence);
@@ -138,7 +138,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF16 big-endian just BOM")]
     public void Test2byteArrayBomUTF16_BE()
     {
-        byte[] buf = { 0xFE, 0xFF, };
+        byte[] buf = [0xFE, 0xFF];
 
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.GetEncoding(CodepageName.UTF16_BE), result.Encoding);
@@ -148,7 +148,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF16 big-endian with BOM")]
     public void TestBomUTF16_BE()
     {
-        byte[] buf = { 0xFE, 0xFF, 0x00, 0x68, 0x00, 0x65 };
+        byte[] buf = [0xFE, 0xFF, 0x00, 0x68, 0x00, 0x65];
 
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.GetEncoding(CodepageName.UTF16_BE), result.Encoding);
@@ -158,7 +158,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UCS4 3412 unsupported")]
     public void TestBomX_ISO_10646_UCS_4_3412()
     {
-        byte[] buf = { 0xFE, 0xFF, 0x00, 0x00, 0x65 };
+        byte[] buf = [0xFE, 0xFF, 0x00, 0x00, 0x65];
 
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Null(result.Encoding);
@@ -168,7 +168,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UCS4 2143 unsupported")]
     public void TestBomX_ISO_10646_UCS_4_2143()
     {
-        byte[] buf = { 0x00, 0x00, 0xFF, 0xFE, 0x00, 0x65 };
+        byte[] buf = [0x00, 0x00, 0xFF, 0xFE, 0x00, 0x65];
 
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Null(result.Encoding);
@@ -178,7 +178,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF16 little-endian only BOM")]
     public void Test2byteArrayBomUTF16_LE()
     {
-        byte[] buf = { 0xFF, 0xFE, };
+        byte[] buf = [0xFF, 0xFE];
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.Unicode, result.Encoding);
         Assert.Equal(1.0f, result.Confidence);
@@ -187,7 +187,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF16 little-endian with BOM")]
     public void TestBomUTF16_LE()
     {
-        byte[] buf = { 0xFF, 0xFE, 0x68, 0x00, 0x65, 0x00 };
+        byte[] buf = [0xFF, 0xFE, 0x68, 0x00, 0x65, 0x00];
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.Unicode, result.Encoding);
         Assert.Equal(1.0f, result.Confidence);
@@ -196,7 +196,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF32 big-endian")]
     public void TestBomUTF32_BE()
     {
-        byte[] buf = { 0x00, 0x00, 0xFE, 0xFF, 0x00, 0x00, 0x00, 0x68 };
+        byte[] buf = [0x00, 0x00, 0xFE, 0xFF, 0x00, 0x00, 0x00, 0x68];
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.GetEncoding(CodepageName.UTF32_BE), result.Encoding);
         Assert.Equal(1.0f, result.Confidence);
@@ -205,7 +205,7 @@ public class CharsetDetectorSimpleUnitTests
     [Fact(DisplayName = "UTF32 little-endian")]
     public void TestBomUTF32_LE()
     {
-        byte[] buf = { 0xFF, 0xFE, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00 };
+        byte[] buf = [0xFF, 0xFE, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00];
         var result = new CharsetDetectionEngine().Read(buf);
         Assert.Equal(Encoding.GetEncoding(CodepageName.UTF32_LE), result.Encoding);
         Assert.Equal(1.0f, result.Confidence);

@@ -20,7 +20,7 @@ public interface IEnvironment
     /// </summary>
     bool IsSingleProcessor { get; }
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
     /// <summary>
     ///     Gets the unique identifier for the current process.
     /// </summary>
@@ -136,7 +136,7 @@ public interface IEnvironment
     /// </value>
     int TickCount { get; }
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
     /// <summary>Gets the number of milliseconds elapsed since the system started.</summary>
     /// <value>
     ///     A 64-bit signed integer containing the amount of time in milliseconds that has passed since the last time the

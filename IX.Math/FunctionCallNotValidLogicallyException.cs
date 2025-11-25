@@ -1,4 +1,4 @@
-using System.Runtime.Serialization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Math;
 
@@ -7,7 +7,8 @@ namespace IX.Math;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-public class FunctionCallNotValidLogicallyException : Exception
+[ExcludeFromCodeCoverage]
+public partial class FunctionCallNotValidLogicallyException : Exception
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="FunctionCallNotValidLogicallyException" /> class.
@@ -42,22 +43,4 @@ public class FunctionCallNotValidLogicallyException : Exception
         : base(
             message,
             internalException) { }
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="FunctionCallNotValidLogicallyException" /> class.
-    /// </summary>
-    /// <param name="info">
-    ///     The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being
-    ///     thrown.
-    /// </param>
-    /// <param name="context">
-    ///     The <see cref="StreamingContext" /> that contains contextual information about the source or
-    ///     destination.
-    /// </param>
-    protected FunctionCallNotValidLogicallyException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(
-            info,
-            context) { }
 }

@@ -24,15 +24,14 @@ public class OneDataSetComputedExpressionUnitTest : IClassFixture<CachedExpressi
     /// </summary>
     /// <returns>Theory data.</returns>
     // ReSharper disable once MemberCanBePrivate.Global - It really cannot
-    public static object?[][] ProvideDataForTheory() => new[]
-    {
-        new object?[]
-        {
+    public static object?[][] ProvideDataForTheory() =>
+    [
+        [
             "min(2,17)",
             null,
-            2L,
-        },
-    };
+            2L
+        ]
+    ];
 
     private static object GenerateFuncOutOfParameterValue(object tempParameter) => tempParameter switch
     {
@@ -71,7 +70,7 @@ public class OneDataSetComputedExpressionUnitTest : IClassFixture<CachedExpressi
         using var service = new ExpressionParsingService();
         using ComputedExpression del = service.Interpret(expression);
 
-        object result = del.Compute(parameters?.Values.ToArray() ?? new object[0]);
+        object result = del.Compute(parameters?.Values.ToArray() ?? []);
 
         Assert.Equal(
             expectedResult,
@@ -140,7 +139,7 @@ public class OneDataSetComputedExpressionUnitTest : IClassFixture<CachedExpressi
             throw new InvalidOperationException("No computed expression was generated!");
         }
 
-        object result = del.Compute(parameters?.Values.ToArray() ?? new object[0]);
+        object result = del.Compute(parameters?.Values.ToArray() ?? []);
 
         Assert.Equal(
             expectedResult,

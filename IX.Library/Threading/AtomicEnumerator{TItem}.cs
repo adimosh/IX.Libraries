@@ -67,8 +67,8 @@ public abstract class AtomicEnumerator<TItem> : AtomicEnumerator, IEnumerator<TI
         where TCollection : class, IEnumerable<TItem>
     {
         // Validate arguments
-        if (collection is null) throw new ArgumentNullException(nameof(collection));
-        if (readLock is null) throw new ArgumentNullException(nameof(readLock));
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(readLock);
 
         Delegate initializer = ConstructionDelegates.GetOrAdd(
             collection.GetType(),

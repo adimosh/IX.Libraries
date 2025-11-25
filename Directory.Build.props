@@ -182,6 +182,14 @@
     <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0'">
+    <TargetFrameworkIsObsolete>true</TargetFrameworkIsObsolete>
+  </PropertyGroup>
+
   <!-- .NET Framework -->
   <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
@@ -198,73 +206,40 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
     <TargetFrameworkIsFramework>true</TargetFrameworkIsFramework>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
   </PropertyGroup>
 
   <!-- .NET Standard -->
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
   </PropertyGroup>
 
   <!-- .NET -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
-    <TargetFrameworkIs5>true</TargetFrameworkIs5>
-    <TargetFrameworkIs6>true</TargetFrameworkIs6>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0'">
-    <TargetFrameworkIs5>true</TargetFrameworkIs5>
-    <TargetFrameworkIs6>true</TargetFrameworkIs6>
-    <TargetFrameworkIs7>true</TargetFrameworkIs7>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
-    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
-    <TargetFrameworkIs5>true</TargetFrameworkIs5>
-    <TargetFrameworkIs6>true</TargetFrameworkIs6>
-    <TargetFrameworkIs7>true</TargetFrameworkIs7>
     <TargetFrameworkIs8>true</TargetFrameworkIs8>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net9.0'">
-    <TargetFrameworkIs5>true</TargetFrameworkIs5>
-    <TargetFrameworkIs6>true</TargetFrameworkIs6>
-    <TargetFrameworkIs7>true</TargetFrameworkIs7>
     <TargetFrameworkIs8>true</TargetFrameworkIs8>
     <TargetFrameworkIs9>true</TargetFrameworkIs9>
-    <TargetFrameworkIsFullyStandardized>true</TargetFrameworkIsFullyStandardized>
     <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
-    <LanguageFeaturesNullableReferences>true</LanguageFeaturesNullableReferences>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <TargetFrameworkIs8>true</TargetFrameworkIs8>
+    <TargetFrameworkIs9>true</TargetFrameworkIs9>
+    <TargetFrameworkIs10>true</TargetFrameworkIs10>
+    <TargetFrameworkAdvanced>true</TargetFrameworkAdvanced>
   </PropertyGroup>
 
   <!-- Extra debug symbols for target framework type -->
-  <PropertyGroup Condition="'$(TargetFrameworkIsFullyStandardized)'=='true'">
-    <DefineConstants>$(DefineConstants);FRAMEWORK_FULL_STANDARD</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(LanguageFeaturesNullableReferences)'=='true'">
-    <DefineConstants>$(DefineConstants);FRAMEWORK_CAN_DO_NULLABLE</DefineConstants>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(TargetFrameworkAdvanced)'=='true'">
     <DefineConstants>$(DefineConstants);FRAMEWORK_ADVANCED</DefineConstants>
   </PropertyGroup>

@@ -15,7 +15,7 @@ public class ObservableUndoTransactionUnitTests
     public void UnitTest1()
     {
         // ARRANGE
-        using var list = new ObservableList<int>(new[] { 1, 2, 3, 4, 5 });
+        using var list = new ObservableList<int>([1, 2, 3, 4, 5]);
 
         // ACT & ASSERT
         list.RemoveAt(0);
@@ -53,7 +53,7 @@ public class ObservableUndoTransactionUnitTests
     public void UnitTest2()
     {
         // ARRANGE
-        using var list = new ObservableList<int>(new[] { 1, 2, 3, 4, 5 });
+        using var list = new ObservableList<int>([1, 2, 3, 4, 5]);
 
         // ACT & ASSERT
         list.RemoveAt(0);
@@ -87,7 +87,7 @@ public class ObservableUndoTransactionUnitTests
     public void UnitTest3()
     {
         // ARRANGE
-        using var list = new ObservableList<int>(new[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+        using var list = new ObservableList<int>([1, 2, 3, 4, 5, 6, 7, 8]);
 
         // ACT & ASSERT
         list.RemoveAt(0);
@@ -155,7 +155,7 @@ public class ObservableUndoTransactionUnitTests
     public void UnitTest4()
     {
         // ARRANGE
-        using var list = new ObservableList<int>(new[] { 1, 2, 3, 4, 5 });
+        using var list = new ObservableList<int>([1, 2, 3, 4, 5]);
 
         // ACT & ASSERT
         using (OperationTransaction tc = list.StartExplicitUndoBlockTransaction())
@@ -189,14 +189,13 @@ public class ObservableUndoTransactionUnitTests
     {
         // ARRANGE
         using var list = new ObservableList<CapturedItem>(
-            new[]
-            {
-                new CapturedItem { TestProperty = "1" },
+        [
+            new CapturedItem { TestProperty = "1" },
                 new CapturedItem { TestProperty = "2" },
                 new CapturedItem { TestProperty = "3" },
                 new CapturedItem { TestProperty = "4" },
-                new CapturedItem { TestProperty = "5" },
-            })
+                new CapturedItem { TestProperty = "5" }
+        ])
         {
             AutomaticallyCaptureSubItems = true,
         };
@@ -240,14 +239,13 @@ public class ObservableUndoTransactionUnitTests
     {
         // ARRANGE
         using var list = new ObservableList<CapturedItem>(
-            new[]
-            {
-                new CapturedItem { TestProperty = "1" },
+        [
+            new CapturedItem { TestProperty = "1" },
                 new CapturedItem { TestProperty = "2" },
                 new CapturedItem { TestProperty = "3" },
                 new CapturedItem { TestProperty = "4" },
-                new CapturedItem { TestProperty = "5" },
-            })
+                new CapturedItem { TestProperty = "5" }
+        ])
         {
             AutomaticallyCaptureSubItems = true,
         };
@@ -289,17 +287,16 @@ public class ObservableUndoTransactionUnitTests
     {
         // ARRANGE
         using var list = new ObservableList<CapturedItem>(
-            new[]
-            {
-                new CapturedItem { TestProperty = "1" },
+        [
+            new CapturedItem { TestProperty = "1" },
                 new CapturedItem { TestProperty = "2" },
                 new CapturedItem { TestProperty = "3" },
                 new CapturedItem { TestProperty = "4" },
                 new CapturedItem { TestProperty = "5" },
                 new CapturedItem { TestProperty = "6" },
                 new CapturedItem { TestProperty = "7" },
-                new CapturedItem { TestProperty = "8" },
-            })
+                new CapturedItem { TestProperty = "8" }
+        ])
         {
             AutomaticallyCaptureSubItems = true,
         };
@@ -371,14 +368,13 @@ public class ObservableUndoTransactionUnitTests
     {
         // ARRANGE
         using var list = new ObservableList<CapturedItem>(
-            new[]
-            {
-                new CapturedItem { TestProperty = "1" },
+        [
+            new CapturedItem { TestProperty = "1" },
                 new CapturedItem { TestProperty = "2" },
                 new CapturedItem { TestProperty = "3" },
                 new CapturedItem { TestProperty = "4" },
-                new CapturedItem { TestProperty = "5" },
-            })
+                new CapturedItem { TestProperty = "5" }
+        ])
         {
             AutomaticallyCaptureSubItems = true,
         };

@@ -371,7 +371,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         Action<TState, T> actionToInvoke,
         TState state)
     {
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         ThrowIfCurrentObjectDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -494,7 +494,7 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -602,8 +602,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         Action<TState, IEnumerable<T>> actionToInvoke,
         TState state)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -761,8 +761,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -938,8 +938,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         this.RequiresNotDisposed();
 
         using var locker = AcquireReadWriteLock();
@@ -1122,8 +1122,8 @@ public abstract class PersistedQueueBase<T> : ReaderWriterSynchronizedBase,
         TState state,
         CancellationToken cancellationToken = default)
     {
-        if (predicate is null) throw new ArgumentNullException(nameof(predicate));
-        if (actionToInvoke is null) throw new ArgumentNullException(nameof(actionToInvoke));
+        ArgumentNullException.ThrowIfNull(predicate);
+        ArgumentNullException.ThrowIfNull(actionToInvoke);
         ThrowIfCurrentObjectDisposed();
 
         using var locker = AcquireReadWriteLock();

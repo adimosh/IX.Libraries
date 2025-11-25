@@ -5,23 +5,20 @@ using System.IO.Compression;
 using System.Reflection;
 using System.Text;
 
-using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace UnitTests.StandardExtensions.Globalization;
 
-public class CharsetDetectorDataUnitTests
+public class CharsetDetectorDataUnitTests(ITestOutputHelper outputHelper)
 {
-    private readonly ITestOutputHelper _outputHelper;
-
-    public CharsetDetectorDataUnitTests(ITestOutputHelper outputHelper) =>
-        _outputHelper = outputHelper ?? throw new ArgumentNullException(nameof(outputHelper));
+    private readonly ITestOutputHelper _outputHelper = outputHelper ?? throw new ArgumentNullException(nameof(outputHelper));
 
     public static IEnumerable<object[]> AllTestFiles()
     {
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnitTests.StandardExtensions.Globalization.data.zip") ??
                      throw new InvalidOperationException();
 
-        ZipArchive za = new ZipArchive(
+        var za = new ZipArchive(
             stream,
             ZipArchiveMode.Read,
             true);
@@ -47,7 +44,7 @@ public class CharsetDetectorDataUnitTests
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnitTests.StandardExtensions.Globalization.data.zip") ??
                      throw new InvalidOperationException();
 
-        ZipArchive za = new ZipArchive(
+        var za = new ZipArchive(
             stream,
             ZipArchiveMode.Read,
             true);
@@ -68,7 +65,7 @@ public class CharsetDetectorDataUnitTests
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnitTests.StandardExtensions.Globalization.data.zip") ??
                      throw new InvalidOperationException();
 
-        ZipArchive za = new ZipArchive(
+        var za = new ZipArchive(
             stream,
             ZipArchiveMode.Read,
             true);
@@ -89,7 +86,7 @@ public class CharsetDetectorDataUnitTests
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnitTests.StandardExtensions.Globalization.data.zip") ??
                      throw new InvalidOperationException();
 
-        ZipArchive za = new ZipArchive(
+        var za = new ZipArchive(
             stream,
             ZipArchiveMode.Read,
             true);
@@ -110,7 +107,7 @@ public class CharsetDetectorDataUnitTests
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnitTests.StandardExtensions.Globalization.data.zip") ??
                      throw new InvalidOperationException();
 
-        ZipArchive za = new ZipArchive(
+        var za = new ZipArchive(
             stream,
             ZipArchiveMode.Read,
             true);
@@ -124,9 +121,7 @@ public class CharsetDetectorDataUnitTests
 
     public class TestCase : IXunitSerializable
     {
-        public TestCase()
-        {
-        }
+        public TestCase() { }
 
         public TestCase(string inputFile, string fileName, string expectedEncoding)
         {

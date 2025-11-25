@@ -53,7 +53,7 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
         }
         catch (NotSupportedException)
         {
-#if NETSTANDARD2_0_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_0_OR_GREATER || NET8_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);
@@ -68,7 +68,7 @@ public class CharsetDetectionEngine : ICharsetDetectionEngine
         }
         catch (ArgumentException)
         {
-#if NETSTANDARD2_0_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_0_OR_GREATER || NET8_0_OR_GREATER
             try
             {
                 return CodePagesEncodingProvider.Instance.GetEncoding(encodingName);

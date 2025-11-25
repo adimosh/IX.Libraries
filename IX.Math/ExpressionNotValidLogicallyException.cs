@@ -1,4 +1,4 @@
-using System.Runtime.Serialization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IX.Math;
 
@@ -6,7 +6,8 @@ namespace IX.Math;
 /// Thrown when an expression is not internally logical or consistent.
 /// </summary>
 [Serializable]
-public class ExpressionNotValidLogicallyException : Exception
+[ExcludeFromCodeCoverage]
+public partial class ExpressionNotValidLogicallyException : Exception
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExpressionNotValidLogicallyException"/> class.
@@ -41,16 +42,6 @@ public class ExpressionNotValidLogicallyException : Exception
     /// <param name="internalException">The internal exception, if any.</param>
     public ExpressionNotValidLogicallyException(string message, Exception internalException)
         : base(message, internalException)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ExpressionNotValidLogicallyException"/> class.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>
-    protected ExpressionNotValidLogicallyException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
     {
     }
 }

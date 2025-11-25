@@ -26,7 +26,7 @@ public class LevelDictionaryUnitTests
         };
 
         int[] orderForValues =
-        {
+        [
             2,
             6,
             8,
@@ -34,7 +34,7 @@ public class LevelDictionaryUnitTests
             7,
             1,
             5
-        };
+        ];
 
         var index = 0;
 

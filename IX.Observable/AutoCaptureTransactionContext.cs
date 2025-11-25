@@ -33,7 +33,7 @@ internal class AutoCaptureTransactionContext : OperationTransaction
         // Contract validation
         _item = item ?? throw new ArgumentNullException(nameof(item));
         _editableHandler = editableHandler ?? throw new ArgumentNullException(nameof(editableHandler));
-        if (parentContext is null) throw new ArgumentNullException(nameof(parentContext));
+        ArgumentNullException.ThrowIfNull(parentContext);
 
         // Data validation
         if (item.IsCapturedIntoUndoContext && item.ParentUndoContext != parentContext)
@@ -67,8 +67,8 @@ internal class AutoCaptureTransactionContext : OperationTransaction
     {
         // Contract validation
         _editableHandler = editableHandler ?? throw new ArgumentNullException(nameof(editableHandler));
-        if (items is null) throw new ArgumentNullException(nameof(items));
-        if (parentContext is null) throw new ArgumentNullException(nameof(parentContext));
+        ArgumentNullException.ThrowIfNull(items);
+        ArgumentNullException.ThrowIfNull(parentContext);
 
         // Data validation
         // Multiple enumeration warning: this has to be done, as there is no efficient way to do a transactional capturing otherwise

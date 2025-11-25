@@ -28,33 +28,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand + rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}+{rightOperand}",
+            [
+                $"{leftOperand}+{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand+rightOperand",
+            [
+                "leftOperand+rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand+{rightOperand}",
+            [
+                $"leftOperand+{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}+rightOperand",
+            [
+                $"{leftOperand}+rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // -
@@ -64,33 +60,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand - rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}-{rightOperand}",
+            [
+                $"{leftOperand}-{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand-rightOperand",
+            [
+                "leftOperand-rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}-rightOperand",
+            [
+                $"{leftOperand}-rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand-{rightOperand}",
+            [
+                $"leftOperand-{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // *
@@ -101,33 +93,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand * rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}*{rightOperand}",
+            [
+                $"{leftOperand}*{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand*rightOperand",
+            [
+                "leftOperand*rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}*rightOperand",
+            [
+                $"{leftOperand}*rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand*{rightOperand}",
+            [
+                $"leftOperand*{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // /
@@ -137,33 +125,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand / rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}/{rightOperand}",
+            [
+                $"{leftOperand}/{rightOperand}",
                     Array.Empty<object>(),
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand/rightOperand",
+            [
+                "leftOperand/rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand/{rightOperand}",
+            [
+                $"leftOperand/{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}/rightOperand",
+            [
+                $"{leftOperand}/rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
 #endregion
@@ -182,33 +166,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand + rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}+{rightOperand}",
+            [
+                $"{leftOperand}+{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand+rightOperand",
+            [
+                "leftOperand+rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand+{rightOperand}",
+            [
+                $"leftOperand+{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}+rightOperand",
+            [
+                $"{leftOperand}+rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // -
@@ -222,33 +202,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand - rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}-{rightOperand}",
+            [
+                $"{leftOperand}-{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand-rightOperand",
+            [
+                "leftOperand-rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}-rightOperand",
+            [
+                $"{leftOperand}-rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand-{rightOperand}",
+            [
+                $"leftOperand-{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // *
@@ -263,33 +239,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand * rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}*{rightOperand}",
+            [
+                $"{leftOperand}*{rightOperand}",
                     Array.Empty<object>(),
-                    (long)expectedResult,
-                });
+                    (long)expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand*rightOperand",
+            [
+                "leftOperand*rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}*rightOperand",
+            [
+                $"{leftOperand}*rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand*{rightOperand}",
+            [
+                $"leftOperand*{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
         // /
@@ -303,33 +275,29 @@ public class BasicExpressionsUnitTests
             var expectedResult = leftOperand / rightOperand;
 
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}/{rightOperand}",
+            [
+                $"{leftOperand}/{rightOperand}",
                     Array.Empty<object>(),
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    "leftOperand/rightOperand",
+            [
+                "leftOperand/rightOperand",
                     new object[] { leftOperand, rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"leftOperand/{rightOperand}",
+            [
+                $"leftOperand/{rightOperand}",
                     new object[] { leftOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
             tests.Add(
-                new object[]
-                {
-                    $"{leftOperand}/rightOperand",
+            [
+                $"{leftOperand}/rightOperand",
                     new object[] { rightOperand },
-                    expectedResult,
-                });
+                    expectedResult
+            ]);
         }
 
 #endregion
@@ -360,7 +328,7 @@ public class BasicExpressionsUnitTests
         ComputedExpression del;
         try
         {
-            del = service.Interpret(expression);
+            del = service.Interpret(expression, TestContext.Current.CancellationToken);
         }
         catch (Exception ex)
         {

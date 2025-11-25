@@ -148,6 +148,7 @@ public class <#= item.Name #>Exception : ArgumentException
     {
     }
 
+    // TODO: Remove this in next breaking changes version
 #if !NET9_0_OR_GREATER
     /// <summary>
     ///     Initializes a new instance of the <see cref="<#= item.Name #>Exception" /> class.
