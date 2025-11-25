@@ -59,7 +59,7 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
     /// </summary>
     /// <param name="items">The item range to push.</param>
     /// <exception cref="ArgumentNullException">
-    ///     items
+    ///     <paramref name="items"/>
     ///     is <c>null</c> (<c>Nothing</c> in Visual Basic).
     /// </exception>
     public void EnqueueRange(T[] items)
@@ -77,7 +77,7 @@ public class Queue<T> : GlobalCollectionsGeneric.Queue<T>,
     /// <param name="startIndex">The start index.</param>
     /// <param name="count">The number of items to enqueue.</param>
     /// <exception cref="ArgumentNullException">
-    ///     items
+    ///     <paramref name="items"/>
     ///     is <c>null</c> (<c>Nothing</c> in Visual Basic).
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
