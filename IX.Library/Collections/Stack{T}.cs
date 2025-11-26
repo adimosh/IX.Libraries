@@ -57,7 +57,7 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
     /// </summary>
     /// <param name="items">The item range to push.</param>
     /// <exception cref="ArgumentNullException">
-    ///     items
+    ///     <paramref name="items"/>
     ///     is <c>null</c> (<c>Nothing</c> in Visual Basic).
     /// </exception>
     public void PushRange(T[] items)
@@ -75,13 +75,13 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
     /// <param name="startIndex">The start index.</param>
     /// <param name="count">The number of items to push.</param>
     /// <exception cref="ArgumentNullException">
-    ///     items
+    ///     <paramref name="items"/>
     ///     is <c>null</c> (<c>Nothing</c> in Visual Basic).
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
-    ///     startIndex
+    ///     <paramref name="startIndex" />
     ///     or
-    ///     count
+    ///     <paramref name="count" />
     ///     represent an out-of-range set of arguments relative to the input array.
     /// </exception>
     public void PushRange(
@@ -100,5 +100,5 @@ public class Stack<T> : GlobalCollectionsGeneric.Stack<T>,
         {
             Push(items[i]);
         }
-    } 
+    }
 }
